@@ -9,7 +9,8 @@ const files=new Map([
   ['/',['index.html','text/html; charset=utf-8']],['/index.html',['index.html','text/html; charset=utf-8']],
   ['/styles.css',['styles.css','text/css; charset=utf-8']],['/app.js',['app.js','text/javascript; charset=utf-8']],
   ['/engine.js',['engine.js','text/javascript; charset=utf-8']],['/math.js',['math.js','text/javascript; charset=utf-8']],
-  ['/scene.js',['scene.js','text/javascript; charset=utf-8']],['/favicon.svg',['favicon.svg','image/svg+xml']]
+  ['/scene.js',['scene.js','text/javascript; charset=utf-8']],['/favicon.svg',['favicon.svg','image/svg+xml']],
+  ['/storage.js',['storage.js','text/javascript; charset=utf-8']]
 ]);
 const headers={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
@@ -34,7 +35,7 @@ export function createApp({apiKey=process.env.OPENAI_API_KEY||'',model=process.e
       const origin=request.headers.origin;
       if(origin&&!allowedHosts.some(host=>origin==='http://'+host))throw new AppError(403,'Diese Herkunft ist nicht erlaubt.');
       const url=new URL(request.url,'http://'+request.headers.host);
-      if(request.method==='GET'&&url.pathname==='/api/status')return json(response,200,{app:'av-rettungseinsatz',ready:true,aiConfigured:Boolean(apiKey.trim())});
+      if(request.method==='GET'&&url.pathname==='/api/status')return json(response,200,{app:'av-rettungseinsatz',ready:true,aiConfigured:Boolean(apiKey.trim()),storageMode:'server',authRequired:false});
       if(request.method==='GET'&&url.pathname==='/api/banks'){
         let names;try{names=await readdir(dataDirectory);}catch(error){if(error.code!=='ENOENT')throw error;names=[];}
         const banks=[];
