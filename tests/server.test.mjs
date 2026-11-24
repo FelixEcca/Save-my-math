@@ -41,6 +41,60 @@ test('Responses requests use schema, server-only credentials and independent rev
  assert.equal(fake.calls[1].body.text.format.name,'av_question_review');
  assert.ok(!JSON.stringify(bank).includes('test-only-secret'));
 });
+test('Permanent API configuration errors are explained without leaking upstream details',async()=>{
+ const secret='test-only-secret';
+ const cases=[
+  {status:404,code:'model_not_found',message:/KI-Modell ist nicht verfügbar/},
+  {status:403,code:'permission_denied',message:/Berechtigung/},
+  {status:429,code:'insufficient_quota',message:/API-Guthaben/},
+  {status:429,code:'rate_limit_exceeded',message:/zu viele Anfragen/},
+  {status:400,code:'invalid_json_schema',message:/Anfrageformat/}
+ ];
+ for(const item of cases){
+  const fetchImpl=async()=>new Response(JSON.stringify({error:{code:item.code,message:'Sensitive diagnostic: '+secret}}),{status:item.status});
+  await assert.rejects(()=>generateBank(request,{apiKey:secret,model:'unavailable',fetchImpl}),error=>{
+   assert.match(error.message,item.message);assert.ok(!error.message.includes(secret));return true;
+  });
+ }
+ await assert.rejects(()=>generateBank(request,{apiKey:'   ',model:'example',fetchImpl:fetch}),/API-Schlüssel/);
+});
+test('A mathematically invalid batch is corrected once and independently reviewed',async()=>{
+ const calls=[];
+ const fetchImpl=async(_url,options)=>{
+  const body=JSON.parse(options.body);calls.push(body);
+  if(body.text.format.name==='av_question_review')return response({valid:true,issues:[]});
+  const questions=structuredClone(raw);
+  if(calls.length===1)questions[0].distractors[0]=60;
+  return response({questions});
+ };
+ const bank=await generateBank(request,{apiKey:'test-only',model:'example',fetchImpl});
+ assert.equal(bank.questions.length,2);assert.equal(calls.length,3);
+ assert.match(JSON.parse(calls[1].input).validationFeedback,/eindeutig/);
+ assert.equal(calls[2].text.format.name,'av_question_review');
+ let attempts=0;
+ const alwaysInvalid=async()=>{attempts++;return response({questions:raw.map(q=>({...q,calculation:'1/0'}))});};
+ await assert.rejects(()=>generateBank(request,{apiKey:'test-only',model:'example',fetchImpl:alwaysInvalid}),/automatischen Korrektur/);
+ assert.equal(attempts,2);
+});
+test('Review findings guide one correction and remain visible if unresolved',async()=>{
+ const calls=[];let reviews=0;
+ const fetchImpl=async(_url,options)=>{
+  const body=JSON.parse(options.body);calls.push(body);
+  if(body.text.format.name==='av_questions')return response({questions:raw});
+  reviews++;
+  return response(reviews===1?{valid:false,issues:['Frage 1: Die angegebene Länge passt nicht zur Rechnung.']}:{valid:true,issues:[]});
+ };
+ const bank=await generateBank(request,{apiKey:'test-only',model:'example',fetchImpl});
+ assert.equal(bank.questions.length,2);assert.equal(calls.length,4);assert.equal(reviews,2);
+ assert.match(JSON.parse(calls[2].input).validationFeedback,/Frage 1/);
+ const secret='test-only-secret';
+ const invalidReview=async(_url,options)=>response(JSON.parse(options.body).text.format.name==='av_questions'?{questions:raw}:
+  {valid:false,issues:['Frage 2: Die Einheit passt nicht. '+secret]});
+ await assert.rejects(()=>generateBank(request,{apiKey:secret,model:'example',fetchImpl:invalidReview}),error=>{
+  assert.match(error.message,/Gegenprüfung/);assert.match(error.message,/Frage 2: Die Einheit passt nicht/);
+  assert.ok(!error.message.includes(secret));return true;
+ });
+});
 test('Local HTTP server protects credentials, rejects foreign origins and reports missing configuration',async()=>{
  await withServer({apiKey:''},async url=>{
   const status=await (await fetch(url+'/api/status')).json();assert.equal(status.aiConfigured,false);

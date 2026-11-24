@@ -28,7 +28,7 @@ Die App läuft zunächst auf diesem Rechner. Es wurde kein öffentliches Angebot
 4. „Eigenes Thema mit KI …“ auswählen, Inhalt und Grenzen beschreiben und die Aufgaben erstellen lassen.
 5. Die Vorschau prüfen und mit **Freigeben und starten** übernehmen.
 
-Der Schlüssel bleibt auf dem lokalen Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
+Der Schlüssel bleibt auf dem lokalen Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt normalerweise zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Bei beanstandeten Aufgaben erfolgt einmalig eine gezielte automatische Korrektur; insgesamt sind höchstens vier API-Anfragen nötig. Bleibt ein Problem bestehen, zeigt die App die konkreten Prüfhinweise an. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
 
 Die App berechnet die Lösungen aus einer eingeschränkten mathematischen Ausdruckssprache selbst. Sie akzeptiert nur genau drei verschiedene numerische Antworten und prüft die Zuordnung. Ein zweiter KI-Aufruf prüft, ob Text, Rechnung und Niveau zusammenpassen. Die Freigabe durch die Lehrkraft bleibt nötig: Diese Prüfungen garantieren keine vollständige Fehlerfreiheit.
 
