@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "description": "Kooperatives Mathematikquiz für die Ausbildungsvorbereitung",
-  "engines": { "node": ">=22.14" },
+  "engines": { "node": "22.x" },
   "scripts": {
     "start": "node server/index.mjs",
+    "build": "node scripts/build.mjs",
     "test": "node --test"
   }
 }

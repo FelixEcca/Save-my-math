@@ -1,5 +1,6 @@
 import {topics,generateTopicQuestion,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
 import {createScene} from './scene.js';
+import {loadBrowserBanks,saveBrowserBank} from './storage.js';
 const root=document.getElementById('av-rescue-preview');
 const byId=id=>root.querySelector('#'+id);
   const scenarios = {
@@ -30,6 +31,7 @@ const byId=id=>root.querySelector('#'+id);
   const scene = byId('rescue-canvas');
   let busy=false,notice='',pendingReview=null;
   let aiConfigured=false;
+  let cloudMode=false,aiAccess={required:false,authenticated:true,configured:true};
   const renderer=createScene(scene,root,()=>state);
   const drawScene=time=>renderer.draw(time);
   const resizeScene=()=>renderer.resize();
@@ -303,12 +305,22 @@ const byId=id=>root.querySelector('#'+id);
     select.value=previous||'brackets';
   }
   function renderSetup(){
+    byId('rescue-storage-note').hidden=!cloudMode;
     byId('rescue-setup').hidden=!setupOpen||Boolean(pendingReview);
     byId('rescue-play').hidden=setupOpen||Boolean(pendingReview);
     byId('rescue-review').hidden=!pendingReview;
     byId('rescue-open-setup').hidden=setupOpen||Boolean(pendingReview);
     if(!draft)return;
     const custom=draft.topic==='custom';
+    const showAccess=aiAccess.required&&(custom||Boolean(topics[draft.topic]?.bank));
+    byId('rescue-ki-access').hidden=!showAccess;
+    byId('rescue-ki-login').hidden=aiAccess.authenticated||!aiAccess.configured;
+    byId('rescue-lock').hidden=!aiAccess.authenticated;
+    byId('rescue-ki-access-status').textContent=!aiAccess.configured?
+      'Der KI-Zugang muss in Vercel mit APP_PASSWORD eingerichtet werden.':
+      aiAccess.authenticated?'Die KI ist freigeschaltet.':
+      'Schalte die kostenpflichtige KI mit deinem Zugangscode frei.';
+    byId('rescue-generate').disabled=custom&&aiAccess.required&&!aiAccess.authenticated;
     byId('rescue-custom-fields').hidden=!custom;
     byId('rescue-custom-topic').required=custom;
     byId('rescue-generate').textContent=busy?'Aufgaben werden erstellt …':custom?'KI-Aufgaben erstellen':'Aufgaben erstellen und starten';
@@ -316,6 +328,7 @@ const byId=id=>root.querySelector('#'+id);
     note.classList.toggle('is-error',Boolean(setupError));note.setAttribute('role',setupError?'alert':'status');
     note.textContent=setupError||setupMessage||(custom?
       aiConfigured?'Die KI erstellt Aufgaben zu deinem Thema. Danach kannst du sie prüfen und freigeben.':
+      cloudMode?'Die KI ist noch nicht eingerichtet. Hinterlege OPENAI_API_KEY in den Vercel-Einstellungen und veröffentliche die App erneut.':
       'Die KI ist noch nicht eingerichtet. Öffne „KI konfigurieren.cmd“ im Projektordner und starte die App danach neu.':
       'Du erhältst neue Aufgaben mit je drei Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
   }
@@ -327,7 +340,7 @@ const byId=id=>root.querySelector('#'+id);
   async function api(path,options={}){
     let response;
     try{response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(200000)});}
-    catch(_){throw new Error('Der lokale Server ist nicht erreichbar. Prüfe, ob Rettungseinsatz noch läuft.');}
+    catch(_){throw new Error('Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.');}
     let body;try{body=await response.json();}catch(_){throw new Error('Der Server hat keine lesbare Antwort geliefert.');}
     if(!response.ok)throw new Error(body.error||'Die Anfrage ist fehlgeschlagen.');
     return body;
@@ -365,6 +378,7 @@ const byId=id=>root.querySelector('#'+id);
     busy=true;notice='Aufgabensatz wird gespeichert …';render();
     try{
       const saved=await api('/api/banks',{method:'POST',body:JSON.stringify(bank)});
+      saveBrowserBank(saved.bank);
       registerCustomBank(saved.bank);refreshTopics();
       if(review.mode==='extend'){
         state.level=review.nextLevel;
@@ -381,6 +395,21 @@ const byId=id=>root.querySelector('#'+id);
   function initializeTopicSetup(){
     refreshTopics();draft=draftFromGame();syncSetupFields();
     byId('rescue-open-setup').addEventListener('click',openSetup);
+    byId('rescue-unlock').addEventListener('click',async()=>{
+      if(busy)return;
+      const input=byId('rescue-teacher-password'),password=input.value;input.value='';
+      if(!password){setupError='Trage deinen KI-Zugangscode ein.';renderSetup();return;}
+      busy=true;setupError='';render();
+      try{await api('/api/session',{method:'POST',body:JSON.stringify({password})});aiAccess.authenticated=true;}
+      catch(error){setupError=error.message;}
+      finally{busy=false;render();}
+    });
+    byId('rescue-lock').addEventListener('click',async()=>{
+      if(busy)return;busy=true;render();
+      try{await api('/api/session',{method:'DELETE'});aiAccess.authenticated=false;}
+      catch(error){setupError=error.message;}
+      finally{busy=false;render();}
+    });
     byId('rescue-cancel-setup').addEventListener('click',()=>{
       if(busy)return;setupOpen=false;setupError='';setupMessage='';notice='';render();resizeScene();persist();byId('rescue-open-setup').focus();
     });
@@ -418,11 +447,14 @@ const byId=id=>root.querySelector('#'+id);
     };
     byId('rescue-generate').addEventListener('click',createTopicGame);
     byId('rescue-setup').addEventListener('submit',createTopicGame);
-    byId('rescue-setup').addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.tagName==='INPUT'){event.preventDefault();byId('rescue-generate').click();}});
+    byId('rescue-setup').addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.tagName==='INPUT'){event.preventDefault();byId(event.target.id==='rescue-teacher-password'?'rescue-unlock':'rescue-generate').click();}});
   }
   async function startApplication(){
+    for(const bank of loadBrowserBanks()){try{registerCustomBank(bank);}catch(_){}}
     try{
       const [status,saved]=await Promise.all([api('/api/status'),api('/api/banks')]);aiConfigured=status.aiConfigured;
+      cloudMode=status.storageMode==='browser';
+      aiAccess={required:Boolean(status.authRequired),authenticated:status.authRequired?Boolean(status.authenticated):true,configured:status.accessConfigured!==false};
       for(const bank of saved.banks){try{registerCustomBank(bank);}catch(_){/* An invalid set does not prevent playing the built-in topics. */}}
     }catch(error){notice=error.message;}
     initializeTopicSetup();

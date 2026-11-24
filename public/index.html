@@ -54,6 +54,17 @@
       </label>
     </div>
     <p class="rs-setup-note" id="rescue-setup-note" aria-live="polite"></p>
+    <p class="rs-setup-note" id="rescue-storage-note" hidden>Freigegebene KI-Themen werden in diesem Browser gespeichert.</p>
+    <div class="rs-ki-access" id="rescue-ki-access" hidden>
+      <p class="rs-setup-note" id="rescue-ki-access-status" aria-live="polite"></p>
+      <div class="rs-ki-login" id="rescue-ki-login">
+        <label class="rs-field" for="rescue-teacher-password">Zugangscode für die KI
+          <input id="rescue-teacher-password" type="password" autocomplete="current-password" maxlength="500">
+        </label>
+        <button id="rescue-unlock" type="button">KI freischalten</button>
+      </div>
+      <button id="rescue-lock" type="button" hidden>KI sperren</button>
+    </div>
     <div class="rs-setup-actions">
       <button class="rs-main-action cursor-interaction" id="rescue-generate" type="button">Aufgaben erstellen und starten</button>
       <button class="cursor-interaction" id="rescue-cancel-setup" type="button">Zum laufenden Spiel</button>
