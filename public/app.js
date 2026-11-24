@@ -1,0 +1,433 @@
+import {topics,generateTopicQuestion,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
+import {createScene} from './scene.js';
+const root=document.getElementById('av-rescue-preview');
+const byId=id=>root.querySelector('#'+id);
+  const scenarios = {
+    water: {name: 'Über Bord', color: 'bean-water', goal: 'Rettungsboot', success: 'Wieder an Bord!',
+      failure: 'Ein ziemlich nasser Abgang.'},
+    rail: {name: 'Auf dem Gleis', color: 'bean-rail', goal: 'Bahnsteig', success: 'Schuh frei. Gleis frei!',
+      failure: 'Der Zug hatte keine Geduld.'},
+    cliff: {name: 'Am Felsen', color: 'bean-cliff', goal: 'Gipfel', success: 'Oben angekommen!',
+      failure: 'Die Schwerkraft hat gewonnen.'},
+    ice: {name: 'Dünnes Eis', color: 'bean-ice', goal: 'Ufer', success: 'Wieder festen Boden!',
+      failure: 'Das Eis war leider dünner.'},
+    space: {name: 'Im All', color: 'bean-space', goal: 'Raumschiff', success: 'Zurück in der Luftschleuse!',
+      failure: 'Leider ohne Rückflugticket.'}
+  };
+  const fresh = (settings = {}) => ({
+    version: 2, topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
+    scenario: settings.scenario ?? 'water', level: settings.level ?? 2,
+    index: 0, energy: Math.min(4,settings.total??8), votes: [0,0,0], phase: 'vote', history: [], usedTerms: [],
+    current: generateTopicQuestion(settings.topic??'brackets',settings.level ?? 2)
+  });
+  let state = fresh();
+  let setupOpen=true, draft=null, setupError='', setupMessage='', pendingTopicRequest=null;
+  let preparedQuestions=[];
+  const sizeInput = byId('rescue-size');
+  const totalInput = byId('rescue-total');
+  const countInputs = [0,1,2].map(index => byId('rescue-count-' + index));
+  const action = byId('rescue-resolve');
+  const scene = byId('rescue-canvas');
+  let busy=false,notice='',pendingReview=null;
+  let aiConfigured=false;
+  const renderer=createScene(scene,root,()=>state);
+  const drawScene=time=>renderer.draw(time);
+  const resizeScene=()=>renderer.resize();
+
+  function validSettings() {
+    return Number.isInteger(state.count) && state.count >= 1 && state.count <= 40 &&
+      Number.isInteger(state.total) && state.total >= 1 && state.total <= 30;
+  }
+  function validVotes() {
+    return validSettings() && state.votes.every(vote => Number.isInteger(vote) && vote >= 0 && vote <= state.count);
+  }
+  function ready() {
+    return validVotes() && state.votes.reduce((a,b) => a+b,0) === state.count;
+  }
+  function persist() {
+    try { localStorage.setItem('av-rescue-game-v1',JSON.stringify({privateContent:{rescue:state,setup:draft,setupOpen}})); }
+    catch(_){notice='Der Spielstand konnte in diesem Browser nicht gespeichert werden.';}
+  }
+  function migrate(old) {
+    if (!old || old.version !== 1) return old;
+    const legacy = [
+      ['12 − (4 − 2)',['6','10','18'],1],
+      ['18 + (5 − 3)',['20','16','26'],0],
+      ['15 − (4 + 3)',['14','22','8'],2],
+      ['9 + (x − 4)',['x + 5','x − 5','5 − x'],0],
+      ['12 − (x − 4)',['8 − x','16 − x','8 + x'],1],
+      ['4x + (2x − 3)',['2x − 3','6x + 3','6x − 3'],2],
+      ['8x − (3x − 2)',['5x + 2','5x − 2','11x − 2'],0],
+      ['6a − (2a + 3b)',['4a + 3b','8a − 3b','4a − 3b'],2]
+    ];
+    if (!Number.isInteger(old.index) || !legacy[old.index]) return null;
+    const [term,answers,correct] = legacy[old.index];
+    const parsed = parseLinear(term);
+    const legacyLevel = [1,1,1,2,2,3,3,5][old.index];
+    const current = {term,answers,correct,level:legacyLevel,
+      why:term+' = '+renderTerms(parsed.terms)+' = '+renderVector(parsed.coefficients)+'.'};
+    return {...old,version:2,total:8,scenario:'water',level:legacyLevel,current,usedTerms:[term]};
+  }
+  function restore(snapshot) {
+    const saved = migrate(snapshot?.privateContent?.rescue);
+    if (!saved || saved.version !== 2 || !scenarios[saved.scenario] ||
+        !Number.isInteger(saved.level) || saved.level < 1 || saved.level > 5 ||
+        !Number.isInteger(saved.count) || saved.count < 1 || saved.count > 40 ||
+        !Number.isInteger(saved.total) || saved.total < 1 || saved.total > 30 ||
+        !Number.isInteger(saved.index) || saved.index < 0 || saved.index >= saved.total ||
+        !Number.isInteger(saved.energy) || saved.energy < 0 || saved.energy > 5 ||
+        !['vote','result','rescued','failed'].includes(saved.phase) ||
+        !Array.isArray(saved.votes) || saved.votes.length !== 3 ||
+        !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count)) ||
+        !Array.isArray(saved.history) || saved.history.length !== saved.index + (saved.phase === 'vote' ? 0 : 1) ||
+        !saved.history.every((round,index) => round && round.round === index+1 &&
+          Number.isInteger(round.correct) && round.correct >= 0 && round.correct <= saved.count &&
+          round.total === saved.count && round.pass === (round.correct*5 >= saved.count*4) &&
+          Number.isInteger(round.delta) && round.delta >= -1 && round.delta <= 1 &&
+          Number.isInteger(round.energy) && round.energy >= 0 && round.energy <= 5)) return;
+    if(!topics[saved.topic||'brackets'])return;
+    try { validateQuestion(saved.current); } catch (_) { return; }
+    state = {...saved,topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
+      usedTerms:Array.isArray(saved.usedTerms) ? saved.usedTerms.filter(term => typeof term==='string').slice(-60) : []};
+    const stored=snapshot.privateContent;
+    setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
+    const settings=stored.setup;
+    if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
+      draft={...settings,customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
+      syncSetupFields();
+    }
+    pendingTopicRequest=null;
+    preparedQuestions=[];
+    render();
+  }
+  function replaceQuestion() {
+    state.usedTerms = [...state.usedTerms,state.current.term].slice(-60);
+    state.current = preparedQuestions.find(q=>q.level===state.level&&!state.usedTerms.includes(q.term))||
+      generateTopicQuestion(state.topic,state.level,state.usedTerms);
+    state.votes = [0,0,0];
+  }
+  async function changeLevel(change) {
+    if(busy||pendingReview)return;
+    const next=Math.max(1,Math.min(5,state.level+change));
+    const bank=topics[state.topic]?.bank;
+    if(bank&&!bank.questions.some(q=>q.level===next)){
+      return requestAI({topic:bank.label,notes:bank.notes||'',level:next,count:Math.max(8,state.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
+        {mode:'extend',topicId:state.topic,nextLevel:next,wasSetupOpen:setupOpen});
+    }
+    state.level=next;
+    if(state.phase==='vote')replaceQuestion();
+    render();persist();
+  }
+  function reset() {
+    state = fresh({count:validSettings()?state.count:20,total:validSettings()?state.total:8,
+      scenario:state.scenario,level:state.level,topic:state.topic});
+    preparedQuestions=[];
+    render();
+    persist();
+  }
+  function render() {
+    root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=false);
+    renderSetup();
+    byId('rescue-notice').hidden=!notice;
+    byId('rescue-notice').textContent=notice;
+    const revealed = state.phase !== 'vote';
+    const finished = state.phase === 'rescued' || state.phase === 'failed';
+    const settingsValid = validSettings();
+    const sum = state.votes.reduce((total,value) => total+(Number.isFinite(value)?value:0),0);
+    const required = settingsValid ? Math.ceil(state.count*4/5) : 0;
+    const scenario = scenarios[state.scenario];
+    sizeInput.value = state.count ?? '';
+    totalInput.value = state.total ?? '';
+    sizeInput.disabled = state.history.length > 0;
+    totalInput.disabled = state.history.length > 0;
+    sizeInput.setAttribute('aria-invalid',String(!Number.isInteger(state.count)||state.count<1||state.count>40));
+    totalInput.setAttribute('aria-invalid',String(!Number.isInteger(state.total)||state.total<1||state.total>30));
+    byId('rescue-round').textContent = setupOpen?'Spiel vorbereiten':
+      topics[state.topic].label+' · '+scenario.name+' · Frage '+(state.index+1)+' von '+(state.total||'–');
+    byId('rescue-question').textContent = state.current.term;
+    byId('rescue-instruction').textContent = state.current.instruction||topics[state.topic].instruction;
+    byId('rescue-question').parentElement.classList.toggle('is-text',state.current.term.length>55);
+    byId('rescue-level').textContent = (finished?'Neuer Versuch · ':revealed?'Nächste Frage · ':'')+
+      'Stufe '+state.level+' · '+topics[state.topic].levels[state.level-1];
+    byId('rescue-easier').disabled = state.level===1;
+    byId('rescue-harder').disabled = state.level===5;
+    root.querySelectorAll('[data-rescue-scenario]').forEach(button => {
+      button.setAttribute('aria-pressed',String(button.dataset.rescueScenario===state.scenario));
+    });
+    byId('rescue-threshold').textContent = settingsValid
+      ? 'Mindestens '+required+' von '+state.count+' Antworten müssen richtig sein.'
+      : 'Wähle 1 bis 40 SuS und 1 bis 30 Fragen.';
+    byId('rescue-energy-text').textContent = state.energy+' / 5';
+    byId('rescue-energy').setAttribute('aria-valuenow',state.energy);
+    [...byId('rescue-energy').children].forEach((part,index)=>part.classList.toggle('is-on',index<state.energy));
+    const remaining = Math.max(0,(state.total||8)-state.history.length);
+    const warnings = {
+      water:{3:'Die Wellen werden höher.',2:'Die Figur geht immer tiefer!',1:'Nur noch der Kopf ist über Wasser!'},
+      rail:{3:'Der Zug kommt näher.',2:'Der Zug rast auf die Figur zu!',1:'Der Zug ist fast da!'},
+      cliff:{3:'Das Seil beginnt zu reißen.',2:'Nur wenige Fasern halten noch!',1:'Nur noch ein Faden hält!'},
+      ice:{3:'Die Risse werden breiter.',2:'Das Eis bricht unter den Füßen!',1:'Die letzte Eisscholle kippt!'},
+      space:{3:'Die Verbindung wird brüchig.',2:'Luft entweicht aus dem Anzug!',1:'Das Seil reißt gleich!'}
+    };
+    root.dataset.rescueDanger = state.phase==='rescued'?'calm':state.energy<=1?'critical':
+      state.energy===2?'high':state.energy===3?'rising':'calm';
+    byId('rescue-boat').textContent = state.phase==='rescued'?scenario.success:
+      state.phase==='failed'?scenario.failure:warnings[state.scenario][state.energy]||
+      scenario.goal+' · noch '+remaining+(remaining===1?' Frage':' Fragen');
+    for (let i=0;i<3;i++) {
+      byId('rescue-answer-'+i).textContent = state.current.answers[i];
+      countInputs[i].value = state.votes[i] ?? '';
+      countInputs[i].max = state.count||40;
+      countInputs[i].disabled = revealed;
+      countInputs[i].setAttribute('aria-invalid',String(!Number.isInteger(state.votes[i])||state.votes[i]<0||
+        (settingsValid&&state.votes[i]>state.count)));
+      const option = byId('rescue-option-'+i);
+      option.classList.toggle('is-correct',revealed&&state.current.correct===i);
+      option.querySelector('.rs-correct-label').hidden = !(revealed&&state.current.correct===i);
+    }
+    byId('rescue-below').disabled = revealed||!settingsValid;
+    byId('rescue-enough').disabled = revealed||!settingsValid;
+    action.disabled = !revealed&&!ready();
+    action.textContent = finished?'Neuer Rettungsversuch':revealed?'Nächste Frage':'Auflösen';
+    const status = byId('rescue-status');
+    status.classList.toggle('is-error',!revealed&&(!validVotes()||(settingsValid&&sum>state.count)));
+    byId('rescue-feedback').hidden = !revealed;
+    if (revealed) {
+      const last = state.history[state.history.length-1];
+      const percent = new Intl.NumberFormat('de-DE',{maximumFractionDigits:1}).format(last.correct/last.total*100);
+      status.textContent = last.correct+' von '+last.total+' richtig · '+percent+' %';
+      const change = last.delta>0?'+1 Kraft':last.delta<0?'−1 Kraft':'Kraft bleibt voll';
+      byId('rescue-outcome').textContent = (last.pass?'80-Prozent-Ziel erreicht. ':'80-Prozent-Ziel verfehlt. ')+change+'.';
+      byId('rescue-outcome').style.color = last.pass?'var(--rs-green)':'var(--rs-danger)';
+      byId('rescue-explanation').textContent = state.current.why;
+    } else if (!settingsValid) {
+      status.textContent = 'Prüfe die Einstellungen.';
+    } else if (!validVotes()) {
+      status.textContent = 'Trage ganze Stimmenzahlen zwischen 0 und '+state.count+' ein.';
+    } else if (sum>state.count) {
+      status.textContent = 'Es sind '+sum+' Stimmen bei '+state.count+' SuS eingetragen.';
+    } else {
+      status.textContent = sum+' von '+state.count+' Stimmen eingetragen.';
+    }
+    byId('rescue-ending').hidden = !finished;
+    byId('rescue-end-text').textContent = state.phase==='rescued'?'Gerettet!':'Das ging schief.';
+    byId('rescue-end-detail').textContent = state.phase==='rescued'?scenario.success:scenario.failure;
+    scene.setAttribute('aria-label',scenario.name+'. Comicfigur mit '+state.energy+' von 5 Kraftpunkten. '+
+      byId('rescue-boat').textContent+(finished?' '+byId('rescue-end-text').textContent:''));
+    root.dataset.scenario = state.scenario;
+    root.setAttribute('aria-busy',String(busy));
+    if(busy)root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=true);
+    drawScene(0);
+  }
+  function setExample(pass) {
+    if (state.phase!=='vote'||!validSettings()) return;
+    const correct = Math.max(0,Math.ceil(state.count*4/5)-(pass?0:1));
+    state.votes=[0,0,0];
+    state.votes[state.current.correct]=correct;
+    state.votes[(state.current.correct+1)%3]=state.count-correct;
+    render();
+    persist();
+  }
+  root.querySelectorAll('[data-rescue-scenario]').forEach(button=>button.addEventListener('click',()=>{
+    state.scenario=button.dataset.rescueScenario;
+    render();
+    persist();
+  }));
+  sizeInput.addEventListener('input',()=>{
+    if (state.history.length) return;
+    state.count=sizeInput.value===''?null:Number(sizeInput.value);
+    state.votes=[0,0,0];
+    render();
+    persist();
+  });
+  totalInput.addEventListener('input',()=>{
+    if (state.history.length) return;
+    state.total=totalInput.value===''?null:Number(totalInput.value);
+    if(Number.isInteger(state.total)&&state.total>=1&&state.total<=30) state.energy=Math.min(4,state.total);
+    render();
+    persist();
+  });
+  countInputs.forEach((input,index)=>input.addEventListener('input',()=>{
+    if (state.phase!=='vote') return;
+    state.votes[index]=input.value===''?null:Number(input.value);
+    render();
+    persist();
+  }));
+  byId('rescue-easier').addEventListener('click',()=>changeLevel(-1));
+  byId('rescue-harder').addEventListener('click',()=>changeLevel(1));
+  byId('rescue-below').addEventListener('click',()=>setExample(false));
+  byId('rescue-enough').addEventListener('click',()=>setExample(true));
+  byId('rescue-reset').addEventListener('click',reset);
+  action.addEventListener('click',()=>{
+    if(busy||pendingReview)return;
+    if (state.phase==='rescued'||state.phase==='failed') return reset();
+    if (state.phase==='result') {
+      state.index++;
+      state.phase='vote';
+      replaceQuestion();
+    } else if (ready()) {
+      const correct=state.votes[state.current.correct];
+      const pass=correct*5>=state.count*4;
+      const before=state.energy;
+      state.energy=Math.max(0,Math.min(5,state.energy+(pass?1:-1)));
+      state.history.push({round:state.index+1,correct,total:state.count,pass,
+        delta:state.energy-before,energy:state.energy,level:state.current.level});
+      state.phase=state.energy===0?'failed':state.index===state.total-1?'rescued':'result';
+    } else return;
+    render();
+    persist();
+  });
+
+
+  function draftFromGame(){
+    return {topic:state.topic||'brackets',customTopic:'',notes:'',
+      level:state.level<=2?1:state.level<=4?3:5,total:state.total||8,count:state.count||20,scenario:state.scenario};
+  }
+  function syncSetupFields(){
+    if(!draft)draft=draftFromGame();
+    byId('rescue-topic').value=draft.topic;
+    byId('rescue-custom-topic').value=draft.customTopic||'';
+    byId('rescue-custom-notes').value=draft.notes||'';
+    byId('rescue-start-level').value=String(draft.level);
+    byId('rescue-setup-scenario').value=draft.scenario;
+    byId('rescue-setup-total').value=draft.total??'';
+    byId('rescue-setup-size').value=draft.count??'';
+  }
+  function refreshTopics(){
+    const select=byId('rescue-topic'),previous=select.value;
+    select.replaceChildren();
+    for(const [id,topic] of Object.entries(topics)){
+      const option=document.createElement('option');option.value=id;option.textContent=topic.label;
+      select.appendChild(option);
+    }
+    const custom=document.createElement('option');custom.value='custom';custom.textContent='Eigenes Thema mit KI …';select.appendChild(custom);
+    select.value=previous||'brackets';
+  }
+  function renderSetup(){
+    byId('rescue-setup').hidden=!setupOpen||Boolean(pendingReview);
+    byId('rescue-play').hidden=setupOpen||Boolean(pendingReview);
+    byId('rescue-review').hidden=!pendingReview;
+    byId('rescue-open-setup').hidden=setupOpen||Boolean(pendingReview);
+    if(!draft)return;
+    const custom=draft.topic==='custom';
+    byId('rescue-custom-fields').hidden=!custom;
+    byId('rescue-custom-topic').required=custom;
+    byId('rescue-generate').textContent=busy?'Aufgaben werden erstellt …':custom?'KI-Aufgaben erstellen':'Aufgaben erstellen und starten';
+    const note=byId('rescue-setup-note');
+    note.classList.toggle('is-error',Boolean(setupError));note.setAttribute('role',setupError?'alert':'status');
+    note.textContent=setupError||setupMessage||(custom?
+      aiConfigured?'Die KI erstellt Aufgaben zu deinem Thema. Danach kannst du sie prüfen und freigeben.':
+      'Die KI ist noch nicht eingerichtet. Öffne „KI konfigurieren.cmd“ im Projektordner und starte die App danach neu.':
+      'Du erhältst neue Aufgaben mit je drei Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
+  }
+  function openSetup(){
+    if(busy||pendingReview)return;
+    draft=draftFromGame();setupError='';setupMessage='';notice='';setupOpen=true;
+    syncSetupFields();render();persist();byId('rescue-topic').focus();
+  }
+  async function api(path,options={}){
+    let response;
+    try{response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(200000)});}
+    catch(_){throw new Error('Der lokale Server ist nicht erreichbar. Prüfe, ob Rettungseinsatz noch läuft.');}
+    let body;try{body=await response.json();}catch(_){throw new Error('Der Server hat keine lesbare Antwort geliefert.');}
+    if(!response.ok)throw new Error(body.error||'Die Anfrage ist fehlgeschlagen.');
+    return body;
+  }
+  async function requestAI(request,context){
+    if(busy)return;
+    busy=true;setupError='';notice='Die KI erstellt und prüft die Aufgaben. Das kann einen Moment dauern.';render();
+    try{
+      const {bank}=await api('/api/generate',{method:'POST',body:JSON.stringify(request)});
+      pendingReview={...context,bank};
+      buildReview(bank);notice='';
+    }catch(error){notice=error.message;if(setupOpen)setupError=error.message;}
+    finally{busy=false;render();}
+  }
+  function buildReview(bank){
+    byId('rescue-review-summary').textContent=bank.label+' · '+bank.questions.length+' Aufgaben · Stufe '+bank.questions[0].level;
+    const list=byId('rescue-review-list');list.replaceChildren();
+    for(const [index,q] of bank.questions.entries()){
+      const details=document.createElement('details');details.open=index<2;
+      const summary=document.createElement('summary');summary.textContent=q.term;
+      const instruction=document.createElement('p');instruction.className='rs-setup-note';instruction.textContent=q.instruction;
+      const answers=document.createElement('ol');answers.type='A';
+      q.answers.forEach((answer,i)=>{const li=document.createElement('li');li.textContent=answer+(i===q.correct?' · richtig':'');if(i===q.correct)li.className='is-right';answers.appendChild(li);});
+      const why=document.createElement('p');why.className='rs-explanation';why.textContent=q.why;
+      details.append(summary,instruction,answers,why);list.appendChild(details);
+    }
+  }
+  async function approveReview(){
+    if(busy||!pendingReview)return;
+    const review=pendingReview;let bank=review.bank;
+    if(review.mode==='extend'){
+      const previous=topics[review.topicId].bank;
+      bank={...previous,questions:[...previous.questions,...bank.questions].filter((q,i,all)=>all.findIndex(v=>v.id===q.id)===i)};
+    }
+    busy=true;notice='Aufgabensatz wird gespeichert …';render();
+    try{
+      const saved=await api('/api/banks',{method:'POST',body:JSON.stringify(bank)});
+      registerCustomBank(saved.bank);refreshTopics();
+      if(review.mode==='extend'){
+        state.level=review.nextLevel;
+        if(state.phase==='vote')replaceQuestion();
+        setupOpen=review.wasSetupOpen;
+      }else{
+        state=fresh({...review.settings,topic:saved.bank.id});
+        preparedQuestions=[];setupOpen=false;
+      }
+      pendingReview=null;notice='';persist();
+    }catch(error){notice=error.message;}
+    finally{busy=false;render();resizeScene();}
+  }
+  function initializeTopicSetup(){
+    refreshTopics();draft=draftFromGame();syncSetupFields();
+    byId('rescue-open-setup').addEventListener('click',openSetup);
+    byId('rescue-cancel-setup').addEventListener('click',()=>{
+      if(busy)return;setupOpen=false;setupError='';setupMessage='';notice='';render();resizeScene();persist();byId('rescue-open-setup').focus();
+    });
+    byId('rescue-approve').addEventListener('click',approveReview);
+    byId('rescue-discard').addEventListener('click',()=>{
+      if(busy||!pendingReview)return;setupOpen=pendingReview.wasSetupOpen;pendingReview=null;notice='';render();resizeScene();
+    });
+    const controls={
+      'rescue-topic':['topic',String],'rescue-custom-topic':['customTopic',String],
+      'rescue-custom-notes':['notes',String],'rescue-start-level':['level',Number],
+      'rescue-setup-scenario':['scenario',String],'rescue-setup-total':['total',Number],
+      'rescue-setup-size':['count',Number]
+    };
+    for(const [id,[key,parse]] of Object.entries(controls)){
+      const control=byId(id);
+      control.addEventListener(control.tagName==='SELECT'?'change':'input',()=>{
+        draft[key]=control.value===''?(parse===Number?null:''):parse(control.value);setupError='';setupMessage='';renderSetup();persist();
+      });
+    }
+    const createTopicGame=async event=>{
+      event.preventDefault();if(busy||!byId('rescue-setup').reportValidity())return;
+      setupError='';notice='';
+      if(!Number.isInteger(draft.count)||draft.count<1||draft.count>40||!Number.isInteger(draft.total)||draft.total<1||draft.total>30){
+        setupError='Wähle 1 bis 40 SuS und 1 bis 30 Fragen.';renderSetup();return;
+      }
+      if(draft.topic==='custom'){
+        return requestAI({topic:draft.customTopic.trim(),notes:draft.notes.trim(),level:draft.level,count:Math.max(8,draft.total)},
+          {mode:'new',settings:{...draft},wasSetupOpen:true});
+      }
+      try{
+        const next=fresh({topic:draft.topic,level:draft.level,total:draft.total,count:draft.count,scenario:draft.scenario});
+        const sample=[next.current];for(let i=1;i<draft.total;i++)sample.push(generateTopicQuestion(draft.topic,draft.level,sample.map(q=>q.term)));
+        preparedQuestions=sample;state=next;setupOpen=false;render();resizeScene();persist();byId('rescue-open-setup').focus();
+      }catch(_){setupError='Die Aufgaben konnten nicht erstellt werden. Wähle ein anderes Thema oder Niveau.';renderSetup();}
+    };
+    byId('rescue-generate').addEventListener('click',createTopicGame);
+    byId('rescue-setup').addEventListener('submit',createTopicGame);
+    byId('rescue-setup').addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.tagName==='INPUT'){event.preventDefault();byId('rescue-generate').click();}});
+  }
+  async function startApplication(){
+    try{
+      const [status,saved]=await Promise.all([api('/api/status'),api('/api/banks')]);aiConfigured=status.aiConfigured;
+      for(const bank of saved.banks){try{registerCustomBank(bank);}catch(_){/* An invalid set does not prevent playing the built-in topics. */}}
+    }catch(error){notice=error.message;}
+    initializeTopicSetup();
+    try{const saved=JSON.parse(localStorage.getItem('av-rescue-game-v1')||'null');if(saved)restore(saved);}catch(_){/* An unreadable old save starts a new game. */}
+    render();resizeScene();
+  }
+  window.addEventListener('pagehide',()=>renderer.destroy(),{once:true});
+  startApplication();
