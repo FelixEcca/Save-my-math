@@ -1,0 +1,12 @@
+{
+  "name": "av-rettungseinsatz",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Kooperatives Mathematikquiz für die Ausbildungsvorbereitung",
+  "engines": { "node": ">=22.14" },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "test": "node --test"
+  }
+}
