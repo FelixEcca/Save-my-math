@@ -26,6 +26,8 @@ const byId=id=>root.querySelector('#'+id);
     current: generateTopicQuestion(settings.topic??'brackets',settings.level ?? 2)
   });
   let state = fresh();
+  const gameNames={rescue:'Rettungseinsatz',codebreaker:'Codeknacker',football:'Mathe-Fußball'};
+  let hubOpen=true,hasGame=false,navigationReady=false,lastNavigationHash='';
   let setupOpen=true, draft=null, setupError='', setupMessage='', pendingTopicRequest=null;
   let preparedQuestions=[];
   const sizeInput = byId('rescue-size');
@@ -74,7 +76,7 @@ const byId=id=>root.querySelector('#'+id);
     return validVotes() && state.votes.reduce((a,b) => a+b,0) === state.count;
   }
   function persist() {
-    try { localStorage.setItem('av-rescue-game-v1',JSON.stringify({privateContent:{rescue:state,setup:draft,setupOpen}})); }
+    try { localStorage.setItem('av-rescue-game-v1',JSON.stringify({privateContent:{rescue:state,setup:draft,setupOpen,hasGame}})); }
     catch(_){notice='Der Spielstand konnte in diesem Browser nicht gespeichert werden.';}
   }
   function migrate(old) {
@@ -129,6 +131,7 @@ const byId=id=>root.querySelector('#'+id);
     state = {...saved,mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),football:football?saved.football:footballFromSettings(saved),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
       usedTerms:Array.isArray(saved.usedTerms) ? saved.usedTerms.filter(term => typeof term==='string').slice(-60) : []};
     const stored=snapshot.privateContent;
+    hasGame=typeof stored.hasGame==='boolean'?stored.hasGame:stored.setupOpen===false||saved.history.length>0||saved.index>0||Boolean(football&&saved.football.batch)||saved.votes.some(v=>v>0);
     setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
     const settings=stored.setup;
     if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
@@ -267,9 +270,40 @@ const byId=id=>root.querySelector('#'+id);
     finishRender();
   }
   function finishRender(){
+    renderNavigation();
     root.setAttribute('aria-busy',String(busy));
     if(busy)root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=true);
     drawScene(0);
+  }
+  function renderNavigation(){
+    document.getElementById('game-hub').hidden=!hubOpen;root.hidden=hubOpen;
+    const resume=document.getElementById('hub-resume');resume.hidden=!hasGame;
+    document.getElementById('hub-resume-name').textContent=gameNames[state.mode]||gameNames.rescue;
+    document.getElementById('hub-resume-topic').textContent=state.mode==='football'?state.football.taskLabel:topics[state.topic].label;
+    byId('rescue-cancel-setup').hidden=!hasGame;
+    const blocked=busy||Boolean(pendingReview);
+    for(const link of document.querySelectorAll('[data-game-nav]')){link.setAttribute('aria-disabled',String(blocked));link.tabIndex=blocked?-1:0;}
+    if(hubOpen)document.title='Save my Math · Mathematik im AV';
+  }
+  function replaceGameHash(hash){
+    history.replaceState(null,'',location.pathname+location.search+hash);lastNavigationHash=hash;
+  }
+  function navigateGames(initial=false){
+    if(!navigationReady)return;
+    if(busy||pendingReview){replaceGameHash(lastNavigationHash);notice=busy?'Die Aufgaben werden noch erstellt.':'Prüfe den Aufgabenvorrat oder gehe mit „Zurück“ zum Spiel.';render();return;}
+    const hash=location.hash,match=/^#spiel=(rescue|codebreaker|football)$/.exec(hash);
+    if(!hash||hash==='#'||hash==='#start'){
+      hubOpen=true;lastNavigationHash=hash;render();if(!initial)document.getElementById('hub-title').focus();return;
+    }
+    if(hash==='#weiter'&&hasGame){
+      hubOpen=false;setupOpen=false;replaceGameHash('#spiel='+state.mode);render();resizeScene();persist();byId('game-title').focus();return;
+    }
+    if(match){
+      if(initial&&hasGame&&state.mode===match[1]&&!setupOpen){hubOpen=false;lastNavigationHash=hash;render();resizeScene();}
+      else openSetup(match[1]);
+      return;
+    }
+    hubOpen=true;replaceGameHash('');render();
   }
   function renderQuestion(revealed,finished=false){
     byId('rescue-question').textContent=state.current.term;
@@ -464,7 +498,7 @@ const byId=id=>root.querySelector('#'+id);
   function renderSetup(){
     const safe=draft?.mode==='codebreaker';
     const football=draft?.mode==='football';
-    byId('game-title').textContent=setupOpen?'Save my Math':state.mode==='codebreaker'?'Codeknacker':state.mode==='football'?'Mathe-Fußball':'Rettungseinsatz';
+    byId('game-title').textContent=gameNames[setupOpen?(draft?.mode||state.mode):state.mode];
     document.title=byId('game-title').textContent+' · Mathematik im AV';
     for(const kind of ['scenario','total','size'])byId('rescue-'+kind+'-field').hidden=safe||football;
     for(const kind of ['scenario','total','size'])byId('rescue-setup-'+kind).disabled=safe||football;
@@ -502,9 +536,11 @@ const byId=id=>root.querySelector('#'+id);
       football?'Prüfe die 10 oder 15 Aufgaben vor dem Start. Im Spiel wechselst du direkt zur nächsten Aufgabe.':
       'Du erhältst neue Aufgaben mit je drei Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
   }
-  function openSetup(){
+  function openSetup(mode=state.mode){
     if(busy||pendingReview)return;
-    draft=draftFromGame();setupError='';setupMessage='';notice='';setupOpen=true;
+    mode=typeof mode==='string'&&gameNames[mode]?mode:state.mode;
+    hubOpen=false;draft=draftFromGame();draft.mode=mode;setupError='';setupMessage='';notice='';setupOpen=true;
+    replaceGameHash('#spiel='+mode);
     syncSetupFields();render();persist();byId('rescue-topic').focus();
   }
   async function api(path,options={}){
@@ -555,7 +591,7 @@ const byId=id=>root.querySelector('#'+id);
         if(review.settings){state=fresh({...review.settings,topic:topics[review.targetTopic]?review.targetTopic:'mental'});state.current=batch.questions[0];state.level=batch.level;}
         else useFootballQuestion(batch.questions[0],review.targetTopic,bank.label,review.nextLevel);
         state.football={...state.football,plan:{...review.plan},batch,taskLabel:bank.label,solutionVisible:false};
-        pendingReview=null;setupOpen=false;notice='';persist();
+        hasGame=true;pendingReview=null;setupOpen=false;notice='';persist();
       }
       catch(error){notice=error.message;}
       render();return;
@@ -577,7 +613,7 @@ const byId=id=>root.querySelector('#'+id);
         state=fresh({...review.settings,topic:saved.bank.id});
         preparedQuestions=[];setupOpen=false;
       }
-      pendingReview=null;notice='';persist();
+      hasGame=true;pendingReview=null;notice='';persist();
     }catch(error){notice=error.message;}
     finally{busy=false;render();resizeScene();}
   }
@@ -600,7 +636,7 @@ const byId=id=>root.querySelector('#'+id);
       finally{busy=false;render();}
     });
     byId('rescue-cancel-setup').addEventListener('click',()=>{
-      if(busy)return;setupOpen=false;setupError='';setupMessage='';notice='';render();resizeScene();persist();byId('rescue-open-setup').focus();
+      if(busy||!hasGame)return;setupOpen=false;setupError='';setupMessage='';notice='';replaceGameHash('#spiel='+state.mode);render();resizeScene();persist();byId('rescue-open-setup').focus();
     });
     byId('rescue-approve').addEventListener('click',approveReview);
     byId('rescue-discard').addEventListener('click',()=>{
@@ -632,7 +668,7 @@ const byId=id=>root.querySelector('#'+id);
     for(const [id,[key,parse]] of Object.entries(controls)){
       const control=byId(id);
       control.addEventListener(control.tagName==='SELECT'?'change':'input',()=>{
-        draft[key]=control.value===''?(parse===Number?null:''):parse(control.value);setupError='';setupMessage='';renderSetup();persist();
+        draft[key]=control.value===''?(parse===Number?null:''):parse(control.value);if(key==='mode')replaceGameHash('#spiel='+draft.mode);setupError='';setupMessage='';renderSetup();persist();
       });
     }
     const createTopicGame=async event=>{
@@ -658,7 +694,7 @@ const byId=id=>root.querySelector('#'+id);
       try{
         const next=fresh(settings);
         const sample=[next.current];for(let i=1;i<settings.total;i++)sample.push(generateTopicQuestion(draft.topic,draft.level,sample.map(q=>q.term)));
-        preparedQuestions=sample;state=next;setupOpen=false;render();resizeScene();persist();byId('rescue-open-setup').focus();
+        preparedQuestions=sample;state=next;hasGame=true;setupOpen=false;render();resizeScene();persist();byId('rescue-open-setup').focus();
       }catch(_){setupError='Die Aufgaben konnten nicht erstellt werden. Wähle ein anderes Thema oder Niveau.';renderSetup();}
     };
     byId('rescue-generate').addEventListener('click',createTopicGame);
@@ -675,7 +711,9 @@ const byId=id=>root.querySelector('#'+id);
     }catch(error){notice=error.message;}
     initializeTopicSetup();
     try{const saved=JSON.parse(localStorage.getItem('av-rescue-game-v1')||'null');if(saved)restore(saved);}catch(_){/* An unreadable old save starts a new game. */}
-    render();resizeScene();
+    navigationReady=true;navigateGames(true);render();resizeScene();
   }
+  window.addEventListener('hashchange',()=>navigateGames(false));
+  document.addEventListener('click',event=>{if((busy||pendingReview)&&event.target.closest('a[data-game-nav]'))event.preventDefault();});
   window.addEventListener('pagehide',()=>renderer.destroy(),{once:true});
   startApplication();

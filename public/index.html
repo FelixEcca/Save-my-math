@@ -11,9 +11,30 @@
 <script type="module" src="/app.js"></script>
 </head>
 <body><main>
-<section id="av-rescue-preview" aria-label="Mathematikspiele für die Klasse">
+<section class="game-hub" id="game-hub" aria-labelledby="hub-title">
+  <header class="hub-top"><a href="#" class="hub-brand" data-game-nav>Save my Math<span class="hub-brand-dot" aria-hidden="true"></span></a><span class="hub-context">Mathematik im AV</span></header>
+  <div class="hub-intro"><p class="hub-eyebrow">Gemeinsam rechnen. Gemeinsam spielen.</p><h1 id="hub-title" tabindex="-1">Welches Spiel spielt ihr heute?</h1><p>Wähle ein Spiel. Das Thema und das Niveau legst du danach fest.</p></div>
+  <a class="hub-resume" id="hub-resume" href="#weiter" data-game-nav hidden><div><span class="hub-resume-label">Dein laufendes Spiel</span><strong id="hub-resume-name"></strong><span id="hub-resume-topic"></span></div><span class="hub-resume-action">Fortsetzen</span></a>
+  <div class="hub-games" aria-label="Drei Spiele zur Auswahl">
+    <a class="hub-game-card hub-rescue" href="#spiel=rescue" data-game-nav aria-labelledby="hub-rescue-title">
+      <div class="hub-game-image"><img src="/thumb-rescue.svg" width="600" height="340" alt="Eine Comicfigur am Gleis mit einem Zug im Hintergrund."></div>
+      <div class="hub-game-copy"><span class="hub-game-type">Die ganze Klasse</span><h2 id="hub-rescue-title">Rettungseinsatz</h2><p>Löst Aufgaben gemeinsam und bringt die Figur in Sicherheit. Mindestens 80 % müssen richtig liegen.</p><span class="hub-game-action">Spiel auswählen</span></div>
+    </a>
+    <a class="hub-game-card hub-codebreaker" href="#spiel=codebreaker" data-game-nav aria-labelledby="hub-codebreaker-title">
+      <div class="hub-game-image"><img src="/thumb-codebreaker.svg" width="600" height="340" alt="Ein Stahlsafe mit vier Schlössern."></div>
+      <div class="hub-game-copy"><span class="hub-game-type">Vier Teams</span><h2 id="hub-codebreaker-title">Codeknacker</h2><p>Knackt die vier Schlösser. Mit vier richtigen Antworten in Folge öffnet euer Team den Safe.</p><span class="hub-game-action">Spiel auswählen</span></div>
+    </a>
+    <a class="hub-game-card hub-football" href="#spiel=football" data-game-nav aria-labelledby="hub-football-title">
+      <div class="hub-game-image"><img src="/thumb-football.svg" width="600" height="340" alt="Ein Fußballfeld, ein Ball und ein blaues und rotes Trikot mit derselben Nummer."></div>
+      <div class="hub-game-copy"><span class="hub-game-type">Zwei Teams</span><h2 id="hub-football-title">Mathe-Fußball</h2><p>Blau gegen Rot: Rechnet, lost Trikotnummern aus und spielt den Ball bis ins gegnerische Tor.</p><span class="hub-game-action">Spiel auswählen</span></div>
+    </a>
+  </div>
+  <p class="hub-footer">Alle Spiele nutzen dieselbe Themenwahl mit den Niveaus A, B und C. Eigene Themen kannst du mit KI vorbereiten.</p>
+</section>
+<section id="av-rescue-preview" aria-label="Mathematikspiele für die Klasse" hidden>
   <header class="rs-top">
-    <div><div class="rs-title-row"><h2 id="game-title">Save my Math</h2><button class="cursor-interaction" type="button" id="rescue-open-setup">Spiel und Thema wählen</button></div><p class="rs-round" id="rescue-round">Spiel vorbereiten</p></div>
+    <div><div class="rs-title-row"><h2 id="game-title" tabindex="-1">Save my Math</h2><button class="cursor-interaction" type="button" id="rescue-open-setup">Spiel und Thema wählen</button></div><p class="rs-round" id="rescue-round">Spiel vorbereiten</p></div>
+    <a class="rs-home-link" id="games-home-link" href="#" data-game-nav>Alle Spiele</a>
   </header>
   <p class="rs-notice" id="rescue-notice" role="status" aria-live="polite" hidden></p>
   <section class="rs-review" id="rescue-review" aria-labelledby="rescue-review-title" hidden>

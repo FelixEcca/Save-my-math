@@ -5,12 +5,20 @@ Drei Mathematikspiele für den AV-Unterricht mit gemeinsamer Themenwahl, A/B/C-S
 ## Starten
 
 1. **Starten.cmd** doppelt anklicken. Die App öffnet sich im Browser.
-2. Spiel, Thema und Startniveau auswählen. Beim Rettungseinsatz zusätzlich Fragenzahl, Klassengröße und Situation festlegen; beim Mathe-Fußball die Personenzahl beider Teams.
+2. Auf der Startseite eine der drei Spielkarten auswählen. Danach Thema und Startniveau festlegen. Beim Rettungseinsatz zusätzlich Fragenzahl, Klassengröße und Situation festlegen; beim Mathe-Fußball die Personenzahl beider Teams.
 3. **Aufgaben erstellen und starten** anklicken.
 
 Voraussetzung: Node.js ab Version 22.14. Auf dem bisher verwendeten Rechner ist Node.js bereits vorhanden. Zusätzliche Pakete müssen nicht installiert werden. Alternativ startet `npm start` den Server unter <http://localhost:3456>. **Beenden.cmd** beendet einen über Starten.cmd gestarteten Server.
 
 Die App lässt sich lokal oder mit Vercel verwenden. Der Vercel-Build veröffentlicht ausschließlich die geprüften Dateien aus `public/` über den Ausgabeordner `dist/`.
+
+## Startseite und Spielauswahl
+
+Die Startseite zeigt Rettungseinsatz, Codeknacker und Mathe-Fußball als drei große Karten mit eigenen SVG-Vorschaubildern. Die gesamte Karte ist anklickbar und mit der Tastatur erreichbar. Eine Auswahl öffnet die gemeinsame Themenmaske mit dem passenden Spielmodus. **Alle Spiele** führt aus der Maske oder dem laufenden Spiel zur Übersicht zurück.
+
+Ein gestartetes Spiel erscheint dort unter **Dein laufendes Spiel** und lässt sich über **Fortsetzen** wieder aufnehmen. Das Öffnen einer anderen Spielkarte verändert den vorhandenen Spielstand erst, wenn das neue Spiel tatsächlich gestartet beziehungsweise freigegeben wird. Spielstand und Themen bleiben im verwendeten Browser gespeichert.
+
+Direkte Links auf die Themenmaske sind über `#spiel=rescue`, `#spiel=codebreaker` und `#spiel=football` möglich. Beim Neuladen eines solchen Links wird ein dazu passendes laufendes Spiel wieder angezeigt. Ohne Spiel-Fragment öffnet sich die Übersicht. Die Zurück- und Vorwärts-Tasten des Browsers werden unterstützt. Während einer KI-Erstellung oder noch offenen Aufgabenprüfung bleibt die aktuelle Ansicht erhalten, bis die Prüfung abgeschlossen oder verworfen wurde.
 
 ## Mit Vercel veröffentlichen
 

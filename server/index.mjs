@@ -12,7 +12,10 @@ const files=new Map([
   ['/scene.js',['scene.js','text/javascript; charset=utf-8']],['/favicon.svg',['favicon.svg','image/svg+xml']],
   ['/storage.js',['storage.js','text/javascript; charset=utf-8']],
   ['/codebreaker.js',['codebreaker.js','text/javascript; charset=utf-8']],
-  ['/football.js',['football.js','text/javascript; charset=utf-8']]
+  ['/football.js',['football.js','text/javascript; charset=utf-8']],
+  ['/thumb-rescue.svg',['thumb-rescue.svg','image/svg+xml']],
+  ['/thumb-codebreaker.svg',['thumb-codebreaker.svg','image/svg+xml']],
+  ['/thumb-football.svg',['thumb-football.svg','image/svg+xml']]
 ]);
 const headers={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',
