@@ -185,7 +185,6 @@ main { max-width: 1150px; margin: 0 auto; }
     }
     #av-rescue-preview input:disabled { opacity: .65; }
     #av-rescue-preview input[aria-invalid="true"] { border-color: var(--rs-danger); }
-    #av-rescue-preview .rs-presets { display: flex; flex-wrap: wrap; gap: 7px; }
     #av-rescue-preview button {
       font: inherit; font-size: 14px; font-weight: 500;
       border: 1px solid var(--rs-line);
