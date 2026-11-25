@@ -374,12 +374,13 @@ main { max-width: 1150px; margin: 0 auto; }
     #av-rescue-preview .fb-shirt-badge { background:linear-gradient(90deg,#245eb2 50%,#b43f34 50%); clip-path:polygon(25% 0,38% 7%,62% 7%,75% 0,100% 20%,88% 43%,77% 37%,77% 100%,23% 100%,23% 37%,12% 43%,0 20%); width:170px; height:154px; display:flex; align-items:center; justify-content:center; color:white; padding-top:18px; }
     #av-rescue-preview #football-shared-number { font-size:88px; font-weight:750; line-height:1; font-variant-numeric:tabular-nums; }
     #av-rescue-preview #football-draw-status { font-size:13px; color:var(--rs-subtle); }
-    #av-rescue-preview .fb-scoreboard { grid-template-columns:1fr 1fr; margin-bottom:5px; }
-    #av-rescue-preview .fb-team { grid-template-columns:1fr auto; }
+    #av-rescue-preview .fb-scoreboard { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:24px; margin-bottom:5px; }
+    #av-rescue-preview .fb-team { display:block; }
     #av-rescue-preview .fb-team.fb-red { text-align:right; }
-    #av-rescue-preview .fb-goals { display:grid; justify-items:center; }
-    #av-rescue-preview .fb-goals span { font-size:12px; color:var(--rs-subtle); }
-    #av-rescue-preview .fb-score { font-size:36px; }
+    #av-rescue-preview .fb-score-display { display:grid; grid-template-columns:auto auto auto; align-items:center; justify-content:center; gap:0 10px; font-variant-numeric:tabular-nums; }
+    #av-rescue-preview .fb-score-label { grid-column:1/-1; text-align:center; font-size:13px; color:var(--rs-subtle); margin-top:3px; }
+    #av-rescue-preview .fb-score-divider { font-size:32px; line-height:1; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-score { font-size:44px; }
     #av-rescue-preview .fb-pitch-wrap { max-width:710px; }
     #av-rescue-preview .fb-position { margin-bottom:5px; }
     #av-rescue-preview .fb-match-controls #football-goal { margin-left:auto; }
@@ -401,4 +402,12 @@ main { max-width: 1150px; margin: 0 auto; }
       #av-rescue-preview .fb-number-panel button { grid-column:2; }
       #av-rescue-preview .fb-number-panel #football-draw-status { grid-column:2; }
       #av-rescue-preview .fb-team h3 { font-size:18px; }
+    }
+
+    @media(max-width:560px){
+      #av-rescue-preview .fb-scoreboard { gap:10px; }
+      #av-rescue-preview .fb-score-display { column-gap:6px; }
+      #av-rescue-preview .fb-score { font-size:32px; }
+      #av-rescue-preview .fb-score-divider { font-size:25px; }
+      #av-rescue-preview .fb-score-label { font-size:12px; }
     }
