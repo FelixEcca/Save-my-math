@@ -21,7 +21,7 @@ async function readJSON(request,limit){
 }
 export function createCloudHandler({apiKey=process.env.OPENAI_API_KEY||'',model=process.env.OPENAI_MODEL||'gpt-6-luna',
   password=process.env.APP_PASSWORD||'',sessionSecret=process.env.APP_SESSION_SECRET||'',fetchImpl=globalThis.fetch}={}){
-  const configured=password.length>=12;
+  const configured=password.length>=8;
   const signingKey=createHmac('sha256',sessionSecret||apiKey||password).update('av-teacher-session-v1').update(password).digest();
   const signature=payload=>createHmac('sha256',signingKey).update(payload).digest('base64url');
   function authenticated(request){
@@ -43,7 +43,7 @@ export function createCloudHandler({apiKey=process.env.OPENAI_API_KEY||'',model=
         aiConfigured:Boolean(apiKey.trim()),storageMode:'browser',authRequired:true,authenticated:loggedIn,accessConfigured:configured});
       if(endpoint==='session'&&request.method==='DELETE')return reply(200,{authenticated:false},{'Set-Cookie':cookieName+'=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0'});
       if(endpoint==='session'&&request.method==='POST'){
-        if(!configured)throw new AppError(503,'Der KI-Zugang ist noch nicht eingerichtet. Hinterlege APP_PASSWORD mit mindestens 12 Zeichen in Vercel.');
+        if(!configured)throw new AppError(503,'Der KI-Zugang ist noch nicht eingerichtet. Hinterlege APP_PASSWORD mit mindestens 8 Zeichen in Vercel.');
         const now=Date.now();while(loginFailures.length&&loginFailures[0]<now-600000)loginFailures.shift();
         if(loginFailures.length>=10)throw new AppError(429,'Zu viele Anmeldeversuche. Bitte warte etwas.');
         const input=await readJSON(request,2048);

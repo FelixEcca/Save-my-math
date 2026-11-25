@@ -8,7 +8,7 @@ import {build,publicFiles} from '../scripts/build.mjs';
 import {loadBrowserBanks,saveBrowserBank} from '../public/storage.js';
 import {materializeQuestion} from '../public/math.js';
 
-const password='a-strong-test-password';
+const password='test-code';
 const input={topic:'Flächen',notes:'',level:1,count:1};
 const req=(endpoint,method='GET',body,headers={})=>new Request('https://math.example/api/'+endpoint,{method,
  headers:{...(body?{'Content-Type':'application/json'}:{}),...headers},...(body?{body:JSON.stringify(body)}:{})});
@@ -27,6 +27,8 @@ test('Online generation fails closed until access is configured and unlocked',as
  const fetchImpl=async()=>{calls++;throw new Error('Must not run');};
  const unconfigured=createCloudHandler({apiKey:'test-only',password:'',fetchImpl});
  assert.equal((await unconfigured(req('generate','POST',input),'generate')).status,503);
+ const tooShort=createCloudHandler({apiKey:'test-only',password:'short',fetchImpl});
+ assert.equal((await tooShort(req('session','POST',{password:'short'}),'session')).status,503);
  const configured=createCloudHandler({apiKey:'test-only',password,fetchImpl});
  assert.equal((await configured(req('generate','POST',input),'generate')).status,401);
  assert.equal(calls,0);
