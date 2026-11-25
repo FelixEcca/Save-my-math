@@ -30,9 +30,11 @@ Für eigene KI-Themen unter **Settings → Environment Variables** folgende Wert
 
 - `OPENAI_API_KEY`: den eigenen API-Schlüssel als **Secret** eintragen.
 - `OPENAI_MODEL`: `gpt-6-luna` als **Config** eintragen.
-- `APP_PASSWORD`: einen eigenen, langen Zugangscode mit mindestens 12 Zeichen als **Secret** eintragen. Dafür nicht den API-Schlüssel verwenden.
+- `APP_PASSWORD`: einen eigenen Zugangscode mit mindestens 8 Zeichen als **Secret** eintragen. Dafür nicht den API-Schlüssel verwenden.
 
 Die vorhandenen Themen sind öffentlich spielbar. Die kostenpflichtige KI-Erstellung bleibt gesperrt, bis der Zugangscode eingerichtet und in der App eingegeben wurde. Die Freischaltung verwendet ein signiertes, sicheres Sitzungscookie mit zehn Stunden Laufzeit. „KI sperren“ meldet wieder ab. Ein optionales `APP_SESSION_SECRET` kann zusätzlich als eigener zufälliger Sitzungsschlüssel gesetzt werden.
+
+Die Passwortabfrage ist Teil dieser App und benötigt keine kostenpflichtige Vercel-Passwortabsicherung. Der Zugangscode steht nur in der geheimen Einstellung `APP_PASSWORD`, nicht im veröffentlichten Quellcode.
 
 Online speichert die App freigegebene KI-Themen im verwendeten Browser. Sie bleiben nach dem Neuladen erhalten, werden aber nicht zwischen Geräten synchronisiert. Das Löschen der Browserdaten entfernt auch diese Themen. Lokal bleibt die bisherige zusätzliche Speicherung unter `data/banks/` erhalten. Vercel benötigt dadurch keine beschreibbaren Projektdateien oder zusätzliche Datenbank.
 
