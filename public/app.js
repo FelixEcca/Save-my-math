@@ -186,8 +186,6 @@ const byId=id=>root.querySelector('#'+id);
       option.classList.toggle('is-correct',revealed&&state.current.correct===i);
       option.querySelector('.rs-correct-label').hidden = !(revealed&&state.current.correct===i);
     }
-    byId('rescue-below').disabled = revealed||!settingsValid;
-    byId('rescue-enough').disabled = revealed||!settingsValid;
     action.disabled = !revealed&&!ready();
     action.textContent = finished?'Neuer Rettungsversuch':revealed?'Nächste Frage':'Auflösen';
     const status = byId('rescue-status');
@@ -220,15 +218,6 @@ const byId=id=>root.querySelector('#'+id);
     if(busy)root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=true);
     drawScene(0);
   }
-  function setExample(pass) {
-    if (state.phase!=='vote'||!validSettings()) return;
-    const correct = Math.max(0,Math.ceil(state.count*4/5)-(pass?0:1));
-    state.votes=[0,0,0];
-    state.votes[state.current.correct]=correct;
-    state.votes[(state.current.correct+1)%3]=state.count-correct;
-    render();
-    persist();
-  }
   root.querySelectorAll('[data-rescue-scenario]').forEach(button=>button.addEventListener('click',()=>{
     state.scenario=button.dataset.rescueScenario;
     render();
@@ -256,8 +245,6 @@ const byId=id=>root.querySelector('#'+id);
   }));
   byId('rescue-easier').addEventListener('click',()=>changeLevel(-1));
   byId('rescue-harder').addEventListener('click',()=>changeLevel(1));
-  byId('rescue-below').addEventListener('click',()=>setExample(false));
-  byId('rescue-enough').addEventListener('click',()=>setExample(true));
   byId('rescue-reset').addEventListener('click',reset);
   action.addEventListener('click',()=>{
     if(busy||pendingReview)return;

@@ -45,7 +45,7 @@ Die Begrenzung der KI-Anfragen gilt pro laufender Funktionsinstanz und ersetzt k
 - Fünf animierte Situationen: über Bord, auf dem Gleis, am Felsen, dünnes Eis und im All.
 - Neun Themen mit zufällig erzeugten, rechnerisch geprüften Aufgaben: Klammern, Terme, Kopfrechnen, Längen, Flächenmaße, Flächeninhalte, Umfang, Prozentrechnen und Brüche.
 - Fünf Schwierigkeitsstufen. Die Auswahl A/B/C legt den Einstieg fest; „Leichter“ und „Schwerer“ steuern feiner nach. Die Bezeichnungen sind didaktische Stufen und keine vollständige Bildungsplanzuordnung.
-- 1 bis 30 Fragen und 1 bis 40 Lernende. Die Stimmen werden von der Lehrkraft eingetragen; die beiden Simulationsknöpfe dienen dem Ausprobieren.
+- 1 bis 30 Fragen und 1 bis 40 Lernende. Die Stimmen werden von der Lehrkraft eingetragen.
 - Lösungen nach der Auflösung und ein gespeicherter Spielstand im verwendeten Browser.
 
 ## Eigene Themen mit KI
