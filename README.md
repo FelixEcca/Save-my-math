@@ -10,7 +10,33 @@ Ein kooperatives Mathequiz für den AV-Unterricht. Die Klasse beantwortet gemein
 
 Voraussetzung: Node.js ab Version 22.14. Auf dem bisher verwendeten Rechner ist Node.js bereits vorhanden. Zusätzliche Pakete müssen nicht installiert werden. Alternativ startet `npm start` den Server unter <http://localhost:3456>. **Beenden.cmd** beendet einen über Starten.cmd gestarteten Server.
 
-Die App läuft zunächst auf diesem Rechner. Es wurde kein öffentliches Angebot und kein GitHub-Repository eingerichtet.
+Die App lässt sich lokal oder mit Vercel verwenden. Der Vercel-Build veröffentlicht ausschließlich die geprüften Dateien aus `public/` über den Ausgabeordner `dist/`.
+
+## Mit Vercel veröffentlichen
+
+Das GitHub-Repository enthält die Projektdateien direkt an oberster Stelle. `package.json`, `vercel.json`, `api/` und `public/` müssen dort liegen; die Dateien nicht erneut in einen Unterordner „Sicherungsspiel 1“ hochladen.
+
+In Vercel gilt:
+
+- **Root Directory:** leer beziehungsweise `.`.
+- **Framework Preset:** Other.
+- **Build Command:** `npm run build`.
+- **Output Directory:** `dist`.
+- **Node.js:** 22.x.
+
+`vercel.json` enthält diese Einstellungen und die API-Laufzeit. Nach einem Push auf den verbundenen Hauptzweig erstellt Vercel die Website neu. Die API liegt in den vier Vercel-Funktionen unter `api/`; der lokale Server wird dort nicht gestartet.
+
+Für eigene KI-Themen unter **Settings → Environment Variables** folgende Werte anlegen und anschließend erneut bereitstellen:
+
+- `OPENAI_API_KEY`: den eigenen API-Schlüssel als **Secret** eintragen.
+- `OPENAI_MODEL`: `gpt-6-luna` als **Config** eintragen.
+- `APP_PASSWORD`: einen eigenen, langen Zugangscode mit mindestens 12 Zeichen als **Secret** eintragen. Dafür nicht den API-Schlüssel verwenden.
+
+Die vorhandenen Themen sind öffentlich spielbar. Die kostenpflichtige KI-Erstellung bleibt gesperrt, bis der Zugangscode eingerichtet und in der App eingegeben wurde. Die Freischaltung verwendet ein signiertes, sicheres Sitzungscookie mit zehn Stunden Laufzeit. „KI sperren“ meldet wieder ab. Ein optionales `APP_SESSION_SECRET` kann zusätzlich als eigener zufälliger Sitzungsschlüssel gesetzt werden.
+
+Online speichert die App freigegebene KI-Themen im verwendeten Browser. Sie bleiben nach dem Neuladen erhalten, werden aber nicht zwischen Geräten synchronisiert. Das Löschen der Browserdaten entfernt auch diese Themen. Lokal bleibt die bisherige zusätzliche Speicherung unter `data/banks/` erhalten. Vercel benötigt dadurch keine beschreibbaren Projektdateien oder zusätzliche Datenbank.
+
+Die Begrenzung der KI-Anfragen gilt pro laufender Funktionsinstanz und ersetzt kein Kostenlimit im OpenAI-Projekt.
 
 ## Enthalten
 
@@ -28,7 +54,7 @@ Die App läuft zunächst auf diesem Rechner. Es wurde kein öffentliches Angebot
 4. „Eigenes Thema mit KI …“ auswählen, Inhalt und Grenzen beschreiben und die Aufgaben erstellen lassen.
 5. Die Vorschau prüfen und mit **Freigeben und starten** übernehmen.
 
-Der Schlüssel bleibt auf dem lokalen Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt normalerweise zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Bei beanstandeten Aufgaben erfolgt einmalig eine gezielte automatische Korrektur; insgesamt sind höchstens vier API-Anfragen nötig. Bleibt ein Problem bestehen, zeigt die App die konkreten Prüfhinweise an. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
+Der Schlüssel bleibt auf dem Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt normalerweise zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Bei beanstandeten Aufgaben erfolgt einmalig eine gezielte automatische Korrektur; insgesamt sind höchstens vier API-Anfragen nötig. Bleibt ein Problem bestehen, zeigt die App die konkreten Prüfhinweise an. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
 
 Die App berechnet die Lösungen aus einer eingeschränkten mathematischen Ausdruckssprache selbst. Sie akzeptiert nur genau drei verschiedene numerische Antworten und prüft die Zuordnung. Ein zweiter KI-Aufruf prüft, ob Text, Rechnung und Niveau zusammenpassen. Die Freigabe durch die Lehrkraft bleibt nötig: Diese Prüfungen garantieren keine vollständige Fehlerfreiheit.
 
@@ -41,6 +67,7 @@ Die KI erstellt derzeit rechnerische Aufgaben mit numerischen Antworten. Bei Var
 ```text
 npm start
 npm test
+npm run build
 ```
 
 - `public/app.js`: Spielablauf, Themenmaske, Stimmen und Lehrkraftvorschau.

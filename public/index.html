@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173e52">
+<title>Rettungseinsatz · Mathematik im AV</title>
+<meta name="description" content="Kooperatives Mathequiz mit fünf Rettungsszenarien für den Unterricht.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="module" src="/app.js"></script>
+</head>
+<body><main>
+<section id="av-rescue-preview" aria-label="Rettungsspiel mit simulierter Klassenabstimmung">
+  <header class="rs-top">
+    <div><div class="rs-title-row"><h2>Rettungseinsatz</h2><button class="cursor-interaction" type="button" id="rescue-open-setup">Neues Thema</button></div><p class="rs-round" id="rescue-round">Frage 1 von 8</p></div>
+  </header>
+  <p class="rs-notice" id="rescue-notice" role="status" aria-live="polite" hidden></p>
+  <section class="rs-review" id="rescue-review" aria-labelledby="rescue-review-title" hidden>
+    <h3 id="rescue-review-title">Aufgaben prüfen</h3>
+    <p class="rs-setup-note" id="rescue-review-summary"></p>
+    <p class="rs-setup-note">Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.</p>
+    <div id="rescue-review-list"></div>
+    <div class="rs-setup-actions">
+      <button class="rs-main-action" id="rescue-approve" type="button">Freigeben und starten</button>
+      <button id="rescue-discard" type="button">Zurück</button>
+    </div>
+  </section>
+  <form class="rs-setup" id="rescue-setup" aria-labelledby="rescue-setup-title">
+    <h3 id="rescue-setup-title">Was soll die Klasse üben?</h3>
+    <div class="rs-setup-grid">
+      <label class="rs-field rs-field-wide" for="rescue-topic">Thema
+        <select id="rescue-topic" aria-label="Thema auswählen"></select>
+      </label>
+      <div class="rs-custom-fields rs-field-wide" id="rescue-custom-fields" hidden>
+        <label class="rs-field" for="rescue-custom-topic">Eigenes Thema
+          <input id="rescue-custom-topic" type="text" maxlength="120" placeholder="Zum Beispiel: Volumen von Würfel und Quader">
+        </label>
+        <label class="rs-field" for="rescue-custom-notes">Was sollen die Aufgaben enthalten? (optional)
+          <textarea id="rescue-custom-notes" maxlength="600" placeholder="Zum Beispiel: einfache ganze Zahlen, Metallbezug, noch keine Zylinder"></textarea>
+        </label>
+      </div>
+      <label class="rs-field" for="rescue-start-level">Startniveau
+        <select id="rescue-start-level"><option value="1">A · leichter Einstieg</option><option value="3">B · Grundlagen anwenden</option><option value="5">C · anspruchsvoll</option></select>
+      </label>
+      <label class="rs-field" for="rescue-setup-scenario">Situation
+        <select id="rescue-setup-scenario"><option value="water">Über Bord</option><option value="rail">Auf dem Gleis</option><option value="cliff">Am Felsen</option><option value="ice">Dünnes Eis</option><option value="space">Im All</option></select>
+      </label>
+      <label class="rs-field" for="rescue-setup-total">Anzahl der Fragen
+        <input id="rescue-setup-total" type="number" min="1" max="30" step="1" value="8" inputmode="numeric" required>
+      </label>
+      <label class="rs-field" for="rescue-setup-size">Anzahl der SuS
+        <input id="rescue-setup-size" type="number" min="1" max="40" step="1" value="20" inputmode="numeric" required>
+      </label>
+    </div>
+    <p class="rs-setup-note" id="rescue-setup-note" aria-live="polite"></p>
+    <p class="rs-setup-note" id="rescue-storage-note" hidden>Freigegebene KI-Themen werden in diesem Browser gespeichert.</p>
+    <div class="rs-ki-access" id="rescue-ki-access" hidden>
+      <p class="rs-setup-note" id="rescue-ki-access-status" aria-live="polite"></p>
+      <div class="rs-ki-login" id="rescue-ki-login">
+        <label class="rs-field" for="rescue-teacher-password">Zugangscode für die KI
+          <input id="rescue-teacher-password" type="password" autocomplete="current-password" maxlength="500">
+        </label>
+        <button id="rescue-unlock" type="button">KI freischalten</button>
+      </div>
+      <button id="rescue-lock" type="button" hidden>KI sperren</button>
+    </div>
+    <div class="rs-setup-actions">
+      <button class="rs-main-action cursor-interaction" id="rescue-generate" type="button">Aufgaben erstellen und starten</button>
+      <button class="cursor-interaction" id="rescue-cancel-setup" type="button">Zum laufenden Spiel</button>
+    </div>
+  </form>
+  <div id="rescue-play" hidden>
+  <div class="rs-scenarios" role="group" aria-label="Szenario auswählen">
+    <button type="button" class="cursor-interaction" data-rescue-scenario="water" aria-pressed="true">Über Bord</button>
+    <button type="button" class="cursor-interaction" data-rescue-scenario="rail" aria-pressed="false">Auf dem Gleis</button>
+    <button type="button" class="cursor-interaction" data-rescue-scenario="cliff" aria-pressed="false">Am Felsen</button>
+    <button type="button" class="cursor-interaction" data-rescue-scenario="ice" aria-pressed="false">Dünnes Eis</button>
+    <button type="button" class="cursor-interaction" data-rescue-scenario="space" aria-pressed="false">Im All</button>
+  </div>
+  <div class="rs-scene">
+    <canvas id="rescue-canvas" role="img" aria-label="Eine Person hält sich über Wasser. Ein Rettungsboot nähert sich."></canvas>
+    <div class="rs-boat-label" id="rescue-boat">Das Boot kommt nach 8 Fragen.</div>
+    <div class="rs-strength">
+      <div class="rs-strength-label"><span>Kraft</span><span id="rescue-energy-text">4 / 5</span></div>
+      <div id="rescue-energy" class="rs-energy" role="progressbar" aria-label="Verbleibende Kraft" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="rs-ending" id="rescue-ending" hidden><p id="rescue-end-text"></p><p id="rescue-end-detail"></p></div>
+  </div>
+  <div class="rs-body">
+    <div class="rs-question">
+      <p id="rescue-instruction">Vereinfache den Term.</p><h3 id="rescue-question">12 − (4 − 2)</h3>
+      <div class="rs-difficulty">
+        <span id="rescue-level" aria-live="polite">Stufe 2 · Eine Variable</span>
+        <button class="cursor-interaction" id="rescue-easier" type="button">Leichter</button>
+        <button class="cursor-interaction" id="rescue-harder" type="button">Schwerer</button>
+      </div>
+    </div>
+    <div>
+      <div class="rs-vote-setup">
+        <label class="rs-size-label" for="rescue-size">Anzahl SuS
+          <input id="rescue-size" type="number" min="1" max="40" step="1" value="20" inputmode="numeric">
+        </label>
+        <label class="rs-size-label" for="rescue-total">Fragen insgesamt
+          <input id="rescue-total" type="number" min="1" max="30" step="1" value="8" inputmode="numeric">
+        </label>
+        <div class="rs-presets" aria-label="Abstimmung simulieren">
+          <button class="cursor-interaction" id="rescue-below" type="button">Knapp unter 80 %</button>
+          <button class="cursor-interaction" id="rescue-enough" type="button">Grenze erreichen</button>
+        </div>
+      </div>
+      <p class="rs-threshold" id="rescue-threshold">Mindestens 16 von 20 Antworten müssen richtig sein.</p>
+    </div>
+    <div class="rs-choices">
+      <div class="rs-choice" id="rescue-option-0">
+        <div class="rs-answer-row"><span class="rs-letter">A</span><span class="rs-answer" id="rescue-answer-0">6</span><span class="rs-correct-label" hidden>richtig</span></div>
+        <label class="rs-count-label" for="rescue-count-0">Stimmen <input id="rescue-count-0" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Stimmen für Antwort A"></label>
+      </div>
+      <div class="rs-choice" id="rescue-option-1">
+        <div class="rs-answer-row"><span class="rs-letter">B</span><span class="rs-answer" id="rescue-answer-1">10</span><span class="rs-correct-label" hidden>richtig</span></div>
+        <label class="rs-count-label" for="rescue-count-1">Stimmen <input id="rescue-count-1" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Stimmen für Antwort B"></label>
+      </div>
+      <div class="rs-choice" id="rescue-option-2">
+        <div class="rs-answer-row"><span class="rs-letter">C</span><span class="rs-answer" id="rescue-answer-2">18</span><span class="rs-correct-label" hidden>richtig</span></div>
+        <label class="rs-count-label" for="rescue-count-2">Stimmen <input id="rescue-count-2" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Stimmen für Antwort C"></label>
+      </div>
+    </div>
+    <div class="rs-controls">
+      <p class="rs-status" id="rescue-status" aria-live="polite">0 von 20 Stimmen eingetragen.</p>
+      <button class="rs-main-action cursor-interaction" id="rescue-resolve" type="button" disabled>Auflösen</button>
+    </div>
+    <div class="rs-feedback" id="rescue-feedback" hidden aria-live="polite">
+      <p class="rs-outcome-text" id="rescue-outcome"></p>
+      <p class="rs-explanation" id="rescue-explanation"></p>
+    </div>
+    <div class="rs-footer"><button class="cursor-interaction" id="rescue-reset" type="button">Neu starten</button></div>
+  </div>
+  </div>
+</section>
+</main></body></html>
