@@ -1,6 +1,7 @@
 import {topics,generateTopicQuestion,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
 import {createScene} from './scene.js';
 import {loadBrowserBanks,saveBrowserBank} from './storage.js';
+import {createCodebreaker,setTeamAnswer,resolveCodebreaker,nextCodebreakerRound,validCodebreakerSave,createCodebreakerView} from './codebreaker.js';
 const root=document.getElementById('av-rescue-preview');
 const byId=id=>root.querySelector('#'+id);
   const scenarios = {
@@ -16,7 +17,7 @@ const byId=id=>root.querySelector('#'+id);
       failure: 'Leider ohne Rückflugticket.'}
   };
   const fresh = (settings = {}) => ({
-    version: 2, topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
+    version: 2, mode:settings.mode??'rescue', codebreaker:createCodebreaker(), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
     scenario: settings.scenario ?? 'water', level: settings.level ?? 2,
     index: 0, energy: Math.min(4,settings.total??8), votes: [0,0,0], phase: 'vote', history: [], usedTerms: [],
     current: generateTopicQuestion(settings.topic??'brackets',settings.level ?? 2)
@@ -35,6 +36,12 @@ const byId=id=>root.querySelector('#'+id);
   const renderer=createScene(scene,root,()=>state);
   const drawScene=time=>renderer.draw(time);
   const resizeScene=()=>renderer.resize();
+  const safeView=createCodebreakerView(byId('codebreaker-stage'),byId('codebreaker-teams'),(team,answer)=>{
+    if(busy||pendingReview||state.mode!=='codebreaker'||state.phase!=='vote')return;
+    state.codebreaker=setTeamAnswer(state.codebreaker,team,answer);render();persist();
+    const card=byId('codebreaker-teams').children[team];
+    card.querySelector(answer===null?'.ck-answer-buttons button':'.ck-change').focus();
+  });
 
   function validSettings() {
     return Number.isInteger(state.count) && state.count >= 1 && state.count <= 40 &&
@@ -72,16 +79,20 @@ const byId=id=>root.querySelector('#'+id);
   }
   function restore(snapshot) {
     const saved = migrate(snapshot?.privateContent?.rescue);
+    const safe=saved?.mode==='codebreaker';
     if (!saved || saved.version !== 2 || !scenarios[saved.scenario] ||
+        !['rescue','codebreaker'].includes(saved.mode??'rescue') ||
         !Number.isInteger(saved.level) || saved.level < 1 || saved.level > 5 ||
         !Number.isInteger(saved.count) || saved.count < 1 || saved.count > 40 ||
         !Number.isInteger(saved.total) || saved.total < 1 || saved.total > 30 ||
-        !Number.isInteger(saved.index) || saved.index < 0 || saved.index >= saved.total ||
+        !Number.isSafeInteger(saved.index) || saved.index < 0 || (!safe&&saved.index >= saved.total) ||
         !Number.isInteger(saved.energy) || saved.energy < 0 || saved.energy > 5 ||
-        !['vote','result','rescued','failed'].includes(saved.phase) ||
         !Array.isArray(saved.votes) || saved.votes.length !== 3 ||
-        !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count)) ||
-        !Array.isArray(saved.history) || saved.history.length !== saved.index + (saved.phase === 'vote' ? 0 : 1) ||
+        !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count))) return;
+    if(safe){
+      if(!validCodebreakerSave(saved.codebreaker,saved.history,saved.index,saved.phase))return;
+    }else if(!['vote','result','rescued','failed'].includes(saved.phase)||
+        !Array.isArray(saved.history)||saved.history.length!==saved.index+(saved.phase==='vote'?0:1)||
         !saved.history.every((round,index) => round && round.round === index+1 &&
           Number.isInteger(round.correct) && round.correct >= 0 && round.correct <= saved.count &&
           round.total === saved.count && round.pass === (round.correct*5 >= saved.count*4) &&
@@ -89,14 +100,16 @@ const byId=id=>root.querySelector('#'+id);
           Number.isInteger(round.energy) && round.energy >= 0 && round.energy <= 5)) return;
     if(!topics[saved.topic||'brackets'])return;
     try { validateQuestion(saved.current); } catch (_) { return; }
-    state = {...saved,topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
+    state = {...saved,mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
       usedTerms:Array.isArray(saved.usedTerms) ? saved.usedTerms.filter(term => typeof term==='string').slice(-60) : []};
     const stored=snapshot.privateContent;
     setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
     const settings=stored.setup;
     if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
-      draft={...settings,customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
+      draft={...settings,mode:settings.mode==='codebreaker'?'codebreaker':'rescue',customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
       syncSetupFields();
+    }else{
+      draft=draftFromGame();syncSetupFields();
     }
     pendingTopicRequest=null;
     preparedQuestions=[];
@@ -107,10 +120,13 @@ const byId=id=>root.querySelector('#'+id);
     state.current = preparedQuestions.find(q=>q.level===state.level&&!state.usedTerms.includes(q.term))||
       generateTopicQuestion(state.topic,state.level,state.usedTerms);
     state.votes = [0,0,0];
+    if(state.mode==='codebreaker')state.codebreaker=state.codebreaker.revealed?
+      nextCodebreakerRound(state.codebreaker):{...state.codebreaker,answers:[null,null,null,null]};
   }
   async function changeLevel(change) {
-    if(busy||pendingReview)return;
+    if(busy||pendingReview||state.phase==='opened'||(state.mode==='codebreaker'&&state.phase==='vote'&&state.codebreaker.answers.some(v=>v!==null)))return;
     const next=Math.max(1,Math.min(5,state.level+change));
+    if(next===state.level)return;
     const bank=topics[state.topic]?.bank;
     if(bank&&!bank.questions.some(q=>q.level===next)){
       return requestAI({topic:bank.label,notes:bank.notes||'',level:next,count:Math.max(8,state.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
@@ -122,16 +138,21 @@ const byId=id=>root.querySelector('#'+id);
   }
   function reset() {
     state = fresh({count:validSettings()?state.count:20,total:validSettings()?state.total:8,
-      scenario:state.scenario,level:state.level,topic:state.topic});
+      mode:state.mode,scenario:state.scenario,level:state.level,topic:state.topic});
     preparedQuestions=[];
     render();
     persist();
   }
   function render() {
     root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=false);
+    const safe=state.mode==='codebreaker';root.dataset.mode=state.mode;
     renderSetup();
     byId('rescue-notice').hidden=!notice;
     byId('rescue-notice').textContent=notice;
+    byId('rescue-scenarios').hidden=safe;byId('rescue-scene').hidden=safe;
+    byId('rescue-voting-settings').hidden=safe;byId('codebreaker-stage').hidden=!safe;
+    byId('codebreaker-teams-section').hidden=!safe;
+    if(safe){renderCodebreaker();finishRender();return;}
     const revealed = state.phase !== 'vote';
     const finished = state.phase === 'rescued' || state.phase === 'failed';
     const settingsValid = validSettings();
@@ -146,13 +167,7 @@ const byId=id=>root.querySelector('#'+id);
     totalInput.setAttribute('aria-invalid',String(!Number.isInteger(state.total)||state.total<1||state.total>30));
     byId('rescue-round').textContent = setupOpen?'Spiel vorbereiten':
       topics[state.topic].label+' · '+scenario.name+' · Frage '+(state.index+1)+' von '+(state.total||'–');
-    byId('rescue-question').textContent = state.current.term;
-    byId('rescue-instruction').textContent = state.current.instruction||topics[state.topic].instruction;
-    byId('rescue-question').parentElement.classList.toggle('is-text',state.current.term.length>55);
-    byId('rescue-level').textContent = (finished?'Neuer Versuch · ':revealed?'Nächste Frage · ':'')+
-      'Stufe '+state.level+' · '+topics[state.topic].levels[state.level-1];
-    byId('rescue-easier').disabled = state.level===1;
-    byId('rescue-harder').disabled = state.level===5;
+    renderQuestion(revealed,finished);
     root.querySelectorAll('[data-rescue-scenario]').forEach(button => {
       button.setAttribute('aria-pressed',String(button.dataset.rescueScenario===state.scenario));
     });
@@ -176,15 +191,11 @@ const byId=id=>root.querySelector('#'+id);
       state.phase==='failed'?scenario.failure:warnings[state.scenario][state.energy]||
       scenario.goal+' · noch '+remaining+(remaining===1?' Frage':' Fragen');
     for (let i=0;i<3;i++) {
-      byId('rescue-answer-'+i).textContent = state.current.answers[i];
       countInputs[i].value = state.votes[i] ?? '';
       countInputs[i].max = state.count||40;
       countInputs[i].disabled = revealed;
       countInputs[i].setAttribute('aria-invalid',String(!Number.isInteger(state.votes[i])||state.votes[i]<0||
         (settingsValid&&state.votes[i]>state.count)));
-      const option = byId('rescue-option-'+i);
-      option.classList.toggle('is-correct',revealed&&state.current.correct===i);
-      option.querySelector('.rs-correct-label').hidden = !(revealed&&state.current.correct===i);
     }
     action.disabled = !revealed&&!ready();
     action.textContent = finished?'Neuer Rettungsversuch':revealed?'Nächste Frage':'Auflösen';
@@ -214,9 +225,40 @@ const byId=id=>root.querySelector('#'+id);
     scene.setAttribute('aria-label',scenario.name+'. Comicfigur mit '+state.energy+' von 5 Kraftpunkten. '+
       byId('rescue-boat').textContent+(finished?' '+byId('rescue-end-text').textContent:''));
     root.dataset.scenario = state.scenario;
+    finishRender();
+  }
+  function finishRender(){
     root.setAttribute('aria-busy',String(busy));
     if(busy)root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=true);
     drawScene(0);
+  }
+  function renderQuestion(revealed,finished=false){
+    byId('rescue-question').textContent=state.current.term;
+    byId('rescue-instruction').textContent=state.current.instruction||topics[state.topic].instruction;
+    byId('rescue-question').parentElement.classList.toggle('is-text',state.current.term.length>55);
+    byId('rescue-level').textContent=(finished?'Neues Spiel · ':revealed?'Nächste Frage · ':'')+'Stufe '+state.level+' · '+topics[state.topic].levels[state.level-1];
+    const frozen=state.mode==='codebreaker'&&(finished||(state.phase==='vote'&&state.codebreaker.answers.some(v=>v!==null)));
+    byId('rescue-easier').disabled=frozen||state.level===1;byId('rescue-harder').disabled=frozen||state.level===5;
+    for(let i=0;i<3;i++){
+      byId('rescue-answer-'+i).textContent=state.current.answers[i];
+      const option=byId('rescue-option-'+i);option.classList.toggle('is-correct',revealed&&state.current.correct===i);
+      option.querySelector('.rs-correct-label').hidden=!(revealed&&state.current.correct===i);
+    }
+  }
+  function renderCodebreaker(){
+    const game=state.codebreaker,answered=game.answers.filter(v=>v!==null).length,finished=state.phase==='opened';
+    safeView.render(game);renderQuestion(game.revealed,finished);
+    byId('rescue-round').textContent=setupOpen?'Spiel vorbereiten':topics[state.topic].label+' · Runde '+(state.index+1)+' · vier Teams';
+    const status=byId('rescue-status');status.classList.remove('is-error');
+    status.textContent=finished?'Vier Schlösser offen. Der Safe ist geknackt.':game.revealed?'Alle Antworten sind aufgedeckt.':answered+' von 4 Teams haben geantwortet.';
+    action.disabled=!game.revealed&&answered!==4;
+    action.textContent=finished?'Neues Spiel':game.revealed?'Nächste Runde':'Runde auflösen';
+    byId('rescue-feedback').hidden=!game.revealed;
+    if(game.revealed){
+      const names=game.winners.map(i=>'Team '+(i+1)).join(' und ');
+      byId('rescue-outcome').textContent=finished?names+(game.winners.length===1?' gewinnt!':' gewinnen gemeinsam!'):'Richtige Antwort: '+['A','B','C'][game.correct]+'.';
+      byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=state.current.why;
+    }
   }
   root.querySelectorAll('[data-rescue-scenario]').forEach(button=>button.addEventListener('click',()=>{
     state.scenario=button.dataset.rescueScenario;
@@ -248,6 +290,18 @@ const byId=id=>root.querySelector('#'+id);
   byId('rescue-reset').addEventListener('click',reset);
   action.addEventListener('click',()=>{
     if(busy||pendingReview)return;
+    if(state.mode==='codebreaker'){
+      if(state.phase==='opened')return reset();
+      if(state.phase==='result'){
+        state.index++;state.phase='vote';replaceQuestion();
+      }else{
+        if(!state.codebreaker.answers.every(v=>Number.isInteger(v)))return;
+        state.codebreaker=resolveCodebreaker(state.codebreaker,state.current.correct);
+        state.history.push({round:state.index+1,correct:state.current.correct,answers:[...state.codebreaker.answers],level:state.current.level});
+        state.phase=state.codebreaker.winners.length?'opened':'result';
+      }
+      render();persist();return;
+    }
     if (state.phase==='rescued'||state.phase==='failed') return reset();
     if (state.phase==='result') {
       state.index++;
@@ -268,11 +322,12 @@ const byId=id=>root.querySelector('#'+id);
 
 
   function draftFromGame(){
-    return {topic:state.topic||'brackets',customTopic:'',notes:'',
+    return {mode:state.mode??'rescue',topic:state.topic||'brackets',customTopic:'',notes:'',
       level:state.level<=2?1:state.level<=4?3:5,total:state.total||8,count:state.count||20,scenario:state.scenario};
   }
   function syncSetupFields(){
     if(!draft)draft=draftFromGame();
+    byId('game-mode').value=draft.mode??'rescue';
     byId('rescue-topic').value=draft.topic;
     byId('rescue-custom-topic').value=draft.customTopic||'';
     byId('rescue-custom-notes').value=draft.notes||'';
@@ -292,6 +347,12 @@ const byId=id=>root.querySelector('#'+id);
     select.value=previous||'brackets';
   }
   function renderSetup(){
+    const safe=draft?.mode==='codebreaker';
+    byId('game-title').textContent=setupOpen?'Save my Math':state.mode==='codebreaker'?'Codeknacker':'Rettungseinsatz';
+    document.title=byId('game-title').textContent+' · Mathematik im AV';
+    for(const kind of ['scenario','total','size'])byId('rescue-'+kind+'-field').hidden=safe;
+    for(const kind of ['scenario','total','size'])byId('rescue-setup-'+kind).disabled=safe;
+    byId('codebreaker-setup-rule').hidden=!safe;
     byId('rescue-storage-note').hidden=!cloudMode;
     byId('rescue-setup').hidden=!setupOpen||Boolean(pendingReview);
     byId('rescue-play').hidden=setupOpen||Boolean(pendingReview);
@@ -299,6 +360,9 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-open-setup').hidden=setupOpen||Boolean(pendingReview);
     if(!draft)return;
     const custom=draft.topic==='custom';
+    const bank=topics[draft.topic]?.bank;
+    const missingLevel=Boolean(bank&&!bank.questions.some(q=>q.level===draft.level));
+    const needsAI=custom||missingLevel;
     const showAccess=aiAccess.required&&(custom||Boolean(topics[draft.topic]?.bank));
     byId('rescue-ki-access').hidden=!showAccess;
     byId('rescue-ki-login').hidden=aiAccess.authenticated||!aiAccess.configured;
@@ -307,13 +371,13 @@ const byId=id=>root.querySelector('#'+id);
       'Der KI-Zugang muss in Vercel mit APP_PASSWORD eingerichtet werden.':
       aiAccess.authenticated?'Die KI ist freigeschaltet.':
       'Schalte die kostenpflichtige KI mit deinem Zugangscode frei.';
-    byId('rescue-generate').disabled=custom&&aiAccess.required&&!aiAccess.authenticated;
+    byId('rescue-generate').disabled=needsAI&&aiAccess.required&&!aiAccess.authenticated;
     byId('rescue-custom-fields').hidden=!custom;
     byId('rescue-custom-topic').required=custom;
-    byId('rescue-generate').textContent=busy?'Aufgaben werden erstellt …':custom?'KI-Aufgaben erstellen':'Aufgaben erstellen und starten';
+    byId('rescue-generate').textContent=busy?'Aufgaben werden erstellt …':custom?'KI-Aufgaben erstellen':missingLevel?'KI-Aufgaben für dieses Niveau erstellen':'Aufgaben erstellen und starten';
     const note=byId('rescue-setup-note');
     note.classList.toggle('is-error',Boolean(setupError));note.setAttribute('role',setupError?'alert':'status');
-    note.textContent=setupError||setupMessage||(custom?
+    note.textContent=setupError||setupMessage||(needsAI?
       aiConfigured?'Die KI erstellt Aufgaben zu deinem Thema. Danach kannst du sie prüfen und freigeben.':
       cloudMode?'Die KI ist noch nicht eingerichtet. Hinterlege OPENAI_API_KEY in den Vercel-Einstellungen und veröffentliche die App erneut.':
       'Die KI ist noch nicht eingerichtet. Öffne „KI konfigurieren.cmd“ im Projektordner und starte die App danach neu.':
@@ -367,7 +431,7 @@ const byId=id=>root.querySelector('#'+id);
       const saved=await api('/api/banks',{method:'POST',body:JSON.stringify(bank)});
       saveBrowserBank(saved.bank);
       registerCustomBank(saved.bank);refreshTopics();
-      if(review.mode==='extend'){
+      if(review.mode==='extend'&&!review.settings){
         state.level=review.nextLevel;
         if(state.phase==='vote')replaceQuestion();
         setupOpen=review.wasSetupOpen;
@@ -405,6 +469,7 @@ const byId=id=>root.querySelector('#'+id);
       if(busy||!pendingReview)return;setupOpen=pendingReview.wasSetupOpen;pendingReview=null;notice='';render();resizeScene();
     });
     const controls={
+      'game-mode':['mode',String],
       'rescue-topic':['topic',String],'rescue-custom-topic':['customTopic',String],
       'rescue-custom-notes':['notes',String],'rescue-start-level':['level',Number],
       'rescue-setup-scenario':['scenario',String],'rescue-setup-total':['total',Number],
@@ -419,16 +484,23 @@ const byId=id=>root.querySelector('#'+id);
     const createTopicGame=async event=>{
       event.preventDefault();if(busy||!byId('rescue-setup').reportValidity())return;
       setupError='';notice='';
-      if(!Number.isInteger(draft.count)||draft.count<1||draft.count>40||!Number.isInteger(draft.total)||draft.total<1||draft.total>30){
+      const safe=draft.mode==='codebreaker';
+      if(!safe&&(!Number.isInteger(draft.count)||draft.count<1||draft.count>40||!Number.isInteger(draft.total)||draft.total<1||draft.total>30)){
         setupError='Wähle 1 bis 40 SuS und 1 bis 30 Fragen.';renderSetup();return;
       }
+      const settings={...draft,...(safe?{count:20,total:12,scenario:'water'}:{})};
       if(draft.topic==='custom'){
-        return requestAI({topic:draft.customTopic.trim(),notes:draft.notes.trim(),level:draft.level,count:Math.max(8,draft.total)},
-          {mode:'new',settings:{...draft},wasSetupOpen:true});
+        return requestAI({topic:draft.customTopic.trim(),notes:draft.notes.trim(),level:draft.level,count:Math.max(8,settings.total)},
+          {mode:'new',settings,wasSetupOpen:true});
+      }
+      const bank=topics[draft.topic]?.bank;
+      if(bank&&!bank.questions.some(q=>q.level===draft.level)){
+        return requestAI({topic:bank.label,notes:bank.notes||'',level:draft.level,count:Math.max(8,settings.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
+          {mode:'extend',topicId:draft.topic,nextLevel:draft.level,settings,wasSetupOpen:true});
       }
       try{
-        const next=fresh({topic:draft.topic,level:draft.level,total:draft.total,count:draft.count,scenario:draft.scenario});
-        const sample=[next.current];for(let i=1;i<draft.total;i++)sample.push(generateTopicQuestion(draft.topic,draft.level,sample.map(q=>q.term)));
+        const next=fresh(settings);
+        const sample=[next.current];for(let i=1;i<settings.total;i++)sample.push(generateTopicQuestion(draft.topic,draft.level,sample.map(q=>q.term)));
         preparedQuestions=sample;state=next;setupOpen=false;render();resizeScene();persist();byId('rescue-open-setup').focus();
       }catch(_){setupError='Die Aufgaben konnten nicht erstellt werden. Wähle ein anderes Thema oder Niveau.';renderSetup();}
     };

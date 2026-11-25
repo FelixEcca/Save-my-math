@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#173e52">
-<title>Rettungseinsatz · Mathematik im AV</title>
-<meta name="description" content="Kooperatives Mathequiz mit fünf Rettungsszenarien für den Unterricht.">
+<title>Save my Math · Mathematik im AV</title>
+<meta name="description" content="Mathe im AV: Rettungseinsatz und Codeknacker mit eigenen Themen und drei Niveaus.">
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="module" src="/app.js"></script>
 </head>
 <body><main>
-<section id="av-rescue-preview" aria-label="Rettungsspiel mit simulierter Klassenabstimmung">
+<section id="av-rescue-preview" aria-label="Mathematikspiele für die Klasse">
   <header class="rs-top">
-    <div><div class="rs-title-row"><h2>Rettungseinsatz</h2><button class="cursor-interaction" type="button" id="rescue-open-setup">Neues Thema</button></div><p class="rs-round" id="rescue-round">Frage 1 von 8</p></div>
+    <div><div class="rs-title-row"><h2 id="game-title">Save my Math</h2><button class="cursor-interaction" type="button" id="rescue-open-setup">Spiel und Thema wählen</button></div><p class="rs-round" id="rescue-round">Spiel vorbereiten</p></div>
   </header>
   <p class="rs-notice" id="rescue-notice" role="status" aria-live="polite" hidden></p>
   <section class="rs-review" id="rescue-review" aria-labelledby="rescue-review-title" hidden>
@@ -29,6 +29,9 @@
   <form class="rs-setup" id="rescue-setup" aria-labelledby="rescue-setup-title">
     <h3 id="rescue-setup-title">Was soll die Klasse üben?</h3>
     <div class="rs-setup-grid">
+      <label class="rs-field rs-field-wide" for="game-mode">Spiel
+        <select id="game-mode"><option value="rescue">Rettungseinsatz · gemeinsam retten</option><option value="codebreaker">Codeknacker · vier Teams am Safe</option></select>
+      </label>
       <label class="rs-field rs-field-wide" for="rescue-topic">Thema
         <select id="rescue-topic" aria-label="Thema auswählen"></select>
       </label>
@@ -43,15 +46,16 @@
       <label class="rs-field" for="rescue-start-level">Startniveau
         <select id="rescue-start-level"><option value="1">A · leichter Einstieg</option><option value="3">B · Grundlagen anwenden</option><option value="5">C · anspruchsvoll</option></select>
       </label>
-      <label class="rs-field" for="rescue-setup-scenario">Situation
+      <label class="rs-field" id="rescue-scenario-field" for="rescue-setup-scenario">Situation
         <select id="rescue-setup-scenario"><option value="water">Über Bord</option><option value="rail">Auf dem Gleis</option><option value="cliff">Am Felsen</option><option value="ice">Dünnes Eis</option><option value="space">Im All</option></select>
       </label>
-      <label class="rs-field" for="rescue-setup-total">Anzahl der Fragen
+      <label class="rs-field" id="rescue-total-field" for="rescue-setup-total">Anzahl der Fragen
         <input id="rescue-setup-total" type="number" min="1" max="30" step="1" value="8" inputmode="numeric" required>
       </label>
-      <label class="rs-field" for="rescue-setup-size">Anzahl der SuS
+      <label class="rs-field" id="rescue-size-field" for="rescue-setup-size">Anzahl der SuS
         <input id="rescue-setup-size" type="number" min="1" max="40" step="1" value="20" inputmode="numeric" required>
       </label>
+      <p class="rs-setup-note rs-field-wide" id="codebreaker-setup-rule" hidden>Vier Teams spielen gleichzeitig. Vier richtige Antworten in Folge öffnen den Safe. Bei einer falschen Antwort beginnt das Team wieder bei null.</p>
     </div>
     <p class="rs-setup-note" id="rescue-setup-note" aria-live="polite"></p>
     <p class="rs-setup-note" id="rescue-storage-note" hidden>Freigegebene KI-Themen werden in diesem Browser gespeichert.</p>
@@ -71,14 +75,14 @@
     </div>
   </form>
   <div id="rescue-play" hidden>
-  <div class="rs-scenarios" role="group" aria-label="Szenario auswählen">
+  <div class="rs-scenarios" id="rescue-scenarios" role="group" aria-label="Szenario auswählen">
     <button type="button" class="cursor-interaction" data-rescue-scenario="water" aria-pressed="true">Über Bord</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="rail" aria-pressed="false">Auf dem Gleis</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="cliff" aria-pressed="false">Am Felsen</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="ice" aria-pressed="false">Dünnes Eis</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="space" aria-pressed="false">Im All</button>
   </div>
-  <div class="rs-scene">
+  <div class="rs-scene" id="rescue-scene">
     <canvas id="rescue-canvas" role="img" aria-label="Eine Person hält sich über Wasser. Ein Rettungsboot nähert sich."></canvas>
     <div class="rs-boat-label" id="rescue-boat">Das Boot kommt nach 8 Fragen.</div>
     <div class="rs-strength">
@@ -89,6 +93,7 @@
     </div>
     <div class="rs-ending" id="rescue-ending" hidden><p id="rescue-end-text"></p><p id="rescue-end-detail"></p></div>
   </div>
+  <section class="ck-stage" id="codebreaker-stage" aria-label="Der Safe" hidden></section>
   <div class="rs-body">
     <div class="rs-question">
       <p id="rescue-instruction">Vereinfache den Term.</p><h3 id="rescue-question">12 − (4 − 2)</h3>
@@ -98,7 +103,7 @@
         <button class="cursor-interaction" id="rescue-harder" type="button">Schwerer</button>
       </div>
     </div>
-    <div>
+    <div id="rescue-voting-settings">
       <div class="rs-vote-setup">
         <label class="rs-size-label" for="rescue-size">Anzahl SuS
           <input id="rescue-size" type="number" min="1" max="40" step="1" value="20" inputmode="numeric">
@@ -123,6 +128,10 @@
         <label class="rs-count-label" for="rescue-count-2">Stimmen <input id="rescue-count-2" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Stimmen für Antwort C"></label>
       </div>
     </div>
+    <section class="ck-teams-section" id="codebreaker-teams-section" aria-label="Antworten der vier Teams" hidden>
+      <p class="rs-setup-note ck-entry-note">Die Teams zeigen ihre Antworten gleichzeitig. Trage sie anschließend ein.</p>
+      <div class="ck-teams" id="codebreaker-teams"></div>
+    </section>
     <div class="rs-controls">
       <p class="rs-status" id="rescue-status" aria-live="polite">0 von 20 Stimmen eingetragen.</p>
       <button class="rs-main-action cursor-interaction" id="rescue-resolve" type="button" disabled>Auflösen</button>

@@ -1,11 +1,11 @@
-# Rettungseinsatz
+# Save my Math
 
-Ein kooperatives Mathequiz für den AV-Unterricht. Die Klasse beantwortet gemeinsam Fragen mit drei Antwortmöglichkeiten. Mindestens 80 Prozent richtige Antworten geben Kraft zurück. Bei zu vielen Fehlern wird die Situation immer bedrohlicher.
+Zwei Mathematikspiele für den AV-Unterricht mit gemeinsamer Themenwahl, A/B/C-Startniveau und geprüften KI-Aufgaben. Im Rettungseinsatz retten mindestens 80 Prozent richtige Antworten die Figur. Bei Codeknacker treten vier Teams gleichzeitig am Safe an.
 
 ## Starten
 
 1. **Starten.cmd** doppelt anklicken. Die App öffnet sich im Browser.
-2. Thema, Startniveau, Fragenzahl, Klassengröße und Situation auswählen.
+2. Spiel, Thema und Startniveau auswählen. Beim Rettungseinsatz zusätzlich Fragenzahl, Klassengröße und Situation festlegen.
 3. **Aufgaben erstellen und starten** anklicken.
 
 Voraussetzung: Node.js ab Version 22.14. Auf dem bisher verwendeten Rechner ist Node.js bereits vorhanden. Zusätzliche Pakete müssen nicht installiert werden. Alternativ startet `npm start` den Server unter <http://localhost:3456>. **Beenden.cmd** beendet einen über Starten.cmd gestarteten Server.
@@ -47,6 +47,14 @@ Die Begrenzung der KI-Anfragen gilt pro laufender Funktionsinstanz und ersetzt k
 - Fünf Schwierigkeitsstufen. Die Auswahl A/B/C legt den Einstieg fest; „Leichter“ und „Schwerer“ steuern feiner nach. Die Bezeichnungen sind didaktische Stufen und keine vollständige Bildungsplanzuordnung.
 - 1 bis 30 Fragen und 1 bis 40 Lernende. Die Stimmen werden von der Lehrkraft eingetragen.
 - Lösungen nach der Auflösung und ein gespeicherter Spielstand im verwendeten Browser.
+
+## Codeknacker
+
+In der gemeinsamen Startmaske unter **Spiel** den Modus **Codeknacker** wählen. Themen, eigene KI-Themen, Aufgabenvorschau und „Leichter“ beziehungsweise „Schwerer“ werden von beiden Spielen verwendet. Bereits freigegebene KI-Themen sind in beiden Modi verfügbar. Fehlt eine gewählte Niveaustufe, wird sie vor dem Start nach Anmeldung ergänzt und wieder zur Prüfung angezeigt.
+
+Vier Teams bearbeiten dieselbe Aufgabe mit den Antwortmöglichkeiten A, B und C. Die Teams zeigen ihre Antworten gleichzeitig; die Lehrkraft trägt sie anschließend in die vier Teamfelder ein. Gespeicherte Antworten bleiben bis zur gemeinsamen Auflösung verdeckt und lassen sich vorher über **Ändern** korrigieren. Nach der ersten Eingabe bleibt die Aufgabe bis zur Auflösung unverändert.
+
+Jede richtige Antwort öffnet ein weiteres Schloss des jeweiligen Teams. Eine falsche Antwort schließt alle vier Schlösser dieses Teams. Vier richtige Antworten **in Folge** öffnen den Safe. Gleichzeitige Sieger gewinnen gemeinsam. Es gibt keine feste Rundenzahl; der Aufgabenvorrat wird bei Bedarf erneut verwendet. Neue KI-Themen starten mit zwölf Aufgaben. Nach einem Neustart stehen alle Teams wieder bei null; Thema und Spielmodus bleiben erhalten. Spielstand und teilweise eingegebene Antworten überstehen das Neuladen.
 
 ## Eigene Themen mit KI
 
