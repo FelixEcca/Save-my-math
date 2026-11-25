@@ -1,11 +1,11 @@
 # Save my Math
 
-Zwei Mathematikspiele für den AV-Unterricht mit gemeinsamer Themenwahl, A/B/C-Startniveau und geprüften KI-Aufgaben. Im Rettungseinsatz retten mindestens 80 Prozent richtige Antworten die Figur. Bei Codeknacker treten vier Teams gleichzeitig am Safe an.
+Drei Mathematikspiele für den AV-Unterricht mit gemeinsamer Themenwahl, A/B/C-Startniveau und geprüften KI-Aufgaben. Im Rettungseinsatz retten mindestens 80 Prozent richtige Antworten die Figur. Bei Codeknacker treten vier Teams gleichzeitig am Safe an. Mathe-Fußball spielt Team Blau gegen Team Rot auf einem gemeinsamen Spielfeld.
 
 ## Starten
 
 1. **Starten.cmd** doppelt anklicken. Die App öffnet sich im Browser.
-2. Spiel, Thema und Startniveau auswählen. Beim Rettungseinsatz zusätzlich Fragenzahl, Klassengröße und Situation festlegen.
+2. Spiel, Thema und Startniveau auswählen. Beim Rettungseinsatz zusätzlich Fragenzahl, Klassengröße und Situation festlegen; beim Mathe-Fußball die Personenzahl beider Teams.
 3. **Aufgaben erstellen und starten** anklicken.
 
 Voraussetzung: Node.js ab Version 22.14. Auf dem bisher verwendeten Rechner ist Node.js bereits vorhanden. Zusätzliche Pakete müssen nicht installiert werden. Alternativ startet `npm start` den Server unter <http://localhost:3456>. **Beenden.cmd** beendet einen über Starten.cmd gestarteten Server.
@@ -55,6 +55,16 @@ In der gemeinsamen Startmaske unter **Spiel** den Modus **Codeknacker** wählen.
 Vier Teams bearbeiten dieselbe Aufgabe mit den Antwortmöglichkeiten A, B und C. Die Teams zeigen ihre Antworten gleichzeitig; die Lehrkraft trägt sie anschließend in die vier Teamfelder ein. Gespeicherte Antworten bleiben bis zur gemeinsamen Auflösung verdeckt und lassen sich vorher über **Ändern** korrigieren. Nach der ersten Eingabe bleibt die Aufgabe bis zur Auflösung unverändert.
 
 Jede richtige Antwort öffnet ein weiteres Schloss des jeweiligen Teams. Eine falsche Antwort schließt alle vier Schlösser dieses Teams. Vier richtige Antworten **in Folge** öffnen den Safe. Gleichzeitige Sieger gewinnen gemeinsam. Es gibt keine feste Rundenzahl; der Aufgabenvorrat wird bei Bedarf erneut verwendet. Neue KI-Themen starten mit zwölf Aufgaben. Nach einem Neustart stehen alle Teams wieder bei null; Thema und Spielmodus bleiben erhalten. Spielstand und teilweise eingegebene Antworten überstehen das Neuladen.
+
+## Mathe-Fußball
+
+In der Startmaske **Mathe-Fußball** wählen und für Blau und Rot jeweils 1 bis 40 Personen einstellen. Die Trikotnummern laufen pro Team von 1 bis zur Teamgröße. **Spieler auslosen** zieht eine Nummer aus jedem Team. Jede Nummer kommt einmal vor, bevor erneut gezogen wird; bei mehr als einer Person wiederholt sich eine Nummer auch an dieser Grenze nicht sofort.
+
+Blau greift nach rechts, Rot nach links an. **Blau rückt vor** beziehungsweise **Rot rückt vor** bewegen den Ball um ein Feld. Über **Ballposition** lässt sich die Position auch direkt einstellen. Erst wenn der Ball das linke oder rechte Tor erreicht, wird **Tor werten und Anstoß** aktiv. Der Klick zählt das Tor für das angreifende Team und setzt den Ball in die Mitte. Die Lehrkraft entscheidet über die Bewegung; eine Aufgabenlösung verändert den Ball nicht automatisch. **Spielstand zurücksetzen** löscht Tore, Ballposition und ausgeloste Nummern und erhält die aktuelle Aufgabe und ihre Vorgaben.
+
+Die Aufgabe wird ohne Antwortauswahl angezeigt. **Lösung anzeigen** blendet Ergebnis und Rechenweg ein; ein weiterer Klick verbirgt beides. **Neue Aufgabe** nutzt das unter **Vorgaben für die nächste Aufgabe** gewählte Thema und Niveau. Dort lassen sich auch ein eigenes Thema und konkrete Wünsche eingeben. Ohne freie Vorgaben wird der vorhandene Aufgabenvorrat genutzt; freie Vorgaben oder fehlende Niveaustufen erfordern den vorhandenen KI-Zugang.
+
+Für solche Einzelaufgaben wird genau eine Aufgabe erstellt und vor der Übernahme zur Prüfung gezeigt. Ihre Lösung liegt in der Vorschau unter einem zunächst geschlossenen Bereich **Lösung prüfen**. Freigabe und Abbruch erhalten den laufenden Spielstand. Diese Einzelaufgabe bleibt mit dem Spielstand im Browser gespeichert; sie erzeugt keinen zusätzlichen Eintrag in der Themenliste. Themen, neue KI-Aufgabensätze aus der Startmaske und alle bisherigen Spiele bleiben gemeinsam nutzbar.
 
 ## Eigene Themen mit KI
 

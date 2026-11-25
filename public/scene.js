@@ -486,7 +486,7 @@ export function createScene(scene,root,getState) {
 
   function drawScene(time) {
     state=getState();
-    if(!context||!colors.sea||state.mode==='codebreaker') return;
+    if(!context||!colors.sea||['codebreaker','football'].includes(state.mode)) return;
     context.clearRect(0,0,width,height);
     const progress=state.history.length/Math.max(1,state.total||8);
     const danger=state.phase==='rescued'?0:Math.min(1,(5-state.energy)/4);

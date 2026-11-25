@@ -284,6 +284,54 @@ main { max-width: 1150px; margin: 0 auto; }
     @media(prefers-reduced-motion:reduce){
       #av-rescue-preview .ck-vault-door,#av-rescue-preview .ck-wheel,#av-rescue-preview .ck-shackle { transition:none!important; }
     }
+    #av-rescue-preview .fb-board { margin:0 14px; background:var(--rs-paper); border:1px solid var(--rs-line); border-radius:12px; padding:16px; }
+    #av-rescue-preview .fb-scoreboard { display:grid; grid-template-columns:1fr .8fr 1fr; align-items:center; gap:18px; margin-bottom:12px; }
+    #av-rescue-preview .fb-team { display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center; min-width:0; }
+    #av-rescue-preview .fb-team h3 { font-size:20px; }
+    #av-rescue-preview .fb-blue { color:light-dark(#245eb2,#9ac7ff); }
+    #av-rescue-preview .fb-red { color:light-dark(#b43f34,#ffb2a9); }
+    #av-rescue-preview .fb-direction { color:var(--rs-subtle); font-size:13px; }
+    #av-rescue-preview .fb-score { font-size:48px; line-height:1; font-variant-numeric:tabular-nums; }
+    #av-rescue-preview .fb-shirt { display:grid; justify-items:center; }
+    #av-rescue-preview .fb-shirt svg { display:block; width:65px; height:65px; }
+    #av-rescue-preview .fb-roster { font-size:12px; white-space:nowrap; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-draw { text-align:center; display:grid; justify-items:center; gap:7px; }
+    #av-rescue-preview .fb-draw p { font-size:13px; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-position { display:flex; justify-content:center; align-items:center; gap:14px; margin:4px auto 12px; max-width:700px; font-size:14px; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-position input { width:100%; max-width:370px; padding:0; accent-color:var(--rs-accent); border:0; background:transparent; }
+    #av-rescue-preview .fb-position span { min-width:140px; text-align:center; }
+    #av-rescue-preview .fb-pitch-wrap { max-width:920px; margin:0 auto; }
+    #av-rescue-preview .fb-pitch { width:100%; height:auto; display:block; }
+    #av-rescue-preview #football-ball { transition:transform .35s ease; }
+    #av-rescue-preview .fb-match-controls { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-top:12px; }
+    #av-rescue-preview .fb-match-controls p { font-size:14px; color:var(--rs-subtle); text-align:center; flex:1; min-width:150px; }
+    #av-rescue-preview .fb-blue-button { border-color:light-dark(#245eb2,#9ac7ff); color:light-dark(#245eb2,#9ac7ff); }
+    #av-rescue-preview .fb-red-button { border-color:light-dark(#b43f34,#ffb2a9); color:light-dark(#b43f34,#ffb2a9); }
+    #av-rescue-preview .fb-plan { border:1px solid var(--rs-line); border-radius:9px; padding:12px 14px; background:var(--rs-paper); }
+    #av-rescue-preview .fb-plan summary { cursor:pointer; font-size:15px; font-weight:600; }
+    #av-rescue-preview .fb-plan[open] summary { margin-bottom:14px; }
+    #av-rescue-preview .fb-plan input[type="text"] { width:100%; }
+    #av-rescue-preview[data-mode="football"] .rs-status { margin-right:auto; }
+    @media(max-width:850px){
+      #av-rescue-preview .fb-scoreboard { grid-template-columns:1fr 1fr; gap:10px; }
+      #av-rescue-preview .fb-draw { grid-column:1/-1; grid-row:2; display:flex; justify-content:center; align-items:center; gap:12px; }
+      #av-rescue-preview .fb-direction { font-size:12px; }
+    }
+    @media(max-width:560px){
+      #av-rescue-preview .fb-board { margin:0 9px; padding:12px; }
+      #av-rescue-preview .fb-team { gap:7px; grid-template-columns:1fr auto; }
+      #av-rescue-preview .fb-team h3 { font-size:18px; }
+      #av-rescue-preview .fb-shirt { grid-column:1/-1; display:flex; justify-content:center; gap:5px; align-items:center; }
+      #av-rescue-preview .fb-shirt svg { width:52px; height:52px; }
+      #av-rescue-preview .fb-score { font-size:38px; }
+      #av-rescue-preview .fb-position { flex-wrap:wrap; gap:4px 9px; margin-top:10px; }
+      #av-rescue-preview .fb-position label { width:100%; text-align:center; }
+      #av-rescue-preview .fb-position input { flex:1; }
+      #av-rescue-preview .fb-position span { min-width:0; width:130px; font-size:12px; }
+      #av-rescue-preview .fb-match-controls p { order:3; width:100%; }
+      #av-rescue-preview .fb-match-controls #football-goal { order:4; width:100%; }
+      #av-rescue-preview .fb-draw { flex-wrap:wrap; }
+    }
     @media (max-width: 560px) {
       #av-rescue-preview .rs-top { padding-left: 15px; padding-top: 17px; }
       #av-rescue-preview .rs-body { padding: 15px; }

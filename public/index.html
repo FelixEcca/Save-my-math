@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#173e52">
 <title>Save my Math · Mathematik im AV</title>
-<meta name="description" content="Mathe im AV: Rettungseinsatz und Codeknacker mit eigenen Themen und drei Niveaus.">
+<meta name="description" content="Mathe im AV: Rettungseinsatz, Codeknacker und Mathe-Fußball mit eigenen Themen und drei Niveaus.">
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="module" src="/app.js"></script>
@@ -19,7 +19,7 @@
   <section class="rs-review" id="rescue-review" aria-labelledby="rescue-review-title" hidden>
     <h3 id="rescue-review-title">Aufgaben prüfen</h3>
     <p class="rs-setup-note" id="rescue-review-summary"></p>
-    <p class="rs-setup-note">Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.</p>
+    <p class="rs-setup-note" id="rescue-review-note">Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.</p>
     <div id="rescue-review-list"></div>
     <div class="rs-setup-actions">
       <button class="rs-main-action" id="rescue-approve" type="button">Freigeben und starten</button>
@@ -30,7 +30,7 @@
     <h3 id="rescue-setup-title">Was soll die Klasse üben?</h3>
     <div class="rs-setup-grid">
       <label class="rs-field rs-field-wide" for="game-mode">Spiel
-        <select id="game-mode"><option value="rescue">Rettungseinsatz · gemeinsam retten</option><option value="codebreaker">Codeknacker · vier Teams am Safe</option></select>
+        <select id="game-mode"><option value="rescue">Rettungseinsatz · gemeinsam retten</option><option value="codebreaker">Codeknacker · vier Teams am Safe</option><option value="football">Mathe-Fußball · Blau gegen Rot</option></select>
       </label>
       <label class="rs-field rs-field-wide" for="rescue-topic">Thema
         <select id="rescue-topic" aria-label="Thema auswählen"></select>
@@ -56,6 +56,12 @@
         <input id="rescue-setup-size" type="number" min="1" max="40" step="1" value="20" inputmode="numeric" required>
       </label>
       <p class="rs-setup-note rs-field-wide" id="codebreaker-setup-rule" hidden>Vier Teams spielen gleichzeitig. Vier richtige Antworten in Folge öffnen den Safe. Bei einer falschen Antwort beginnt das Team wieder bei null.</p>
+      <label class="rs-field" id="football-blue-field" for="football-blue-size" hidden>Personen in Team Blau
+        <input id="football-blue-size" type="number" min="1" max="40" step="1" value="10" required>
+      </label>
+      <label class="rs-field" id="football-red-field" for="football-red-size" hidden>Personen in Team Rot
+        <input id="football-red-size" type="number" min="1" max="40" step="1" value="10" required>
+      </label>
     </div>
     <p class="rs-setup-note" id="rescue-setup-note" aria-live="polite"></p>
     <p class="rs-setup-note" id="rescue-storage-note" hidden>Freigegebene KI-Themen werden in diesem Browser gespeichert.</p>
@@ -94,6 +100,7 @@
     <div class="rs-ending" id="rescue-ending" hidden><p id="rescue-end-text"></p><p id="rescue-end-detail"></p></div>
   </div>
   <section class="ck-stage" id="codebreaker-stage" aria-label="Der Safe" hidden></section>
+  <section class="fb-board" id="football-board" aria-label="Mathe-Fußball: Spielfeld und Teams" hidden></section>
   <div class="rs-body">
     <div class="rs-question">
       <p id="rescue-instruction">Vereinfache den Term.</p><h3 id="rescue-question">12 − (4 − 2)</h3>
@@ -114,7 +121,7 @@
       </div>
       <p class="rs-threshold" id="rescue-threshold">Mindestens 16 von 20 Antworten müssen richtig sein.</p>
     </div>
-    <div class="rs-choices">
+    <div class="rs-choices" id="rescue-choices">
       <div class="rs-choice" id="rescue-option-0">
         <div class="rs-answer-row"><span class="rs-letter">A</span><span class="rs-answer" id="rescue-answer-0">6</span><span class="rs-correct-label" hidden>richtig</span></div>
         <label class="rs-count-label" for="rescue-count-0">Stimmen <input id="rescue-count-0" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Stimmen für Antwort A"></label>
@@ -132,8 +139,33 @@
       <p class="rs-setup-note ck-entry-note">Die Teams zeigen ihre Antworten gleichzeitig. Trage sie anschließend ein.</p>
       <div class="ck-teams" id="codebreaker-teams"></div>
     </section>
+    <details class="fb-plan" id="football-plan" hidden>
+      <summary>Vorgaben für die nächste Aufgabe</summary>
+      <div class="rs-setup-grid">
+        <label class="rs-field" for="football-topic">Thema
+          <select id="football-topic"></select>
+        </label>
+        <label class="rs-field" for="football-level">Niveau und Aufgabentyp
+          <select id="football-level"></select>
+        </label>
+        <label class="rs-field rs-field-wide" id="football-custom-field" for="football-custom-topic" hidden>Eigenes Thema
+          <input id="football-custom-topic" type="text" maxlength="120" placeholder="Zum Beispiel: Volumen von Quadern">
+        </label>
+        <label class="rs-field rs-field-wide" for="football-notes">Was soll die nächste Aufgabe enthalten? (optional)
+          <textarea id="football-notes" maxlength="600" placeholder="Zum Beispiel: ein Rechteck mit 8 cm und 6 cm, gesucht ist der Flächeninhalt"></textarea>
+        </label>
+        <p class="rs-setup-note rs-field-wide" id="football-plan-note">Freie Vorgaben werden mit KI umgesetzt. Die Lösung bleibt bis zu deinem Klick verborgen.</p>
+        <div class="rs-ki-login rs-field-wide" id="football-login" hidden>
+          <label class="rs-field" for="football-password">Zugangscode für die KI
+            <input id="football-password" type="password" autocomplete="current-password" maxlength="500">
+          </label>
+          <button id="football-unlock" type="button">KI freischalten</button>
+        </div>
+      </div>
+    </details>
     <div class="rs-controls">
       <p class="rs-status" id="rescue-status" aria-live="polite">0 von 20 Stimmen eingetragen.</p>
+      <button id="football-next" type="button" hidden>Neue Aufgabe</button>
       <button class="rs-main-action cursor-interaction" id="rescue-resolve" type="button" disabled>Auflösen</button>
     </div>
     <div class="rs-feedback" id="rescue-feedback" hidden aria-live="polite">

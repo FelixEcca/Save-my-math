@@ -11,7 +11,8 @@ const files=new Map([
   ['/engine.js',['engine.js','text/javascript; charset=utf-8']],['/math.js',['math.js','text/javascript; charset=utf-8']],
   ['/scene.js',['scene.js','text/javascript; charset=utf-8']],['/favicon.svg',['favicon.svg','image/svg+xml']],
   ['/storage.js',['storage.js','text/javascript; charset=utf-8']],
-  ['/codebreaker.js',['codebreaker.js','text/javascript; charset=utf-8']]
+  ['/codebreaker.js',['codebreaker.js','text/javascript; charset=utf-8']],
+  ['/football.js',['football.js','text/javascript; charset=utf-8']]
 ]);
 const headers={
   'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer',

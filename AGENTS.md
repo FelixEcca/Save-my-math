@@ -4,8 +4,10 @@ Kooperatives Mathematikspiel fuer die Ausbildungsvorbereitung an der Gewerbliche
 
 - Kurze, vollstaendige deutsche Saetze. Kein kindlicher Sprachstil.
 - Bestehende fuenf Szenarien und die zunehmende Gefahr bei sinkender Kraft erhalten.
-- Zwei Spielmodi mit gemeinsamer Themenmaske: Rettungseinsatz und Codeknacker. Codeknacker hat vier Teams und vier Schloesser je Team. Richtige Antworten oeffnen ein Schloss, falsche setzen nur dieses Team auf null. Vier richtige Antworten in Folge gewinnen; gleichzeitige Sieger sind moeglich.
+- Gemeinsame Themenmaske fuer Rettungseinsatz, Codeknacker und Mathe-Fussball. Codeknacker hat vier Teams und vier Schloesser je Team. Richtige Antworten oeffnen ein Schloss, falsche setzen nur dieses Team auf null. Vier richtige Antworten in Folge gewinnen; gleichzeitige Sieger sind moeglich.
 - Die vier Teamantworten bis zur gemeinsamen Auswertung verdeckt halten. Aufgaben nach der ersten Eingabe nicht durch einen Niveauwechsel austauschen. Bestehende Spielstaende des Rettungseinsatzes weiterhin laden.
+- Dritter Spielmodus Mathe-Fussball: Blau greift nach rechts, Rot nach links an. Die Lehrkraft bewegt den Ball manuell um ein Feld. Tore erst auf ausdruecklichen Klick werten und danach den Ball in die Mitte setzen. Teamgroessen getrennt einstellen und Trikotnummern pro Team ohne Wiederholung auslosen, bis alle dran waren.
+- Im Fussball keine Antwortauswahl zeigen. Ergebnis und Rechenweg erst auf Klick anzeigen. Vorgaben fuer die naechste Aufgabe waehrend des Spiels bearbeiten lassen; Aufgabenwechsel und einzelne KI-Aufgaben duerfen den Spielstand nicht zuruecksetzen. Auch in der KI-Vorschau die Loesung zunaechst verbergen.
 - Neun eingebaute Themen muessen ohne API-Schluessel funktionieren.
 - API-Schluessel bleiben ausschliesslich in der lokalen Umgebung oder in .env. Niemals in Browsercode, Logs oder Git uebernehmen.
 - Spiel und Einstellungen bleiben im Browser. Lokal liegen freigegebene KI-Aufgabensaetze zusaetzlich im ignorierten Ordner data/banks, online ausschliesslich im Browser.

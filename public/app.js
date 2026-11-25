@@ -2,6 +2,7 @@ import {topics,generateTopicQuestion,validateQuestion,parseLinear,registerCustom
 import {createScene} from './scene.js';
 import {loadBrowserBanks,saveBrowserBank} from './storage.js';
 import {createCodebreaker,setTeamAnswer,resolveCodebreaker,nextCodebreakerRound,validCodebreakerSave,createCodebreakerView} from './codebreaker.js';
+import {createFootball,moveBall,positionBall,awardGoal,drawPlayers,validFootballSave,createFootballView} from './football.js';
 const root=document.getElementById('av-rescue-preview');
 const byId=id=>root.querySelector('#'+id);
   const scenarios = {
@@ -16,8 +17,10 @@ const byId=id=>root.querySelector('#'+id);
     space: {name: 'Im All', color: 'bean-space', goal: 'Raumschiff', success: 'Zurück in der Luftschleuse!',
       failure: 'Leider ohne Rückflugticket.'}
   };
+  const footballFromSettings=settings=>({...createFootball(settings.blueSize??10,settings.redSize??10),taskLabel:topics[settings.topic??'brackets'].label,
+    plan:{topic:settings.topic??'brackets',customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level??2}});
   const fresh = (settings = {}) => ({
-    version: 2, mode:settings.mode??'rescue', codebreaker:createCodebreaker(), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
+    version: 2, mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
     scenario: settings.scenario ?? 'water', level: settings.level ?? 2,
     index: 0, energy: Math.min(4,settings.total??8), votes: [0,0,0], phase: 'vote', history: [], usedTerms: [],
     current: generateTopicQuestion(settings.topic??'brackets',settings.level ?? 2)
@@ -42,6 +45,16 @@ const byId=id=>root.querySelector('#'+id);
     const card=byId('codebreaker-teams').children[team];
     card.querySelector(answer===null?'.ck-answer-buttons button':'.ck-change').focus();
   });
+  let footballPlanRef=null;
+  const footballView=createFootballView(byId('football-board'),{
+    move:direction=>updateFootball(game=>moveBall(game,direction)),
+    position:position=>updateFootball(game=>positionBall(game,position)),
+    draw:()=>updateFootball(game=>drawPlayers(game)),goal:()=>updateFootball(game=>awardGoal(game))
+  });
+  function updateFootball(update){
+    if(busy||pendingReview||state.mode!=='football')return;
+    state.football=update(state.football);render();persist();
+  }
 
   function validSettings() {
     return Number.isInteger(state.count) && state.count >= 1 && state.count <= 40 &&
@@ -80,16 +93,20 @@ const byId=id=>root.querySelector('#'+id);
   function restore(snapshot) {
     const saved = migrate(snapshot?.privateContent?.rescue);
     const safe=saved?.mode==='codebreaker';
+    const football=saved?.mode==='football';
     if (!saved || saved.version !== 2 || !scenarios[saved.scenario] ||
-        !['rescue','codebreaker'].includes(saved.mode??'rescue') ||
+        !['rescue','codebreaker','football'].includes(saved.mode??'rescue') ||
         !Number.isInteger(saved.level) || saved.level < 1 || saved.level > 5 ||
         !Number.isInteger(saved.count) || saved.count < 1 || saved.count > 40 ||
         !Number.isInteger(saved.total) || saved.total < 1 || saved.total > 30 ||
-        !Number.isSafeInteger(saved.index) || saved.index < 0 || (!safe&&saved.index >= saved.total) ||
+        !Number.isSafeInteger(saved.index) || saved.index < 0 || (!safe&&!football&&saved.index >= saved.total) ||
         !Number.isInteger(saved.energy) || saved.energy < 0 || saved.energy > 5 ||
         !Array.isArray(saved.votes) || saved.votes.length !== 3 ||
         !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count))) return;
-    if(safe){
+    if(football){
+      if(!validFootballSave(saved.football)||saved.phase!=='vote'||!Array.isArray(saved.history)||saved.history.length||saved.index!==saved.football.taskNumber-1||
+        !(topics[saved.football.plan.topic]||saved.football.plan.topic==='custom'))return;
+    }else if(safe){
       if(!validCodebreakerSave(saved.codebreaker,saved.history,saved.index,saved.phase))return;
     }else if(!['vote','result','rescued','failed'].includes(saved.phase)||
         !Array.isArray(saved.history)||saved.history.length!==saved.index+(saved.phase==='vote'?0:1)||
@@ -100,13 +117,13 @@ const byId=id=>root.querySelector('#'+id);
           Number.isInteger(round.energy) && round.energy >= 0 && round.energy <= 5)) return;
     if(!topics[saved.topic||'brackets'])return;
     try { validateQuestion(saved.current); } catch (_) { return; }
-    state = {...saved,mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
+    state = {...saved,mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),football:football?saved.football:footballFromSettings(saved),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
       usedTerms:Array.isArray(saved.usedTerms) ? saved.usedTerms.filter(term => typeof term==='string').slice(-60) : []};
     const stored=snapshot.privateContent;
     setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
     const settings=stored.setup;
     if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
-      draft={...settings,mode:settings.mode==='codebreaker'?'codebreaker':'rescue',customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
+      draft={...settings,mode:['codebreaker','football'].includes(settings.mode)?settings.mode:'rescue',blueSize:state.football.teams[0].size,redSize:state.football.teams[1].size,customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
       syncSetupFields();
     }else{
       draft=draftFromGame();syncSetupFields();
@@ -127,6 +144,9 @@ const byId=id=>root.querySelector('#'+id);
     if(busy||pendingReview||state.phase==='opened'||(state.mode==='codebreaker'&&state.phase==='vote'&&state.codebreaker.answers.some(v=>v!==null)))return;
     const next=Math.max(1,Math.min(5,state.level+change));
     if(next===state.level)return;
+    if(state.mode==='football'){
+      state.football.plan.level=next;syncFootballPlan();return nextFootballTask();
+    }
     const bank=topics[state.topic]?.bank;
     if(bank&&!bank.questions.some(q=>q.level===next)){
       return requestAI({topic:bank.label,notes:bank.notes||'',level:next,count:Math.max(8,state.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
@@ -137,6 +157,11 @@ const byId=id=>root.querySelector('#'+id);
     render();persist();
   }
   function reset() {
+    if(state.mode==='football'){
+      const game=state.football;
+      state.football={...createFootball(game.teams[0].size,game.teams[1].size),plan:game.plan,taskLabel:game.taskLabel,taskNumber:game.taskNumber};
+      render();persist();return;
+    }
     state = fresh({count:validSettings()?state.count:20,total:validSettings()?state.total:8,
       mode:state.mode,scenario:state.scenario,level:state.level,topic:state.topic});
     preparedQuestions=[];
@@ -145,13 +170,17 @@ const byId=id=>root.querySelector('#'+id);
   }
   function render() {
     root.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=false);
-    const safe=state.mode==='codebreaker';root.dataset.mode=state.mode;
+    const safe=state.mode==='codebreaker',football=state.mode==='football';root.dataset.mode=state.mode;
     renderSetup();
     byId('rescue-notice').hidden=!notice;
     byId('rescue-notice').textContent=notice;
-    byId('rescue-scenarios').hidden=safe;byId('rescue-scene').hidden=safe;
-    byId('rescue-voting-settings').hidden=safe;byId('codebreaker-stage').hidden=!safe;
+    byId('rescue-scenarios').hidden=safe||football;byId('rescue-scene').hidden=safe||football;
+    byId('rescue-voting-settings').hidden=safe||football;byId('codebreaker-stage').hidden=!safe;
     byId('codebreaker-teams-section').hidden=!safe;
+    byId('football-board').hidden=!football;byId('football-plan').hidden=!football;byId('football-next').hidden=!football;
+    byId('rescue-choices').hidden=football;byId('rescue-reset').textContent=football?'Spielstand zurücksetzen':'Neu starten';
+    action.removeAttribute('aria-expanded');
+    if(football){renderFootball();finishRender();return;}
     if(safe){renderCodebreaker();finishRender();return;}
     const revealed = state.phase !== 'vote';
     const finished = state.phase === 'rescued' || state.phase === 'failed';
@@ -260,6 +289,60 @@ const byId=id=>root.querySelector('#'+id);
       byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=state.current.why;
     }
   }
+  function renderFootball(){
+    const game=state.football;
+    if(footballPlanRef!==game.plan){syncFootballPlan();footballPlanRef=game.plan;}
+    footballView.render(game);renderQuestion(game.solutionVisible);
+    renderFootballPlan();
+    byId('rescue-round').textContent=setupOpen?'Spiel vorbereiten':game.taskLabel+' · Aufgabe '+game.taskNumber;
+    byId('rescue-level').textContent='Stufe '+state.level+' · '+(state.level<=2?'Niveau A':state.level<=4?'Niveau B':'Niveau C');
+    byId('rescue-status').classList.remove('is-error');byId('rescue-status').textContent=game.solutionVisible?'Die Lösung ist eingeblendet.':'Die Lösung bleibt verborgen.';
+    action.disabled=false;action.textContent=game.solutionVisible?'Lösung verbergen':'Lösung anzeigen';action.setAttribute('aria-expanded',String(game.solutionVisible));
+    byId('rescue-feedback').hidden=!game.solutionVisible;
+    if(game.solutionVisible){byId('rescue-outcome').textContent='Lösung: '+state.current.answers[state.current.correct];byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=state.current.why;}
+  }
+  function syncFootballPlan(){
+    const plan=state.football.plan;
+    byId('football-topic').value=plan.topic;byId('football-custom-topic').value=plan.customTopic;byId('football-notes').value=plan.notes;
+    refreshFootballLevels();
+  }
+  function refreshFootballLevels(){
+    const plan=state.football.plan,select=byId('football-level'),labels=topics[plan.topic]?.levels;
+    select.replaceChildren();
+    for(let level=1;level<=5;level++){const option=document.createElement('option');option.value=level;option.textContent='Stufe '+level+' · '+(labels?.[level-1]||(['A','A','B','B','C'][level-1]+'-Niveau'));select.appendChild(option);}
+    select.value=String(plan.level);
+  }
+  function footballNeedsAI(){
+    const p=state.football.plan,bank=topics[p.topic]?.bank;
+    return p.topic==='custom'||Boolean(p.notes.trim())||Boolean(bank&&!bank.questions.some(q=>q.level===p.level));
+  }
+  function renderFootballPlan(){
+    const needsAI=footballNeedsAI();byId('football-custom-field').hidden=state.football.plan.topic!=='custom';
+    byId('football-login').hidden=!needsAI||!aiAccess.required||aiAccess.authenticated||!aiAccess.configured;
+    byId('football-next').disabled=needsAI&&aiAccess.required&&!aiAccess.authenticated;
+    byId('football-plan-note').textContent=needsAI&&aiAccess.required&&!aiAccess.authenticated?
+      aiAccess.configured?'Schalte die KI mit deinem Zugangscode frei, um diese Vorgaben umzusetzen.':'Der KI-Zugang ist noch nicht eingerichtet.':
+      'Freie Vorgaben werden mit KI umgesetzt. Die Lösung bleibt bis zu deinem Klick verborgen.';
+  }
+  function useFootballQuestion(question,topic,label,level){
+    validateQuestion(question);state.usedTerms=[...state.usedTerms,state.current.term].slice(-60);
+    state.current=question;state.topic=topics[topic]?topic:'mental';state.level=level;state.index++;
+    state.football={...state.football,taskNumber:state.index+1,taskLabel:label,solutionVisible:false};
+    preparedQuestions=[];notice='';render();persist();
+  }
+  async function nextFootballTask(){
+    if(busy||pendingReview||state.mode!=='football')return;
+    const p=state.football.plan;
+    if(p.topic==='custom'&&!p.customTopic.trim()){notice='Trage ein Thema für die nächste Aufgabe ein.';render();byId('football-plan').open=true;byId('football-custom-topic').focus();return;}
+    const label=p.topic==='custom'?p.customTopic.trim():topics[p.topic].label;
+    if(footballNeedsAI()){
+      if(aiAccess.required&&!aiAccess.authenticated){notice='Schalte die KI im Bereich „Vorgaben für die nächste Aufgabe“ frei.';render();byId('football-plan').open=true;return;}
+      return requestAI({topic:label,notes:p.notes.trim()||topics[p.topic]?.bank?.notes||'',level:p.level,count:1,exclude:state.usedTerms},
+        {mode:'football-next',targetTopic:p.topic,nextLevel:p.level,wasSetupOpen:false});
+    }
+    try{useFootballQuestion(generateTopicQuestion(p.topic,p.level,[...state.usedTerms,state.current.term]),p.topic,label,p.level);}
+    catch(error){notice=error.message;render();}
+  }
   root.querySelectorAll('[data-rescue-scenario]').forEach(button=>button.addEventListener('click',()=>{
     state.scenario=button.dataset.rescueScenario;
     render();
@@ -290,6 +373,7 @@ const byId=id=>root.querySelector('#'+id);
   byId('rescue-reset').addEventListener('click',reset);
   action.addEventListener('click',()=>{
     if(busy||pendingReview)return;
+    if(state.mode==='football'){state.football.solutionVisible=!state.football.solutionVisible;render();persist();return;}
     if(state.mode==='codebreaker'){
       if(state.phase==='opened')return reset();
       if(state.phase==='result'){
@@ -322,7 +406,9 @@ const byId=id=>root.querySelector('#'+id);
 
 
   function draftFromGame(){
-    return {mode:state.mode??'rescue',topic:state.topic||'brackets',customTopic:'',notes:'',
+    const p=state.mode==='football'?state.football.plan:null;
+    return {mode:state.mode??'rescue',topic:p?.topic||state.topic||'brackets',customTopic:p?.customTopic||'',notes:p?.notes||'',
+      blueSize:state.football.teams[0].size,redSize:state.football.teams[1].size,
       level:state.level<=2?1:state.level<=4?3:5,total:state.total||8,count:state.count||20,scenario:state.scenario};
   }
   function syncSetupFields(){
@@ -335,9 +421,11 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-setup-scenario').value=draft.scenario;
     byId('rescue-setup-total').value=draft.total??'';
     byId('rescue-setup-size').value=draft.count??'';
+    byId('football-blue-size').value=draft.blueSize??10;byId('football-red-size').value=draft.redSize??10;
   }
   function refreshTopics(){
-    const select=byId('rescue-topic'),previous=select.value;
+    for(const select of [byId('rescue-topic'),byId('football-topic')]){
+    const previous=select.value;
     select.replaceChildren();
     for(const [id,topic] of Object.entries(topics)){
       const option=document.createElement('option');option.value=id;option.textContent=topic.label;
@@ -345,14 +433,17 @@ const byId=id=>root.querySelector('#'+id);
     }
     const custom=document.createElement('option');custom.value='custom';custom.textContent='Eigenes Thema mit KI …';select.appendChild(custom);
     select.value=previous||'brackets';
+    }
   }
   function renderSetup(){
     const safe=draft?.mode==='codebreaker';
-    byId('game-title').textContent=setupOpen?'Save my Math':state.mode==='codebreaker'?'Codeknacker':'Rettungseinsatz';
+    const football=draft?.mode==='football';
+    byId('game-title').textContent=setupOpen?'Save my Math':state.mode==='codebreaker'?'Codeknacker':state.mode==='football'?'Mathe-Fußball':'Rettungseinsatz';
     document.title=byId('game-title').textContent+' · Mathematik im AV';
-    for(const kind of ['scenario','total','size'])byId('rescue-'+kind+'-field').hidden=safe;
-    for(const kind of ['scenario','total','size'])byId('rescue-setup-'+kind).disabled=safe;
+    for(const kind of ['scenario','total','size'])byId('rescue-'+kind+'-field').hidden=safe||football;
+    for(const kind of ['scenario','total','size'])byId('rescue-setup-'+kind).disabled=safe||football;
     byId('codebreaker-setup-rule').hidden=!safe;
+    for(const team of ['blue','red']){byId('football-'+team+'-field').hidden=!football;byId('football-'+team+'-size').disabled=!football;}
     byId('rescue-storage-note').hidden=!cloudMode;
     byId('rescue-setup').hidden=!setupOpen||Boolean(pendingReview);
     byId('rescue-play').hidden=setupOpen||Boolean(pendingReview);
@@ -381,6 +472,7 @@ const byId=id=>root.querySelector('#'+id);
       aiConfigured?'Die KI erstellt Aufgaben zu deinem Thema. Danach kannst du sie prüfen und freigeben.':
       cloudMode?'Die KI ist noch nicht eingerichtet. Hinterlege OPENAI_API_KEY in den Vercel-Einstellungen und veröffentliche die App erneut.':
       'Die KI ist noch nicht eingerichtet. Öffne „KI konfigurieren.cmd“ im Projektordner und starte die App danach neu.':
+      football?'Die Lösung blendest du per Klick ein. Im Spiel kannst du Vorgaben für die nächste Aufgabe festlegen.':
       'Du erhältst neue Aufgaben mit je drei Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
   }
   function openSetup(){
@@ -407,6 +499,8 @@ const byId=id=>root.querySelector('#'+id);
     finally{busy=false;render();}
   }
   function buildReview(bank){
+    const football=pendingReview.mode==='football-next'||pendingReview.settings?.mode==='football';
+    byId('rescue-review-note').textContent=football?'Prüfe die Aufgabe vor dem Einsatz. Unter „Lösung prüfen“ kannst du die Lösung einblenden.':'Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.';
     byId('rescue-review-summary').textContent=bank.label+' · '+bank.questions.length+' Aufgaben · Stufe '+bank.questions[0].level;
     const list=byId('rescue-review-list');list.replaceChildren();
     for(const [index,q] of bank.questions.entries()){
@@ -416,12 +510,21 @@ const byId=id=>root.querySelector('#'+id);
       const answers=document.createElement('ol');answers.type='A';
       q.answers.forEach((answer,i)=>{const li=document.createElement('li');li.textContent=answer+(i===q.correct?' · richtig':'');if(i===q.correct)li.className='is-right';answers.appendChild(li);});
       const why=document.createElement('p');why.className='rs-explanation';why.textContent=q.why;
-      details.append(summary,instruction,answers,why);list.appendChild(details);
+      if(football){
+        const solution=document.createElement('details'),title=document.createElement('summary'),answer=document.createElement('p');
+        title.textContent='Lösung prüfen';answer.textContent=q.answers[q.correct];solution.append(title,answer,why);details.append(summary,instruction,solution);
+      }else details.append(summary,instruction,answers,why);
+      list.appendChild(details);
     }
   }
   async function approveReview(){
     if(busy||!pendingReview)return;
     const review=pendingReview;let bank=review.bank;
+    if(review.mode==='football-next'){
+      try{useFootballQuestion(bank.questions[0],review.targetTopic,bank.label,review.nextLevel);pendingReview=null;setupOpen=false;notice='';persist();}
+      catch(error){notice=error.message;}
+      render();return;
+    }
     if(review.mode==='extend'){
       const previous=topics[review.topicId].bank;
       bank={...previous,questions:[...previous.questions,...bank.questions].filter((q,i,all)=>all.findIndex(v=>v.id===q.id)===i)};
@@ -468,12 +571,27 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-discard').addEventListener('click',()=>{
       if(busy||!pendingReview)return;setupOpen=pendingReview.wasSetupOpen;pendingReview=null;notice='';render();resizeScene();
     });
+    byId('football-next').addEventListener('click',nextFootballTask);
+    for(const [id,key] of [['football-topic','topic'],['football-level','level'],['football-custom-topic','customTopic'],['football-notes','notes']]){
+      const field=byId(id);field.addEventListener(field.tagName==='SELECT'?'change':'input',()=>{
+        state.football.plan[key]=key==='level'?Number(field.value):field.value;
+        if(key==='topic')refreshFootballLevels();renderFootballPlan();persist();
+      });
+    }
+    byId('football-unlock').addEventListener('click',async()=>{
+      if(busy)return;const input=byId('football-password'),password=input.value;input.value='';
+      if(!password){notice='Trage deinen KI-Zugangscode ein.';render();return;}
+      busy=true;render();
+      try{await api('/api/session',{method:'POST',body:JSON.stringify({password})});aiAccess.authenticated=true;notice='';}
+      catch(error){notice=error.message;}finally{busy=false;render();}
+    });
     const controls={
       'game-mode':['mode',String],
       'rescue-topic':['topic',String],'rescue-custom-topic':['customTopic',String],
       'rescue-custom-notes':['notes',String],'rescue-start-level':['level',Number],
       'rescue-setup-scenario':['scenario',String],'rescue-setup-total':['total',Number],
       'rescue-setup-size':['count',Number]
+      ,'football-blue-size':['blueSize',Number],'football-red-size':['redSize',Number]
     };
     for(const [id,[key,parse]] of Object.entries(controls)){
       const control=byId(id);
@@ -485,10 +603,12 @@ const byId=id=>root.querySelector('#'+id);
       event.preventDefault();if(busy||!byId('rescue-setup').reportValidity())return;
       setupError='';notice='';
       const safe=draft.mode==='codebreaker';
-      if(!safe&&(!Number.isInteger(draft.count)||draft.count<1||draft.count>40||!Number.isInteger(draft.total)||draft.total<1||draft.total>30)){
+      const football=draft.mode==='football';
+      if(!safe&&!football&&(!Number.isInteger(draft.count)||draft.count<1||draft.count>40||!Number.isInteger(draft.total)||draft.total<1||draft.total>30)){
         setupError='Wähle 1 bis 40 SuS und 1 bis 30 Fragen.';renderSetup();return;
       }
-      const settings={...draft,...(safe?{count:20,total:12,scenario:'water'}:{})};
+      if(football&&![draft.blueSize,draft.redSize].every(n=>Number.isInteger(n)&&n>=1&&n<=40)){setupError='Jedes Team braucht 1 bis 40 Personen.';renderSetup();return;}
+      const settings={...draft,...(safe?{count:20,total:12,scenario:'water'}:football?{count:20,total:8,scenario:'water'}:{})};
       if(draft.topic==='custom'){
         return requestAI({topic:draft.customTopic.trim(),notes:draft.notes.trim(),level:draft.level,count:Math.max(8,settings.total)},
           {mode:'new',settings,wasSetupOpen:true});

@@ -266,6 +266,8 @@ import { validateGeneratedQuestion } from './math.js';
          !question.values.every(Number.isFinite)||question.values.filter(v=>sameNumber(v,answer)).length!==1||
          !sameNumber(question.values[question.correct],answer)||
          !question.answers.every((a,i)=>a===numberText(question.values[i])+(question.unit?' '+question.unit:'')))throw new Error('Lösung passt nicht zur Rechnung.');
+    } else if(question.kind==='ai-numeric'){
+      validateGeneratedQuestion(question);
     } else if(question.kind==='authored'){
       const source=topics[question.topic]?.bank?.questions.find(q=>q.id===question.id);
       if(!source||source.term!==question.term||source.level!==question.level||source.correct!==question.correct||
