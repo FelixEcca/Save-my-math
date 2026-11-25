@@ -31,13 +31,38 @@ export function calculate(expression){
   return finite(result);
 }
 
+export function validateTextQuestion(q){
+  const norm=s=>s.normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de');
+  if(!q||q.kind!=='ai-text'||typeof q.id!=='string'||!q.id||q.id.length>60||
+    typeof q.term!=='string'||!q.term.trim()||q.term.length>260||
+    !Number.isInteger(q.level)||q.level<1||q.level>5||
+    typeof q.instruction!=='string'||q.instruction.length>180||
+    typeof q.why!=='string'||!q.why.trim()||q.why.length>700||
+    !Array.isArray(q.answers)||![2,3].includes(q.answers.length)||
+    !q.answers.every(a=>typeof a==='string'&&a.trim()&&a.length<=300)||
+    new Set(q.answers.map(norm)).size!==q.answers.length||
+    !Number.isInteger(q.correct)||q.correct<0||q.correct>=q.answers.length)
+    throw new Error('Die Textaufgabe ist unvollständig oder ihre Antworten sind nicht eindeutig.');
+  return q;
+}
+
+export function materializeTextQuestion(raw,level,id,random=Math.random){
+  if(!raw||!Array.isArray(raw.answers)||!Number.isInteger(raw.correct)||raw.correct<0||raw.correct>=raw.answers.length)
+    throw new Error('Die Textaufgabe hat ein ungültiges Format.');
+  const q=validateTextQuestion({id,kind:'ai-text',term:raw.prompt,instruction:raw.instruction,why:raw.explanation,level,answers:raw.answers,correct:raw.correct});
+  const options=q.answers.map((answer,i)=>({answer,right:i===q.correct}));
+  for(let i=options.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
+  return validateTextQuestion({...q,answers:options.map(o=>o.answer),correct:options.findIndex(o=>o.right)});
+}
+
 export function validateGeneratedQuestion(q){
+  if(q?.kind==='ai-text')return validateTextQuestion(q);
   if(!q||typeof q.id!=='string'||q.id.length>60||typeof q.term!=='string'||!q.term.trim()||q.term.length>260||
      !Number.isInteger(q.level)||q.level<1||q.level>5||typeof q.instruction!=='string'||q.instruction.length>180||
      typeof q.why!=='string'||q.why.length>500||typeof q.calculation!=='string'||
      typeof q.unit!=='string'||q.unit.length>24||!Number.isInteger(q.decimals)||q.decimals<0||q.decimals>8||
-     !Array.isArray(q.answers)||q.answers.length!==3||!Array.isArray(q.values)||q.values.length!==3||
-     !q.values.every(Number.isFinite)||!Number.isInteger(q.correct)||q.correct<0||q.correct>2)throw new Error('Der Aufgabensatz ist unvollständig.');
+     !Array.isArray(q.answers)||![2,3].includes(q.answers.length)||!Array.isArray(q.values)||q.values.length!==q.answers.length||
+     !q.values.every(Number.isFinite)||!Number.isInteger(q.correct)||q.correct<0||q.correct>=q.answers.length)throw new Error('Der Aufgabensatz ist unvollständig.');
   const result=roundTo(calculate(q.calculation),q.decimals);
   if(q.values.filter(v=>close(v,result)).length!==1||!close(q.values[q.correct],result)||
      q.values.some((v,i)=>q.values.some((w,j)=>i!==j&&close(v,w))))throw new Error('Die Antworten sind nicht eindeutig.');
@@ -50,7 +75,7 @@ export function materializeQuestion(raw,level,id,random=Math.random){
      typeof raw.instruction!=='string'||raw.instruction.length>90||typeof raw.unit!=='string'||
      !/^[\p{L}\p{N}²³%°€$ /·^\-]{0,24}$/u.test(raw.unit)||
      !Number.isInteger(raw.decimals)||raw.decimals<0||raw.decimals>8||
-     !Array.isArray(raw.distractors)||raw.distractors.length!==2||
+     !Array.isArray(raw.distractors)||![1,2].includes(raw.distractors.length)||
      !raw.distractors.every(v=>Number.isFinite(v)&&Math.abs(v)<=1e14))throw new Error('Die KI-Aufgabe hat ein ungültiges Format.');
   const result=roundTo(calculate(raw.calculation),raw.decimals);
   const values=[result,...raw.distractors.map(v=>roundTo(v,raw.decimals))];

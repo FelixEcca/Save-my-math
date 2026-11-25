@@ -4,7 +4,7 @@ export function createScene(scene,root,getState) {
   let state=getState(),width=736,height=250,colors={},active=true,animationId=0;
   function updateColors() {
     const names=['sky-top','sky-low','land','sea','sea-front','foam','boat','boat-ink','orange','skin',
-      'bean-water','bean-rail','bean-cliff','bean-ice','bean-space','rock','ice','space','space-low','station','train','tracks',
+      'bean-rail','bean-cliff','bean-ice','bean-space','rock','ice','space','space-low','station','train','tracks',
       'shadow','hazard','rope-core'];
     const probe=document.createElement('span');
     probe.style.display='none';
@@ -215,78 +215,6 @@ export function createScene(scene,root,getState) {
     }
   }
 
-  function waterSurface(y,t,foreground=false,danger=0) {
-    const amplitude=3+danger*9;
-    context.beginPath();
-    for(let x=0;x<=width;x+=4) {
-      const yy=y+Math.sin(x/34+t*(1.2+danger))*amplitude+
-        Math.sin(x/17-t*(.8+danger))*(1.4+danger*3);
-      x===0?context.moveTo(x,yy):context.lineTo(x,yy);
-    }
-    context.lineTo(width,height);
-    context.lineTo(0,height);
-    context.closePath();
-    context.fillStyle=foreground?colors['sea-front']:colors.sea;
-    context.fill();
-  }
-
-  function boat(progress,t,danger=0) {
-    const x=width*(.86-.39*progress);
-    const y=height*(.49+.14*progress)+Math.sin(t*(1+danger))* (1.5+danger*4);
-    context.save();
-    context.translate(x,y);
-    context.rotate(Math.sin(t*1.4)*danger*.045);
-    context.scale(.75+progress*.2,.75+progress*.2);
-    polygon([[-50,1],[49,1],[33,22],[-30,22]],colors.boat);
-    polygon([[-48,2],[47,2],[39,8],[-42,8]],colors.orange);
-    polygon([[-21,0],[-17,-25],[19,-25],[31,0]],colors.boat);
-    polygon([[-10,-20],[14,-20],[22,-5],[-12,-5]],colors['boat-ink']);
-    line([[-2,-25],[-2,-42],[18,-42]],colors.boat,3);
-    if(state.phase==='rescued') bean(-29,-14,.45,colors['bean-water'],t,{celebrate:true});
-    context.restore();
-  }
-
-  function drawWater(t,progress,danger) {
-    sky();
-    polygon([[0,height*.39],[width*.13,height*.31],[width*.29,height*.39],[width*.56,height*.36],
-      [width,height*.41],[width,height],[0,height]],colors.land);
-    waterSurface(height*.43,t,false,danger*.5);
-    context.globalAlpha=.4;
-    for(let row=0;row<6;row++) {
-      const yy=height*(.47+row*.065);
-      line([[0,yy],[width*.32,yy+Math.sin(t+row)*danger*7],
-        [width*.64,yy-3],[width,yy+2]],colors.foam,1+danger*.5);
-    }
-    context.globalAlpha=1;
-    if(danger>=.5) {
-      context.globalAlpha=(danger-.3)*.36;
-      for(let i=0;i<20;i++) {
-        const xx=((i*73+t*45)%Math.max(1,width));
-        const yy=((i*29+t*80)%Math.max(1,height));
-        line([[xx,yy],[xx-5,yy+11]],colors.foam,1);
-      }
-      context.globalAlpha=1;
-    }
-    boat(progress,t,danger);
-    const waterY=height*(.76-danger*.035);
-    if(state.phase!=='rescued') {
-      const bodyY=state.phase==='failed'?waterY+31:waterY-32+danger*33;
-      bean(width*.28,bodyY,.87,colors['bean-water'],t,
-        {failed:state.phase==='failed',rotation:Math.sin(t*(1.2+danger))*danger*.055});
-    }
-    waterSurface(waterY,t,true,danger);
-    context.globalAlpha=.7;
-    for(let i=0;i<4;i++) {
-      const xx=width*.28-35+i*22;
-      const yy=waterY+Math.sin(xx/34+t*(1.2+danger))*(3+danger*9)+4;
-      line([[xx-6,yy],[xx+4,yy-1]],colors.foam,1+danger);
-    }
-    context.globalAlpha=1;
-    if(state.phase==='failed') {
-      for(let i=0;i<4;i++) ellipse(width*.28+Math.sin(i*2)*20,waterY-6-i*8,2+i%2,2+i%2,colors.foam);
-    }
-  }
-
   function train(x,y,t,danger=0) {
     const size=Math.min(1,width/650);
     context.save();
@@ -490,8 +418,8 @@ export function createScene(scene,root,getState) {
     context.clearRect(0,0,width,height);
     const progress=state.history.length/Math.max(1,state.total||8);
     const danger=state.phase==='rescued'?0:Math.min(1,(5-state.energy)/4);
-    const renderers={water:drawWater,rail:drawRail,cliff:drawCliff,ice:drawIce,space:drawSpace};
-    renderers[state.scenario](time,progress,danger);
+    const renderers={rail:drawRail,cliff:drawCliff,ice:drawIce,space:drawSpace};
+    (renderers[state.scenario]||drawRail)(time,progress,danger);
     atmosphere(danger);
   }
 

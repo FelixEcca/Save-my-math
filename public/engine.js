@@ -69,12 +69,12 @@ import { validateGeneratedQuestion } from './math.js';
 
   function validateAlgebraQuestion(question) {
     if (!question || typeof question.term !== 'string' || !Array.isArray(question.answers) ||
-        question.answers.length !== 3 || !Number.isInteger(question.correct) ||
-        question.correct < 0 || question.correct > 2 || !Number.isInteger(question.level) ||
+        ![2,3].includes(question.answers.length) || !Number.isInteger(question.correct) ||
+        question.correct < 0 || question.correct >= question.answers.length || !Number.isInteger(question.level) ||
         question.level < 1 || question.level > 5) throw new Error('Frage unvollständig.');
     const source = parseLinear(question.term).coefficients;
     const options = question.answers.map(answer => parseLinear(answer).coefficients);
-    if (new Set(options.map(vectorKey)).size !== 3) throw new Error('Antworten müssen verschieden sein.');
+    if (new Set(options.map(vectorKey)).size !== question.answers.length) throw new Error('Antworten müssen verschieden sein.');
     if (options.filter(option => equalVectors(option, source)).length !== 1 ||
         !equalVectors(options[question.correct], source)) throw new Error('Lösung passt nicht zum Term.');
     return question;
@@ -204,7 +204,7 @@ import { validateGeneratedQuestion } from './math.js';
       if(seen.has(question.id))throw new Error('Doppelte Aufgabenkennung.');
       seen.add(question.id);
     }
-    topics[bank.id]={label:bank.label,levels:bank.levels,instruction:'Berechne die gesuchte Größe.',bank};
+    topics[bank.id]={label:bank.label,levels:bank.levels,instruction:'Wähle die richtige Antwort.',bank};
     return bank;
   }
   const rounded=value=>Number(value.toPrecision(14));
@@ -254,19 +254,31 @@ import { validateGeneratedQuestion } from './math.js';
       values,correct:values.findIndex(v=>sameNumber(v,answer)),why});
   }
   function validateQuestion(question) {
+    if(question?.kind==='choice-subset'){
+      const source=question.source,indices=question.answerIndices;
+      if(!source||source.kind==='choice-subset')throw new Error('Die Ausgangsaufgabe fehlt.');
+      validateQuestion(source);
+      if(!Array.isArray(indices)||indices.length!==2||new Set(indices).size!==2||
+        !indices.every(i=>Number.isInteger(i)&&i>=0&&i<source.answers.length)||
+        !['term','why','level','instruction','topic'].every(k=>question[k]===source[k])||
+        JSON.stringify(question.answers)!==JSON.stringify(indices.map(i=>source.answers[i]))||
+        question.correct!==indices.indexOf(source.correct)||question.correct<0)
+        throw new Error('Die Antwortauswahl passt nicht zur geprüften Aufgabe.');
+      return question;
+    }
     if(!question||typeof question.term!=='string'||question.term.length>260||
-       !Array.isArray(question.answers)||question.answers.length!==3||
-       !question.answers.every(a=>typeof a==='string'&&a.length>0&&a.length<100)||
-       new Set(question.answers).size!==3||!Number.isInteger(question.correct)||
-       question.correct<0||question.correct>2||!Number.isInteger(question.level)||
+       !Array.isArray(question.answers)||![2,3].includes(question.answers.length)||
+       !question.answers.every(a=>typeof a==='string'&&a.length>0&&a.length<=300)||
+       new Set(question.answers).size!==question.answers.length||!Number.isInteger(question.correct)||
+       question.correct<0||question.correct>=question.answers.length||!Number.isInteger(question.level)||
        question.level<1||question.level>5||typeof question.why!=='string')throw new Error('Frage unvollständig.');
     if(question.kind==='numeric'){
       const answer=checkNumeric(question.check);
-      if(!Array.isArray(question.values)||question.values.length!==3||
+      if(!Array.isArray(question.values)||question.values.length!==question.answers.length||
          !question.values.every(Number.isFinite)||question.values.filter(v=>sameNumber(v,answer)).length!==1||
          !sameNumber(question.values[question.correct],answer)||
          !question.answers.every((a,i)=>a===numberText(question.values[i])+(question.unit?' '+question.unit:'')))throw new Error('Lösung passt nicht zur Rechnung.');
-    } else if(question.kind==='ai-numeric'){
+    } else if(['ai-numeric','ai-text'].includes(question.kind)){
       validateGeneratedQuestion(question);
     } else if(question.kind==='authored'){
       const source=topics[question.topic]?.bank?.questions.find(q=>q.id===question.id);
@@ -275,7 +287,7 @@ import { validateGeneratedQuestion } from './math.js';
     } else validateAlgebraQuestion(question);
     return question;
   }
-  function generateTopicQuestion(topic,level,previousTerms=[],random=Math.random) {
+  function generateTopicQuestion(topic,level,previousTerms=[],random=Math.random,answerCount=3) {
     if(!topics[topic])topic='brackets';
     if(topic==='brackets')return {...generateBracketQuestion(level,previousTerms,random),topic,kind:'algebra'};
     const integer=(min,max)=>min+Math.floor(random()*(max-min+1));
@@ -283,7 +295,7 @@ import { validateGeneratedQuestion } from './math.js';
     const n=numberText;
     const make=(term,op,args,wrong,unit,why)=>numericQuestion(term,op,args,wrong,unit,why,level,topic,random);
     if(topics[topic].bank){
-      const pool=topics[topic].bank.questions.filter(q=>q.level===level);
+      const pool=topics[topic].bank.questions.filter(q=>q.level===level&&q.answers.length>=answerCount);
       if(!pool.length)throw new Error('Für dieses Niveau fehlen noch Aufgaben.');
       const unused=pool.filter(q=>!previousTerms.includes(q.term));
       return validateQuestion({...pick(unused.length?unused:pool),kind:'authored',topic});
@@ -419,4 +431,15 @@ import { validateGeneratedQuestion } from './math.js';
     return question;
   }
   // TOPIC_ENGINE_END
-export { topics, generateTopicQuestion, validateQuestion, parseLinear, registerCustomBank, renderTerms, renderVector };
+function withAnswerCount(question,count=3,random=Math.random){
+  validateQuestion(question);
+  if(![2,3].includes(count))throw new Error('Wähle zwei oder drei Antworten.');
+  if(question.answers.length===count)return question;
+  if(question.kind==='choice-subset')return withAnswerCount(question.source,count,random);
+  if(count===3)throw new Error('Für drei Antworten wird ein neuer Aufgabensatz benötigt.');
+  const wrong=question.answers.map((_,i)=>i).filter(i=>i!==question.correct);
+  const indices=shuffle([question.correct,wrong[Math.floor(random()*wrong.length)]],random);
+  return validateQuestion({...question,kind:'choice-subset',source:question,answerIndices:indices,
+    answers:indices.map(i=>question.answers[i]),correct:indices.indexOf(question.correct)});
+}
+export { withAnswerCount, topics, generateTopicQuestion, validateQuestion, parseLinear, registerCustomBank, renderTerms, renderVector };

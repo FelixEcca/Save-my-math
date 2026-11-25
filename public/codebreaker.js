@@ -43,10 +43,10 @@ export function createCodebreakerView(stage,container,onAnswer){
     container.appendChild(card);cards.push(card);
   }
   container.addEventListener('click',event=>{
-    const button=event.target.closest('button[data-answer]');if(!button||button.disabled)return;
+    const button=event.target.closest('button[data-answer]');if(!button||button.disabled||button.hidden)return;
     onAnswer(Number(button.dataset.team),button.dataset.answer==='clear'?null:Number(button.dataset.answer));
   });
-  return {render(game){
+  return {render(game,answerCount=3){
     const finished=game.winners.length>0,lead=Math.max(...game.streaks);
     stage.classList.toggle('is-open',finished);
     stage.querySelector('#codebreaker-headline').textContent=finished?'Der Safe ist offen!':'Wer knackt den Safe?';
@@ -56,6 +56,7 @@ export function createCodebreakerView(stage,container,onAnswer){
     stage.querySelectorAll('.ck-vault-locks svg').forEach((icon,i)=>icon.classList.toggle('is-open',i<lead));
     cards.forEach((card,i)=>{
       const answered=game.answers[i]!==null,right=game.answers[i]===game.correct;
+      card.querySelectorAll('button[data-answer]').forEach(button=>{button.hidden=button.dataset.answer!=='clear'&&Number(button.dataset.answer)>=answerCount;});
       card.classList.toggle('is-right',game.revealed&&right);card.classList.toggle('is-wrong',game.revealed&&!right);
       card.classList.toggle('is-winner',game.winners.includes(i));
       card.querySelector('.ck-streak').textContent=game.streaks[i]+' / 4';

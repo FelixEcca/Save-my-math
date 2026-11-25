@@ -1,4 +1,4 @@
-import {topics,generateTopicQuestion,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
+import {topics,generateTopicQuestion,withAnswerCount,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
 import {createScene} from './scene.js';
 import {loadBrowserBanks,saveBrowserBank} from './storage.js';
 import {createCodebreaker,setTeamAnswer,resolveCodebreaker,nextCodebreakerRound,validCodebreakerSave,createCodebreakerView} from './codebreaker.js';
@@ -6,8 +6,6 @@ import {createFootball,moveBall,positionBall,awardGoal,drawPlayers,validFootball
 const root=document.getElementById('av-rescue-preview');
 const byId=id=>root.querySelector('#'+id);
   const scenarios = {
-    water: {name: 'Über Bord', color: 'bean-water', goal: 'Rettungsboot', success: 'Wieder an Bord!',
-      failure: 'Ein ziemlich nasser Abgang.'},
     rail: {name: 'Auf dem Gleis', color: 'bean-rail', goal: 'Bahnsteig', success: 'Schuh frei. Gleis frei!',
       failure: 'Der Zug hatte keine Geduld.'},
     cliff: {name: 'Am Felsen', color: 'bean-cliff', goal: 'Gipfel', success: 'Oben angekommen!',
@@ -18,12 +16,15 @@ const byId=id=>root.querySelector('#'+id);
       failure: 'Leider ohne Rückflugticket.'}
   };
   const footballFromSettings=settings=>({...createFootball(settings.blueSize??10,settings.redSize??10),taskLabel:topics[settings.topic??'brackets'].label,
-    plan:{topic:settings.topic??'brackets',customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level??2,batchSize:settings.batchSize??10}});
+    plan:{topic:settings.topic??'brackets',customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level??2,batchSize:settings.batchSize??10,answerFormat:settings.answerFormat??'numeric'}});
+  const questionFor=(topic,level,previous=[],answerCount=state.answerCount??3)=>
+    withAnswerCount(generateTopicQuestion(topic,level,previous,Math.random,answerCount),answerCount);
+  const bankFormat=bank=>bank?.questions?.some(q=>q.kind==='ai-text')?'text':'numeric';
   const fresh = (settings = {}) => ({
-    version: 2, mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
-    scenario: settings.scenario ?? 'water', level: settings.level ?? 2,
+    version: 2, answerCount:settings.answerCount??3, answerFormat:settings.answerFormat??'numeric', mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
+    scenario: settings.scenario ?? 'rail', level: settings.level ?? 2,
     index: 0, energy: Math.min(4,settings.total??8), votes: [0,0,0], phase: 'vote', history: [], usedTerms: [],
-    current: generateTopicQuestion(settings.topic??'brackets',settings.level ?? 2)
+    current: questionFor(settings.topic??'brackets',settings.level ?? 2,[],settings.answerCount??3)
   });
   let state = fresh();
   const gameNames={rescue:'Rettungseinsatz',codebreaker:'Codeknacker',football:'Mathe-Fußball'};
@@ -43,6 +44,7 @@ const byId=id=>root.querySelector('#'+id);
   const resizeScene=()=>renderer.resize();
   const safeView=createCodebreakerView(byId('codebreaker-stage'),byId('codebreaker-teams'),(team,answer)=>{
     if(busy||pendingReview||state.mode!=='codebreaker'||state.phase!=='vote')return;
+    if(answer!==null&&answer>=state.current.answers.length)return;
     state.codebreaker=setTeamAnswer(state.codebreaker,team,answer);render();persist();
     const card=byId('codebreaker-teams').children[team];
     card.querySelector(answer===null?'.ck-answer-buttons button':'.ck-change').focus();
@@ -97,10 +99,11 @@ const byId=id=>root.querySelector('#'+id);
     const legacyLevel = [1,1,1,2,2,3,3,5][old.index];
     const current = {term,answers,correct,level:legacyLevel,
       why:term+' = '+renderTerms(parsed.terms)+' = '+renderVector(parsed.coefficients)+'.'};
-    return {...old,version:2,total:8,scenario:'water',level:legacyLevel,current,usedTerms:[term]};
+    return {...old,version:2,total:8,scenario:'rail',level:legacyLevel,current,usedTerms:[term]};
   }
   function restore(snapshot) {
     const saved = migrate(snapshot?.privateContent?.rescue);
+    if(saved?.scenario==='water')saved.scenario='rail';
     const safe=saved?.mode==='codebreaker';
     const football=saved?.mode==='football';
     if(football){const migrated=migrateFootballSave(saved.football);if(!migrated)return;saved.football=migrated;}
@@ -112,7 +115,8 @@ const byId=id=>root.querySelector('#'+id);
         !Number.isSafeInteger(saved.index) || saved.index < 0 || (!safe&&!football&&saved.index >= saved.total) ||
         !Number.isInteger(saved.energy) || saved.energy < 0 || saved.energy > 5 ||
         !Array.isArray(saved.votes) || saved.votes.length !== 3 ||
-        !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count))) return;
+        !saved.votes.every(vote => vote === null || (Number.isInteger(vote) && vote >= 0 && vote <= saved.count)) ||
+        (saved.current?.answers?.length===2&&saved.votes[2]!==0)) return;
     if(football){
       if(!validFootballSave(saved.football)||saved.phase!=='vote'||!Array.isArray(saved.history)||saved.history.length||saved.index!==saved.football.taskNumber-1||
         !(topics[saved.football.plan.topic]||saved.football.plan.topic==='custom'))return;
@@ -128,12 +132,13 @@ const byId=id=>root.querySelector('#'+id);
     if(!topics[saved.topic||'brackets'])return;
     try { validateQuestion(saved.current); } catch (_) { return; }
     if(football&&saved.football.batch)saved.current=saved.football.batch.questions[saved.football.batch.cursor];
-    state = {...saved,mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),football:football?saved.football:footballFromSettings(saved),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
+    state = {...saved,answerCount:saved.current.answers.length,answerFormat:saved.answerFormat??bankFormat(topics[saved.topic]?.bank),mode:saved.mode??'rescue',codebreaker:safe?saved.codebreaker:createCodebreaker(),football:football?saved.football:footballFromSettings(saved),topic:saved.topic||'brackets',history:[...saved.history],votes:[...saved.votes],
       usedTerms:Array.isArray(saved.usedTerms) ? saved.usedTerms.filter(term => typeof term==='string').slice(-60) : []};
     const stored=snapshot.privateContent;
     hasGame=typeof stored.hasGame==='boolean'?stored.hasGame:stored.setupOpen===false||saved.history.length>0||saved.index>0||Boolean(football&&saved.football.batch)||saved.votes.some(v=>v>0);
     setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
-    const settings=stored.setup;
+    const settings=stored.setup?{...stored.setup}:null;
+    if(settings?.scenario==='water')settings.scenario='rail';
     if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
       draft={...settings,batchSize:[10,15].includes(settings.batchSize)?settings.batchSize:10,mode:['codebreaker','football'].includes(settings.mode)?settings.mode:'rescue',blueSize:state.football.teams[0].size,redSize:state.football.teams[1].size,customTopic:String(settings.customTopic||'').slice(0,120),notes:String(settings.notes||'').slice(0,600)};
       syncSetupFields();
@@ -146,8 +151,8 @@ const byId=id=>root.querySelector('#'+id);
   }
   function replaceQuestion() {
     state.usedTerms = [...state.usedTerms,state.current.term].slice(-60);
-    state.current = preparedQuestions.find(q=>q.level===state.level&&!state.usedTerms.includes(q.term))||
-      generateTopicQuestion(state.topic,state.level,state.usedTerms);
+    state.current = preparedQuestions.find(q=>q.level===state.level&&q.answers.length===state.answerCount&&!state.usedTerms.includes(q.term))||
+      questionFor(state.topic,state.level,state.usedTerms);
     state.votes = [0,0,0];
     if(state.mode==='codebreaker')state.codebreaker=state.codebreaker.revealed?
       nextCodebreakerRound(state.codebreaker):{...state.codebreaker,answers:[null,null,null,null]};
@@ -160,7 +165,7 @@ const byId=id=>root.querySelector('#'+id);
       state.football.plan.level=next;syncFootballPlan();byId('football-plan').open=true;notice='Prüfe einen neuen Aufgabenvorrat für das geänderte Niveau.';render();persist();return;
     }
     const bank=topics[state.topic]?.bank;
-    if(bank&&!bank.questions.some(q=>q.level===next)){
+    if(bank&&!bank.questions.some(q=>q.level===next&&q.answers.length>=state.answerCount)){
       return requestAI({topic:bank.label,notes:bank.notes||'',level:next,count:Math.max(8,state.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
         {mode:'extend',topicId:state.topic,nextLevel:next,wasSetupOpen:setupOpen});
     }
@@ -175,7 +180,7 @@ const byId=id=>root.querySelector('#'+id);
       render();persist();return;
     }
     state = fresh({count:validSettings()?state.count:20,total:validSettings()?state.total:8,
-      mode:state.mode,scenario:state.scenario,level:state.level,topic:state.topic});
+      mode:state.mode,scenario:state.scenario,level:state.level,topic:state.topic,answerCount:state.answerCount,answerFormat:state.answerFormat});
     preparedQuestions=[];
     render();
     persist();
@@ -221,7 +226,6 @@ const byId=id=>root.querySelector('#'+id);
     [...byId('rescue-energy').children].forEach((part,index)=>part.classList.toggle('is-on',index<state.energy));
     const remaining = Math.max(0,(state.total||8)-state.history.length);
     const warnings = {
-      water:{3:'Die Wellen werden höher.',2:'Die Figur geht immer tiefer!',1:'Nur noch der Kopf ist über Wasser!'},
       rail:{3:'Der Zug kommt näher.',2:'Der Zug rast auf die Figur zu!',1:'Der Zug ist fast da!'},
       cliff:{3:'Das Seil beginnt zu reißen.',2:'Nur wenige Fasern halten noch!',1:'Nur noch ein Faden hält!'},
       ice:{3:'Die Risse werden breiter.',2:'Das Eis bricht unter den Füßen!',1:'Die letzte Eisscholle kippt!'},
@@ -306,6 +310,8 @@ const byId=id=>root.querySelector('#'+id);
     hubOpen=true;replaceGameHash('');render();
   }
   function renderQuestion(revealed,finished=false){
+    byId('rescue-choices').dataset.answerCount=state.current.answers.length;
+    byId('rescue-choices').classList.toggle('has-text-answers',state.current.answers.some(a=>a.length>35));
     byId('rescue-question').textContent=state.current.term;
     byId('rescue-instruction').textContent=state.current.instruction||topics[state.topic].instruction;
     byId('rescue-question').parentElement.classList.toggle('is-text',state.current.term.length>55);
@@ -313,14 +319,17 @@ const byId=id=>root.querySelector('#'+id);
     const frozen=state.mode==='codebreaker'&&(finished||(state.phase==='vote'&&state.codebreaker.answers.some(v=>v!==null)));
     byId('rescue-easier').disabled=frozen||state.level===1;byId('rescue-harder').disabled=frozen||state.level===5;
     for(let i=0;i<3;i++){
-      byId('rescue-answer-'+i).textContent=state.current.answers[i];
+      byId('rescue-answer-'+i).textContent=state.current.answers[i]??'';
+      byId('rescue-option-'+i).hidden=i>=state.current.answers.length;
+      countInputs[i].disabled=i>=state.current.answers.length;
+      if(i>=state.current.answers.length){state.votes[i]=0;countInputs[i].value=0;}
       const option=byId('rescue-option-'+i);option.classList.toggle('is-correct',revealed&&state.current.correct===i);
       option.querySelector('.rs-correct-label').hidden=!(revealed&&state.current.correct===i);
     }
   }
   function renderCodebreaker(){
     const game=state.codebreaker,answered=game.answers.filter(v=>v!==null).length,finished=state.phase==='opened';
-    safeView.render(game);renderQuestion(game.revealed,finished);
+    safeView.render(game,state.current.answers.length);renderQuestion(game.revealed,finished);
     byId('rescue-round').textContent=setupOpen?'Spiel vorbereiten':topics[state.topic].label+' · Runde '+(state.index+1)+' · vier Teams';
     const status=byId('rescue-status');status.classList.remove('is-error');
     status.textContent=finished?'Vier Schlösser offen. Der Safe ist geknackt.':game.revealed?'Alle Antworten sind aufgedeckt.':answered+' von 4 Teams haben geantwortet.';
@@ -349,7 +358,7 @@ const byId=id=>root.querySelector('#'+id);
   }
   function syncFootballPlan(){
     const plan=state.football.plan;
-    byId('football-topic').value=plan.topic;byId('football-custom-topic').value=plan.customTopic;byId('football-notes').value=plan.notes;byId('football-plan-size').value=String(plan.batchSize);
+    byId('football-topic').value=plan.topic;byId('football-custom-topic').value=plan.customTopic;byId('football-notes').value=plan.notes;byId('football-plan-size').value=String(plan.batchSize);byId('football-answer-format').value=plan.answerFormat??'numeric';
     refreshFootballLevels();
   }
   function refreshFootballLevels(){
@@ -360,9 +369,10 @@ const byId=id=>root.querySelector('#'+id);
   }
   function footballNeedsAI(p=state.football.plan){
     const bank=topics[p.topic]?.bank;
-    return p.topic==='custom'||Boolean(p.notes.trim())||Boolean(bank&&new Set(bank.questions.filter(q=>q.level===p.level).map(q=>q.term)).size<p.batchSize);
+    return p.topic==='custom'||p.answerFormat==='text'||Boolean(p.notes.trim())||Boolean(bank&&new Set(bank.questions.filter(q=>q.level===p.level&&q.answers.length>=3).map(q=>q.term)).size<p.batchSize);
   }
   function renderFootballPlan(){
+    byId('football-answer-format').value=state.football.plan.answerFormat??'numeric';
     const needsAI=footballNeedsAI();byId('football-custom-field').hidden=state.football.plan.topic!=='custom';
     byId('football-login').hidden=!needsAI||!aiAccess.required||aiAccess.authenticated||!aiAccess.configured;
     byId('football-prepare').disabled=needsAI&&aiAccess.required&&!aiAccess.authenticated;
@@ -387,17 +397,17 @@ const byId=id=>root.querySelector('#'+id);
   }
   async function prepareFootballBatch(settings=null){
     if(busy||pendingReview||(!settings&&state.mode!=='football'))return;
-    const plan=settings?{topic:settings.topic,customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level,batchSize:settings.batchSize}: {...state.football.plan};
+    const plan=settings?{topic:settings.topic,customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level,batchSize:settings.batchSize,answerFormat:settings.answerFormat??'numeric'}: {...state.football.plan};
     if(![10,15].includes(plan.batchSize))return;
     if(plan.topic==='custom'&&!plan.customTopic.trim()){notice='Trage ein Thema für den Aufgabenvorrat ein.';render();return;}
     const label=plan.topic==='custom'?plan.customTopic.trim():topics[plan.topic].label;
     const context={mode:'football-batch',targetTopic:plan.topic,nextLevel:plan.level,plan,settings,wasSetupOpen:setupOpen};
     if(footballNeedsAI(plan)){
       if(aiAccess.required&&!aiAccess.authenticated){notice='Schalte die KI mit deinem Zugangscode frei.';render();if(!settings)byId('football-plan').open=true;return;}
-      return requestAI({topic:label,notes:plan.notes.trim()||topics[plan.topic]?.bank?.notes||'',level:plan.level,count:plan.batchSize,exclude:state.usedTerms},context);
+      return requestAI({answerCount:3,answerFormat:plan.answerFormat??bankFormat(topics[plan.topic]?.bank),topic:label,notes:plan.notes.trim()||topics[plan.topic]?.bank?.notes||'',level:plan.level,count:plan.batchSize,exclude:state.usedTerms},context);
     }
     try{
-      const questions=[];for(let i=0;i<plan.batchSize;i++)questions.push(generateTopicQuestion(plan.topic,plan.level,questions.map(q=>q.term)));
+      const questions=[];for(let i=0;i<plan.batchSize;i++)questions.push(questionFor(plan.topic,plan.level,questions.map(q=>q.term),3));
       pendingReview={...context,bank:{label,questions}};buildReview(pendingReview.bank);notice='';render();
     }catch(error){notice=error.message;render();}
   }
@@ -467,7 +477,7 @@ const byId=id=>root.querySelector('#'+id);
     const p=state.mode==='football'?state.football.plan:null;
     return {mode:state.mode??'rescue',topic:p?.topic||state.topic||'brackets',customTopic:p?.customTopic||'',notes:p?.notes||'',
       blueSize:state.football.teams[0].size,redSize:state.football.teams[1].size,
-      batchSize:state.football.plan.batchSize,
+      batchSize:state.football.plan.batchSize,answerCount:state.answerCount??3,answerFormat:state.answerFormat??bankFormat(topics[state.topic]?.bank),
       level:state.level<=2?1:state.level<=4?3:5,total:state.total||8,count:state.count||20,scenario:state.scenario};
   }
   function syncSetupFields(){
@@ -478,6 +488,7 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-custom-notes').value=draft.notes||'';
     byId('rescue-start-level').value=String(draft.level);
     byId('rescue-setup-scenario').value=draft.scenario;
+    byId('rescue-answer-count').value=String(draft.answerCount??3);byId('rescue-answer-format').value=draft.answerFormat??'numeric';
     byId('rescue-setup-total').value=draft.total??'';
     byId('rescue-setup-size').value=draft.count??'';
     byId('football-blue-size').value=draft.blueSize??10;byId('football-red-size').value=draft.redSize??10;
@@ -512,8 +523,11 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-open-setup').hidden=setupOpen||Boolean(pendingReview);
     if(!draft)return;
     const custom=draft.topic==='custom';
+    byId('rescue-answer-count-field').hidden=football;byId('rescue-answer-count').disabled=football;
+    byId('rescue-answer-format-field').hidden=!custom;
+    byId('rescue-answer-format').value=draft.answerFormat??'numeric';
     const bank=topics[draft.topic]?.bank;
-    const missingLevel=Boolean(bank&&!bank.questions.some(q=>q.level===draft.level));
+    const missingLevel=Boolean(bank&&!bank.questions.some(q=>q.level===draft.level&&q.answers.length>=(draft.answerCount??3)));
     const needsAI=custom||missingLevel||(football&&footballNeedsAI({...draft,batchSize:draft.batchSize??10}));
     const showAccess=aiAccess.required&&(custom||Boolean(topics[draft.topic]?.bank));
     byId('rescue-ki-access').hidden=!showAccess;
@@ -534,7 +548,7 @@ const byId=id=>root.querySelector('#'+id);
       cloudMode?'Die KI ist noch nicht eingerichtet. Hinterlege OPENAI_API_KEY in den Vercel-Einstellungen und veröffentliche die App erneut.':
       'Die KI ist noch nicht eingerichtet. Öffne „KI konfigurieren.cmd“ im Projektordner und starte die App danach neu.':
       football?'Prüfe die 10 oder 15 Aufgaben vor dem Start. Im Spiel wechselst du direkt zur nächsten Aufgabe.':
-      'Du erhältst neue Aufgaben mit je drei Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
+      'Du erhältst Aufgaben mit '+(draft.answerCount??3)+' Antwortmöglichkeiten. Mit „Leichter“ und „Schwerer“ änderst du das Anforderungsniveau.');
   }
   function openSetup(mode=state.mode){
     if(busy||pendingReview)return;
@@ -553,6 +567,7 @@ const byId=id=>root.querySelector('#'+id);
   }
   async function requestAI(request,context){
     if(busy)return;
+    request={answerCount:context.settings?.answerCount??state.answerCount??3,answerFormat:context.settings?.answerFormat??context.plan?.answerFormat??bankFormat(topics[context.topicId]?.bank),...request};
     busy=true;setupError='';notice='Die KI erstellt und prüft die Aufgaben. Das kann einen Moment dauern.';render();
     try{
       const {bank}=await api('/api/generate',{method:'POST',body:JSON.stringify(request)});
@@ -644,10 +659,10 @@ const byId=id=>root.querySelector('#'+id);
     });
     byId('football-next').addEventListener('click',nextFootballTask);
     byId('football-prepare').addEventListener('click',()=>prepareFootballBatch());
-    for(const [id,key] of [['football-topic','topic'],['football-level','level'],['football-plan-size','batchSize'],['football-custom-topic','customTopic'],['football-notes','notes']]){
+    for(const [id,key] of [['football-topic','topic'],['football-level','level'],['football-plan-size','batchSize'],['football-custom-topic','customTopic'],['football-notes','notes'],['football-answer-format','answerFormat']]){
       const field=byId(id);field.addEventListener(field.tagName==='SELECT'?'change':'input',()=>{
         state.football.plan[key]=['level','batchSize'].includes(key)?Number(field.value):field.value;
-        if(key==='topic')refreshFootballLevels();renderFootballPlan();persist();
+        if(key==='topic'){if(topics[field.value]?.bank)state.football.plan.answerFormat=bankFormat(topics[field.value].bank);refreshFootballLevels();}renderFootballPlan();persist();
       });
     }
     byId('football-unlock').addEventListener('click',async()=>{
@@ -659,6 +674,7 @@ const byId=id=>root.querySelector('#'+id);
     });
     const controls={
       'game-mode':['mode',String],
+      'rescue-answer-count':['answerCount',Number],'rescue-answer-format':['answerFormat',String],
       'rescue-topic':['topic',String],'rescue-custom-topic':['customTopic',String],
       'rescue-custom-notes':['notes',String],'rescue-start-level':['level',Number],
       'rescue-setup-scenario':['scenario',String],'rescue-setup-total':['total',Number],
@@ -668,7 +684,7 @@ const byId=id=>root.querySelector('#'+id);
     for(const [id,[key,parse]] of Object.entries(controls)){
       const control=byId(id);
       control.addEventListener(control.tagName==='SELECT'?'change':'input',()=>{
-        draft[key]=control.value===''?(parse===Number?null:''):parse(control.value);if(key==='mode')replaceGameHash('#spiel='+draft.mode);setupError='';setupMessage='';renderSetup();persist();
+        draft[key]=control.value===''?(parse===Number?null:''):parse(control.value);if(key==='topic'&&topics[draft.topic]?.bank)draft.answerFormat=bankFormat(topics[draft.topic].bank);if(key==='mode')replaceGameHash('#spiel='+draft.mode);setupError='';setupMessage='';renderSetup();persist();
       });
     }
     const createTopicGame=async event=>{
@@ -680,20 +696,20 @@ const byId=id=>root.querySelector('#'+id);
         setupError='Wähle 1 bis 40 SuS und 1 bis 30 Fragen.';renderSetup();return;
       }
       if(football&&![draft.blueSize,draft.redSize].every(n=>Number.isInteger(n)&&n>=1&&n<=40)){setupError='Jedes Team braucht 1 bis 40 Personen.';renderSetup();return;}
-      const settings={...draft,...(safe?{count:20,total:12,scenario:'water'}:football?{count:20,total:draft.batchSize??10,scenario:'water'}:{})};
+      const settings={...draft,answerCount:draft.answerCount??3,...(safe?{count:20,total:12,scenario:'rail'}:football?{count:20,total:draft.batchSize??10,scenario:'rail'}:{})};
       if(football)return prepareFootballBatch(settings);
       if(draft.topic==='custom'){
         return requestAI({topic:draft.customTopic.trim(),notes:draft.notes.trim(),level:draft.level,count:Math.max(8,settings.total)},
           {mode:'new',settings,wasSetupOpen:true});
       }
       const bank=topics[draft.topic]?.bank;
-      if(bank&&!bank.questions.some(q=>q.level===draft.level)){
+      if(bank&&!bank.questions.some(q=>q.level===draft.level&&q.answers.length>=(draft.answerCount??3))){
         return requestAI({topic:bank.label,notes:bank.notes||'',level:draft.level,count:Math.max(8,settings.total),exclude:bank.questions.map(q=>q.term).slice(-60)},
           {mode:'extend',topicId:draft.topic,nextLevel:draft.level,settings,wasSetupOpen:true});
       }
       try{
         const next=fresh(settings);
-        const sample=[next.current];for(let i=1;i<settings.total;i++)sample.push(generateTopicQuestion(draft.topic,draft.level,sample.map(q=>q.term)));
+        const sample=[next.current];for(let i=1;i<settings.total;i++)sample.push(questionFor(draft.topic,draft.level,sample.map(q=>q.term),settings.answerCount));
         preparedQuestions=sample;state=next;hasGame=true;setupOpen=false;render();resizeScene();persist();byId('rescue-open-setup').focus();
       }catch(_){setupError='Die Aufgaben konnten nicht erstellt werden. Wähle ein anderes Thema oder Niveau.';renderSetup();}
     };

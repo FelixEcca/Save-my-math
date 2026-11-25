@@ -3,7 +3,8 @@
 Kooperatives Mathematikspiel fuer die Ausbildungsvorbereitung an der Gewerblichen Schule Lahr.
 
 - Kurze, vollstaendige deutsche Saetze. Kein kindlicher Sprachstil.
-- Bestehende fuenf Szenarien und die zunehmende Gefahr bei sinkender Kraft erhalten.
+- Die vier Szenarien Gleis, Felsen, Eis und All und die zunehmende Gefahr bei sinkender Kraft erhalten; den Boot-Modus nicht wieder einbauen.
+- Zwei oder drei Antwortmoeglichkeiten sowie KI-Textaufgaben fuer andere Faecher unterstuetzen. Fachliche Gegenpruefung und Lehrkraftfreigabe beibehalten.
 - Gemeinsame Themenmaske fuer Rettungseinsatz, Codeknacker und Mathe-Fussball. Codeknacker hat vier Teams und vier Schloesser je Team. Richtige Antworten oeffnen ein Schloss, falsche setzen nur dieses Team auf null. Vier richtige Antworten in Folge gewinnen; gleichzeitige Sieger sind moeglich.
 - Die Startseite bietet drei anklickbare Spielkarten mit passenden Vorschaubildern. Eine Karte oeffnet die gemeinsame Themenmaske mit dem gewaehlten Spiel. Alle Spiele fuehrt zur Uebersicht zurueck. Laufende Spiele zum Fortsetzen anbieten und beim Wechsel zur Uebersicht erhalten. Hash-Links und Browser-Zurueck unterstuetzen; offene Aufgabenpruefungen nicht durch Navigation verwerfen.
 - Fuer die Rettungseinsatz-Spielkarte auf Wunsch des Nutzers die Gleisszene als Vorschaubild verwenden; keine Boot- oder Wasserszene.

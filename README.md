@@ -50,7 +50,7 @@ Die Begrenzung der KI-Anfragen gilt pro laufender Funktionsinstanz und ersetzt k
 
 ## Enthalten
 
-- Fünf animierte Situationen: über Bord, auf dem Gleis, am Felsen, dünnes Eis und im All.
+- Vier animierte Situationen: auf dem Gleis, am Felsen, dünnes Eis und im All.
 - Neun Themen mit zufällig erzeugten, rechnerisch geprüften Aufgaben: Klammern, Terme, Kopfrechnen, Längen, Flächenmaße, Flächeninhalte, Umfang, Prozentrechnen und Brüche.
 - Fünf Schwierigkeitsstufen. Die Auswahl A/B/C legt den Einstieg fest; „Leichter“ und „Schwerer“ steuern feiner nach. Die Bezeichnungen sind didaktische Stufen und keine vollständige Bildungsplanzuordnung.
 - 1 bis 30 Fragen und 1 bis 40 Lernende. Die Stimmen werden von der Lehrkraft eingetragen.
@@ -101,7 +101,7 @@ npm run build
 ```
 
 - `public/app.js`: Spielablauf, Themenmaske, Stimmen und Lehrkraftvorschau.
-- `public/scene.js`: die fünf Canvas-Szenarien mit sechs Kraftzuständen.
+- `public/scene.js`: die vier Canvas-Szenarien mit sechs Kraftzuständen.
 - `public/engine.js`: eingebaute Aufgabengeneratoren und Themenverwaltung.
 - `public/math.js`: Rechensprache und Prüfung der KI-Antworten, gemeinsam im Browser und Server verwendet.
 - `server/ai.mjs`: Responses API, strukturiertes Ausgabeformat und fachliche Gegenprüfung.
@@ -110,3 +110,5 @@ npm run build
 Der Server bindet ausschließlich an `127.0.0.1`. Er akzeptiert nur lokale Hostnamen und gleiche Herkunft und liefert nur ausdrücklich freigegebene Dateien aus. Vor einer Bereitstellung im Internet sind ein passender Betrieb, Zugangsschutz und eine Verwaltung der API-Kosten einzurichten.
 
 Die API-Anbindung orientiert sich am [OpenAI-Quickstart](https://developers.openai.com/api/docs/quickstart) und an der [Dokumentation zu Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Das Modell ist über `OPENAI_MODEL` konfigurierbar.
+
+Eigene KI-Themen unterstützen Zahlen oder Text und Sprache, zum Beispiel das/dass-Sätze. Für Rettungseinsatz und Codeknacker sind zwei oder drei Antwortmöglichkeiten wählbar. Auch Textaufgaben durchlaufen die unabhängige fachliche Prüfung und die Freigabe der Lehrkraft. Alte Boot-Spielstände wechseln bei erhaltenem Fortschritt zum Gleis.

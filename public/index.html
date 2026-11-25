@@ -67,8 +67,14 @@
       <label class="rs-field" for="rescue-start-level">Startniveau
         <select id="rescue-start-level"><option value="1">A · leichter Einstieg</option><option value="3">B · Grundlagen anwenden</option><option value="5">C · anspruchsvoll</option></select>
       </label>
+      <label class="rs-field" id="rescue-answer-count-field" for="rescue-answer-count">Antwortmöglichkeiten
+        <select id="rescue-answer-count"><option value="2">2 Antworten</option><option value="3" selected>3 Antworten</option></select>
+      </label>
+      <label class="rs-field" id="rescue-answer-format-field" for="rescue-answer-format">Antwortformat für die KI
+        <select id="rescue-answer-format"><option value="numeric">Zahlen und Rechnungen</option><option value="text">Text und Sprache</option></select>
+      </label>
       <label class="rs-field" id="rescue-scenario-field" for="rescue-setup-scenario">Situation
-        <select id="rescue-setup-scenario"><option value="water">Über Bord</option><option value="rail">Auf dem Gleis</option><option value="cliff">Am Felsen</option><option value="ice">Dünnes Eis</option><option value="space">Im All</option></select>
+        <select id="rescue-setup-scenario"><option value="rail">Auf dem Gleis</option><option value="cliff">Am Felsen</option><option value="ice">Dünnes Eis</option><option value="space">Im All</option></select>
       </label>
       <label class="rs-field" id="rescue-total-field" for="rescue-setup-total">Anzahl der Fragen
         <input id="rescue-setup-total" type="number" min="1" max="30" step="1" value="8" inputmode="numeric" required>
@@ -107,15 +113,14 @@
   </form>
   <div id="rescue-play" hidden>
   <div class="rs-scenarios" id="rescue-scenarios" role="group" aria-label="Szenario auswählen">
-    <button type="button" class="cursor-interaction" data-rescue-scenario="water" aria-pressed="true">Über Bord</button>
-    <button type="button" class="cursor-interaction" data-rescue-scenario="rail" aria-pressed="false">Auf dem Gleis</button>
+    <button type="button" class="cursor-interaction" data-rescue-scenario="rail" aria-pressed="true">Auf dem Gleis</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="cliff" aria-pressed="false">Am Felsen</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="ice" aria-pressed="false">Dünnes Eis</button>
     <button type="button" class="cursor-interaction" data-rescue-scenario="space" aria-pressed="false">Im All</button>
   </div>
   <div class="rs-scene" id="rescue-scene">
-    <canvas id="rescue-canvas" role="img" aria-label="Eine Person hält sich über Wasser. Ein Rettungsboot nähert sich."></canvas>
-    <div class="rs-boat-label" id="rescue-boat">Das Boot kommt nach 8 Fragen.</div>
+    <canvas id="rescue-canvas" role="img" aria-label="Eine Comicfigur steht auf einem Gleis. Ein Zug nähert sich."></canvas>
+    <div class="rs-boat-label" id="rescue-boat">Bahnsteig · noch 8 Fragen</div>
     <div class="rs-strength">
       <div class="rs-strength-label"><span>Kraft</span><span id="rescue-energy-text">4 / 5</span></div>
       <div id="rescue-energy" class="rs-energy" role="progressbar" aria-label="Verbleibende Kraft" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4">
@@ -176,6 +181,9 @@
         </label>
         <label class="rs-field" for="football-plan-size">Aufgaben im Vorrat
           <select id="football-plan-size"><option value="10">10 Aufgaben</option><option value="15">15 Aufgaben</option></select>
+        </label>
+        <label class="rs-field" for="football-answer-format">Antwortformat für die KI
+          <select id="football-answer-format"><option value="numeric">Zahlen und Rechnungen</option><option value="text">Text und Sprache</option></select>
         </label>
         <label class="rs-field rs-field-wide" id="football-custom-field" for="football-custom-topic" hidden>Eigenes Thema
           <input id="football-custom-topic" type="text" maxlength="120" placeholder="Zum Beispiel: Volumen von Quadern">
