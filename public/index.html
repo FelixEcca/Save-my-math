@@ -62,6 +62,10 @@
       <label class="rs-field" id="football-red-field" for="football-red-size" hidden>Personen in Team Rot
         <input id="football-red-size" type="number" min="1" max="40" step="1" value="10" required>
       </label>
+      <label class="rs-field" id="football-batch-field" for="football-batch-size" hidden>Aufgaben im Vorrat
+        <select id="football-batch-size"><option value="10">10 Aufgaben</option><option value="15">15 Aufgaben</option></select>
+      </label>
+      <p class="rs-setup-note rs-field-wide" id="football-number-hint" hidden>Beide Teams nutzen dieselben Trikotnummern. Vergebt im größeren Team einige Nummern doppelt, wenn die Teams verschieden groß sind.</p>
     </div>
     <p class="rs-setup-note" id="rescue-setup-note" aria-live="polite"></p>
     <p class="rs-setup-note" id="rescue-storage-note" hidden>Freigegebene KI-Themen werden in diesem Browser gespeichert.</p>
@@ -100,9 +104,10 @@
     <div class="rs-ending" id="rescue-ending" hidden><p id="rescue-end-text"></p><p id="rescue-end-detail"></p></div>
   </div>
   <section class="ck-stage" id="codebreaker-stage" aria-label="Der Safe" hidden></section>
+  <section class="fb-focus" id="football-focus" hidden><div class="fb-task-host" id="football-task-host"></div><div class="fb-number-panel" id="football-number-host" aria-label="Gemeinsame Trikotnummer"></div></section>
   <section class="fb-board" id="football-board" aria-label="Mathe-Fußball: Spielfeld und Teams" hidden></section>
   <div class="rs-body">
-    <div class="rs-question">
+    <div class="rs-question" id="rescue-question-block">
       <p id="rescue-instruction">Vereinfache den Term.</p><h3 id="rescue-question">12 − (4 − 2)</h3>
       <div class="rs-difficulty">
         <span id="rescue-level" aria-live="polite">Stufe 2 · Eine Variable</span>
@@ -140,7 +145,7 @@
       <div class="ck-teams" id="codebreaker-teams"></div>
     </section>
     <details class="fb-plan" id="football-plan" hidden>
-      <summary>Vorgaben für die nächste Aufgabe</summary>
+      <summary>Neuen Aufgabenvorrat vorbereiten</summary>
       <div class="rs-setup-grid">
         <label class="rs-field" for="football-topic">Thema
           <select id="football-topic"></select>
@@ -148,22 +153,26 @@
         <label class="rs-field" for="football-level">Niveau und Aufgabentyp
           <select id="football-level"></select>
         </label>
+        <label class="rs-field" for="football-plan-size">Aufgaben im Vorrat
+          <select id="football-plan-size"><option value="10">10 Aufgaben</option><option value="15">15 Aufgaben</option></select>
+        </label>
         <label class="rs-field rs-field-wide" id="football-custom-field" for="football-custom-topic" hidden>Eigenes Thema
           <input id="football-custom-topic" type="text" maxlength="120" placeholder="Zum Beispiel: Volumen von Quadern">
         </label>
-        <label class="rs-field rs-field-wide" for="football-notes">Was soll die nächste Aufgabe enthalten? (optional)
-          <textarea id="football-notes" maxlength="600" placeholder="Zum Beispiel: ein Rechteck mit 8 cm und 6 cm, gesucht ist der Flächeninhalt"></textarea>
+        <label class="rs-field rs-field-wide" for="football-notes">Was sollen die Aufgaben enthalten? (optional)
+          <textarea id="football-notes" maxlength="600" placeholder="Zum Beispiel: Rechtecke und Quadrate mit ganzen Seitenlängen bis 20 cm"></textarea>
         </label>
-        <p class="rs-setup-note rs-field-wide" id="football-plan-note">Freie Vorgaben werden mit KI umgesetzt. Die Lösung bleibt bis zu deinem Klick verborgen.</p>
+        <p class="rs-setup-note rs-field-wide" id="football-plan-note">Prüfe den Vorrat einmal vor dem Einsatz. Danach läuft das Spiel ohne weitere Freigaben.</p>
         <div class="rs-ki-login rs-field-wide" id="football-login" hidden>
           <label class="rs-field" for="football-password">Zugangscode für die KI
             <input id="football-password" type="password" autocomplete="current-password" maxlength="500">
           </label>
           <button id="football-unlock" type="button">KI freischalten</button>
         </div>
+        <div class="rs-setup-actions rs-field-wide"><button class="rs-main-action" id="football-prepare" type="button">10 Aufgaben erstellen und prüfen</button></div>
       </div>
     </details>
-    <div class="rs-controls">
+    <div class="rs-controls" id="rescue-controls">
       <p class="rs-status" id="rescue-status" aria-live="polite">0 von 20 Stimmen eingetragen.</p>
       <button id="football-next" type="button" hidden>Neue Aufgabe</button>
       <button class="rs-main-action cursor-interaction" id="rescue-resolve" type="button" disabled>Auflösen</button>

@@ -362,3 +362,43 @@ main { max-width: 1150px; margin: 0 auto; }
     @media (prefers-reduced-motion: reduce) {
       #av-rescue-preview * { transition: none !important; }
     }
+    #av-rescue-preview .fb-focus { display:grid; grid-template-columns:minmax(0,1fr) 225px; gap:18px; margin:0 14px 14px; }
+    #av-rescue-preview .fb-task-host { padding:22px; border:2px solid var(--rs-accent); border-radius:12px; background:var(--rs-paper); display:flex; flex-direction:column; gap:14px; justify-content:center; min-width:0; }
+    #av-rescue-preview .fb-task-host .rs-question h3,#av-rescue-preview .fb-task-host .rs-question.is-text h3 { font-size:clamp(30px,3.6vw,44px); font-weight:600; line-height:1.2; letter-spacing:-.025em; overflow-wrap:anywhere; }
+    #av-rescue-preview .fb-task-host .rs-question p { font-size:16px; }
+    #av-rescue-preview .fb-task-host .rs-controls { margin-top:auto; }
+    #av-rescue-preview .fb-task-host .rs-feedback { padding-top:12px; font-size:22px; }
+    #av-rescue-preview .fb-task-host .rs-explanation { font-size:18px; }
+    #av-rescue-preview .fb-number-panel { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:14px; border:1px solid var(--rs-line); border-radius:12px; background:var(--rs-paper); text-align:center; }
+    #av-rescue-preview .fb-draw-label { font-size:15px; font-weight:600; }
+    #av-rescue-preview .fb-shirt-badge { background:linear-gradient(90deg,#245eb2 50%,#b43f34 50%); clip-path:polygon(25% 0,38% 7%,62% 7%,75% 0,100% 20%,88% 43%,77% 37%,77% 100%,23% 100%,23% 37%,12% 43%,0 20%); width:170px; height:154px; display:flex; align-items:center; justify-content:center; color:white; padding-top:18px; }
+    #av-rescue-preview #football-shared-number { font-size:88px; font-weight:750; line-height:1; font-variant-numeric:tabular-nums; }
+    #av-rescue-preview #football-draw-status { font-size:13px; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-scoreboard { grid-template-columns:1fr 1fr; margin-bottom:5px; }
+    #av-rescue-preview .fb-team { grid-template-columns:1fr auto; }
+    #av-rescue-preview .fb-team.fb-red { text-align:right; }
+    #av-rescue-preview .fb-goals { display:grid; justify-items:center; }
+    #av-rescue-preview .fb-goals span { font-size:12px; color:var(--rs-subtle); }
+    #av-rescue-preview .fb-score { font-size:36px; }
+    #av-rescue-preview .fb-pitch-wrap { max-width:710px; }
+    #av-rescue-preview .fb-position { margin-bottom:5px; }
+    #av-rescue-preview .fb-match-controls #football-goal { margin-left:auto; }
+    #av-rescue-preview[data-mode="football"] #rescue-easier,#av-rescue-preview[data-mode="football"] #rescue-harder { display:none; }
+    #av-rescue-preview[data-mode="football"] .rs-body { padding-top:14px; }
+    @media(max-width:800px){
+      #av-rescue-preview .fb-focus { grid-template-columns:minmax(0,1fr) 180px; gap:10px; }
+      #av-rescue-preview .fb-task-host { padding:16px; }
+      #av-rescue-preview .fb-shirt-badge { width:140px; height:130px; }
+      #av-rescue-preview #football-shared-number { font-size:72px; }
+      #av-rescue-preview .fb-task-host .rs-controls { align-items:stretch; }
+    }
+    @media(max-width:560px){
+      #av-rescue-preview .fb-focus { grid-template-columns:1fr; margin:0 9px 10px; }
+      #av-rescue-preview .fb-number-panel { display:grid; grid-template-columns:100px 1fr; column-gap:15px; }
+      #av-rescue-preview .fb-shirt-badge { grid-row:1/4; width:100px; height:102px; }
+      #av-rescue-preview #football-shared-number { font-size:56px; }
+      #av-rescue-preview .fb-draw-label { grid-column:2; }
+      #av-rescue-preview .fb-number-panel button { grid-column:2; }
+      #av-rescue-preview .fb-number-panel #football-draw-status { grid-column:2; }
+      #av-rescue-preview .fb-team h3 { font-size:18px; }
+    }
