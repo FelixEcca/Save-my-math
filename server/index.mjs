@@ -13,7 +13,7 @@ const files=new Map([
   ['/storage.js',['storage.js','text/javascript; charset=utf-8']],
   ['/codebreaker.js',['codebreaker.js','text/javascript; charset=utf-8']],
   ['/football.js',['football.js','text/javascript; charset=utf-8']],
-  ...['language-data.js','language-pools.js','more-math.js'].map(name=>['/'+name,[name,'text/javascript; charset=utf-8']]),
+  ...['language-data.js','language-pools.js','more-math.js','language-levels.js','quiz-migration.js','quiz-legacy.js'].map(name=>['/'+name,[name,'text/javascript; charset=utf-8']]),
   ['/thumb-rescue.svg',['thumb-rescue.svg','image/svg+xml']],
   ['/thumb-codebreaker.svg',['thumb-codebreaker.svg','image/svg+xml']],
   ['/thumb-football.svg',['thumb-football.svg','image/svg+xml']]

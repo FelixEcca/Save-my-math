@@ -2,6 +2,7 @@ import {subjects} from './language-pools.js';
 import {topics,generateTopicQuestion,withAnswerCount,validateQuestion,parseLinear,registerCustomBank,renderTerms,renderVector} from './engine.js';
 import {createScene} from './scene.js';
 import {loadBrowserBanks,saveBrowserBank} from './storage.js';
+import {upgradeQuizState} from './quiz-migration.js';
 import {createCodebreaker,setTeamAnswer,resolveCodebreaker,nextCodebreakerRound,validCodebreakerSave,createCodebreakerView} from './codebreaker.js';
 import {createFootball,moveBall,positionBall,awardGoal,drawPlayers,validFootballSave,migrateFootballSave,createFootballBatch,advanceFootballBatch,createFootballView} from './football.js';
 const root=document.getElementById('av-rescue-preview');
@@ -18,11 +19,13 @@ const byId=id=>root.querySelector('#'+id);
   };
   const footballFromSettings=settings=>({...createFootball(settings.blueSize??10,settings.redSize??10),taskLabel:topics[settings.topic??'brackets'].label,
     plan:{subject:settings.subject??topics[settings.topic??'brackets'].subject??'math',topic:settings.topic??'brackets',customTopic:settings.customTopic||'',notes:settings.notes||'',level:settings.level??2,batchSize:settings.batchSize??10,answerFormat:settings.answerFormat??'numeric'}});
-  const questionFor=(topic,level,previous=[],answerCount=state.answerCount??3)=>
-    withAnswerCount(generateTopicQuestion(topic,level,previous,Math.random,answerCount),answerCount);
+  const optionCountFor=(topic,count=3)=>Math.min(count,topics[topic]?.bank?.maxAnswers??3);
+  const questionFor=(topic,level,previous=[],answerCount=state.answerCount??3)=>{
+    const count=optionCountFor(topic,answerCount);return withAnswerCount(generateTopicQuestion(topic,level,previous,Math.random,count),count);
+  };
   const bankFormat=bank=>['german','english','other'].includes(bank?.subject)||bank?.questions?.some(q=>q.kind==='ai-text')?'text':'numeric';
   const fresh = (settings = {}) => ({
-    version: 2, subject:settings.subject??topics[settings.topic??'brackets']?.subject??'math', answerCount:settings.answerCount??3, answerFormat:settings.answerFormat??'numeric', mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
+    version: 2, subject:settings.subject??topics[settings.topic??'brackets']?.subject??'math', answerCount:optionCountFor(settings.topic??'brackets',settings.answerCount??3), answerFormat:settings.answerFormat??'numeric', mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
     scenario: settings.scenario ?? 'rail', level: settings.level ?? 2,
     index: 0, energy: Math.min(4,settings.total??8), votes: [0,0,0], phase: 'vote', history: [], usedTerms: [],
     current: questionFor(settings.topic??'brackets',settings.level ?? 2,[],settings.answerCount??3)
@@ -103,7 +106,8 @@ const byId=id=>root.querySelector('#'+id);
     return {...old,version:2,total:8,scenario:'rail',level:legacyLevel,current,usedTerms:[term]};
   }
   function restore(snapshot) {
-    const saved = migrate(snapshot?.privateContent?.rescue);
+    let saved = migrate(snapshot?.privateContent?.rescue),upgraded;
+    try{upgraded=upgradeQuizState(saved);saved=upgraded.state;}catch(_){return;}
     if(saved?.scenario==='water')saved.scenario='rail';
     const safe=saved?.mode==='codebreaker';
     const football=saved?.mode==='football';
@@ -138,6 +142,8 @@ const byId=id=>root.querySelector('#'+id);
     const stored=snapshot.privateContent;
     hasGame=typeof stored.hasGame==='boolean'?stored.hasGame:stored.setupOpen===false||saved.history.length>0||saved.index>0||Boolean(football&&saved.football.batch)||saved.votes.some(v=>v>0);
     setupOpen=typeof stored.setupOpen==='boolean'?stored.setupOpen:true;
+    if(upgraded.finished)setupOpen=true;
+    if(upgraded.changed)setupMessage=upgraded.finished?'Die Quizfragen wurden überarbeitet. Du kannst ein neues Spiel starten.':upgraded.advanced?'Die Quizfragen wurden überarbeitet. Das Spiel geht mit der nächsten Frage weiter.':'Die Quizfragen wurden überarbeitet. Dein Spielstand bleibt erhalten.';
     const settings=stored.setup?{...stored.setup}:null;
     if(settings?.scenario==='water')settings.scenario='rail';
     if(settings&&(topics[settings.topic]||settings.topic==='custom')&&[1,3,5].includes(settings.level)&&scenarios[settings.scenario]){
@@ -149,6 +155,7 @@ const byId=id=>root.querySelector('#'+id);
     pendingTopicRequest=null;
     preparedQuestions=[];
     render();
+    if(upgraded.changed)persist();
   }
   function replaceQuestion() {
     state.usedTerms = [...state.usedTerms,state.current.term].slice(-60);
@@ -372,7 +379,8 @@ const byId=id=>root.querySelector('#'+id);
   }
   function footballNeedsAI(p=state.football.plan){
     const bank=topics[p.topic]?.bank;
-    return p.topic==='custom'||Boolean(p.notes.trim())||Boolean(bank&&new Set(bank.questions.filter(q=>q.level===p.level&&q.answers.length>=3).map(q=>q.term)).size<p.batchSize);
+    const choices=optionCountFor(p.topic,3);
+    return p.topic==='custom'||Boolean(p.notes.trim())||Boolean(bank&&new Set(bank.questions.filter(q=>q.level===p.level&&q.answers.length>=choices).map(q=>q.term)).size<p.batchSize);
   }
   function renderFootballPlan(){
     byId('football-answer-format').value=state.football.plan.answerFormat??'numeric';
@@ -535,7 +543,10 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-custom-topic').placeholder=draft.subject==='german'?'Zum Beispiel: das/dass, Kommas oder Bewerbungen':draft.subject==='english'?'Zum Beispiel: simple past oder job interviews':'Zum Beispiel: Volumen von Würfel und Quader';
     byId('rescue-custom-notes').placeholder=draft.subject==='german'?'Zum Beispiel: kurze Sätze aus Alltag und Betrieb, zwei Antworten':draft.subject==='english'?'Zum Beispiel: kurze englische Sätze, Alltag und Beruf, Lösungen mit deutscher Begründung':'Zum Beispiel: einfache ganze Zahlen, Metallbezug, noch keine Zylinder';
     const bank=topics[draft.topic]?.bank;
-    byId('rescue-pool-note').textContent=topics[draft.topic]?.builtin?bank?.perLevel?'Fester Pool: 15 Aufgaben auf A-, B- und C-Niveau. Ohne KI spielbar.':'Die Aufgaben werden ohne KI erstellt und rechnerisch geprüft.':custom?'Die KI erstellt zusätzliche Aufgaben im gewählten Fach.':'Dein freigegebener Aufgabensatz ist in diesem Browser gespeichert.';
+    if(bank?.maxAnswers===2)draft.answerCount=2;
+    byId('rescue-answer-count').querySelector('option[value="3"]').disabled=bank?.maxAnswers===2;
+    byId('rescue-answer-count').value=String(draft.answerCount??3);
+    byId('rescue-pool-note').textContent=topics[draft.topic]?.builtin?bank?.perLevel?'Fester Pool: 15 Aufgaben auf A-, B- und C-Niveau. Ohne KI spielbar.'+(bank.maxAnswers===2?' Dieses Thema verwendet zwei eindeutige Antworten.':''):'Die Aufgaben werden ohne KI erstellt und rechnerisch geprüft.':custom?'Die KI erstellt zusätzliche Aufgaben im gewählten Fach.':'Dein freigegebener Aufgabensatz ist in diesem Browser gespeichert.';
     const missingLevel=Boolean(bank&&!bank.questions.some(q=>q.level===draft.level&&q.answers.length>=(draft.answerCount??3)));
     const needsAI=custom||missingLevel||(football&&footballNeedsAI({...draft,batchSize:draft.batchSize??10}));
     const showAccess=aiAccess.required&&(custom||Boolean(topics[draft.topic]?.bank&&!topics[draft.topic].builtin));

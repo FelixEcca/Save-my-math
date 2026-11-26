@@ -1,4 +1,4 @@
-// Eigene Aufgaben nach den AV-Bildungsplänen Baden-Württemberg.
+// Eigene klare Quizaufgaben nach den AV-Bildungsplänen Baden-Württemberg.
 export const languageData = [
   {
     "id": "de-das-dass",
@@ -7,17 +7,12 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "„Dass“ leitet einen Nebensatz ein. „Das“ kann ein Artikel oder ein Pronomen sein. Die Ersatzprobe hilft.",
-    "wrongRules": [
-      "Nach einem Komma steht immer „dass“.",
-      "Vor einem Nomen steht immer „dass“."
-    ],
     "rows": [
       {
         "prompt": "Ich hoffe, ___ du kommst.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "„Dass“ leitet hier einen Nebensatz ein. „Dieses“ oder „welches“ passt nicht."
       },
@@ -25,8 +20,7 @@ export const languageData = [
         "prompt": "___ Fahrrad gehört mir.",
         "answers": [
           "Das",
-          "Dass",
-          "Daß"
+          "Dass"
         ],
         "why": "Vor „Fahrrad“ steht der Artikel „das“. „Dieses Fahrrad“ ist eine mögliche Ersatzprobe."
       },
@@ -34,8 +28,7 @@ export const languageData = [
         "prompt": "Das ist das Buch, ___ ich suche.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "Das Relativpronomen „das“ bezieht sich auf „Buch“. Man kann „welches“ einsetzen."
       },
@@ -43,8 +36,7 @@ export const languageData = [
         "prompt": "Wir wissen, ___ die Prüfung bald beginnt.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "„Dass“ leitet den Nebensatz ein und lässt sich nicht durch „welches“ ersetzen."
       },
@@ -52,8 +44,7 @@ export const languageData = [
         "prompt": "Ich nehme ___ Werkzeug mit.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "„Das“ ist hier ein Artikel vor dem Nomen „Werkzeug“."
       },
@@ -61,8 +52,7 @@ export const languageData = [
         "prompt": "Sie sagt, ___ sie morgen arbeitet.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "Die Konjunktion „dass“ verbindet hier Hauptsatz und Nebensatz."
       },
@@ -70,8 +60,7 @@ export const languageData = [
         "prompt": "Das Auto, ___ dort steht, ist rot.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "„Das“ bezieht sich auf „Auto“. „Welches dort steht“ ist die Ersatzprobe."
       },
@@ -79,8 +68,7 @@ export const languageData = [
         "prompt": "Es ist wichtig, ___ du pünktlich bist.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "Der Nebensatz mit „dass“ erklärt, was wichtig ist."
       },
@@ -88,8 +76,7 @@ export const languageData = [
         "prompt": "Ich glaube, ___ ist mein Heft.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "„Das“ ist hier ein Demonstrativpronomen. Man kann „dies“ einsetzen: „Dies ist mein Heft.“"
       },
@@ -97,8 +84,7 @@ export const languageData = [
         "prompt": "Wir freuen uns, ___ du mitmachst.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "„Dass“ leitet den Nebensatz ein. Die Ersatzprobe mit „welches“ funktioniert nicht."
       },
@@ -106,8 +92,7 @@ export const languageData = [
         "prompt": "Das Schild, ___ am Tor hängt, ist neu.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "Das Relativpronomen „das“ bezieht sich auf „Schild“."
       },
@@ -115,8 +100,7 @@ export const languageData = [
         "prompt": "Er erklärt, ___ der Strom abgeschaltet ist.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "„Dass“ leitet die wiedergegebene Aussage ein."
       },
@@ -124,8 +108,7 @@ export const languageData = [
         "prompt": "Kannst du mir ___ erklären?",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "„Das“ ist ein Pronomen und steht hier für eine Sache. „Dies erklären“ ist möglich."
       },
@@ -133,8 +116,7 @@ export const languageData = [
         "prompt": "Ich bin sicher, ___ die Rechnung stimmt.",
         "answers": [
           "dass",
-          "das",
-          "daß"
+          "das"
         ],
         "why": "„Dass“ leitet den Nebensatz ein. „Die Rechnung“ ist dessen Subjekt."
       },
@@ -142,8 +124,7 @@ export const languageData = [
         "prompt": "Das Bild, ___ wir ansehen, zeigt eine Werkstatt.",
         "answers": [
           "das",
-          "dass",
-          "daß"
+          "dass"
         ],
         "why": "„Das“ ist ein Relativpronomen zu „Bild“. Die Ersatzprobe lautet „welches“."
       }
@@ -156,17 +137,12 @@ export const languageData = [
     "format": "spelling",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein.",
-    "wrongRules": [
-      "Jedes wichtige Wort muss großgeschrieben werden.",
-      "Nach einem Artikel werden alle folgenden Wörter großgeschrieben."
-    ],
     "rows": [
       {
         "prompt": "Der ___ steht vor der Tür.",
         "answers": [
           "Bus",
-          "bus",
-          "Beide Schreibweisen passen in diesem Satz."
+          "bus"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -174,8 +150,7 @@ export const languageData = [
         "prompt": "Wir ___ heute gemeinsam.",
         "answers": [
           "lernen",
-          "Lernen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Lernen"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -183,8 +158,7 @@ export const languageData = [
         "prompt": "Die Platte ist ___.",
         "answers": [
           "glatt",
-          "Glatt",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Glatt"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -192,8 +166,7 @@ export const languageData = [
         "prompt": "___ beginnt der Unterricht später.",
         "answers": [
           "Morgen",
-          "morgen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "morgen"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -201,8 +174,7 @@ export const languageData = [
         "prompt": "Ich trinke ein Glas ___.",
         "answers": [
           "Wasser",
-          "wasser",
-          "Beide Schreibweisen passen in diesem Satz."
+          "wasser"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -210,8 +182,7 @@ export const languageData = [
         "prompt": "Der neue ___ passt gut.",
         "answers": [
           "Schlüssel",
-          "schlüssel",
-          "Beide Schreibweisen passen in diesem Satz."
+          "schlüssel"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -219,8 +190,7 @@ export const languageData = [
         "prompt": "Sie arbeitet sehr ___.",
         "answers": [
           "sorgfältig",
-          "Sorgfältig",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Sorgfältig"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -228,8 +198,7 @@ export const languageData = [
         "prompt": "Wir ___ die Maße auf.",
         "answers": [
           "schreiben",
-          "Schreiben",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Schreiben"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -237,8 +206,7 @@ export const languageData = [
         "prompt": "Die ___ ist abgeschlossen.",
         "answers": [
           "Aufgabe",
-          "aufgabe",
-          "Beide Schreibweisen passen in diesem Satz."
+          "aufgabe"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -246,8 +214,7 @@ export const languageData = [
         "prompt": "Der Boden ist ___.",
         "answers": [
           "nass",
-          "Nass",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Nass"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -255,8 +222,7 @@ export const languageData = [
         "prompt": "___ hole ich mein Werkzeug.",
         "answers": [
           "Jetzt",
-          "jetzt",
-          "Beide Schreibweisen passen in diesem Satz."
+          "jetzt"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -264,8 +230,7 @@ export const languageData = [
         "prompt": "Er ___ die Anleitung.",
         "answers": [
           "liest",
-          "Liest",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Liest"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -273,8 +238,7 @@ export const languageData = [
         "prompt": "Ich suche meinen ___.",
         "answers": [
           "Ordner",
-          "ordner",
-          "Beide Schreibweisen passen in diesem Satz."
+          "ordner"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -282,8 +246,7 @@ export const languageData = [
         "prompt": "Die Maschine läuft ___.",
         "answers": [
           "leise",
-          "Leise",
-          "Beide Schreibweisen passen in diesem Satz."
+          "Leise"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       },
@@ -291,8 +254,7 @@ export const languageData = [
         "prompt": "Wir tragen feste ___.",
         "answers": [
           "Schuhe",
-          "schuhe",
-          "Beide Schreibweisen passen in diesem Satz."
+          "schuhe"
         ],
         "why": "Nomen und Satzanfänge schreibt man groß. Verben und Adjektive bleiben in dieser Verwendung klein."
       }
@@ -305,17 +267,12 @@ export const languageData = [
     "format": "spelling",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“.",
-    "wrongRules": [
-      "Ein Verb bleibt in jeder Verwendung kleingeschrieben.",
-      "Jedes Wort nach „sehr“ wird großgeschrieben."
-    ],
     "rows": [
       {
         "prompt": "Das ___ fällt mir leicht.",
         "answers": [
           "Lesen",
-          "lesen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "lesen"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -323,8 +280,7 @@ export const languageData = [
         "prompt": "Beim ___ trage ich eine Schutzbrille.",
         "answers": [
           "Bohren",
-          "bohren",
-          "Beide Schreibweisen passen in diesem Satz."
+          "bohren"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -332,8 +288,7 @@ export const languageData = [
         "prompt": "Sie wünscht dir alles ___.",
         "answers": [
           "Gute",
-          "gute",
-          "Beide Schreibweisen passen in diesem Satz."
+          "gute"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -341,8 +296,7 @@ export const languageData = [
         "prompt": "Wir haben etwas ___ gelernt.",
         "answers": [
           "Neues",
-          "neues",
-          "Beide Schreibweisen passen in diesem Satz."
+          "neues"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -350,8 +304,7 @@ export const languageData = [
         "prompt": "Zum ___ brauche ich einen Stift.",
         "answers": [
           "Schreiben",
-          "schreiben",
-          "Beide Schreibweisen passen in diesem Satz."
+          "schreiben"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -359,8 +312,7 @@ export const languageData = [
         "prompt": "Es gibt nichts ___ zu berichten.",
         "answers": [
           "Wichtiges",
-          "wichtiges",
-          "Beide Schreibweisen passen in diesem Satz."
+          "wichtiges"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -368,8 +320,7 @@ export const languageData = [
         "prompt": "Das ___ der Maße dauert kurz.",
         "answers": [
           "Prüfen",
-          "prüfen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "prüfen"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -377,8 +328,7 @@ export const languageData = [
         "prompt": "Nach dem ___ räumen wir auf.",
         "answers": [
           "Arbeiten",
-          "arbeiten",
-          "Beide Schreibweisen passen in diesem Satz."
+          "arbeiten"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -386,8 +336,7 @@ export const languageData = [
         "prompt": "Ich habe viel ___ gehört.",
         "answers": [
           "Interessantes",
-          "interessantes",
-          "Beide Schreibweisen passen in diesem Satz."
+          "interessantes"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -395,8 +344,7 @@ export const languageData = [
         "prompt": "Beim ___ halte ich die Hände frei.",
         "answers": [
           "Gehen",
-          "gehen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "gehen"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -404,8 +352,7 @@ export const languageData = [
         "prompt": "Das ___ im Team hilft uns.",
         "answers": [
           "Lernen",
-          "lernen",
-          "Beide Schreibweisen passen in diesem Satz."
+          "lernen"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -413,8 +360,7 @@ export const languageData = [
         "prompt": "Zum ___ gehen wir nach draußen.",
         "answers": [
           "Üben",
-          "üben",
-          "Beide Schreibweisen passen in diesem Satz."
+          "üben"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -422,8 +368,7 @@ export const languageData = [
         "prompt": "Sie findet etwas ___.",
         "answers": [
           "Passendes",
-          "passendes",
-          "Beide Schreibweisen passen in diesem Satz."
+          "passendes"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -431,8 +376,7 @@ export const languageData = [
         "prompt": "Das ___ der Maschine ist verboten.",
         "answers": [
           "Berühren",
-          "berühren",
-          "Beide Schreibweisen passen in diesem Satz."
+          "berühren"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       },
@@ -440,8 +384,7 @@ export const languageData = [
         "prompt": "Wir essen gern etwas ___.",
         "answers": [
           "Warmes",
-          "warmes",
-          "Beide Schreibweisen passen in diesem Satz."
+          "warmes"
         ],
         "why": "Als Nomen gebrauchte Verben und Adjektive werden großgeschrieben. Hinweise sind zum Beispiel „das“, „beim“, „etwas“ und „nichts“."
       }
@@ -454,17 +397,12 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“.",
-    "wrongRules": [
-      "„Seid“ steht immer bei einer Zeitangabe.",
-      "„Seit“ ist die Verbform zu „ihr“."
-    ],
     "rows": [
       {
         "prompt": "Ihr ___ heute früh dran.",
         "answers": [
           "seid",
-          "seit",
-          "seidt"
+          "seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -472,8 +410,7 @@ export const languageData = [
         "prompt": "Wir warten ___ einer Stunde.",
         "answers": [
           "seit",
-          "seid",
-          "seidt"
+          "seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -481,8 +418,7 @@ export const languageData = [
         "prompt": "___ ihr bereit?",
         "answers": [
           "Seid",
-          "Seit",
-          "Seidt"
+          "Seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -490,8 +426,7 @@ export const languageData = [
         "prompt": "Ich wohne ___ 2022 hier.",
         "answers": [
           "seit",
-          "seid",
-          "seidt"
+          "seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -499,8 +434,7 @@ export const languageData = [
         "prompt": "Ihr ___ ein gutes Team.",
         "answers": [
           "seid",
-          "seit",
-          "seidt"
+          "seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -508,8 +442,7 @@ export const languageData = [
         "prompt": "___ Montag arbeite ich im Praktikum.",
         "answers": [
           "Seit",
-          "Seid",
-          "Seidt"
+          "Seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -517,8 +450,7 @@ export const languageData = [
         "prompt": "Warum ___ ihr so leise?",
         "answers": [
           "seid",
-          "seit",
-          "seidt"
+          "seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -526,8 +458,7 @@ export const languageData = [
         "prompt": "Die Werkstatt ist ___ gestern geschlossen.",
         "answers": [
           "seit",
-          "seid",
-          "seidt"
+          "seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -535,8 +466,7 @@ export const languageData = [
         "prompt": "Ihr ___ für das Material zuständig.",
         "answers": [
           "seid",
-          "seit",
-          "seidt"
+          "seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -544,8 +474,7 @@ export const languageData = [
         "prompt": "Ich kenne ihn ___ der Grundschule.",
         "answers": [
           "seit",
-          "seid",
-          "seidt"
+          "seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -553,8 +482,7 @@ export const languageData = [
         "prompt": "___ vorsichtig an der Maschine!",
         "answers": [
           "Seid",
-          "Seit",
-          "Seidt"
+          "Seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -562,8 +490,7 @@ export const languageData = [
         "prompt": "Sie lernt ___ zwei Wochen für den Test.",
         "answers": [
           "seit",
-          "seid",
-          "seidt"
+          "seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -571,8 +498,7 @@ export const languageData = [
         "prompt": "___ ihr mit der Aufgabe fertig?",
         "answers": [
           "Seid",
-          "Seit",
-          "Seidt"
+          "Seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -580,8 +506,7 @@ export const languageData = [
         "prompt": "___ dem Unfall trägt er Handschuhe.",
         "answers": [
           "Seit",
-          "Seid",
-          "Seidt"
+          "Seid"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       },
@@ -589,8 +514,7 @@ export const languageData = [
         "prompt": "Ihr ___ jetzt an der Reihe.",
         "answers": [
           "seid",
-          "seit",
-          "seidt"
+          "seit"
         ],
         "why": "„Seit“ bezieht sich auf Zeit. „Seid“ ist eine Form von „sein“ und passt zu „ihr“."
       }
@@ -603,10 +527,6 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Bei stimmlosen s-Lauten hilft die Vokallänge: Nach kurzem Vokal steht oft „ss“, nach langem Vokal oder Doppellaut „ß“. Wortstämme und Ausnahmen müssen mitbeachtet werden.",
-    "wrongRules": [
-      "Nach einem langen Vokal schreibt man immer „ss“.",
-      "Jeder s-Laut wird mit „ß“ geschrieben."
-    ],
     "rows": [
       {
         "prompt": "Ich trinke ein Glas ___.",
@@ -752,17 +672,12 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Die richtige Schreibung wird am Wortstamm und an bekannten verwandten Wörtern geprüft. Ein langes i wird häufig mit „ie“ geschrieben.",
-    "wrongRules": [
-      "Ein langes i schreibt man ausnahmslos mit „ie“.",
-      "Die Länge eines Vokals legt jedes Wort ohne Ausnahme eindeutig fest."
-    ],
     "rows": [
       {
         "prompt": "Die ___ arbeitet zuverlässig.",
         "answers": [
           "Maschine",
-          "Maschiene",
-          "Maschihne"
+          "Maschiene"
         ],
         "why": "„Maschine“ ist ein Fremdwort mit langem i, aber ohne „ie“."
       },
@@ -770,8 +685,7 @@ export const languageData = [
         "prompt": "Wir ___ die Markierung.",
         "answers": [
           "sehen",
-          "seen",
-          "sehn"
+          "seen"
         ],
         "why": "„Sehen“ schreibt man mit „h“ zwischen den Silben."
       },
@@ -779,8 +693,7 @@ export const languageData = [
         "prompt": "Der ___ beginnt am Montag.",
         "answers": [
           "Dienst",
-          "Dinst",
-          "Dihnst"
+          "Dinst"
         ],
         "why": "Das lange i in „Dienst“ wird mit „ie“ geschrieben."
       },
@@ -788,8 +701,7 @@ export const languageData = [
         "prompt": "Sie schreibt einen ___.",
         "answers": [
           "Brief",
-          "Brif",
-          "Brihf"
+          "Brif"
         ],
         "why": "Das lange i in „Brief“ wird mit „ie“ geschrieben."
       },
@@ -797,8 +709,7 @@ export const languageData = [
         "prompt": "Ich ___ das Werkzeug aus.",
         "answers": [
           "leihe",
-          "leie",
-          "leihhe"
+          "leie"
         ],
         "why": "Die Form „leihe“ gehört zum Wortstamm „leih-“."
       },
@@ -806,8 +717,7 @@ export const languageData = [
         "prompt": "Der ___ hält vor der Schule.",
         "answers": [
           "Wagen",
-          "Waagen",
-          "Wahgen"
+          "Waagen"
         ],
         "why": "„Wagen“ hat ein langes a, aber kein Dehnungs-h."
       },
@@ -815,8 +725,7 @@ export const languageData = [
         "prompt": "Die ___ steht in der Küche.",
         "answers": [
           "Waage",
-          "Wage",
-          "Wahge"
+          "Wage"
         ],
         "why": "Das Messgerät „Waage“ wird mit „aa“ geschrieben."
       },
@@ -824,26 +733,23 @@ export const languageData = [
         "prompt": "Er ___ seinen Namen.",
         "answers": [
           "schreibt",
-          "schriebt",
-          "schreihbt"
+          "schriebt"
         ],
         "why": "„Schreibt“ gehört zu „schreiben“ und wird mit „ei“ geschrieben."
       },
       {
-        "prompt": "Die Fahrt dauert eine ___.",
+        "prompt": "Der ___ steht am Tisch.",
         "answers": [
-          "Stunde",
-          "Stuhnde",
-          "Stuunde"
+          "Stuhl",
+          "Stul"
         ],
-        "why": "In „Stunde“ wird das u kurz gesprochen und nicht gedehnt."
+        "why": "Das lange u in „Stuhl“ wird durch ein h gekennzeichnet."
       },
       {
         "prompt": "Das ___ ist stabil.",
         "answers": [
           "Rohr",
-          "Ror",
-          "Roor"
+          "Ror"
         ],
         "why": "„Rohr“ schreibt man mit Dehnungs-h."
       },
@@ -851,8 +757,7 @@ export const languageData = [
         "prompt": "Ich ___ dir die Anleitung.",
         "answers": [
           "gebe",
-          "gehbe",
-          "geebe"
+          "gehbe"
         ],
         "why": "„Gebe“ hat ein langes e ohne Dehnungs-h oder Doppelvokal."
       },
@@ -860,17 +765,15 @@ export const languageData = [
         "prompt": "Wir ___ das Ergebnis.",
         "answers": [
           "prüfen",
-          "prüüfen",
-          "prühen"
+          "prüüfen"
         ],
         "why": "Das lange ü in „prüfen“ wird nicht durch einen zusätzlichen Buchstaben gedehnt."
       },
       {
-        "prompt": "Das ___ ist fertig.",
+        "prompt": "Das ___ ist fast erreicht.",
         "answers": [
           "Ziel",
-          "Zil",
-          "Ziehl"
+          "Zil"
         ],
         "why": "Das lange i in „Ziel“ wird mit „ie“ geschrieben."
       },
@@ -878,8 +781,7 @@ export const languageData = [
         "prompt": "Die ___ führt durch den Ort.",
         "answers": [
           "Bahn",
-          "Ban",
-          "Baahn"
+          "Ban"
         ],
         "why": "„Bahn“ schreibt man mit Dehnungs-h."
       },
@@ -887,8 +789,7 @@ export const languageData = [
         "prompt": "Ich ___ gern zu.",
         "answers": [
           "höre",
-          "hööhre",
-          "höhre"
+          "hööhre"
         ],
         "why": "„Höre“ hat ein langes ö ohne Dehnungs-h."
       }
@@ -901,17 +802,12 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen.",
-    "wrongRules": [
-      "Nach jedem langen Vokal wird der nächste Konsonant verdoppelt.",
-      "Doppelte Konsonanten zeigen immer einen langen Vokal an."
-    ],
     "rows": [
       {
         "prompt": "Ich ___ dir den Stift.",
         "answers": [
           "gebe",
-          "gebbe",
-          "gehbe"
+          "gebbe"
         ],
         "why": "„Gebe“ hat einen langen betonten Vokal und keinen Doppelkonsonanten."
       },
@@ -919,8 +815,7 @@ export const languageData = [
         "prompt": "Die ___ steht offen.",
         "answers": [
           "Halle",
-          "Hale",
-          "Hahlle"
+          "Hale"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -928,8 +823,7 @@ export const languageData = [
         "prompt": "Wir ___ gemeinsam.",
         "answers": [
           "kommen",
-          "komen",
-          "kohmmen"
+          "komen"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -937,8 +831,7 @@ export const languageData = [
         "prompt": "Ich brauche einen ___.",
         "answers": [
           "Hammer",
-          "Hamer",
-          "Hahmmer"
+          "Hamer"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -946,8 +839,7 @@ export const languageData = [
         "prompt": "Die ___ ist neu.",
         "answers": [
           "Kette",
-          "Kete",
-          "Kehte"
+          "Kete"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -955,8 +847,7 @@ export const languageData = [
         "prompt": "Wir ___ die Leitung.",
         "answers": [
           "trennen",
-          "trenen",
-          "trehnen"
+          "trenen"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -964,8 +855,7 @@ export const languageData = [
         "prompt": "Das ___ ist sauber.",
         "answers": [
           "Bett",
-          "Bet",
-          "Beht"
+          "Bet"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -973,8 +863,7 @@ export const languageData = [
         "prompt": "Er ___ das Heft.",
         "answers": [
           "öffnet",
-          "öfnet",
-          "öffhnet"
+          "öfnet"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -982,8 +871,7 @@ export const languageData = [
         "prompt": "Die ___ liegt im Keller.",
         "answers": [
           "Kiste",
-          "Kisste",
-          "Kihste"
+          "Kisste"
         ],
         "why": "„Kiste“ enthält schon zwei verschiedene Konsonanten nach dem kurzen i."
       },
@@ -991,26 +879,23 @@ export const languageData = [
         "prompt": "Der ___ ist leer.",
         "answers": [
           "Teller",
-          "Teler",
-          "Tehler"
+          "Teler"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
       {
-        "prompt": "Sie ___ auf den Bus.",
+        "prompt": "Wir ___ auf den Bus.",
         "answers": [
           "warten",
-          "wartten",
-          "wahrtten"
+          "wartten"
         ],
-        "why": "In „warten“ stehen bereits verschiedene Konsonanten; das t wird nicht verdoppelt."
+        "why": "In „warten“ stehen nach dem a bereits r und t. Das t wird nicht verdoppelt."
       },
       {
         "prompt": "Wir ___ die Teile.",
         "answers": [
           "sammeln",
-          "sameln",
-          "sahmmeln"
+          "sameln"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       },
@@ -1018,8 +903,7 @@ export const languageData = [
         "prompt": "Die ___ läuft langsam.",
         "answers": [
           "Pumpe",
-          "Pummpe",
-          "Puhmpe"
+          "Pummpe"
         ],
         "why": "In „Pumpe“ stehen bereits m und p nach dem kurzen u."
       },
@@ -1027,8 +911,7 @@ export const languageData = [
         "prompt": "Ich ___ mein Heft.",
         "answers": [
           "nehme",
-          "nemme",
-          "nehmme"
+          "nemme"
         ],
         "why": "„Nehme“ gehört zum Stamm „nehm-“ und hat einen langen Vokal."
       },
@@ -1036,8 +919,7 @@ export const languageData = [
         "prompt": "Die ___ ist hell.",
         "answers": [
           "Sonne",
-          "Sone",
-          "Sohnne"
+          "Sone"
         ],
         "why": "Nach einem betonten kurzen Vokal folgen häufig zwei Konsonanten. Wortstämme und verwandte Wörter helfen beim Prüfen."
       }
@@ -1050,17 +932,12 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Wortart und Bedeutung entscheiden. Verbindungen aus zwei Verben werden in diesen Beispielen getrennt geschrieben; zusammengesetzte Nomen bilden ein Wort.",
-    "wrongRules": [
-      "Zwei Verben werden in jeder Verbindung zusammengeschrieben.",
-      "Jede Verbindung aus Nomen wird als zwei einzelne Wörter geschrieben."
-    ],
     "rows": [
       {
         "prompt": "Morgen wollen wir ___.",
         "answers": [
           "spazieren gehen",
-          "spazierengehen",
-          "spazieren Gehen"
+          "spazierengehen"
         ],
         "why": "Die Verbindung aus zwei Verben wird hier getrennt geschrieben."
       },
@@ -1068,8 +945,7 @@ export const languageData = [
         "prompt": "Ich möchte heute ___.",
         "answers": [
           "schwimmen lernen",
-          "schwimmenlernen",
-          "schwimmen Lernen"
+          "schwimmenlernen"
         ],
         "why": "„Schwimmen“ und „lernen“ werden hier getrennt geschrieben."
       },
@@ -1077,26 +953,23 @@ export const languageData = [
         "prompt": "Wir müssen noch ___.",
         "answers": [
           "einkaufen gehen",
-          "einkaufengehen",
-          "einkaufen Gehen"
+          "einkaufengehen"
         ],
         "why": "Die beiden Verben werden hier getrennt geschrieben."
       },
       {
-        "prompt": "Sie bleibt auf dem Stuhl ___.",
+        "prompt": "Wir wollen einen Kuchen ___.",
         "answers": [
-          "sitzen",
-          "Sitzen",
-          "sitz en"
+          "backen lernen",
+          "backenlernen"
         ],
-        "why": "Das Verb wird hier als ein Wort kleingeschrieben."
+        "why": "Die Verbindung aus den beiden Verben „backen“ und „lernen“ wird getrennt geschrieben."
       },
       {
         "prompt": "Lege das Heft in die ___.",
         "answers": [
           "Schultasche",
-          "Schul Tasche",
-          "Schul tasche"
+          "Schul Tasche"
         ],
         "why": "Das zusammengesetzte Nomen wird zusammengeschrieben."
       },
@@ -1104,8 +977,7 @@ export const languageData = [
         "prompt": "Ich trage feste ___.",
         "answers": [
           "Arbeitsschuhe",
-          "Arbeits Schuhe",
-          "Arbeits schuhe"
+          "Arbeits Schuhe"
         ],
         "why": "Die Nomenverbindung „Arbeitsschuhe“ bildet ein Wort."
       },
@@ -1113,8 +985,7 @@ export const languageData = [
         "prompt": "Wir müssen das Licht ___.",
         "answers": [
           "einschalten",
-          "ein schalten",
-          "ein Schalten"
+          "ein schalten"
         ],
         "why": "Die Grundform des trennbaren Verbs lautet „einschalten“."
       },
@@ -1122,8 +993,7 @@ export const languageData = [
         "prompt": "Du sollst die Tür ___.",
         "answers": [
           "zumachen",
-          "zu machen",
-          "zu Machen"
+          "zu machen"
         ],
         "why": "„Zumachen“ ist hier ein trennbares Verb in der Grundform."
       },
@@ -1131,8 +1001,7 @@ export const languageData = [
         "prompt": "Ich benutze einen ___.",
         "answers": [
           "Schraubenzieher",
-          "Schrauben Zieher",
-          "Schrauben zieher"
+          "Schrauben Zieher"
         ],
         "why": "Das zusammengesetzte Nomen wird als ein Wort geschrieben."
       },
@@ -1140,8 +1009,7 @@ export const languageData = [
         "prompt": "Wir möchten zusammen ___.",
         "answers": [
           "Rad fahren",
-          "radfahren",
-          "Radfahren"
+          "radfahren"
         ],
         "why": "Die Verbindung „Rad fahren“ wird in dieser Verwendung getrennt geschrieben."
       },
@@ -1149,8 +1017,7 @@ export const languageData = [
         "prompt": "Sie möchte heute ___.",
         "answers": [
           "Klavier spielen",
-          "klavierspielen",
-          "Klavierspielen"
+          "klavierspielen"
         ],
         "why": "In dieser Verbverbindung bleibt das Nomen „Klavier“ selbstständig."
       },
@@ -1158,8 +1025,7 @@ export const languageData = [
         "prompt": "Du musst zuerst ___.",
         "answers": [
           "aufräumen",
-          "auf räumen",
-          "Aufräumen"
+          "auf räumen"
         ],
         "why": "Der Infinitiv des trennbaren Verbs lautet „aufräumen“."
       },
@@ -1167,8 +1033,7 @@ export const languageData = [
         "prompt": "Wir wollen noch ___.",
         "answers": [
           "lesen üben",
-          "lesenüben",
-          "lesen Üben"
+          "lesenüben"
         ],
         "why": "Die beiden Verben werden hier getrennt geschrieben."
       },
@@ -1176,8 +1041,7 @@ export const languageData = [
         "prompt": "Die ___ ist abgeschlossen.",
         "answers": [
           "Berufsausbildung",
-          "Berufs Ausbildung",
-          "Berufs ausbildung"
+          "Berufs Ausbildung"
         ],
         "why": "Das zusammengesetzte Nomen bildet ein Wort."
       },
@@ -1185,8 +1049,7 @@ export const languageData = [
         "prompt": "Ich benutze die ___.",
         "answers": [
           "Schutzbrille",
-          "Schutz Brille",
-          "Schutz brille"
+          "Schutz Brille"
         ],
         "why": "Das zusammengesetzte Nomen wird zusammengeschrieben."
       }
@@ -1199,10 +1062,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Ein eingeleiteter Nebensatz wird durch ein Komma vom Hauptsatz getrennt. Ein eingeschobener Nebensatz braucht zwei Kommas.",
-    "wrongRules": [
-      "Vor jedem Verb muss ein Komma stehen.",
-      "Zwischen Hauptsatz und Nebensatz ist ein Komma immer freiwillig."
-    ],
     "rows": [
       {
         "prompt": "Welche Zeichensetzung ist richtig?",
@@ -1348,10 +1207,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Gleichrangige Teile einer Aufzählung werden durch Kommas getrennt. Vor dem abschließenden „und“ steht in diesen einfachen Aufzählungen kein Komma.",
-    "wrongRules": [
-      "Vor jedem „und“ muss ein Komma stehen.",
-      "In einer Aufzählung darf kein Komma stehen."
-    ],
     "rows": [
       {
         "prompt": "Welche einfache Aufzählung ist richtig?",
@@ -1497,10 +1352,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Ein vorangestellter Begleitsatz endet mit einem Doppelpunkt. Die direkte Rede steht in Anführungszeichen; ihr Punkt steht vor dem schließenden Anführungszeichen.",
-    "wrongRules": [
-      "Vor der direkten Rede steht nach dem Begleitsatz immer ein Komma statt eines Doppelpunkts.",
-      "Der Schlusspunkt der direkten Rede steht grundsätzlich erst hinter dem schließenden Anführungszeichen."
-    ],
     "rows": [
       {
         "prompt": "Welche Fassung der direkten Rede ist richtig? Mia spricht.",
@@ -1646,10 +1497,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Die Verwendung im Satz hilft: Nomen benennen zum Beispiel Dinge, Verben drücken Tätigkeiten oder Zustände aus, Adjektive beschreiben Eigenschaften.",
-    "wrongRules": [
-      "Jedes Wort, das eine Handlung beschreibt, ist ein Nomen.",
-      "Die Wortart lässt sich immer allein an der Wortlänge erkennen."
-    ],
     "rows": [
       {
         "prompt": "Welche Wortart hat „Hammer“ in „Der Hammer liegt hier“?",
@@ -1795,10 +1642,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Die grammatische Zeitform erkennt man an der Verbform, nicht allein an einer Zeitangabe. Perfekt und Futur bestehen hier aus mehreren Verbteilen.",
-    "wrongRules": [
-      "Eine Zeitangabe wie „morgen“ macht jede Verbform automatisch zum Futur.",
-      "Das Perfekt besteht immer nur aus einem einzigen Verbwort."
-    ],
     "rows": [
       {
         "prompt": "Welche grammatische Zeitform steht in „Ich arbeite heute“?",
@@ -1944,10 +1787,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Das Subjekt wird mit „Wer oder was?“ erfragt. Das Prädikat besteht aus dem Verb oder mehreren zusammengehörigen Verbteilen.",
-    "wrongRules": [
-      "Das erste Wort im Satz ist ohne Ausnahme das Subjekt.",
-      "Ein Prädikat kann grundsätzlich nur ein Wort lang sein."
-    ],
     "rows": [
       {
         "prompt": "Was ist das vollständige Subjekt in „Der neue Schüler kommt“?",
@@ -2093,10 +1932,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Der Fall einer Wortgruppe ergibt sich aus ihrer Aufgabe im Satz oder aus der zugehörigen Präposition. Frageproben können helfen.",
-    "wrongRules": [
-      "Jede Wortgruppe mit „dem“ steht im Akkusativ.",
-      "Der Fall hängt allein davon ab, ob die Wortgruppe am Satzanfang steht."
-    ],
     "rows": [
       {
         "prompt": "In welchem Fall steht „der Schüler“ in „Der Schüler arbeitet“?",
@@ -2242,136 +2077,132 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen.",
-    "wrongRules": [
-      "Ein Pronomen bezieht sich immer auf das letzte Wort, unabhängig von dessen Bedeutung.",
-      "Alle Nomen können in jedem Satz nur durch „es“ ersetzt werden."
-    ],
     "rows": [
       {
-        "prompt": "Mia kommt später. ___ hat den Bus verpasst.",
+        "prompt": "Mia kommt später. Welches Pronomen ersetzt „Mia“?",
         "answers": [
           "Sie",
           "Er",
           "Es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Mia“ wird durch „sie“ ersetzt."
       },
       {
-        "prompt": "Ali ist heute krank. ___ bleibt zu Hause.",
+        "prompt": "Ali ist krank. Welches Pronomen ersetzt „Ali“?",
         "answers": [
           "Er",
           "Sie",
           "Es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Ali“ wird hier durch „er“ ersetzt."
       },
       {
-        "prompt": "Das Heft liegt hier. ___ gehört mir.",
+        "prompt": "Das Heft liegt hier. Welches Pronomen ersetzt „das Heft“?",
         "answers": [
           "Es",
           "Er",
           "Sie"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Heft“ ist sächlich. Deshalb passt „es“."
       },
       {
-        "prompt": "Die Werkzeuge sind sauber. ___ liegen im Schrank.",
+        "prompt": "Die Werkzeuge sind sauber. Welches Pronomen ersetzt „die Werkzeuge“?",
         "answers": [
           "Sie",
           "Es",
           "Er"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "Für mehrere Werkzeuge steht das Pronomen „sie“."
       },
       {
-        "prompt": "Ben und ich arbeiten zusammen. ___ sind ein Team.",
+        "prompt": "Ben und ich arbeiten zusammen. Welches Pronomen ersetzt „Ben und ich“?",
         "answers": [
           "Wir",
           "Ihr",
           "Sie"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "Wenn ich selbst zu der Gruppe gehöre, steht „wir“."
       },
       {
-        "prompt": "Lena, kommst ___ morgen mit?",
+        "prompt": "Lena wird direkt angesprochen: „Lena, kommst ___ morgen mit?“",
         "answers": [
           "du",
           "ich",
           "wir"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "Eine einzelne vertraute Person spricht man mit „du“ an."
       },
       {
-        "prompt": "Die Maschine ist laut. ___ läuft seit acht Uhr.",
+        "prompt": "Die Maschine ist laut. Welches Pronomen ersetzt „die Maschine“?",
         "answers": [
           "Sie",
           "Er",
           "Es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Maschine“ ist weiblich. Deshalb passt „sie“."
       },
       {
-        "prompt": "Der Ordner ist voll. ___ steht im Regal.",
+        "prompt": "Der Ordner ist voll. Welches Pronomen ersetzt „der Ordner“?",
         "answers": [
           "Er",
           "Es",
           "Sie"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Ordner“ ist männlich. Deshalb passt „er“."
       },
       {
-        "prompt": "Das Paket ist schwer. ___ wiegt zehn Kilogramm.",
+        "prompt": "Das Paket ist schwer. Welches Pronomen ersetzt „das Paket“?",
         "answers": [
           "Es",
           "Er",
           "Wir"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Paket“ ist sächlich. Deshalb passt „es“."
       },
       {
-        "prompt": "Mia und Ali, ___ seid als Nächste dran.",
+        "prompt": "Mia und Ali werden direkt angesprochen: „Mia und Ali, ___ seid als Nächste dran.“",
         "answers": [
           "ihr",
           "wir",
           "er"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "Mehrere vertraute Personen spricht man mit „ihr“ an."
       },
       {
-        "prompt": "Ich suche den Schlüssel. Hast du ___ gesehen?",
+        "prompt": "Welches Pronomen ersetzt „den Schlüssel“? „Hast du den Schlüssel gesehen?“",
         "answers": [
           "ihn",
           "sie",
           "es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Den Schlüssel“ steht im Akkusativ. Das passende Pronomen ist „ihn“."
       },
       {
-        "prompt": "Ich brauche das Lineal. Gibst du ___ mir?",
+        "prompt": "Welches Pronomen ersetzt „das Lineal“? „Gibst du mir das Lineal?“",
         "answers": [
           "es",
           "ihn",
           "ihnen"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Das Lineal“ wird hier durch „es“ ersetzt."
       },
       {
-        "prompt": "Die Kollegin kommt. Ich begrüße ___.",
+        "prompt": "Welches Pronomen ersetzt „die Kollegin“? „Ich begrüße die Kollegin.“",
         "answers": [
           "sie",
           "ihn",
           "es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Die Kollegin“ wird im Akkusativ durch „sie“ ersetzt."
       },
       {
-        "prompt": "Die Schüler warten. Ich helfe ___.",
+        "prompt": "Welches Pronomen ersetzt „den Schülern“? „Ich helfe den Schülern.“",
         "answers": [
           "ihnen",
           "ihn",
           "es"
         ],
-        "why": "Pronomen können Nomen ersetzen. Ihr Bezug muss klar sein; Person, Zahl und gegebenenfalls Geschlecht müssen passen."
+        "why": "„Helfen“ verlangt den Dativ. Für mehrere Schüler steht „ihnen“."
       },
       {
         "prompt": "Das ist mein Platz. Er gehört ___.",
@@ -2391,13 +2222,9 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.1 und 1.4",
     "rule": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet.",
-    "wrongRules": [
-      "Ein Synonym muss immer das genaue Gegenteil ausdrücken.",
-      "Ähnlich klingende Wörter haben unabhängig vom Kontext dieselbe Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Welches Wort passt statt „beginnen“ in „Wir beginnen mit der Arbeit“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „beginnen“? „Wir beginnen mit der Arbeit.“",
         "answers": [
           "starten",
           "beenden",
@@ -2406,7 +2233,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „rasch“ in „Er arbeitet rasch“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „rasch“? „Er arbeitet rasch.“",
         "answers": [
           "schnell",
           "langsam",
@@ -2415,7 +2242,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „kontrollieren“ in „Wir kontrollieren die Maße“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „kontrollieren“? „Wir kontrollieren die Maße.“",
         "answers": [
           "prüfen",
           "verstecken",
@@ -2424,7 +2251,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „erforderlich“ in „Ein Helm ist erforderlich“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „erforderlich“? „Ein Helm ist erforderlich.“",
         "answers": [
           "notwendig",
           "verboten",
@@ -2433,7 +2260,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „defekt“ in „Das Gerät ist defekt“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „defekt“? „Das Gerät ist defekt.“",
         "answers": [
           "kaputt",
           "neu",
@@ -2442,7 +2269,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort bedeutet hier ähnlich wie „erhalten“: „Sie hat das Paket erhalten“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „erhalten“? „Sie hat das Paket erhalten.“",
         "answers": [
           "bekommen",
           "verschickt",
@@ -2451,7 +2278,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „pünktlich“ in „Er erscheint pünktlich“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „pünktlich“? „Er erscheint pünktlich.“",
         "answers": [
           "zur vereinbarten Zeit",
           "viel zu spät",
@@ -2460,7 +2287,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „informieren“ in „Wir informieren die Klasse“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „informieren“? „Wir informieren die Klasse.“",
         "answers": [
           "benachrichtigen",
           "verwirren",
@@ -2469,7 +2296,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „geeignet“ in „Dieses Werkzeug ist geeignet“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „geeignet“? „Dieses Werkzeug ist geeignet.“",
         "answers": [
           "passend",
           "unbrauchbar",
@@ -2478,7 +2305,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „zuverlässig“ in „Die Kollegin ist zuverlässig“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „zuverlässig“? „Die Kollegin ist zuverlässig.“",
         "answers": [
           "verlässlich",
           "unaufmerksam",
@@ -2487,7 +2314,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „sorgfältig“ in „Sie prüft sorgfältig“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „sorgfältig“? „Sie prüft sorgfältig.“",
         "answers": [
           "genau und gewissenhaft",
           "nur ungefähr",
@@ -2496,7 +2323,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „ablehnen“ in „Er lehnt den Vorschlag ab“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „ablehnen“? „Er will den Vorschlag ablehnen.“",
         "answers": [
           "zurückweisen",
           "annehmen",
@@ -2505,7 +2332,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „vereinbaren“ in „Wir vereinbaren einen Termin“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „vereinbaren“? „Wir vereinbaren einen Termin.“",
         "answers": [
           "gemeinsam festlegen",
           "heimlich ändern",
@@ -2514,7 +2341,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Welches Wort passt statt „vermindern“ in „Wir vermindern den Lärm“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „vermindern“? „Wir vermindern den Lärm.“",
         "answers": [
           "verringern",
           "vergrößern",
@@ -2523,7 +2350,7 @@ export const languageData = [
         "why": "Ein Synonym hat im jeweiligen Zusammenhang eine gleiche oder ähnliche Bedeutung. Der Satzkontext entscheidet."
       },
       {
-        "prompt": "Was bedeutet „beheben“ in „Sie behebt den Fehler“?",
+        "prompt": "Welche Antwort bedeutet hier dasselbe wie „beheben“? „Sie will den Fehler beheben.“",
         "answers": [
           "beseitigen",
           "verursachen",
@@ -2540,10 +2367,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.1 und 1.4",
     "rule": "Ein Gegensatz passt zum gemeinten Bedeutungsbereich. Ein ähnlicher Klang allein reicht nicht aus.",
-    "wrongRules": [
-      "Wörter mit demselben Anfangsbuchstaben sind immer Gegensätze.",
-      "Ein Gegenteil hat dieselbe Bedeutung wie das gesuchte Wort."
-    ],
     "rows": [
       {
         "prompt": "Was ist das Gegenteil von „laut“, wenn es um Geräusche geht?",
@@ -2573,13 +2396,13 @@ export const languageData = [
         "why": "Ein Gegensatz passt zum gemeinten Bedeutungsbereich. Ein ähnlicher Klang allein reicht nicht aus."
       },
       {
-        "prompt": "Welches Wort bedeutet das Gegenteil von „pünktlich“ beim Arbeitsbeginn?",
+        "prompt": "Welches Wort bedeutet „später als zur vereinbarten Zeit“?",
         "answers": [
           "verspätet",
           "frühzeitig",
-          "vorbereitet"
+          "pünktlich"
         ],
-        "why": "Ein Gegensatz passt zum gemeinten Bedeutungsbereich. Ein ähnlicher Klang allein reicht nicht aus."
+        "why": "„Verspätet“ bedeutet, dass die vereinbarte Zeit überschritten ist."
       },
       {
         "prompt": "Was ist das Gegenteil von „erhöhen“ bei einer Zahl?",
@@ -2689,85 +2512,81 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Konnektoren verbinden Aussagen nach ihrem Sinn: zum Beispiel Grund, Gegensatz, Bedingung, Zweck oder Folge.",
-    "wrongRules": [
-      "„Weil“ bezeichnet immer einen Gegensatz.",
-      "Jedes Verbindungswort kann ohne Bedeutungsänderung ersetzt werden."
-    ],
     "rows": [
       {
-        "prompt": "Ich bleibe zu Hause, ___ ich krank bin.",
+        "prompt": "Welches Wort leitet den Grund ein? „Ich bleibe zu Hause, ___ ich krank bin.“",
         "answers": [
           "weil",
           "obwohl",
           "damit"
         ],
-        "why": "„Weil“ leitet den Grund für das Zuhausebleiben ein."
+        "why": "„Weil“ nennt den Grund für das Zuhausebleiben."
       },
       {
-        "prompt": "Ich ziehe eine Jacke an, ___ es kalt ist.",
+        "prompt": "Welches Wort leitet den Grund ein? „Ich ziehe eine Jacke an, ___ es kalt ist.“",
         "answers": [
           "weil",
           "damit",
-          "falls nicht"
+          "obwohl"
         ],
-        "why": "Die Kälte ist der Grund für das Anziehen der Jacke."
+        "why": "Die Kälte ist der Grund. Deshalb passt „weil“."
       },
       {
-        "prompt": "___ es regnet, gehe ich ohne Schirm hinaus.",
+        "prompt": "Welches Wort zeigt einen Gegensatz? „___ es regnet, gehe ich ohne Schirm hinaus.“",
         "answers": [
           "Obwohl",
           "Damit",
           "Weil"
         ],
-        "why": "„Obwohl“ kennzeichnet hier den Gegensatz zwischen Regen und Verhalten."
+        "why": "„Obwohl“ zeigt: Trotz des Regens geht die Person ohne Schirm hinaus."
       },
       {
-        "prompt": "Ich übe, ___ ich sicherer werde.",
+        "prompt": "Welches Wort leitet das Ziel ein? „Ich übe, ___ ich sicherer werde.“",
         "answers": [
           "damit",
           "obwohl",
           "während"
         ],
-        "why": "„Damit“ nennt den Zweck des Übens."
+        "why": "Das Ziel des Übens ist mehr Sicherheit. „Damit“ leitet dieses Ziel ein."
       },
       {
-        "prompt": "___ du Hilfe brauchst, frage nach.",
+        "prompt": "Welches Wort nennt eine Bedingung? „___ du Hilfe brauchst, frage nach.“",
         "answers": [
           "Wenn",
           "Obwohl",
           "Damit"
         ],
-        "why": "„Wenn“ nennt hier eine Bedingung."
+        "why": "Der Hilfebedarf ist die Bedingung. Dazu passt „wenn“."
       },
       {
-        "prompt": "Ich räume auf, ___ ich nach Hause gehe.",
+        "prompt": "Ich räume zuerst auf und gehe dann nach Hause. Welches Wort passt? „Ich räume auf, ___ ich nach Hause gehe.“",
         "answers": [
           "bevor",
-          "damit",
-          "obwohl"
+          "nachdem",
+          "während"
         ],
-        "why": "„Bevor“ ordnet das Aufräumen zeitlich vor dem Heimgehen ein."
+        "why": "„Bevor“ zeigt, dass das Aufräumen vor dem Nachhausegehen stattfindet."
       },
       {
-        "prompt": "___ die Maschine stillsteht, dürfen wir sie reinigen.",
+        "prompt": "Die Maschine muss vor der Reinigung stillstehen. Welcher Ausdruck zeigt diese Bedingung? „___ die Maschine stillsteht, dürfen wir sie reinigen.“",
         "answers": [
           "Erst wenn",
           "Obwohl",
           "Damit"
         ],
-        "why": "„Erst wenn“ macht den Stillstand zur Voraussetzung."
+        "why": "„Erst wenn“ nennt die Bedingung, die vor der Reinigung erfüllt sein muss."
       },
       {
-        "prompt": "Ich trage eine Brille, ___ meine Augen geschützt sind.",
+        "prompt": "Welches Wort leitet das Ziel ein? „Ich trage eine Schutzbrille, ___ meine Augen geschützt sind.“",
         "answers": [
           "damit",
           "obwohl",
           "während"
         ],
-        "why": "Der Schutz der Augen ist hier der Zweck."
+        "why": "Der Schutz der Augen ist das Ziel. Dazu passt „damit“."
       },
       {
-        "prompt": "Er ist müde, ___ er wenig geschlafen hat.",
+        "prompt": "Welches Wort leitet den Grund ein? „Er ist müde, ___ er wenig geschlafen hat.“",
         "answers": [
           "weil",
           "damit",
@@ -2776,58 +2595,58 @@ export const languageData = [
         "why": "Der wenige Schlaf ist der Grund für die Müdigkeit."
       },
       {
-        "prompt": "___ ich die Anleitung lese, macht Ali Notizen.",
+        "prompt": "Beides geschieht gleichzeitig. Was passt? „___ ich die Anleitung lese, macht Ali Notizen.“",
         "answers": [
           "Während",
-          "Damit",
-          "Obwohl nicht"
+          "Bevor",
+          "Nachdem"
         ],
-        "why": "„Während“ verbindet hier gleichzeitig stattfindende Handlungen."
+        "why": "„Während“ kennzeichnet gleichzeitige Vorgänge."
       },
       {
-        "prompt": "Wir warten, ___ der Lack trocken ist.",
+        "prompt": "Das Warten endet, sobald der Lack trocken ist. Was passt? „Wir warten, ___ der Lack trocken ist.“",
         "answers": [
           "bis",
-          "obwohl",
-          "weil nicht"
+          "seitdem",
+          "obwohl"
         ],
-        "why": "„Bis“ bezeichnet den Endpunkt des Wartens."
+        "why": "„Bis“ nennt den Zeitpunkt, an dem das Warten endet."
       },
       {
-        "prompt": "Ich habe angerufen, ___ niemand war erreichbar.",
+        "prompt": "Welches Wort zeigt einen Gegensatz? „Ich habe angerufen, ___ niemand war erreichbar.“",
         "answers": [
           "aber",
           "denn",
           "also"
         ],
-        "why": "„Aber“ stellt dem Anruf den fehlenden Erfolg gegenüber."
+        "why": "„Aber“ verbindet den Anruf mit dem unerwarteten Ergebnis."
       },
       {
-        "prompt": "Es ist glatt. ___ fahren wir langsam.",
+        "prompt": "Welches Wort zeigt eine Folge? „Es ist glatt. ___ fahren wir langsam.“",
         "answers": [
           "Deshalb",
           "Trotzdem",
-          "Stattdessen"
+          "Vorher"
         ],
-        "why": "Das langsame Fahren wird als Folge der Glätte erklärt."
+        "why": "Das langsame Fahren ist die Folge der Glätte. Deshalb passt „deshalb“."
       },
       {
-        "prompt": "Sie übt regelmäßig. ___ macht sie noch Fehler.",
+        "prompt": "Welches Wort zeigt einen Gegensatz? „Sie übt regelmäßig. ___ macht sie noch Fehler.“",
         "answers": [
           "Trotzdem",
           "Deshalb",
-          "Danach erst"
+          "Zuerst"
         ],
-        "why": "„Trotzdem“ hebt einen Gegensatz zur erwarteten Folge hervor."
+        "why": "„Trotzdem“ zeigt: Die Fehler treten trotz des Übens auf."
       },
       {
-        "prompt": "Wir kontrollieren die Maße, ___ wir das Teil zuschneiden.",
+        "prompt": "Erst wird kontrolliert, danach zugeschnitten. Was passt? „Wir kontrollieren die Maße, ___ wir das Teil zuschneiden.“",
         "answers": [
           "bevor",
-          "damit",
-          "obwohl"
+          "nachdem",
+          "während"
         ],
-        "why": "Die Kontrolle soll zeitlich vor dem Zuschneiden stattfinden."
+        "why": "„Bevor“ legt die Kontrolle zeitlich vor den Zuschnitt."
       }
     ]
   },
@@ -2838,10 +2657,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.4",
     "rule": "Im gewöhnlichen Aussagesatz steht das finite Verb an zweiter Satzgliedposition. Im eingeleiteten Nebensatz steht es in diesen Beispielen am Ende.",
-    "wrongRules": [
-      "Ein deutscher Aussagesatz muss immer mit dem Subjekt beginnen.",
-      "Nach „weil“ bleibt das finite Verb grundsätzlich an zweiter Position."
-    ],
     "rows": [
       {
         "prompt": "Welche Wortstellung ist richtig? Wörter: später / Bus / der / kommt / Heute",
@@ -2987,145 +2802,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.1–1.2",
     "rule": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach.",
-    "wrongRules": [
-      "Eine Bitte wird durch Beleidigungen besonders eindeutig.",
-      "Eine Rückfrage muss immer die gesamte Aufgabe ablehnen."
-    ],
     "rows": [
       {
-        "prompt": "Du brauchst einen Stift. Welcher Satz formuliert eine höfliche Bitte?",
+        "prompt": "Du möchtest einen Stift ausleihen. Welche Bitte nennt genau dieses Anliegen?",
         "answers": [
           "Kannst du mir bitte einen Stift leihen?",
-          "Gib sofort deinen Stift her!",
-          "Dein Stift gehört jetzt mir."
+          "Kannst du mir bitte die Uhrzeit sagen?",
+          "Kannst du mir bitte das Heft zeigen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "„Kannst du mir bitte einen Stift leihen?“ fragt nach einem Stift zum Ausleihen."
       },
       {
-        "prompt": "Du hast den Arbeitsauftrag nicht verstanden. Welche Rückfrage nennt das Problem genau?",
+        "prompt": "Du weißt nicht, ob du nur die Länge oder auch die Breite messen sollst. Welche Rückfrage klärt das?",
         "answers": [
           "Soll ich nur die Länge oder auch die Breite messen?",
-          "Das ist doch alles sinnlos!",
-          "Ich mache grundsätzlich nichts."
+          "Soll ich die Maße mit Bleistift oder mit Kugelschreiber notieren?",
+          "Soll ich das Blatt heute oder morgen abgeben?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Frage nennt die beiden unklaren Maße."
       },
       {
-        "prompt": "Du möchtest die Uhrzeit eines Termins wissen. Welche Frage passt?",
+        "prompt": "Du möchtest die Anfangszeit eines Termins wissen. Welche Frage passt?",
         "answers": [
           "Um wie viel Uhr beginnt unser Termin?",
-          "Warum ist immer alles schlecht?",
-          "Hast du überhaupt eine Uhr?"
+          "In welchem Raum findet unser Termin statt?",
+          "Wie lange dauert unser Termin?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "„Um wie viel Uhr“ fragt nach der Anfangszeit."
       },
       {
-        "prompt": "Du möchtest einen Kunden kurz warten lassen. Welche Formulierung ist höflich und klar?",
+        "prompt": "Ein Kunde soll kurz warten, während du nachfragst. Welcher Satz teilt beides mit?",
         "answers": [
           "Bitte warten Sie einen Moment. Ich frage nach.",
-          "Warten Sie gefälligst!",
-          "Ich sage einfach nichts."
+          "Bitte kommen Sie morgen wieder. Ich bin dann da.",
+          "Bitte gehen Sie zum Eingang. Ich folge Ihnen."
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Der Satz nennt das kurze Warten und den Grund dafür."
       },
       {
-        "prompt": "Du brauchst eine Wiederholung. Welche Bitte ist respektvoll?",
+        "prompt": "Du möchtest den letzten Satz noch einmal hören. Welche Bitte passt?",
         "answers": [
           "Könnten Sie den letzten Satz bitte wiederholen?",
-          "Reden Sie endlich verständlich!",
-          "Das interessiert mich nicht."
+          "Könnten Sie den letzten Satz bitte aufschreiben?",
+          "Könnten Sie den nächsten Satz bitte vorlesen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "„Wiederholen“ bedeutet hier, denselben Satz noch einmal zu sagen."
       },
       {
-        "prompt": "Du möchtest einen Raum betreten. Welche Bitte passt?",
+        "prompt": "Du möchtest die Erlaubnis, einen Raum zu betreten. Welche Frage passt?",
         "answers": [
           "Darf ich bitte kurz hereinkommen?",
-          "Ich darf hier alles!",
-          "Gehen Sie sofort raus!"
+          "Darf ich bitte kurz hinausgehen?",
+          "Darf ich bitte das Fenster öffnen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "„Hereinkommen“ bezeichnet das Betreten des Raums."
       },
       {
-        "prompt": "Du brauchst Hilfe beim Tragen. Welcher Satz ist eine höfliche Bitte?",
+        "prompt": "Du möchtest beim Tragen einer schweren Kiste Hilfe. Welche Bitte passt?",
         "answers": [
           "Hilfst du mir bitte mit der schweren Kiste?",
-          "Du musst jetzt meine Arbeit machen!",
-          "Du bist sowieso zu langsam."
+          "Zeigst du mir bitte den leeren Lagerraum?",
+          "Notierst du bitte das Gewicht der Kiste?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Nur diese Bitte fragt nach Hilfe mit der Kiste."
       },
       {
-        "prompt": "Du hast eine Mengenangabe nicht verstanden. Welche Rückfrage ist konkret?",
+        "prompt": "Du weißt nicht, ob fünf Teile oder fünf Packungen gemeint sind. Welche Rückfrage klärt die Menge?",
         "answers": [
           "Meinen Sie fünf einzelne Teile oder fünf Packungen?",
-          "Warum reden Sie überhaupt?",
-          "Ich rate einfach irgendeine Zahl."
+          "Soll ich die Packungen heute oder morgen abholen?",
+          "Welche Farbe sollen die Teile haben?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Frage unterscheidet einzelne Teile und ganze Packungen."
       },
       {
-        "prompt": "Du kannst einen Termin nicht halten. Welche Nachricht enthält eine höfliche Bitte um Ersatz?",
+        "prompt": "Du kannst einen Termin nicht wahrnehmen und möchtest einen Ersatztermin. Welche Bitte passt?",
         "answers": [
           "Könnten wir bitte einen neuen Termin vereinbaren?",
-          "Ich komme nicht, ist mir egal.",
-          "Sie warten einfach, bis ich Zeit habe."
+          "Könnten Sie mir bitte den Weg zum Termin erklären?",
+          "Könnten Sie mir bitte die Dauer des Termins nennen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Nur diese Bitte verlangt die Vereinbarung eines neuen Termins."
       },
       {
-        "prompt": "Du brauchst mehr Zeit für eine Aufgabe. Welche Bitte ist klar und respektvoll?",
+        "prompt": "Du möchtest fünf Minuten länger an der Aufgabe arbeiten. Welche Bitte nennt das genau?",
         "answers": [
           "Kann ich bitte noch fünf Minuten weiterarbeiten?",
-          "Sie müssen warten, bis ich fertig bin!",
-          "Alle Aufgaben sind unnötig."
+          "Kann ich bitte fünf Minuten früher gehen?",
+          "Kann ich bitte fünf neue Aufgaben bekommen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Bitte nennt die zusätzliche Arbeitszeit von fünf Minuten."
       },
       {
-        "prompt": "Du willst eine Kollegin ausreden lassen. Welche Antwort zeigt das?",
+        "prompt": "Du möchtest eine Kollegin zuerst ausreden lassen und danach nachfragen. Welcher Satz sagt das?",
         "answers": [
           "Bitte erzähle erst zu Ende. Danach frage ich nach.",
-          "Jetzt rede nur noch ich!",
-          "Deine Meinung zählt nicht."
+          "Bitte höre erst meine Frage. Danach kannst du erzählen.",
+          "Bitte schreibe deine Frage auf. Ich lese sie später."
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Reihenfolge lautet: erst ausreden lassen, dann nachfragen."
       },
       {
-        "prompt": "Du suchst die zuständige Person. Welche Frage hilft sachlich weiter?",
+        "prompt": "Du suchst die Person, die eine Bestellung bearbeitet. Welche Frage passt?",
         "answers": [
           "Wer ist für diese Bestellung zuständig?",
-          "Warum weiß hier niemand etwas?",
-          "Ist mir doch egal, wer das macht."
+          "Wann wurde diese Bestellung abgeschickt?",
+          "Wie viel kostet diese Bestellung?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "„Wer“ fragt nach der zuständigen Person."
       },
       {
-        "prompt": "Du willst eine Notiz überprüfen. Welche Rückfrage ist eindeutig?",
+        "prompt": "In deiner Notiz steht „Treffen um 9 Uhr“. Welche Rückfrage überprüft genau diese Uhrzeit?",
         "answers": [
           "Habe ich richtig notiert, dass wir uns um 9 Uhr treffen?",
-          "Sie haben bestimmt alles falsch gesagt!",
-          "Ich schreibe einfach nichts auf."
+          "Habe ich richtig notiert, dass wir uns in Raum 9 treffen?",
+          "Habe ich richtig notiert, dass wir neun Teile brauchen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Frage überprüft 9 Uhr als Treffzeit."
       },
       {
-        "prompt": "Du willst einen Fehler ansprechen. Welche Frage bleibt sachlich?",
+        "prompt": "Du möchtest eine möglicherweise falsche Maßangabe gemeinsam prüfen. Welche Bitte passt?",
         "answers": [
           "Können wir diese Maßangabe bitte gemeinsam prüfen?",
-          "Du rechnest immer alles falsch!",
-          "Mit dir kann man nie arbeiten."
+          "Können wir die Werkzeuge bitte gemeinsam aufräumen?",
+          "Können wir die Bestellung bitte gemeinsam verpacken?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Die Bitte bezieht sich direkt auf die Prüfung der Maßangabe."
       },
       {
-        "prompt": "Du möchtest eine Anleitung erhalten. Welcher Satz ist eine höfliche Bitte?",
+        "prompt": "Du möchtest eine Anleitung zugeschickt bekommen. Welche Bitte passt?",
         "answers": [
           "Könnten Sie mir bitte die Anleitung schicken?",
-          "Schicken Sie das sofort, sonst gibt es Ärger!",
-          "Ihre Anleitung ist bestimmt schlecht."
+          "Könnten Sie mir bitte den Preis nennen?",
+          "Könnten Sie mir bitte den Termin bestätigen?"
         ],
-        "why": "Eine höfliche Bitte nennt das Anliegen klar und lässt dem Gegenüber Raum zu antworten. Bei Unklarheiten fragt man gezielt nach."
+        "why": "Nur diese Bitte fragt nach dem Versand der Anleitung."
       }
     ]
   },
@@ -3136,145 +2947,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.1–1.2",
     "rule": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch.",
-    "wrongRules": [
-      "Eine persönliche Abwertung ersetzt eine konkrete Beobachtung.",
-      "Gutes Feedback muss immer behaupten, dass jemand „nie“ etwas richtig macht."
-    ],
     "rows": [
       {
-        "prompt": "Welche Rückmeldung beschreibt ein konkretes Verhalten statt die Person abzuwerten?",
+        "prompt": "Welche Rückmeldung nennt ein beobachtetes Verhalten mit einer genauen Anzahl?",
         "answers": [
           "Du hast mich gerade zweimal unterbrochen.",
-          "Du bist grundsätzlich respektlos.",
-          "Du kannst einfach gar nichts."
+          "Du hörst manchmal nicht zu.",
+          "Unser Gespräch war unruhig."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "„Du hast mich gerade zweimal unterbrochen“ nennt ein beobachtetes Verhalten und die genaue Anzahl zwei."
       },
       {
-        "prompt": "Welche Aussage enthält eine Ich-Botschaft mit einem Wunsch?",
+        "prompt": "Welche Aussage nennt ein eigenes Problem und einen konkreten Wunsch?",
         "answers": [
           "Ich kann mich bei dem Lärm schwer konzentrieren. Bitte sprecht leiser.",
-          "Ihr seid alle unerträglich.",
-          "Hier ist sowieso alles falsch."
+          "In diesem Raum ist es laut.",
+          "Bitte gebt eure Blätter ab."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Aussage verbindet die eigene Konzentrationsschwierigkeit mit dem Wunsch nach weniger Lärm."
       },
       {
-        "prompt": "Welche Rückmeldung nennt eine überprüfbare Beobachtung?",
+        "prompt": "Welche Rückmeldung nennt einen überprüfbaren Fehler in einer Tabelle?",
         "answers": [
           "In der Tabelle fehlen zwei Einheiten.",
-          "Deine Arbeit ist immer schlecht.",
-          "Du gibst dir niemals Mühe."
+          "Die Tabelle sieht ungewohnt aus.",
+          "Die Tabelle gefällt mir nicht."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die fehlenden Einheiten kann man in der Tabelle nachzählen."
       },
       {
-        "prompt": "Was gehört zum aktiven Zuhören?",
+        "prompt": "Ali sagt: „Wir messen zuerst und schneiden danach.“ Welche Antwort fasst seine Aussage zusammen?",
         "answers": [
-          "Den Inhalt mit eigenen Worten zusammenfassen und nachfragen.",
-          "Währenddessen andere Nachrichten schreiben.",
-          "Die andere Person ständig unterbrechen."
+          "Wir messen also vor dem Schneiden.",
+          "Wir schneiden also vor dem Messen.",
+          "Wir messen also erst nach dem Schneiden."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Antwort erhält die Reihenfolge aus Alis Aussage."
       },
       {
-        "prompt": "Welche Antwort prüft, ob du richtig verstanden hast?",
+        "prompt": "Du möchtest prüfen, ob die Kontrolle zuerst erfolgen soll. Welche Rückfrage passt?",
         "answers": [
           "Meinst du, dass wir zuerst die Maße kontrollieren sollen?",
-          "Du meinst bestimmt etwas Unsinniges.",
-          "Ich höre lieber gar nicht zu."
+          "Meinst du, dass wir zuerst die Werkzeuge einräumen sollen?",
+          "Meinst du, dass wir zuerst das Material bestellen sollen?"
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Frage bezieht sich auf die Reihenfolge der Maßkontrolle."
       },
       {
-        "prompt": "Welche Gesprächsregel hilft allen, zu Wort zu kommen?",
+        "prompt": "Welche Regel verlangt ausdrücklich, die sprechende Person nicht zu unterbrechen?",
         "answers": [
           "Wir lassen einander ausreden.",
-          "Wer am lautesten spricht, entscheidet alles.",
-          "Nur eine Person darf immer reden."
+          "Wir melden uns zu Wort.",
+          "Wir sprechen in ganzen Sätzen."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "„Ausreden lassen“ bedeutet, bis zum Ende des Beitrags zu warten."
       },
       {
-        "prompt": "Welche Rückmeldung nennt einen konkreten Verbesserungsvorschlag?",
+        "prompt": "Welche Rückmeldung fordert eine konkrete Ergänzung am Ergebnis?",
         "answers": [
           "Schreibe bitte noch die Einheit hinter das Ergebnis.",
-          "Du bist einfach schlecht in Mathe.",
-          "Du wirst das nie lernen."
+          "Dein Ergebnis steht auf dem Blatt.",
+          "Deine Rechnung hat drei Zeilen."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Rückmeldung nennt genau, was ergänzt werden soll: die Einheit."
       },
       {
-        "prompt": "Welche Formulierung trennt Beobachtung und Vermutung?",
+        "prompt": "Welche Aussage nennt eine Beobachtung und lässt die Ursache ausdrücklich offen?",
         "answers": [
           "Du warst heute zehn Minuten später da; den Grund kenne ich nicht.",
-          "Du bist zu spät, weil dir alles egal ist.",
-          "Du kommst immer absichtlich zu spät."
+          "Du warst heute zehn Minuten später da, weil dein Bus ausfiel.",
+          "Du warst heute zehn Minuten später da; vermutlich warst du müde."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Nur diese Aussage erklärt ausdrücklich, dass die Ursache unbekannt ist."
       },
       {
-        "prompt": "Welche Rückmeldung bezieht sich auf die Aufgabe?",
+        "prompt": "Welche Rückmeldung nennt eine Stärke und einen fehlenden Teil der Anleitung?",
         "answers": [
           "Deine Reihenfolge ist klar; beim letzten Schritt fehlt eine Erklärung.",
-          "Du bist komisch.",
-          "Deine Kleidung gefällt mir nicht."
+          "Deine Anleitung ist auf einer Seite geschrieben.",
+          "Deine Anleitung liegt neben dem Werkstück."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Rückmeldung nennt die klare Reihenfolge und die noch fehlende Erklärung."
       },
       {
-        "prompt": "Wie kannst du auf berechtigte Kritik konstruktiv reagieren?",
+        "prompt": "Die Kritik lautet: „Im Ergebnis fehlt cm².“ Welche Antwort kündigt die passende Korrektur an?",
         "answers": [
-          "Ich prüfe den genannten Punkt und verbessere ihn gegebenenfalls.",
-          "Ich beleidige die Person.",
-          "Ich höre unabhängig vom Inhalt nicht zu."
+          "Ich ergänze cm² hinter dem Ergebnis.",
+          "Ich ändere die Überschrift der Aufgabe.",
+          "Ich zeichne die Tabelle neu."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Kritik betrifft die Einheit. Diese wird direkt ergänzt."
       },
       {
-        "prompt": "Welche Aussage enthält einen umsetzbaren Wunsch?",
+        "prompt": "Welche Aussage nennt eine konkrete Handlung und den Zeitpunkt dafür?",
         "answers": [
           "Bitte lege benutzte Werkzeuge nach der Arbeit zurück.",
-          "Sei endlich ein anderer Mensch!",
-          "Mach nie wieder irgendetwas falsch!"
+          "Bitte achte auf deinen Arbeitsplatz.",
+          "Bitte arbeite in Zukunft sorgfältiger."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "„Werkzeuge zurücklegen“ ist die Handlung. „Nach der Arbeit“ nennt den Zeitpunkt."
       },
       {
-        "prompt": "Welche Aussage vermeidet eine unbelegte Verallgemeinerung?",
+        "prompt": "Welche Aussage bezieht sich auf zwei bestimmte Aufgaben und vermeidet „immer“ oder „nie“?",
         "answers": [
           "Bei den letzten zwei Aufgaben fehlte dein Rechenweg.",
-          "Du zeigst nie einen Rechenweg.",
-          "Du kannst grundsätzlich nicht rechnen."
+          "Bei deinen Aufgaben fehlt immer der Rechenweg.",
+          "Du schreibst nie einen Rechenweg auf."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Aussage begrenzt die Beobachtung auf die letzten zwei Aufgaben."
       },
       {
-        "prompt": "Welche Antwort ist eine sachliche Rückfrage zu Kritik?",
+        "prompt": "Jemand sagt: „Hier fehlt eine Erklärung.“ Welche Rückfrage klärt die gemeinte Stelle?",
         "answers": [
           "An welcher Stelle fehlt dir eine Erklärung?",
-          "Warum bist du immer gegen mich?",
-          "Du hast sowieso keine Ahnung."
+          "Welche Schriftfarbe soll ich benutzen?",
+          "Wann hast du die Aufgabe bearbeitet?"
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Frage nach der Stelle klärt, welcher Teil erklärt werden soll."
       },
       {
-        "prompt": "Was hilft bei einer Meinungsverschiedenheit?",
+        "prompt": "Mia begründet ihren Vorschlag mit einem kürzeren Weg. Welche Antwort fragt nach ihrem Grund?",
         "answers": [
-          "Begründungen anhören und beim Thema bleiben.",
-          "Persönliche Beleidigungen sammeln.",
-          "Jede abweichende Meinung verbieten."
+          "Wie viele Meter sparen wir mit deinem Weg?",
+          "Wann hast du heute Pause?",
+          "Welche Farbe hat dein Rucksack?"
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Frage greift Mias Begründung mit der Weglänge auf."
       },
       {
-        "prompt": "Welche Rückmeldung nennt eine Stärke konkret?",
+        "prompt": "Welche Rückmeldung benennt eine Stärke der Skizze und erklärt ihren Nutzen?",
         "answers": [
           "Deine beschriftete Skizze macht die Maße gut erkennbar.",
-          "Du bist halt irgendwie gut.",
-          "Das war nicht völlig schlimm."
+          "Deine Skizze liegt auf dem Tisch.",
+          "Deine Skizze ist mit Bleistift gezeichnet."
         ],
-        "why": "Hilfreiches Feedback beschreibt eine konkrete Beobachtung, vermeidet persönliche Abwertungen und nennt bei Bedarf einen umsetzbaren Wunsch."
+        "why": "Die Rückmeldung erklärt, warum die Beschriftung hilfreich ist."
       }
     ]
   },
@@ -3285,145 +3092,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.3",
     "rule": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger.",
-    "wrongRules": [
-      "Ein Betreff darf niemals das Anliegen nennen.",
-      "Eine formelle E-Mail kommt immer ohne Anrede und Absender aus."
-    ],
     "rows": [
       {
-        "prompt": "Welcher Betreff nennt das Anliegen einer Terminverschiebung konkret?",
+        "prompt": "Du willst den Termin am 8. Mai verschieben. Welcher Betreff nennt dieses Anliegen?",
         "answers": [
           "Bitte um Verschiebung des Termins am 8. Mai",
-          "Hallo!!!",
-          "Ganz wichtig!!!"
+          "Bestätigung des Termins am 8. Mai",
+          "Anfahrt zum Termin am 8. Mai"
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Der Betreff „Bitte um Verschiebung des Termins am 8. Mai“ nennt die gewünschte Terminänderung."
       },
       {
-        "prompt": "Welche Anrede ist für eine formelle erste Nachricht an Frau Weber passend?",
+        "prompt": "Du schreibst zum ersten Mal formell an Frau Weber. Welche Anrede passt?",
         "answers": [
           "Sehr geehrte Frau Weber,",
-          "Hey Weber!",
-          "Na du!"
+          "Liebe Mia,",
+          "Hallo zusammen,"
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Die formelle Anrede nennt Frau Weber mit ihrem Nachnamen."
       },
       {
-        "prompt": "Welche Grußformel passt zu einer formellen E-Mail?",
+        "prompt": "Welche Formulierung ist eine Grußformel am Ende einer formellen E-Mail?",
         "answers": [
           "Mit freundlichen Grüßen",
-          "Bis denne, Alter!",
-          "Ciao, du nervst!"
+          "Sehr geehrte Damen und Herren,",
+          "Vielen Dank für Ihre Nachricht."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "„Mit freundlichen Grüßen“ steht als Grußformel am Schluss."
       },
       {
-        "prompt": "Was ist ein sinnvoller erster Satz bei einer schriftlichen Bewerbung?",
+        "prompt": "Welcher Satz sagt ausdrücklich, dass du dich um einen Ausbildungsplatz bewirbst?",
         "answers": [
           "Hiermit bewerbe ich mich um den ausgeschriebenen Ausbildungsplatz.",
-          "Was geht bei euch?",
-          "Ich schreibe einfach irgendwas."
+          "Hiermit bestätige ich unseren Gesprächstermin.",
+          "Hiermit frage ich nach einer Lieferung."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "„Hiermit bewerbe ich mich um den ausgeschriebenen Ausbildungsplatz“ nennt ausdrücklich die Bewerbung."
       },
       {
-        "prompt": "Welche Nachricht nennt eine konkrete Bitte um eine Auskunft?",
+        "prompt": "Du möchtest wissen, wann dein Praktikum beginnt. Welche Bitte passt?",
         "answers": [
           "Bitte teilen Sie mir den Beginn des Praktikums mit.",
-          "Schreiben Sie mir mal etwas!",
-          "Sie wissen schon, was ich will."
+          "Bitte teilen Sie mir den Preis des Werkzeugs mit.",
+          "Bitte teilen Sie mir die Liefermenge mit."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "„Bitte teilen Sie mir den Beginn des Praktikums mit“ fragt nach dem gesuchten Zeitpunkt."
       },
       {
-        "prompt": "Was sollte eine Krankmeldung an den Betrieb klar nennen?",
+        "prompt": "Welche Nachricht meldet eine Abwesenheit wegen Krankheit und deren voraussichtliche Dauer?",
         "answers": [
-          "Dass man krankheitsbedingt fehlt und wie lange voraussichtlich.",
-          "Passwörter anderer Beschäftigter.",
-          "Private Gerüchte über Kollegen."
+          "Ich bin krank und kann voraussichtlich bis Donnerstag nicht kommen.",
+          "Ich komme am Donnerstag zu unserem Gespräch.",
+          "Ich möchte meinen Urlaub im April beantragen."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Die Nachricht nennt Krankheit und die voraussichtliche Dauer der Abwesenheit."
       },
       {
-        "prompt": "Welcher Satz informiert klar über einen Anhang?",
+        "prompt": "Welcher Satz sagt, dass der Lebenslauf der E-Mail beigefügt ist?",
         "answers": [
           "Im Anhang finden Sie meinen Lebenslauf.",
-          "Irgendwo müsste etwas sein.",
-          "Sie brauchen gar nichts anzusehen."
+          "Meinen Lebenslauf bringe ich zum Gespräch mit.",
+          "Meinen Lebenslauf schicke ich nächste Woche."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "„Im Anhang“ bezeichnet eine beigefügte Datei."
       },
       {
-        "prompt": "Wie gehst du vor dem Versand mit einem angekündigten Anhang um?",
+        "prompt": "Im Text steht „Die Zeichnung ist im Anhang“. Was musst du vor dem Versand dazu prüfen?",
         "answers": [
-          "Ich prüfe, ob die richtige Datei tatsächlich angehängt ist.",
-          "Ich verlasse mich nur auf die Formulierung im Text.",
-          "Ich hänge absichtlich eine leere Datei an."
+          "Ob die richtige Zeichnung als Datei angehängt ist.",
+          "Ob die Zeichnung noch auf meinem Schreibtisch liegt.",
+          "Ob die Zeichnung auf der Firmenwebsite steht."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Die Zeichnung muss tatsächlich als richtige Datei angehängt sein."
       },
       {
-        "prompt": "Welche Formulierung ist sachlich für eine Reklamation?",
+        "prompt": "Eine Lieferung enthält acht statt zehn bestellte Teile. Welcher Satz beschreibt den Mangel genau?",
         "answers": [
           "Bei der Lieferung fehlen zwei bestellte Teile.",
-          "Ihr macht sowieso nie etwas richtig!",
-          "Ihr seid alle unfähig!"
+          "Die Lieferung enthält zehn bestellte Teile.",
+          "Die Lieferung enthält zwei Teile zu viel."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Zehn minus acht sind zwei fehlende Teile."
       },
       {
-        "prompt": "Welche Angabe hilft dem Betrieb, auf eine Anfrage zu antworten?",
+        "prompt": "Der Betrieb soll per E-Mail antworten. Welche Kontaktangabe braucht er dafür?",
         "answers": [
-          "Eine erreichbare Kontaktadresse und das konkrete Anliegen.",
-          "Nur ein einzelnes Fragezeichen.",
-          "Ein fremdes Passwort."
+          "Eine erreichbare E-Mail-Adresse.",
+          "Eine Postanschrift.",
+          "Eine Telefonnummer."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Eine E-Mail-Antwort braucht eine erreichbare E-Mail-Adresse."
       },
       {
-        "prompt": "Welche Formulierung bittet um eine Empfangsbestätigung?",
+        "prompt": "Du möchtest wissen, ob deine Unterlagen angekommen sind. Welche Bitte passt?",
         "answers": [
           "Bitte bestätigen Sie kurz den Erhalt der Unterlagen.",
-          "Ignorieren Sie diese Nachricht!",
-          "Löschen Sie meine Bewerbung sofort!"
+          "Bitte ändern Sie die Angaben in meinen Unterlagen.",
+          "Bitte schicken Sie mir Ihre Unterlagen."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Eine Bestätigung des Erhalts sagt, dass die Unterlagen angekommen sind."
       },
       {
-        "prompt": "Welche Formulierung nennt den Bezug einer Antwort klar?",
+        "prompt": "Welche Formulierung nennt Datum und Thema der Nachricht, auf die du antwortest?",
         "answers": [
           "Vielen Dank für Ihre Nachricht vom 6. Mai zur Praktikumsstelle.",
-          "Ich antworte auf irgendwas.",
-          "Sie wissen schon, worum es geht."
+          "Vielen Dank für Ihre schnelle Nachricht.",
+          "Vielen Dank für die Unterlagen im Anhang."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Die Formulierung „Ihre Nachricht vom 6. Mai zur Praktikumsstelle“ nennt Datum und Thema."
       },
       {
-        "prompt": "Wie formulierst du eine Entschuldigung für eine verspätete Antwort sachlich?",
+        "prompt": "Welcher Satz entschuldigt ausdrücklich eine verspätete Antwort?",
         "answers": [
           "Bitte entschuldigen Sie meine verspätete Rückmeldung.",
-          "Sie hätten eben warten müssen!",
-          "Das geht Sie überhaupt nichts an!"
+          "Vielen Dank für Ihre freundliche Einladung.",
+          "Ich bestätige den vereinbarten Termin."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "„Bitte entschuldigen Sie meine verspätete Rückmeldung“ entschuldigt ausdrücklich die späte Antwort."
       },
       {
-        "prompt": "Welcher Betreff passt zu einer Materialbestellung?",
+        "prompt": "Du möchtest 20 Schutzbrillen kaufen. Welcher Betreff kündigt eine Bestellung an?",
         "answers": [
           "Bestellung von 20 Schutzbrillen",
-          "Irgendein Zeug",
-          "Hallihallo"
+          "Rückgabe von 20 Schutzbrillen",
+          "Reparatur von 20 Schutzbrillen"
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Nur „Bestellung“ kündigt den gewünschten Kauf an."
       },
       {
-        "prompt": "Was prüfst du bei einer beruflichen Nachricht vor dem Absenden?",
+        "prompt": "Die E-Mail soll an Frau Weber gehen. Was prüfst du im Empfängerfeld?",
         "answers": [
-          "Empfänger, Anliegen, Formulierungen und gegebenenfalls Anhang.",
-          "Nur die Farbe des Bildschirms.",
-          "Ob möglichst viele Ausrufezeichen enthalten sind."
+          "Ob dort Frau Webers richtige E-Mail-Adresse steht.",
+          "Ob dort Frau Webers Postanschrift steht.",
+          "Ob dort Frau Webers Telefonnummer steht."
         ],
-        "why": "Eine berufliche Nachricht macht Betreff und Anliegen erkennbar. Anrede, sachlicher Text und Gruß richten sich nach Anlass und Empfänger."
+        "why": "Das Empfängerfeld muss die richtige E-Mail-Adresse enthalten."
       }
     ]
   },
@@ -3434,145 +3237,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.2, 1.3 und 1.5",
     "rule": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben.",
-    "wrongRules": [
-      "Eine Bewerbung wird durch erfundene Abschlüsse automatisch besser.",
-      "Im Lebenslauf müssen sachliche Angaben durch persönliche Beleidigungen ersetzt werden."
-    ],
     "rows": [
       {
-        "prompt": "Welche Angabe gehört in einen Lebenslauf?",
+        "prompt": "Welche Angabe nennt eine berufliche Erfahrung mit Zeitraum für den Lebenslauf?",
         "answers": [
-          "Schulbesuch und bisherige Praktika mit Zeitangaben.",
-          "Das Passwort des E-Mail-Kontos.",
-          "Ungeprüfte Gerüchte über frühere Mitschüler."
+          "Praktikum bei Metallbau Weber, 3. bis 14. März.",
+          "Hobby: Radfahren.",
+          "Fremdsprache: Englisch."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Das Praktikum bei Metallbau Weber ist eine berufliche Erfahrung. „3. bis 14. März“ nennt ihren Zeitraum."
       },
       {
-        "prompt": "Welche Aussage belegt Teamfähigkeit mit einem Beispiel?",
+        "prompt": "Welche Aussage belegt Zusammenarbeit mit einem konkreten Beispiel?",
         "answers": [
           "Im Praktikum habe ich mit zwei Kollegen Materialbestellungen vorbereitet.",
-          "Ich bin einfach immer der Beste.",
-          "Alle anderen sind schlecht."
+          "Ich kann gut im Team arbeiten.",
+          "Teamarbeit finde ich interessant."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Das Vorbereiten von Materialbestellungen mit zwei Kollegen ist ein konkretes Beispiel für Zusammenarbeit."
       },
       {
-        "prompt": "Was solltest du vor einer Bewerbung in der Stellenanzeige prüfen?",
+        "prompt": "In der Anzeige steht: „Bewerbung als PDF per E-Mail“. Welcher Bewerbungsweg wird verlangt?",
         "answers": [
-          "Gesuchten Beruf, Anforderungen und Bewerbungsweg.",
-          "Nur die Farbe des Firmenlogos.",
-          "Die Anzahl der Buchstaben im Firmennamen."
+          "Eine PDF-Datei per E-Mail senden.",
+          "Die Unterlagen nur telefonisch vorlesen.",
+          "Eine Papiermappe persönlich abgeben."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Die Anzeige nennt PDF und E-Mail ausdrücklich."
       },
       {
-        "prompt": "Welche E-Mail-Adresse wirkt für eine Bewerbung sachlich?",
+        "prompt": "Du heißt Mia Beispiel. Welche Musteradresse enthält Vor- und Nachnamen ohne Spitznamen?",
         "answers": [
-          "vorname.nachname@example.de",
-          "chefbeleidiger@example.de",
-          "keinebockaufarbeit@example.de"
+          "mia.beispiel@example.org",
+          "metallfan42@example.org",
+          "sternchen77@example.org"
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "In „mia.beispiel@example.org“ stehen der Vorname Mia und der Nachname Beispiel."
       },
       {
-        "prompt": "Welche Formulierung nennt eine konkrete Erfahrung?",
+        "prompt": "Welche Aussage nennt eine konkrete Tätigkeit aus einem Praktikum?",
         "answers": [
           "In meinem Praktikum habe ich Werkstücke entgratet und Maße geprüft.",
-          "Ich kann bestimmt alles.",
-          "Ich habe nichts zu sagen."
+          "Mein Praktikum war interessant.",
+          "Ich freue mich auf die Ausbildung."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "„Entgraten“ und „Maße prüfen“ sind konkrete Tätigkeiten."
       },
       {
-        "prompt": "Wie gehst du mit fehlender Berufserfahrung ehrlich um?",
+        "prompt": "Du hast noch keinen Beruf ausgeübt, aber ein Schulpraktikum gemacht. Welche Aussage bleibt bei diesen Angaben?",
         "answers": [
-          "Ich nenne vorhandene Schul- und Praxiserfahrungen und meine Lernbereitschaft.",
-          "Ich erfinde eine langjährige Berufstätigkeit.",
-          "Ich trage fremde Praktika als meine eigenen ein."
+          "Ich habe im Schulpraktikum erste Erfahrungen gesammelt.",
+          "Ich arbeite seit fünf Jahren als Fachkraft.",
+          "Ich habe bereits eine Berufsausbildung abgeschlossen."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Die Erfahrung im Schulpraktikum entspricht den Angaben. Eine frühere Berufstätigkeit wird nicht behauptet."
       },
       {
-        "prompt": "Welche Angabe hilft bei der zeitlichen Einordnung eines Praktikums?",
+        "prompt": "Welche Angabe sagt genau, wann ein Praktikum stattfand?",
         "answers": [
-          "Der Zeitraum und der Name des Betriebs.",
-          "Nur das Wort „irgendwann“.",
-          "Ein erfundenes Abschlussdatum."
+          "Vom 3. bis zum 14. März.",
+          "In einer Metallwerkstatt.",
+          "Bei der Firma Weber."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "„Vom 3. bis zum 14. März“ nennt Anfang und Ende."
       },
       {
-        "prompt": "Welche Frage passt im Vorstellungsgespräch zur Ausbildung?",
+        "prompt": "Du möchtest wissen, wer die Auszubildenden anleitet. Welche Frage passt?",
         "answers": [
-          "Wie ist die Betreuung der Auszubildenden organisiert?",
-          "Kann ich grundsätzlich ohne Absprache fehlen?",
-          "Muss ich überhaupt etwas lernen?"
+          "Wer betreut die Auszubildenden im Betrieb?",
+          "Wann beginnt morgens die Arbeitszeit?",
+          "Wo liegt der Eingang zum Betrieb?"
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Die Frage nach der Betreuung klärt, wer die Auszubildenden anleitet."
       },
       {
-        "prompt": "Was gehört zur Vorbereitung eines Vorstellungsgesprächs?",
+        "prompt": "Dein Gespräch beginnt um 9 Uhr in Raum 12. Welche Angabe hilft dir, die Anfahrt zu planen?",
         "answers": [
-          "Informationen über Betrieb und Ausbildungsberuf sammeln.",
-          "Bewusst zu spät kommen.",
-          "Den Termin ohne Nachricht ignorieren."
+          "Die Adresse des Betriebs.",
+          "Die Anzahl der Ausbildungsplätze.",
+          "Die Dauer der Probezeit."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Für die Anfahrt musst du wissen, wo der Betrieb liegt."
       },
       {
-        "prompt": "Welche Aussage erklärt das Interesse an einem Metallberuf konkret?",
+        "prompt": "Welche Aussage erklärt Interesse an einem Metallberuf durch passende Tätigkeiten?",
         "answers": [
           "Mir gefallen genaues Messen und das Bearbeiten von Werkstücken.",
-          "Ich finde grundsätzlich alles toll, egal was.",
-          "Über den Beruf will ich nichts wissen."
+          "Der Betrieb liegt in der Nähe meiner Wohnung.",
+          "Die Arbeitskleidung ist blau."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Messen und das Bearbeiten von Werkstücken gehören zum beruflichen Tätigkeitsfeld."
       },
       {
-        "prompt": "Was ist bei Kontaktangaben wichtig?",
+        "prompt": "Deine Telefonnummer hat sich geändert. Welche Angabe musst du in deiner Bewerbung aktualisieren?",
         "answers": [
-          "Sie müssen aktuell und erreichbar sein.",
-          "Sie sollten absichtlich falsch sein.",
-          "Sie müssen die Daten einer anderen Person enthalten."
+          "Die Telefonnummer.",
+          "Den Namen der Schule.",
+          "Das Datum des letzten Praktikums."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Nur die Telefonnummer hat sich laut Frage geändert."
       },
       {
-        "prompt": "Wie beschreibst du eine Stärke nachvollziehbar?",
+        "prompt": "Welche Aussage belegt die Stärke „sorgfältig“ mit einer Handlung?",
         "answers": [
-          "Ich arbeite sorgfältig; im Praktikum kontrollierte ich Maße vor dem Zuschnitt.",
-          "Ich mache ausnahmslos nie Fehler.",
-          "Ich bin allen anderen grundsätzlich überlegen."
+          "Im Praktikum prüfte ich jedes Maß vor dem Zuschnitt.",
+          "Ich arbeite sorgfältig.",
+          "Sorgfalt ist mir wichtig."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Die Prüfung jedes Maßes ist eine konkrete Handlung, die Sorgfalt zeigt."
       },
       {
-        "prompt": "Wie gehst du mit einer Lücke im Lebenslauf um?",
+        "prompt": "Du warst von Juni bis August auf Ausbildungssuche. Welche Formulierung beschreibt diesen Zeitraum wahrheitsgemäß?",
         "answers": [
-          "Ich erkläre den Zeitraum wahrheitsgemäß, wenn danach gefragt wird.",
-          "Ich erfinde einen Arbeitgeber.",
-          "Ich ändere heimlich mein Geburtsdatum."
+          "Juni bis August: Suche nach einem Ausbildungsplatz.",
+          "Juni bis August: Ausbildung zur Fachkraft.",
+          "Juni bis August: Beschäftigung im Metallbau."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "„Juni bis August: Suche nach einem Ausbildungsplatz“ beschreibt den Zeitraum und die genannte Tätigkeit."
       },
       {
-        "prompt": "Welche Unterlagen schickst du auf eine ausdrücklich genannte Anforderung hin?",
+        "prompt": "Die Anzeige verlangt Anschreiben, Lebenslauf und letztes Schulzeugnis. Welche Zusammenstellung ist vollständig?",
         "answers": [
-          "Die in der Anzeige verlangten Bewerbungsunterlagen.",
-          "Beliebige fremde Zeugnisse.",
-          "Die Zugangsdaten zu meinem Konto."
+          "Anschreiben, Lebenslauf und letztes Schulzeugnis.",
+          "Anschreiben und Lebenslauf.",
+          "Lebenslauf und letztes Schulzeugnis."
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Alle drei ausdrücklich verlangten Unterlagen müssen dabei sein."
       },
       {
-        "prompt": "Was hilft bei der Zuordnung einer Bewerbung im Betrieb?",
+        "prompt": "Die Stelle hat die Kennziffer M-24. Welcher Betreff ordnet die Bewerbung genau dieser Stelle zu?",
         "answers": [
-          "Die genaue Bezeichnung der Stelle und gegebenenfalls die Kennziffer.",
-          "Nur der Satz „Ich will einen Job“.",
-          "Ein leerer Betreff und eine leere Nachricht."
+          "Bewerbung um den Ausbildungsplatz, Kennziffer M-24",
+          "Bewerbung um den Ausbildungsplatz, Kennziffer M-42",
+          "Bewerbung um den Ausbildungsplatz, Kennziffer M-14"
         ],
-        "why": "Bewerbungsunterlagen nennen überprüfbare Qualifikationen und Erfahrungen. Sie passen zur Stelle und enthalten verlässliche Kontaktangaben."
+        "why": "Die Kennziffer muss mit M-24 übereinstimmen."
       }
     ]
   },
@@ -3583,145 +3382,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.3",
     "rule": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben.",
-    "wrongRules": [
-      "Die Reihenfolge der Arbeitsschritte ist grundsätzlich egal.",
-      "Eine Anleitung soll wichtige Maße und Bedingungen absichtlich weglassen."
-    ],
     "rows": [
       {
-        "prompt": "Was muss vor dem Zuschneiden einer Platte geschehen?",
+        "prompt": "Die Anleitung lautet: „Ermittle die Maße. Zeichne sie an. Schneide die Platte zu.“ Was kommt direkt vor dem Zuschneiden?",
         "answers": [
-          "Die benötigten Maße ermitteln und anzeichnen.",
-          "Erst zuschneiden und danach die Wunschmaße überlegen.",
-          "Die Maße grundsätzlich ignorieren."
+          "Die Maße anzeichnen.",
+          "Die Maße ermitteln.",
+          "Die Platte verpacken."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "In der Anleitung steht das Anzeichnen direkt vor dem Zuschneiden."
       },
       {
-        "prompt": "Welcher Satz beschreibt einen Arbeitsschritt eindeutig?",
+        "prompt": "Welcher Satz nennt Messgerät, Maß und Handlung genau?",
         "answers": [
           "Miss mit dem Lineal 8 cm ab und markiere die Stelle.",
-          "Mach das Ding irgendwie richtig.",
-          "Du weißt schon, was gemeint ist."
+          "Miss eine passende Strecke ab.",
+          "Markiere danach eine Stelle."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Miss mit dem Lineal 8 cm ab und markiere die Stelle“ nennt Messgerät, Maß und Handlung."
       },
       {
-        "prompt": "Welche Angabe gehört zu einer verständlichen Backanleitung?",
+        "prompt": "In einer Backanleitung fehlt, wie heiß und wie lange gebacken wird. Welche Angabe ergänzt beides?",
         "answers": [
-          "Backtemperatur und ungefähre Backdauer.",
-          "Nur die Lieblingsfarbe der Person.",
-          "Das Passwort des Küchengeräts."
+          "Bei 180 °C etwa 20 Minuten backen.",
+          "Den Teig in eine runde Form geben.",
+          "Den Kuchen nach dem Backen abkühlen lassen."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "180 °C ist die Temperatur; 20 Minuten sind die Dauer."
       },
       {
-        "prompt": "Welches Wort leitet in einer Anleitung einen späteren Schritt ein?",
+        "prompt": "Welches Wort leitet in einer Anleitung einen folgenden Schritt ein?",
         "answers": [
           "Anschließend",
-          "Weil",
-          "Obwohl"
+          "Zuvor",
+          "Gleichzeitig"
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Anschließend“ bedeutet „danach“."
       },
       {
-        "prompt": "Warum ist die Reihenfolge beim Montieren wichtig?",
+        "prompt": "„Lege das Blech an. Spanne es fest. Bohre das Loch.“ Welcher Schritt setzt das Festspannen voraus?",
         "answers": [
-          "Manche Schritte sind Voraussetzung für die folgenden.",
-          "Jeder Schritt ist völlig unabhängig von allen anderen.",
-          "Eine falsche Reihenfolge verbessert immer das Ergebnis."
+          "Das Loch bohren.",
+          "Das Blech anlegen.",
+          "Die Maße aufschreiben."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "Laut Anleitung wird erst nach dem Festspannen gebohrt."
       },
       {
-        "prompt": "Welche Formulierung vermeidet einen unklaren Bezug?",
+        "prompt": "Welcher Satz nennt beide Gegenstände und ihre Lage eindeutig?",
         "answers": [
           "Lege das Lineal neben das Heft.",
-          "Lege das da dorthin.",
-          "Tu damit irgendwas."
+          "Lege es daneben.",
+          "Lege das Lineal dorthin."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Lege das Lineal neben das Heft“ nennt beide Gegenstände und ihre Lage zueinander."
       },
       {
-        "prompt": "Welche Angabe fehlt bei „Erhitze das Wasser“ für eine genaue Durchführung am stärksten?",
+        "prompt": "„Erhitze das Wasser.“ Welche Ergänzung nennt Menge und Zieltemperatur?",
         "answers": [
-          "Wie viel Wasser und bis zu welcher Temperatur erhitzt werden soll.",
-          "Die Farbe der Schuhe.",
-          "Der Geburtsort des Verfassers."
+          "Erhitze 500 ml Wasser auf 60 °C.",
+          "Erhitze das Wasser in einem Topf.",
+          "Erhitze das Wasser anschließend."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "500 ml nennt die Menge; 60 °C nennt die Zieltemperatur."
       },
       {
-        "prompt": "Was steht sinnvoll am Anfang einer Vorgangsbeschreibung?",
+        "prompt": "Welcher Abschnitt nennt das Material für das Herstellen eines Papiersterns?",
         "answers": [
-          "Ziel und benötigte Materialien.",
-          "Ein zufälliger letzter Arbeitsschritt.",
-          "Eine persönliche Beleidigung."
+          "Du brauchst Papier, Bleistift und Schere.",
+          "Falte das Papier zur Hälfte.",
+          "Am Ende ist der Stern fertig."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Papier, Bleistift und Schere“ sind die benötigten Gegenstände."
       },
       {
-        "prompt": "Welcher Satz verwendet ein genaues Tätigkeitsverb?",
+        "prompt": "Welcher Satz sagt genau, wie zwei Bleche verbunden werden sollen?",
         "answers": [
           "Verschraube die beiden Bleche.",
-          "Mach die beiden Bleche.",
-          "Tu die beiden Bleche."
+          "Verbinde die beiden Bleche.",
+          "Bearbeite die beiden Bleche."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Verschrauben“ nennt Schrauben als genaue Art der Verbindung."
       },
       {
-        "prompt": "Was ist der Unterschied zwischen Material und Tätigkeit?",
+        "prompt": "Welche Antwort nennt zuerst einen Gegenstand und dann eine Tätigkeit?",
         "answers": [
-          "Ein Bleistift ist Material; Markieren ist eine Tätigkeit.",
-          "Markieren ist ein Werkzeug aus Metall.",
-          "Ein Bleistift ist ein Arbeitsschritt."
+          "Bleistift – Markieren",
+          "Markieren – Bleistift",
+          "Markieren – Schneiden"
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "Ein Bleistift ist ein Gegenstand; Markieren ist eine Tätigkeit."
       },
       {
-        "prompt": "Welche Reihenfolge passt zum Abheften eines gelochten Blatts?",
+        "prompt": "Du willst ein gelochtes Blatt in einen Ringordner heften. Die Ringe sind noch geschlossen. Was musst du zuerst tun?",
         "answers": [
-          "Ordner öffnen, Blatt einlegen, Bügel schließen.",
-          "Bügel schließen, Blatt durchdrücken, Ordner öffnen.",
-          "Blatt zerreißen, Ordner schließen, Löcher suchen."
+          "Die Ringe öffnen.",
+          "Das Blatt auf die offenen Ringe legen.",
+          "Die Ringe wieder schließen."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "Damit das Blatt eingelegt werden kann, müssen zuerst die Ringe geöffnet werden."
       },
       {
-        "prompt": "Was verbessert die Verständlichkeit einer Anleitung?",
+        "prompt": "In einer Anleitung steht: „Dann machst du es fest.“ Welche Fassung nennt Gegenstand und Handlung genauer?",
         "answers": [
-          "Jeder Schritt nennt klar, was zu tun ist.",
-          "Möglichst viele unbestimmte Wörter wie „Dings“.",
-          "Wichtige Schritte ohne Hinweis überspringen."
+          "Dann schraubst du den Deckel auf die Dose.",
+          "Dann befestigst du es.",
+          "Dann machst du das richtig fest."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "Die Fassung nennt den Deckel, die Dose und die Tätigkeit Schrauben."
       },
       {
-        "prompt": "Welcher Satz beschreibt eine Kontrolle nach dem Messen?",
+        "prompt": "Du sollst prüfen, ob eine Markierung bei 8 cm liegt. Welche Anweisung beschreibt diese Kontrolle?",
         "answers": [
-          "Prüfe, ob die Markierung genau bei 8 cm liegt.",
-          "Vielleicht wird das schon stimmen.",
-          "Kontrolle ist immer überflüssig."
+          "Lege das Lineal an und lies den Abstand zur Markierung ab.",
+          "Schreibe die Zahl 8 auf das Blatt.",
+          "Zeichne eine zweite Markierung daneben."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "Durch Anlegen und Ablesen lässt sich die Lage der Markierung prüfen."
       },
       {
-        "prompt": "Was ist bei Fachbegriffen in einer Anleitung für Anfänger hilfreich?",
+        "prompt": "Eine Anleitung für Anfänger verwendet „entgraten“. Welche Ergänzung erklärt die Tätigkeit?",
         "answers": [
-          "Den Begriff kurz am Gegenstand oder an einer Handlung erklären.",
-          "Möglichst viele unbekannte Abkürzungen ohne Erklärung verwenden.",
-          "Alle Begriffe absichtlich falsch benutzen."
+          "Entferne die scharfen Kanten am Werkstück.",
+          "Arbeite anschließend weiter.",
+          "Benutze danach ein anderes Werkstück."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Entgraten“ bedeutet, störende scharfe Kanten oder Grate zu entfernen."
       },
       {
-        "prompt": "Was gehört zum Abschluss eines beschriebenen Arbeitsvorgangs?",
+        "prompt": "„Schraube die Teile zusammen. Prüfe die Verbindung. Räume danach auf.“ Was ist der letzte Schritt?",
         "answers": [
-          "Ergebnis kontrollieren und den Arbeitsplatz nach Vorgabe aufräumen.",
-          "Werkzeuge absichtlich verstreuen.",
-          "Fehler grundsätzlich verschweigen."
+          "Den Arbeitsplatz aufräumen.",
+          "Die Verbindung prüfen.",
+          "Die Teile zusammenschrauben."
         ],
-        "why": "Eine Vorgangsbeschreibung nennt nötige Materialien und klare Schritte in sinnvoller Reihenfolge. Sie verwendet eindeutige Verben und Angaben."
+        "why": "„Danach“ ordnet das Aufräumen hinter der Kontrolle ein."
       }
     ]
   },
@@ -3732,19 +3527,15 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.3 und 1.5",
     "rule": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt.",
-    "wrongRules": [
-      "Ein sachlicher Bericht braucht vor allem erfundene Spannungsmomente.",
-      "Vermutungen sollen ohne Kennzeichnung als bewiesene Tatsachen erscheinen."
-    ],
     "rows": [
       {
-        "prompt": "Welche Aussage ist eine konkrete Beobachtung für einen Unfallbericht?",
+        "prompt": "Welche Aussage nennt eine beobachtete Handlung und eine genaue Uhrzeit?",
         "answers": [
           "Um 10:15 Uhr fiel die Kiste vom Tisch.",
-          "Die Kiste wollte bestimmt Ärger machen.",
-          "Es war der schlimmste Tag aller Zeiten."
+          "Die Kiste war ziemlich schwer.",
+          "Später räumten wir auf."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Um 10:15 Uhr fiel die Kiste vom Tisch“ nennt eine beobachtete Handlung und die genaue Uhrzeit."
       },
       {
         "prompt": "Welche W-Frage wird mit „in der Werkstatt“ beantwortet?",
@@ -3753,7 +3544,7 @@ export const languageData = [
           "Wann?",
           "Wer?"
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„In der Werkstatt“ nennt einen Ort."
       },
       {
         "prompt": "Welche W-Frage wird mit „am Dienstag um 9 Uhr“ beantwortet?",
@@ -3762,115 +3553,115 @@ export const languageData = [
           "Warum?",
           "Wer?"
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Die Angabe nennt Tag und Uhrzeit."
       },
       {
-        "prompt": "Welche Angabe beantwortet die Frage „Wer war beteiligt?“?",
+        "prompt": "Welche Angabe beantwortet „Wer war beteiligt?“?",
         "answers": [
-          "Mia und der Ausbilder waren anwesend.",
-          "Es war ziemlich aufregend.",
-          "Die Halle war groß."
+          "Mia und der Ausbilder.",
+          "Am Dienstag um 9 Uhr.",
+          "In der Werkstatt."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Die Antwort nennt die beteiligten Personen."
       },
       {
-        "prompt": "Welche Formulierung trennt Wissen und Vermutung?",
+        "prompt": "Welche Aussage beschreibt eine Beobachtung und kennzeichnet die Ursache als unbekannt?",
         "answers": [
           "Ich sah Wasser auf dem Boden; woher es kam, weiß ich nicht.",
-          "Ali hat das Wasser absichtlich verschüttet, obwohl ich es nicht gesehen habe.",
-          "Jemand muss immer schuld sein."
+          "Ich sah, wie Wasser aus dem Schlauch lief.",
+          "Ich vermute, dass der Schlauch undicht war."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Ich sah Wasser auf dem Boden“ ist eine Beobachtung. „Woher es kam, weiß ich nicht“ kennzeichnet die Ursache als unbekannt."
       },
       {
-        "prompt": "Was gehört in eine sachliche Schadensmeldung?",
+        "prompt": "Welcher Satz beschreibt einen sichtbaren Schaden an einem Gehäuse?",
         "answers": [
-          "Welcher Gegenstand wie beschädigt wurde.",
-          "Eine erfundene Geschichte über den Schaden.",
-          "Nur eine Beleidigung des Herstellers."
+          "Das Gehäuse hat einen 3 cm langen Riss.",
+          "Das Gehäuse ist 30 cm breit.",
+          "Das Gehäuse wurde gestern geliefert."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Ein Riss ist ein Schaden. Breite und Lieferdatum beschreiben keinen Schaden."
       },
       {
-        "prompt": "Welche Formulierung bleibt sachlich?",
+        "prompt": "Welche Formulierung enthält eine messbare Angabe statt einer Bewertung?",
         "answers": [
-          "Das Gehäuse hat einen etwa 3 cm langen Riss.",
-          "Das Gehäuse ist eine einzige Katastrophe.",
-          "Das ist das dümmste Gerät der Welt."
+          "Der Riss ist etwa 3 cm lang.",
+          "Der Riss sieht schlimm aus.",
+          "Der Riss ist ärgerlich."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Die Länge von etwa 3 cm kann gemessen werden."
       },
       {
-        "prompt": "Welche Zeitform wird für einen abgeschlossenen Vorgang in einem schriftlichen Bericht häufig verwendet?",
+        "prompt": "Welche Zeitform hat der Berichtssatz „Die Kiste fiel vom Tisch“?",
         "answers": [
           "Präteritum",
-          "Futur II als Pflichtform",
-          "Ausschließlich Imperativ"
+          "Perfekt",
+          "Präsens"
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Fiel“ ist die Präteritumform von „fallen“."
       },
       {
-        "prompt": "Welche Reihenfolge passt zu einem Bericht über einen Ablauf?",
+        "prompt": "„Zuerst wurde gemessen. Danach wurde gesägt.“ Welche Reihenfolge gibt der Bericht vor?",
         "answers": [
-          "Die Ereignisse zeitlich nachvollziehbar ordnen.",
-          "Die Ereignisse ohne Zusammenhang mischen.",
-          "Nur das unwichtigste Detail nennen."
+          "Messen, dann sägen.",
+          "Sägen, dann messen.",
+          "Messen und Sägen gleichzeitig."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Zuerst“ und „danach“ legen die Reihenfolge fest."
       },
       {
-        "prompt": "Was solltest du bei einer unbekannten Ursache tun?",
+        "prompt": "Die Ursache eines Schadens ist nicht bekannt. Welche Formulierung gibt das genau wieder?",
         "answers": [
-          "Die Ursache als ungeklärt benennen.",
-          "Eine passende Ursache erfinden.",
-          "Eine beliebige Person beschuldigen."
+          "Die Ursache des Schadens ist ungeklärt.",
+          "Der Schaden entstand durch einen Sturz.",
+          "Der Schaden entstand beim Transport."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Die Ursache des Schadens ist ungeklärt“ lässt die unbekannte Ursache offen."
       },
       {
-        "prompt": "Welche Angabe ist für einen Praktikumsbericht konkret?",
+        "prompt": "Welche Aussage nennt Tag, Stückzahl und Messgerät?",
         "answers": [
-          "Ich kontrollierte am Mittwoch zehn Werkstücke mit einer Schieblehre.",
-          "Ich machte halt irgendwelche Sachen.",
-          "Alles war irgendwie so."
+          "Am Mittwoch prüfte ich zehn Werkstücke mit einer Schieblehre.",
+          "Ich prüfte mehrere Werkstücke.",
+          "Die Werkstücke wurden sorgfältig geprüft."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Die Aussage enthält Mittwoch, zehn und Schieblehre."
       },
       {
-        "prompt": "Welche Aussage beantwortet „Was geschah?“?",
+        "prompt": "Welche Aussage beantwortet „Was geschah?“ durch ein Ereignis?",
         "answers": [
-          "Ein Karton rutschte vom Regal und fiel zu Boden.",
-          "Der Raum war blau gestrichen.",
-          "Ich mag keine Kartons."
+          "Ein Karton fiel vom Regal.",
+          "Der Karton war braun.",
+          "Das Regal stand an der Wand."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Das Fallen des Kartons ist ein Ereignis."
       },
       {
-        "prompt": "Was macht eine Mengenangabe überprüfbar?",
+        "prompt": "Welche Formulierung kennzeichnet eine Mengenangabe ausdrücklich als Schätzung?",
         "answers": [
-          "Eine genaue Zahl oder als ungefähr gekennzeichnete Schätzung.",
-          "Das Wort „unzählbar“ ohne Grundlage.",
-          "Eine absichtlich falsche Zahl."
+          "Es waren ungefähr 20 Teile.",
+          "Es waren genau 20 Teile.",
+          "Es waren 20 gezählte Teile."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Ungefähr“ kennzeichnet die Zahl als Schätzung."
       },
       {
-        "prompt": "Welche Formulierung kennzeichnet eine fremde Aussage?",
+        "prompt": "Welche Formulierung gibt wieder, was eine andere Person berichtet hat?",
         "answers": [
-          "Die Kollegin berichtete, sie habe ein lautes Geräusch gehört.",
-          "Ich selbst hörte das Geräusch, obwohl ich nicht dort war.",
-          "Geräusche gibt es grundsätzlich nie."
+          "Die Kollegin berichtete, sie habe ein Geräusch gehört.",
+          "Ich hörte ein Geräusch.",
+          "Vielleicht gab es ein Geräusch."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "„Die Kollegin berichtete“ kennzeichnet die Kollegin als Quelle der Information."
       },
       {
-        "prompt": "Was gehört zur abschließenden Kontrolle eines Berichts?",
+        "prompt": "Im Bericht stehen für dasselbe Ereignis „Montag, 12. Mai“ und „Dienstag, 12. Mai“. Welche Angabe widerspricht sich?",
         "answers": [
-          "Zeitangaben, Reihenfolge und Trennung von Beobachtung und Vermutung prüfen.",
-          "Die Fakten durch spannendere Erfindungen ersetzen.",
-          "Alle konkreten Angaben löschen."
+          "Der Wochentag zum genannten Datum.",
+          "Die Anfangszeit des Ereignisses.",
+          "Die Zahl der beteiligten Personen."
         ],
-        "why": "Ein Bericht nennt überprüfbare Angaben zum Geschehen, etwa Wer, Was, Wann, Wo und Wie. Beobachtungen werden von Vermutungen getrennt."
+        "why": "Derselbe Tag kann hier nicht zugleich Montag und Dienstag sein."
       }
     ]
   },
@@ -3881,145 +3672,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.3",
     "rule": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen.",
-    "wrongRules": [
-      "Eine Beleidigung ersetzt in jedem Fall eine sachliche Begründung.",
-      "Ein Beispiel muss unabhängig vom Thema sein."
-    ],
     "rows": [
       {
-        "prompt": "Welche Aussage enthält eine Begründung für regelmäßiges Üben?",
+        "prompt": "Welcher Satz begründet, warum regelmäßiges Üben helfen kann?",
         "answers": [
           "Regelmäßiges Üben hilft, weil sich Rechenwege festigen.",
-          "Üben ist gut, weil Üben gut ist.",
-          "Wer nicht übt, ist einfach dumm."
+          "Regelmäßiges Üben hilft.",
+          "Regelmäßiges Üben ist regelmäßig."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Der Nebensatz mit „weil“ nennt einen Grund."
       },
       {
-        "prompt": "Was ist in „Wir sollten Schutzbrillen tragen“ zunächst enthalten?",
+        "prompt": "Was enthält „Wir sollten Schutzbrillen tragen“?",
         "answers": [
-          "Eine Forderung oder Behauptung.",
-          "Ein vollständig ausgeführtes Beispiel.",
-          "Eine genaue Statistik mit Quelle."
+          "Eine Forderung.",
+          "Eine Begründung.",
+          "Ein konkretes Beispiel."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Der Satz fordert eine Handlung, nennt aber noch keinen Grund."
       },
       {
-        "prompt": "Welche Begründung passt zur Forderung „Wir sollten pünktlich beginnen“?",
+        "prompt": "Die Übungszeit endet um 10 Uhr. Welche Begründung spricht für einen Beginn um 9 Uhr statt um 9:15 Uhr?",
         "answers": [
-          "Dann bleibt mehr gemeinsame Arbeitszeit.",
-          "Meine Lieblingsfarbe ist blau.",
-          "Der Tisch ist rechteckig."
+          "Dann bleiben 15 Minuten mehr zum Üben.",
+          "Dann bleibt weniger Zeit zum Üben.",
+          "Dann sind beide Übungszeiten gleich lang."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Von 9 Uhr bis 10 Uhr sind es 60 Minuten. Ab 9:15 Uhr bleiben nur 45 Minuten."
       },
       {
-        "prompt": "Welches Beispiel passt zu „Notizen helfen beim Erinnern“?",
+        "prompt": "Welches Beispiel zeigt, dass Notizen beim Erinnern helfen?",
         "answers": [
-          "Mit der notierten Uhrzeit vergesse ich meinen Termin nicht.",
-          "Mein Fahrrad hat zwei Räder.",
-          "Gestern war es sonnig."
+          "Ich lese die notierte Uhrzeit nach und komme rechtzeitig zum Termin.",
+          "Ich schreibe den Termin auf ein Blatt und verliere das Blatt.",
+          "Ich erinnere mich ohne Notiz an den Termin."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Das Nachlesen der notierten Uhrzeit hilft dabei, sich an den Termin zu erinnern."
       },
       {
-        "prompt": "Welche Aussage ist ein sachliches Gegenargument zu einer längeren Pause?",
+        "prompt": "Welche Aussage nennt einen Nachteil einer längeren Pause?",
         "answers": [
-          "Eine längere Pause kann die verfügbare Übungszeit verkürzen.",
-          "Wer das vorschlägt, ist doof.",
-          "Pausen sind Pausen."
+          "Eine längere Pause verkürzt die verfügbare Übungszeit.",
+          "Eine längere Pause ermöglicht mehr Erholung.",
+          "Eine längere Pause gibt mehr Zeit zum Essen."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Die verkürzte Übungszeit ist der genannte Nachteil."
       },
       {
         "prompt": "Welche Formulierung kennzeichnet eine persönliche Meinung?",
         "answers": [
           "Ich finde, dass die Erklärung verständlich war.",
-          "Das Ergebnis lautet nach Rechnung 24.",
-          "Der Termin steht im Plan für 10 Uhr."
+          "Die Erklärung dauert vier Minuten.",
+          "Die Erklärung steht auf Seite 2."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "„Ich finde“ kennzeichnet eine persönliche Bewertung."
       },
       {
-        "prompt": "Welche Begründung passt zu einer beschrifteten Skizze?",
+        "prompt": "Welche Begründung erklärt den Nutzen von Maßangaben in einer Skizze?",
         "answers": [
-          "Die Zuordnung der Maße ist leichter zu erkennen.",
-          "Beschriftungen haben immer vier Buchstaben.",
-          "Skizzen ersetzen grundsätzlich jede Rechnung."
+          "Die Längen lassen sich den richtigen Seiten zuordnen.",
+          "Die Skizze ist auf weißem Papier gezeichnet.",
+          "Die Skizze wurde am Morgen angefertigt."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Maßangaben zeigen, welche Länge zu welcher Seite gehört."
       },
       {
-        "prompt": "Was ist eine bloße Wiederholung statt einer echten Begründung?",
+        "prompt": "Welche Antwort wiederholt nur die Behauptung, statt sie zu begründen?",
         "answers": [
           "Das ist richtig, weil es richtig ist.",
           "Das Teil passt, weil beide Maße übereinstimmen.",
           "Wir sparen Zeit, weil der Weg kürzer ist."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "„Weil es richtig ist“ wiederholt die Behauptung und nennt keinen zusätzlichen Grund."
       },
       {
-        "prompt": "Welches Beispiel stützt die Aussage „Teamarbeit kann helfen“?",
+        "prompt": "Welches Beispiel zeigt eine Kontrolle durch Zusammenarbeit?",
         "answers": [
           "Eine Person misst, die andere prüft die notierten Werte.",
-          "Niemand übernimmt eine Aufgabe.",
-          "Alle reden gleichzeitig über etwas anderes."
+          "Eine Person misst und kontrolliert allein.",
+          "Zwei Personen messen unabhängig verschiedene Räume."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Eine Person misst. Eine andere Person prüft die notierten Werte. So wird die Kontrolle durch Zusammenarbeit gezeigt."
       },
       {
-        "prompt": "Welche Aussage enthält ein nachvollziehbares Kriterium?",
+        "prompt": "Welche Aussage vergleicht zwei Rechenwege anhand der Anzahl der Schritte?",
         "answers": [
-          "Dieser Weg ist kürzer, weil er zwei Rechenschritte weniger benötigt.",
-          "Dieser Weg ist besser, weil ich das sage.",
-          "Andere Wege sind automatisch Unsinn."
+          "Dieser Weg braucht zwei Rechenschritte weniger.",
+          "Dieser Weg gefällt mir besser.",
+          "Diesen Weg kenne ich schon länger."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "„Zwei Rechenschritte weniger“ vergleicht die Rechenwege anhand der Anzahl ihrer Schritte."
       },
       {
-        "prompt": "Was solltest du bei einem Gegenargument tun?",
+        "prompt": "Jemand sagt: „Dieser Weg ist zu lang.“ Welche Frage verlangt eine sachliche Begründung?",
         "answers": [
-          "Den Inhalt prüfen und sachlich darauf eingehen.",
-          "Die Person persönlich angreifen.",
-          "Jede Antwort verweigern, unabhängig vom Inhalt."
+          "Wie viele Meter ist dieser Weg länger?",
+          "Wer hat den Weg zuerst vorgeschlagen?",
+          "Welche Farbe hat der Wegweiser?"
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Die Frage nach den Metern prüft das Argument zur Weglänge."
       },
       {
-        "prompt": "Welche Begründung passt zur Wahl einer überprüfbaren Quelle?",
+        "prompt": "Welche Begründung spricht dafür, eine Quelle mit überprüfbaren Belegen zu nutzen?",
         "answers": [
-          "Ihre Angaben lassen sich an benannten Belegen nachvollziehen.",
-          "Die Überschrift ist besonders laut.",
-          "Viele Ausrufezeichen ersetzen Belege."
+          "Ihre Angaben können anhand der Belege geprüft werden.",
+          "Ihre Aussagen werden besonders häufig geteilt.",
+          "Ihre Aussagen stimmen mit meiner Vermutung überein."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Überprüfbare Belege erlauben die Kontrolle der Angaben."
       },
       {
-        "prompt": "Welcher Satz enthält Behauptung und Begründung?",
+        "prompt": "Welcher Satz nennt eine Handlung und begründet sie mit einem Ziel?",
         "answers": [
           "Wir heften die Blätter ab, damit wir sie später wiederfinden.",
           "Wir heften die Blätter ab.",
-          "Die Blätter sind weiß."
+          "Die Blätter liegen auf dem Tisch."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "„Damit“ nennt das Ziel des Abheftens."
       },
       {
-        "prompt": "Welche Aussage nennt eine mögliche Folge als Argument?",
+        "prompt": "Welche Aussage nennt eine mögliche Folge fehlender Beschriftung?",
         "answers": [
           "Ohne Beschriftung können Maße verwechselt werden.",
-          "Beschriftung heißt Beschriftung.",
-          "Wer Maße verwechselt, zählt nicht."
+          "Beschriftungen bestehen aus Buchstaben und Zahlen.",
+          "Die Beschriftung steht neben der Zeichnung."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Das Verwechseln der Maße ist eine mögliche Folge."
       },
       {
-        "prompt": "Was macht eine Schlussfolgerung nachvollziehbar?",
+        "prompt": "„Weg A ist 20 m kürzer als Weg B. Wir möchten den kürzeren Weg nehmen.“ Welche Schlussfolgerung passt?",
         "answers": [
-          "Sie knüpft an die zuvor genannten Gründe an.",
-          "Sie widerspricht allen eigenen Gründen ohne Erklärung.",
-          "Sie führt absichtlich ein ganz anderes Thema ein."
+          "Wir nehmen Weg A.",
+          "Wir nehmen Weg B.",
+          "Beide Wege sind gleich lang."
         ],
-        "why": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen."
+        "why": "Aus dem genannten Ziel und der kürzeren Länge folgt die Wahl von Weg A."
       }
     ]
   },
@@ -4030,10 +3817,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.3 und 1.5",
     "rule": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen.",
-    "wrongRules": [
-      "Bei einer Textfrage muss man fehlende Informationen immer frei erfinden.",
-      "Eine Vermutung gilt ohne Textbeleg als wörtliche Textinformation."
-    ],
     "rows": [
       {
         "prompt": "Im Aushang steht: „Die Werkstatt öffnet um 8 Uhr.“ Wann öffnet sie?",
@@ -4048,10 +3831,10 @@ export const languageData = [
         "prompt": "„Bring am Freitag dein Heft mit.“ Was soll mitgebracht werden?",
         "answers": [
           "Das Heft.",
-          "Ein Hammer.",
-          "Ein Fahrrad."
+          "Den Ordner.",
+          "Den Stift."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Der Arbeitsauftrag nennt ausdrücklich das Heft."
       },
       {
         "prompt": "„Der Kurs findet in Raum 12 statt.“ Welche Information ist gegeben?",
@@ -4075,19 +3858,19 @@ export const languageData = [
         "prompt": "„Melde Schäden vor dem Arbeitsbeginn.“ Wann soll die Meldung erfolgen?",
         "answers": [
           "Vor dem Arbeitsbeginn.",
-          "Erst nach dem Feierabend.",
-          "Grundsätzlich nie."
+          "Während der Arbeit.",
+          "Nach der Arbeit."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Der Satz nennt „vor dem Arbeitsbeginn“."
       },
       {
         "prompt": "„Bei Fragen wenden Sie sich an Frau Weber.“ Wer ist die Kontaktperson?",
         "answers": [
           "Frau Weber.",
-          "Herr Müller.",
-          "Eine nicht genannte Busfahrerin."
+          "Herr Weber.",
+          "Frau Müller."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Im Satz wird Frau Weber als Kontaktperson genannt."
       },
       {
         "prompt": "„Die Anmeldung endet am 15. Mai.“ Welche Aussage ist durch den Text belegt?",
@@ -4102,10 +3885,10 @@ export const languageData = [
         "prompt": "„Für den Aufbau werden zwei Personen benötigt.“ Was wird verlangt?",
         "answers": [
           "Zwei Personen für den Aufbau.",
-          "Zwei Stunden Fahrzeit.",
-          "Zwei Liter Wasser."
+          "Eine Person für den Aufbau.",
+          "Drei Personen für den Aufbau."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Der Text nennt genau zwei Personen."
       },
       {
         "prompt": "„Der Termin wurde von Montag auf Mittwoch verschoben.“ Wann ist der neue Termin?",
@@ -4121,36 +3904,36 @@ export const languageData = [
         "answers": [
           "Die Maße prüfen.",
           "Das Ergebnis notieren.",
-          "Den Ordner schließen."
+          "Beides gleichzeitig tun."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "„Zuerst“ bezieht sich auf die Prüfung der Maße."
       },
       {
         "prompt": "„Die Halle bleibt wegen Wartung geschlossen.“ Was ist der genannte Grund?",
         "answers": [
           "Wartung.",
-          "Ein Sportfest.",
-          "Ein nicht genanntes Gewitter."
+          "Materialmangel.",
+          "Umbau."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Im Text steht ausdrücklich „wegen Wartung“."
       },
       {
         "prompt": "„Bitte antworten Sie schriftlich.“ Welche Antwortform wird verlangt?",
         "answers": [
           "Eine schriftliche Antwort.",
-          "Nur ein stummer Blick.",
-          "Ausschließlich ein Handschlag."
+          "Eine telefonische Antwort.",
+          "Eine mündliche Antwort vor Ort."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "„Schriftlich“ verlangt eine Antwort in geschriebener Form."
       },
       {
         "prompt": "„Ein gültiger Ausweis ist mitzubringen.“ Was ist ausdrücklich gefordert?",
         "answers": [
           "Ein gültiger Ausweis.",
-          "Ein beliebiger alter Kassenzettel.",
-          "Die PIN einer Bankkarte."
+          "Ein Passfoto.",
+          "Eine Fahrkarte."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Ausdrücklich verlangt wird ein gültiger Ausweis."
       },
       {
         "prompt": "„Das Training dauert 90 Minuten.“ Welche Information fehlt im Satz?",
@@ -4159,16 +3942,16 @@ export const languageData = [
           "Die Dauer.",
           "Die Einheit der Dauer."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "90 Minuten nennt die Dauer und ihre Einheit, aber keine Startzeit."
       },
       {
         "prompt": "„Die Firma sucht zwei Auszubildende.“ Was lässt sich sicher sagen?",
         "answers": [
-          "Es sind zwei Ausbildungsplätze ausgeschrieben.",
-          "Die Firma hat insgesamt nur zwei Beschäftigte.",
-          "Das Gehalt beträgt zwei Euro."
+          "Es werden zwei Auszubildende gesucht.",
+          "Es werden zwei Fachkräfte gesucht.",
+          "Es wird eine auszubildende Person gesucht."
         ],
-        "why": "Antworten auf Sachtexte stützen sich auf die Angaben im Text. Nicht genannte Einzelheiten darf man nicht als sichere Information ergänzen."
+        "why": "Der Text nennt zwei gesuchte Auszubildende."
       }
     ]
   },
@@ -4179,145 +3962,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 1.5 und BPE 2 Medien",
     "rule": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit.",
-    "wrongRules": [
-      "Viele Weiterleitungen beweisen automatisch, dass eine Aussage stimmt.",
-      "Eine Quelle wird allein durch eine auffällige Überschrift zuverlässig."
-    ],
     "rows": [
       {
-        "prompt": "Eine Nachricht nennt keine Quelle. Was hilft vor dem Weiterleiten?",
+        "prompt": "Eine Meldung nennt keine Quelle. Welche Handlung prüft ihre Aussage?",
         "answers": [
-          "Die Aussage anhand nachvollziehbarer Quellen prüfen.",
-          "Sie sofort als bewiesen weiterleiten.",
-          "Nur die Anzahl der Emojis zählen."
+          "Die Aussage mit einer nachvollziehbaren Originalquelle vergleichen.",
+          "Die Meldung häufiger teilen.",
+          "Die Meldung mit einem neuen Titel versehen."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Der Vergleich mit einer Originalquelle prüft die Aussage."
       },
       {
-        "prompt": "Welche Angabe hilft, die Aktualität einer Information einzuschätzen?",
+        "prompt": "Welche Angabe zeigt, wann ein Text zuletzt geändert wurde?",
         "answers": [
-          "Das Veröffentlichungs- oder Aktualisierungsdatum.",
-          "Die Hintergrundfarbe.",
-          "Die Schriftgröße allein."
+          "Das Aktualisierungsdatum.",
+          "Der Name des Verfassers.",
+          "Die Internetadresse."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Das Aktualisierungsdatum nennt den Zeitpunkt der letzten Überarbeitung."
       },
       {
-        "prompt": "Was bezeichnet der Urheber einer Information?",
+        "prompt": "Was ist mit dem Urheber eines Textes gemeint?",
         "answers": [
-          "Die Person oder Stelle, die den Inhalt veröffentlicht oder erstellt hat.",
-          "Die Person, die ihn zufällig zuletzt liest.",
-          "Die Farbe der Überschrift."
+          "Die Person, die den Text geschaffen hat.",
+          "Die Person, die den Text zuletzt gelesen hat.",
+          "Die Person, die den Text ausgedruckt hat."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Der Urheber hat den Text geschaffen. Veröffentlichen allein macht eine Person nicht zum Urheber."
       },
       {
-        "prompt": "Welche Aussage ist eine Werbung und keine unabhängige Bewertung?",
+        "prompt": "Welcher Satz wirbt ausdrücklich für einen Kauf?",
         "answers": [
-          "Kaufen Sie jetzt unser Produkt, nur heute im Angebot!",
-          "Die Messung ergab 8 cm Länge.",
-          "Der Bus fährt laut Fahrplan um 9 Uhr."
+          "Kaufen Sie jetzt unsere Schutzbrille für 8 Euro!",
+          "Die Schutzbrille wiegt 80 Gramm.",
+          "Die Schutzbrille ist im Lager angekommen."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Die Aufforderung „Kaufen Sie“ zeigt die Kaufwerbung."
       },
       {
-        "prompt": "Was ist ein Beleg für eine Behauptung?",
+        "prompt": "Welche Angabe erlaubt die Überprüfung der Behauptung „Das Blech ist 2 mm dick“?",
         "answers": [
-          "Eine überprüfbare Quelle oder nachvollziehbare Untersuchung.",
-          "Nur besonders viele Ausrufezeichen.",
-          "Die Aussage „Das weiß doch jeder“."
+          "Ein Messprotokoll mit Messgerät und Messwert.",
+          "Ein Werbesatz ohne Messwert.",
+          "Die Zahl positiver Kommentare."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Ein Messprotokoll macht die Grundlage des Werts nachvollziehbar."
       },
       {
-        "prompt": "Ein Bild ist echt, wurde aber vor Jahren an einem anderen Ort aufgenommen. Was ist zu prüfen?",
+        "prompt": "Ein Bild von 2020 wird als Foto des heutigen Hochwassers gezeigt. Welche Angabe widerspricht dieser Verwendung?",
         "answers": [
-          "Ob der Bildkontext zur aktuellen Behauptung passt.",
-          "Ob jedes alte Bild grundsätzlich gefälscht ist.",
-          "Ob eine hohe Auflösung jede Behauptung beweist."
+          "Das Bild wurde schon 2020 aufgenommen.",
+          "Das Bild hat eine hohe Auflösung.",
+          "Das Bild zeigt einen Fluss."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Ein Bild von 2020 kann kein Foto des heutigen Ereignisses sein."
       },
       {
-        "prompt": "Welche Information hilft bei der Bewertung einer Quelle?",
+        "prompt": "Welche Angabe sagt, wer eine Website veröffentlicht?",
         "answers": [
-          "Wer sie herausgibt und welche Interessen die Stelle haben kann.",
-          "Nur ob die Seite bunt ist.",
-          "Nur ob die Überschrift kurz ist."
+          "Der Name der verantwortlichen Stelle.",
+          "Das Datum der Veröffentlichung.",
+          "Die Adresse des Veranstaltungsorts."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Die verantwortliche Stelle benennt den Herausgeber der Website."
       },
       {
-        "prompt": "Was solltest du bei einem auffälligen Zitat prüfen?",
+        "prompt": "Ein Zitat soll aus einem bestimmten Interview stammen. Was prüft die Zuordnung?",
         "answers": [
-          "Ob es in einer nachvollziehbaren Originalquelle so steht.",
-          "Ob es möglichst oft geteilt wurde.",
-          "Ob die Schrift kursiv gedruckt ist."
+          "Die Stelle im ursprünglichen Interview nachlesen.",
+          "Die Überschrift einer Zusammenfassung ansehen.",
+          "Die Anzahl der Weiterleitungen zählen."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Im ursprünglichen Interview lässt sich prüfen, ob das Zitat dort steht."
       },
       {
-        "prompt": "Welche Aussage unterscheidet Meinung und belegbare Tatsache?",
+        "prompt": "Welche Aussage ist eine persönliche Bewertung?",
         "answers": [
-          "„Ich finde den Film gut“ ist eine Bewertung.",
-          "Jede persönliche Bewertung ist automatisch eine Messung.",
-          "Jede Zahl ist automatisch eine Meinung."
+          "Ich finde den Film spannend.",
+          "Der Film dauert 90 Minuten.",
+          "Der Film beginnt um 18 Uhr."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "„Ich finde“ kennzeichnet die persönliche Bewertung."
       },
       {
-        "prompt": "Warum kann ein Datum bei einer Stellenanzeige wichtig sein?",
+        "prompt": "Die Bewerbungsfrist einer Anzeige endete gestern. Welche Angabe ist bereits abgelaufen?",
         "answers": [
-          "Die Bewerbungsfrist oder der Bedarf könnte nicht mehr aktuell sein.",
-          "Ältere Anzeigen sind immer erfunden.",
-          "Ein Datum bestimmt automatisch die Bezahlung."
+          "Die Bewerbungsfrist.",
+          "Die Dauer der Ausbildung.",
+          "Die tägliche Arbeitszeit."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Laut Frage ist die Frist zum Bewerben bereits vorbei."
       },
       {
-        "prompt": "Was hilft beim Vergleich widersprüchlicher Meldungen?",
+        "prompt": "Zwei Meldungen nennen unterschiedliche Anfangszeiten desselben Termins. Welche Quelle klärt die aktuelle Zeit am direktesten?",
         "answers": [
-          "Originalquellen und konkrete Belege vergleichen.",
-          "Die lauteste Überschrift auswählen.",
-          "Alle Meldungen ohne Prüfung gleichsetzen."
+          "Die aktuelle Mitteilung des Veranstalters.",
+          "Ein älterer Beitrag ohne Quellenangabe.",
+          "Ein Kommentar, der nur eine Uhrzeit vermutet."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Der Veranstalter legt den Termin fest und kann seine aktuelle Anfangszeit nennen."
       },
       {
-        "prompt": "Was ist beim Veröffentlichen fremder Fotos zu beachten?",
+        "prompt": "In einer Bildunterschrift steht „Foto: Mia Beispiel“. Welche Information enthält diese Angabe?",
         "answers": [
-          "Rechte und erforderliche Einwilligungen prüfen.",
-          "Jedes gefundene Foto darf immer beliebig verwendet werden.",
-          "Ein Screenshot hebt alle Rechte auf."
+          "Wer das Foto aufgenommen hat.",
+          "Wann das Foto aufgenommen wurde.",
+          "Wo das Foto aufgenommen wurde."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Der Name nach „Foto“ nennt hier die Fotografin."
       },
       {
-        "prompt": "Eine Meldung behauptet „Alle Experten stimmen zu“, nennt aber niemanden. Was fehlt?",
+        "prompt": "Eine Meldung behauptet „Alle Fachleute stimmen zu“, nennt aber niemanden. Welche Angabe fehlt zur Prüfung dieser Behauptung?",
         "answers": [
-          "Nachprüfbare Angaben zu den genannten Fachleuten.",
-          "Ein besonders großer Titel.",
-          "Ein zusätzliches Ausrufezeichen."
+          "Namen und Aussagen der gemeinten Fachleute.",
+          "Das Veröffentlichungsdatum der Meldung.",
+          "Die Bezeichnung des Nachrichtenportals."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Mit Namen und Aussagen lässt sich prüfen, wer tatsächlich zugestimmt hat."
       },
       {
-        "prompt": "Was ist eine sinnvolle Suchanfrage zu einem konkreten Problem?",
+        "prompt": "Du suchst eine Erklärung zum Flächeninhalt eines Dreiecks. Welche Suchanfrage nennt Figur und gesuchte Größe?",
         "answers": [
-          "Passende Schlüsselbegriffe zum gesuchten Sachverhalt.",
-          "Nur „irgendwas“.",
-          "Absichtlich völlig fremde Begriffe."
+          "Dreieck Flächeninhalt berechnen",
+          "Dreieck Umfang berechnen",
+          "Rechteck Flächeninhalt berechnen"
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Die Suchanfrage „Dreieck Flächeninhalt berechnen“ nennt die Figur und die gesuchte Größe."
       },
       {
-        "prompt": "Was verbessert die Nachprüfbarkeit einer übernommenen Information?",
+        "prompt": "Welche Quellenangabe nennt einen genauen Fundort im Text?",
         "answers": [
-          "Quelle und Fundstelle angeben.",
-          "Die Quelle absichtlich verheimlichen.",
-          "Den Namen einer fremden Quelle erfinden."
+          "Schulheft „Metalltechnik“, Seite 12.",
+          "Ein Text über Metalltechnik.",
+          "Irgendwo im Schulheft."
         ],
-        "why": "Bei Informationen prüft man Urheber, Datum, Belege und Zweck. Eine große Reichweite oder auffällige Gestaltung beweist keine Richtigkeit."
+        "why": "Titel und Seitenzahl erlauben es, die Stelle wiederzufinden."
       }
     ]
   },
@@ -4328,28 +4107,24 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Deutsch BPE 2 Literatur und Medien",
     "rule": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden.",
-    "wrongRules": [
-      "Eine Textdeutung darf dem Text ohne Begründung widersprechen.",
-      "Die Erzählerstimme ist in jeder Geschichte automatisch die reale Autorin oder der reale Autor."
-    ],
     "rows": [
       {
         "prompt": "„Ich öffnete langsam die Tür.“ Welche Erzählperspektive ist hier erkennbar?",
         "answers": [
           "Ich-Erzählung.",
-          "Durchgehend nur Dialog ohne Erzähler.",
-          "Sachliche Tabelle ohne Erzähler."
+          "Er-Erzählung.",
+          "Du-Erzählung."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Das erzählende Ich berichtet von seiner eigenen Handlung."
       },
       {
         "prompt": "„Mia legte das Heft auf den Tisch. Dann ging sie hinaus.“ Was geschah zuerst?",
         "answers": [
           "Mia legte das Heft ab.",
           "Mia ging hinaus.",
-          "Mia kaufte ein neues Heft."
+          "Beides geschah gleichzeitig."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "„Dann“ ordnet das Hinausgehen nach dem Ablegen ein."
       },
       {
         "prompt": "„Ben zitterte vor Angst.“ Welches Gefühl nennt der Text ausdrücklich?",
@@ -4363,56 +4138,56 @@ export const languageData = [
       {
         "prompt": "„Komm bitte zurück!“, rief Ali. Was liegt zwischen den Anführungszeichen vor?",
         "answers": [
-          "Wörtliche Rede einer Figur.",
-          "Eine Tabellenüberschrift.",
-          "Eine Quellenangabe."
+          "Wörtliche Rede.",
+          "Indirekte Rede.",
+          "Eine Beschreibung des Erzählers."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Die Figur spricht direkt. Die Worte stehen in Anführungszeichen."
       },
       {
         "prompt": "„Die Sonne lachte vom Himmel.“ Welches sprachliche Mittel liegt vor?",
         "answers": [
           "Personifikation.",
-          "Eine genaue Temperaturmessung.",
-          "Eine wörtliche Aussage über einen Mund der Sonne."
+          "Vergleich mit „wie“.",
+          "Wörtliche Rede."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Die Sonne erhält die menschliche Handlung „lachen“."
       },
       {
         "prompt": "„Er rannte so schnell wie der Wind.“ Welches sprachliche Mittel ist erkennbar?",
         "answers": [
           "Vergleich.",
-          "Direkte Arbeitsanweisung.",
-          "Amtliche Zeitangabe."
+          "Wörtliche Rede.",
+          "Aufzählung."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Das Wort „wie“ vergleicht die Geschwindigkeit mit dem Wind."
       },
       {
-        "prompt": "„Niemand wusste, was hinter der Tür wartete.“ Welche Wirkung liegt nahe?",
+        "prompt": "„Niemand wusste, was hinter der Tür wartete.“ Welche Information bleibt offen?",
         "answers": [
-          "Spannung durch eine offene Frage.",
-          "Vollständige Auflösung aller Fragen.",
-          "Eine genaue Bedienungsanleitung."
+          "Was hinter der Tür wartet.",
+          "Ob jemand das Geheimnis schon kennt.",
+          "Ob im Text eine Tür genannt wird."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Der Satz lässt offen, was hinter der Tür wartet."
       },
       {
         "prompt": "„Sie hatte stundenlang geübt. Jetzt gelang ihr das Stück.“ Wodurch ist der Erfolg im Text vorbereitet?",
         "answers": [
           "Durch das vorherige Üben.",
-          "Durch eine ausdrücklich erwähnte neue Gitarre.",
-          "Durch einen genannten Lottogewinn."
+          "Durch einen Gewinn.",
+          "Durch einen neuen Lehrer."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Der Text nennt stundenlanges Üben vor dem Erfolg."
       },
       {
-        "prompt": "„Jonas dachte: Hoffentlich klappt es.“ Wovon erhalten wir einen Einblick?",
+        "prompt": "„Jonas dachte: Hoffentlich klappt es.“ Wessen Gedanken werden genannt?",
         "answers": [
-          "Von Jonas' Gedanken.",
-          "Von den Gedanken aller Menschen.",
-          "Von einer objektiven Wettervorhersage."
+          "Jonas’ Gedanken.",
+          "Mias Gedanken.",
+          "Die Gedanken aller Figuren."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Der Satz nennt Jonas als denkende Figur."
       },
       {
         "prompt": "„Als sie ankam, war der Zug bereits abgefahren.“ Welche Reihenfolge ist belegt?",
@@ -4427,46 +4202,46 @@ export const languageData = [
         "prompt": "„Er lächelte, obwohl er enttäuscht war.“ Was unterscheidet der Text?",
         "answers": [
           "Äußeres Verhalten und inneres Gefühl.",
-          "Zwei ausdrücklich genannte Orte.",
-          "Zwei verschiedene Busfahrpläne."
+          "Die Gefühle von zwei Personen.",
+          "Ereignisse an zwei Orten."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Lächeln ist ein sichtbares Verhalten; Enttäuschung ist das innere Gefühl."
       },
       {
-        "prompt": "„Plötzlich fiel das Licht aus.“ Was verändert sich an dieser Stelle?",
+        "prompt": "„Plötzlich fiel das Licht aus.“ Welches Wort kennzeichnet den unerwarteten Wechsel?",
         "answers": [
-          "Es tritt ein unerwartetes Ereignis ein.",
-          "Die ganze Geschichte wird sicher sofort erklärt.",
-          "Alle Figuren wechseln ausdrücklich ihren Namen."
+          "Plötzlich.",
+          "Licht.",
+          "Fiel."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "„Plötzlich“ kennzeichnet den unvermittelten Beginn des Ereignisses."
       },
       {
         "prompt": "„Lena gab das gefundene Portemonnaie zurück.“ Welche Handlung ist belegt?",
         "answers": [
           "Sie brachte eine gefundene Sache zurück.",
-          "Sie behielt ausdrücklich das Geld.",
-          "Sie hatte das Portemonnaie selbst verloren."
+          "Sie behielt die gefundene Sache.",
+          "Sie kaufte ein neues Portemonnaie."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "„Gab zurück“ belegt das Zurückbringen."
       },
       {
         "prompt": "„Drei Jahre zuvor hatte er hier gearbeitet.“ Was geschieht mit der erzählten Zeit?",
         "answers": [
           "Es wird auf Vergangenes zurückgeblickt.",
-          "Es wird ausschließlich eine zukünftige Bestellung genannt.",
-          "Die Zeit bleibt zwingend im gleichen Augenblick."
+          "Es wird eine Zukunft angekündigt.",
+          "Es wird dieselbe Gegenwart fortgesetzt."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "„Drei Jahre zuvor“ leitet einen Rückblick ein."
       },
       {
         "prompt": "„Die Tür stand offen. Von Mia fehlte jede Spur.“ Was bleibt nach diesem Ausschnitt offen?",
         "answers": [
           "Wo Mia ist.",
           "Ob die Tür offen steht.",
-          "Ob Mia ausdrücklich am Tisch sitzt."
+          "Welche Figur vermisst wird."
         ],
-        "why": "Deutungen müssen am vorliegenden Text begründet werden. Erzähler, Figurenrede und ausdrücklich genannte Ereignisse werden unterschieden."
+        "why": "Mias Aufenthaltsort wird nicht genannt. Die offene Tür und Mias Name stehen im Text."
       }
     ]
   },
@@ -4477,145 +4252,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „mother“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „mother“ auf Deutsch?",
         "answers": [
           "Mutter",
           "Tochter",
           "Tante"
         ],
-        "why": "„mother“ bedeutet hier „Mutter“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„mother“ bedeutet „Mutter“."
       },
       {
-        "prompt": "Was bedeutet „father“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „father“ auf Deutsch?",
         "answers": [
           "Vater",
           "Sohn",
           "Onkel"
         ],
-        "why": "„father“ bedeutet hier „Vater“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„father“ bedeutet „Vater“."
       },
       {
-        "prompt": "Was bedeutet „sister“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „sister“ auf Deutsch?",
         "answers": [
           "Schwester",
-          "Großmutter",
-          "Ehefrau"
-        ],
-        "why": "„sister“ bedeutet hier „Schwester“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „brother“ in diesem Wortschatzthema?",
-        "answers": [
-          "Bruder",
-          "Großvater",
-          "Ehemann"
-        ],
-        "why": "„brother“ bedeutet hier „Bruder“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „parents“ in diesem Wortschatzthema?",
-        "answers": [
-          "Eltern",
-          "Tante",
-          "Nachbar oder Nachbarin"
-        ],
-        "why": "„parents“ bedeutet hier „Eltern“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „daughter“ in diesem Wortschatzthema?",
-        "answers": [
           "Tochter",
-          "Onkel",
-          "Freund oder Freundin"
-        ],
-        "why": "„daughter“ bedeutet hier „Tochter“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „son“ in diesem Wortschatzthema?",
-        "answers": [
-          "Sohn",
-          "Ehefrau",
           "Mutter"
         ],
-        "why": "„son“ bedeutet hier „Sohn“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„sister“ bedeutet „Schwester“."
       },
       {
-        "prompt": "Was bedeutet „grandmother“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „brother“ auf Deutsch?",
         "answers": [
-          "Großmutter",
-          "Ehemann",
+          "Bruder",
+          "Sohn",
           "Vater"
         ],
-        "why": "„grandmother“ bedeutet hier „Großmutter“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„brother“ bedeutet „Bruder“."
       },
       {
-        "prompt": "Was bedeutet „grandfather“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „parents“ auf Deutsch?",
+        "answers": [
+          "Eltern",
+          "Großeltern",
+          "Geschwister"
+        ],
+        "why": "„parents“ bedeutet „Eltern“."
+      },
+      {
+        "prompt": "Was bedeutet „daughter“ auf Deutsch?",
+        "answers": [
+          "Tochter",
+          "Schwester",
+          "Mutter"
+        ],
+        "why": "„daughter“ bedeutet „Tochter“."
+      },
+      {
+        "prompt": "Was bedeutet „son“ auf Deutsch?",
+        "answers": [
+          "Sohn",
+          "Bruder",
+          "Vater"
+        ],
+        "why": "„son“ bedeutet „Sohn“."
+      },
+      {
+        "prompt": "Was bedeutet „grandmother“ auf Deutsch?",
+        "answers": [
+          "Großmutter",
+          "Großvater",
+          "Tante"
+        ],
+        "why": "„grandmother“ bedeutet „Großmutter“."
+      },
+      {
+        "prompt": "Was bedeutet „grandfather“ auf Deutsch?",
         "answers": [
           "Großvater",
-          "Nachbar oder Nachbarin",
-          "Schwester"
+          "Großmutter",
+          "Onkel"
         ],
-        "why": "„grandfather“ bedeutet hier „Großvater“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„grandfather“ bedeutet „Großvater“."
       },
       {
-        "prompt": "Was bedeutet „aunt“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „aunt“ auf Deutsch?",
         "answers": [
           "Tante",
-          "Freund oder Freundin",
-          "Bruder"
+          "Mutter",
+          "Schwester"
         ],
-        "why": "„aunt“ bedeutet hier „Tante“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„aunt“ bedeutet „Tante“."
       },
       {
-        "prompt": "Was bedeutet „uncle“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „uncle“ auf Deutsch?",
         "answers": [
           "Onkel",
-          "Mutter",
-          "Eltern"
+          "Vater",
+          "Bruder"
         ],
-        "why": "„uncle“ bedeutet hier „Onkel“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„uncle“ bedeutet „Onkel“."
       },
       {
-        "prompt": "Was bedeutet „wife“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „wife“ auf Deutsch?",
         "answers": [
           "Ehefrau",
-          "Vater",
+          "Ehemann",
           "Tochter"
         ],
-        "why": "„wife“ bedeutet hier „Ehefrau“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„wife“ bedeutet „Ehefrau“."
       },
       {
-        "prompt": "Was bedeutet „husband“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „husband“ auf Deutsch?",
         "answers": [
           "Ehemann",
-          "Schwester",
+          "Ehefrau",
           "Sohn"
         ],
-        "why": "„husband“ bedeutet hier „Ehemann“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„husband“ bedeutet „Ehemann“."
       },
       {
-        "prompt": "Was bedeutet „neighbour“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „neighbour“ auf Deutsch?",
         "answers": [
           "Nachbar oder Nachbarin",
-          "Bruder",
-          "Großmutter"
+          "Freund oder Freundin",
+          "Kollege oder Kollegin"
         ],
-        "why": "„neighbour“ bedeutet hier „Nachbar oder Nachbarin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„neighbour“ bedeutet „Nachbar oder Nachbarin“."
       },
       {
-        "prompt": "Was bedeutet „friend“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „friend“ auf Deutsch?",
         "answers": [
           "Freund oder Freundin",
-          "Eltern",
-          "Großvater"
+          "Nachbar oder Nachbarin",
+          "Kollege oder Kollegin"
         ],
-        "why": "„friend“ bedeutet hier „Freund oder Freundin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„friend“ bedeutet „Freund oder Freundin“."
       }
     ]
   },
@@ -4626,145 +4397,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „swimming“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „swimming“ auf Deutsch?",
         "answers": [
           "Schwimmen",
-          "Singen",
-          "Klettern"
+          "Tauchen",
+          "Rudern"
         ],
-        "why": "„swimming“ bedeutet hier „Schwimmen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„swimming“ bedeutet „Schwimmen“."
       },
       {
-        "prompt": "Was bedeutet „cycling“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „cycling“ auf Deutsch?",
         "answers": [
           "Radfahren",
           "Laufen als Sport",
-          "Schach"
+          "Motorradfahren"
         ],
-        "why": "„cycling“ bedeutet hier „Radfahren“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„cycling“ bedeutet „Radfahren“."
       },
       {
-        "prompt": "Was bedeutet „reading“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „reading“ auf Deutsch?",
         "answers": [
           "Lesen",
-          "Kochen",
-          "Fußball"
+          "Schreiben",
+          "Zeichnen"
         ],
-        "why": "„reading“ bedeutet hier „Lesen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„reading“ bedeutet „Lesen“."
       },
       {
-        "prompt": "Was bedeutet „painting“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „painting“ auf Deutsch?",
         "answers": [
           "Malen",
-          "Angeln",
-          "Fotografie"
+          "Zeichnen",
+          "Fotografieren"
         ],
-        "why": "„painting“ bedeutet hier „Malen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„painting“ bedeutet „Malen“."
       },
       {
-        "prompt": "Was bedeutet „dancing“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „dancing“ auf Deutsch?",
         "answers": [
           "Tanzen",
-          "Klettern",
-          "Gartenarbeit"
+          "Singen",
+          "Turnen"
         ],
-        "why": "„dancing“ bedeutet hier „Tanzen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„dancing“ bedeutet „Tanzen“."
       },
       {
-        "prompt": "Was bedeutet „singing“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „singing“ auf Deutsch?",
         "answers": [
           "Singen",
-          "Schach",
-          "Wandern"
+          "Tanzen",
+          "Musik hören"
         ],
-        "why": "„singing“ bedeutet hier „Singen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„singing“ bedeutet „Singen“."
       },
       {
-        "prompt": "Was bedeutet „running“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „running“ auf Deutsch?",
         "answers": [
           "Laufen als Sport",
-          "Fußball",
-          "Schwimmen"
-        ],
-        "why": "„running“ bedeutet hier „Laufen als Sport“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „cooking“ in diesem Wortschatzthema?",
-        "answers": [
-          "Kochen",
-          "Fotografie",
+          "Wandern",
           "Radfahren"
         ],
-        "why": "„cooking“ bedeutet hier „Kochen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„running“ bedeutet „Laufen als Sport“."
       },
       {
-        "prompt": "Was bedeutet „fishing“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „cooking“ auf Deutsch?",
+        "answers": [
+          "Kochen",
+          "Backen",
+          "Einkaufen"
+        ],
+        "why": "„cooking“ bedeutet „Kochen“."
+      },
+      {
+        "prompt": "Was bedeutet „fishing“ auf Deutsch?",
         "answers": [
           "Angeln",
-          "Gartenarbeit",
-          "Lesen"
+          "Jagen",
+          "Schwimmen"
         ],
-        "why": "„fishing“ bedeutet hier „Angeln“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„fishing“ bedeutet „Angeln“."
       },
       {
-        "prompt": "Was bedeutet „climbing“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „climbing“ auf Deutsch?",
         "answers": [
           "Klettern",
           "Wandern",
-          "Malen"
+          "Turnen"
         ],
-        "why": "„climbing“ bedeutet hier „Klettern“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„climbing“ bedeutet „Klettern“."
       },
       {
-        "prompt": "Was bedeutet „chess“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „chess“ auf Deutsch?",
         "answers": [
           "Schach",
-          "Schwimmen",
-          "Tanzen"
+          "Dame",
+          "Tischtennis"
         ],
-        "why": "„chess“ bedeutet hier „Schach“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„chess“ bedeutet „Schach“."
       },
       {
-        "prompt": "Was bedeutet „football“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „football“ auf Deutsch?",
         "answers": [
           "Fußball",
-          "Radfahren",
-          "Singen"
+          "Handball",
+          "Basketball"
         ],
-        "why": "„football“ bedeutet hier „Fußball“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„football“ bedeutet „Fußball“."
       },
       {
-        "prompt": "Was bedeutet „photography“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „photography“ auf Deutsch?",
         "answers": [
           "Fotografie",
-          "Lesen",
-          "Laufen als Sport"
+          "Malen",
+          "Filmen"
         ],
-        "why": "„photography“ bedeutet hier „Fotografie“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„photography“ bedeutet „Fotografie“."
       },
       {
-        "prompt": "Was bedeutet „gardening“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „gardening“ auf Deutsch?",
         "answers": [
           "Gartenarbeit",
-          "Malen",
-          "Kochen"
+          "Kochen",
+          "Wandern"
         ],
-        "why": "„gardening“ bedeutet hier „Gartenarbeit“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„gardening“ bedeutet „Gartenarbeit“."
       },
       {
-        "prompt": "Was bedeutet „hiking“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „hiking“ auf Deutsch?",
         "answers": [
           "Wandern",
-          "Tanzen",
-          "Angeln"
+          "Klettern",
+          "Laufen als Sport"
         ],
-        "why": "„hiking“ bedeutet hier „Wandern“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„hiking“ bedeutet „Wandern“."
       }
     ]
   },
@@ -4775,145 +4542,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „bread“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „bread“ auf Deutsch?",
         "answers": [
           "Brot",
-          "Kartoffeln",
-          "Hähnchenfleisch"
+          "Brötchen",
+          "Kuchen"
         ],
-        "why": "„bread“ bedeutet hier „Brot“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„bread“ bedeutet „Brot“."
       },
       {
-        "prompt": "Was bedeutet „water“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „water“ auf Deutsch?",
         "answers": [
           "Wasser",
-          "Karotten",
-          "Fisch"
-        ],
-        "why": "„water“ bedeutet hier „Wasser“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „milk“ in diesem Wortschatzthema?",
-        "answers": [
           "Milch",
-          "Äpfel",
-          "Salz"
-        ],
-        "why": "„milk“ bedeutet hier „Milch“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „cheese“ in diesem Wortschatzthema?",
-        "answers": [
-          "Käse",
-          "Eier",
-          "Zucker"
-        ],
-        "why": "„cheese“ bedeutet hier „Käse“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „rice“ in diesem Wortschatzthema?",
-        "answers": [
-          "Reis",
-          "Hähnchenfleisch",
           "Saft"
         ],
-        "why": "„rice“ bedeutet hier „Reis“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„water“ bedeutet „Wasser“."
       },
       {
-        "prompt": "Was bedeutet „potatoes“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „milk“ auf Deutsch?",
         "answers": [
-          "Kartoffeln",
-          "Fisch",
-          "Frühstück"
-        ],
-        "why": "„potatoes“ bedeutet hier „Kartoffeln“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „carrots“ in diesem Wortschatzthema?",
-        "answers": [
-          "Karotten",
-          "Salz",
-          "Brot"
-        ],
-        "why": "„carrots“ bedeutet hier „Karotten“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „apples“ in diesem Wortschatzthema?",
-        "answers": [
-          "Äpfel",
-          "Zucker",
-          "Wasser"
-        ],
-        "why": "„apples“ bedeutet hier „Äpfel“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „eggs“ in diesem Wortschatzthema?",
-        "answers": [
-          "Eier",
-          "Saft",
-          "Milch"
-        ],
-        "why": "„eggs“ bedeutet hier „Eier“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „chicken“ in diesem Wortschatzthema?",
-        "answers": [
-          "Hähnchenfleisch",
-          "Frühstück",
-          "Käse"
-        ],
-        "why": "„chicken“ bedeutet hier „Hähnchenfleisch“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „fish“ in diesem Wortschatzthema?",
-        "answers": [
-          "Fisch",
-          "Brot",
-          "Reis"
-        ],
-        "why": "„fish“ bedeutet hier „Fisch“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „salt“ in diesem Wortschatzthema?",
-        "answers": [
-          "Salz",
+          "Milch",
           "Wasser",
+          "Sahne"
+        ],
+        "why": "„milk“ bedeutet „Milch“."
+      },
+      {
+        "prompt": "Was bedeutet „cheese“ auf Deutsch?",
+        "answers": [
+          "Käse",
+          "Butter",
+          "Joghurt"
+        ],
+        "why": "„cheese“ bedeutet „Käse“."
+      },
+      {
+        "prompt": "Was bedeutet „rice“ auf Deutsch?",
+        "answers": [
+          "Reis",
+          "Nudeln",
           "Kartoffeln"
         ],
-        "why": "„salt“ bedeutet hier „Salz“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„rice“ bedeutet „Reis“."
       },
       {
-        "prompt": "Was bedeutet „sugar“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „potatoes“ auf Deutsch?",
+        "answers": [
+          "Kartoffeln",
+          "Karotten",
+          "Tomaten"
+        ],
+        "why": "„potatoes“ bedeutet „Kartoffeln“."
+      },
+      {
+        "prompt": "Was bedeutet „carrots“ auf Deutsch?",
+        "answers": [
+          "Karotten",
+          "Gurken",
+          "Kartoffeln"
+        ],
+        "why": "„carrots“ bedeutet „Karotten“."
+      },
+      {
+        "prompt": "Was bedeutet „apples“ auf Deutsch?",
+        "answers": [
+          "Äpfel",
+          "Birnen",
+          "Pflaumen"
+        ],
+        "why": "„apples“ bedeutet „Äpfel“."
+      },
+      {
+        "prompt": "Was bedeutet „eggs“ auf Deutsch?",
+        "answers": [
+          "Eier",
+          "Kartoffeln",
+          "Nüsse"
+        ],
+        "why": "„eggs“ bedeutet „Eier“."
+      },
+      {
+        "prompt": "Auf einer Speisekarte steht „chicken“. Welches Fleisch ist gemeint?",
+        "answers": [
+          "Hähnchenfleisch",
+          "Rindfleisch",
+          "Schweinefleisch"
+        ],
+        "why": "„chicken“ bedeutet „Hähnchenfleisch“."
+      },
+      {
+        "prompt": "Was bedeutet „fish“ auf Deutsch?",
+        "answers": [
+          "Fisch",
+          "Fleisch",
+          "Reis"
+        ],
+        "why": "„fish“ bedeutet „Fisch“."
+      },
+      {
+        "prompt": "Was bedeutet „salt“ auf Deutsch?",
+        "answers": [
+          "Salz",
+          "Zucker",
+          "Pfeffer"
+        ],
+        "why": "„salt“ bedeutet „Salz“."
+      },
+      {
+        "prompt": "Was bedeutet „sugar“ auf Deutsch?",
         "answers": [
           "Zucker",
-          "Milch",
-          "Karotten"
+          "Salz",
+          "Mehl"
         ],
-        "why": "„sugar“ bedeutet hier „Zucker“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„sugar“ bedeutet „Zucker“."
       },
       {
-        "prompt": "Was bedeutet „juice“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „juice“ auf Deutsch?",
         "answers": [
           "Saft",
-          "Käse",
-          "Äpfel"
+          "Wasser",
+          "Tee"
         ],
-        "why": "„juice“ bedeutet hier „Saft“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„juice“ bedeutet „Saft“."
       },
       {
-        "prompt": "Was bedeutet „breakfast“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „breakfast“ auf Deutsch?",
         "answers": [
           "Frühstück",
-          "Reis",
-          "Eier"
+          "Mittagessen",
+          "Abendessen"
         ],
-        "why": "„breakfast“ bedeutet hier „Frühstück“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„breakfast“ bedeutet „Frühstück“."
       }
     ]
   },
@@ -4924,145 +4687,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „trousers“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „trousers“ auf Deutsch?",
         "answers": [
           "Hose",
-          "Mantel",
-          "Kassenbeleg"
-        ],
-        "why": "„trousers“ bedeutet hier „Hose“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „shirt“ in diesem Wortschatzthema?",
-        "answers": [
-          "Hemd",
-          "Handschuhe",
-          "Rabatt"
-        ],
-        "why": "„shirt“ bedeutet hier „Hemd“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „jacket“ in diesem Wortschatzthema?",
-        "answers": [
-          "Jacke",
-          "Größe",
-          "Bargeld"
-        ],
-        "why": "„jacket“ bedeutet hier „Jacke“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „shoes“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schuhe",
-          "Preis",
-          "Umkleidekabine"
-        ],
-        "why": "„shoes“ bedeutet hier „Schuhe“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „socks“ in diesem Wortschatzthema?",
-        "answers": [
-          "Socken",
-          "Kassenbeleg",
-          "Kunde oder Kundin"
-        ],
-        "why": "„socks“ bedeutet hier „Socken“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „coat“ in diesem Wortschatzthema?",
-        "answers": [
-          "Mantel",
-          "Rabatt",
-          "Verkäufer oder Verkäuferin"
-        ],
-        "why": "„coat“ bedeutet hier „Mantel“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „gloves“ in diesem Wortschatzthema?",
-        "answers": [
-          "Handschuhe",
-          "Bargeld",
-          "Hose"
-        ],
-        "why": "„gloves“ bedeutet hier „Handschuhe“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „size“ in diesem Wortschatzthema?",
-        "answers": [
-          "Größe",
-          "Umkleidekabine",
-          "Hemd"
-        ],
-        "why": "„size“ bedeutet hier „Größe“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „price“ in diesem Wortschatzthema?",
-        "answers": [
-          "Preis",
-          "Kunde oder Kundin",
+          "Rock",
           "Jacke"
         ],
-        "why": "„price“ bedeutet hier „Preis“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„trousers“ bedeutet „Hose“."
       },
       {
-        "prompt": "Was bedeutet „receipt“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „shirt“ auf Deutsch?",
         "answers": [
-          "Kassenbeleg",
-          "Verkäufer oder Verkäuferin",
-          "Schuhe"
-        ],
-        "why": "„receipt“ bedeutet hier „Kassenbeleg“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „discount“ in diesem Wortschatzthema?",
-        "answers": [
-          "Rabatt",
-          "Hose",
-          "Socken"
-        ],
-        "why": "„discount“ bedeutet hier „Rabatt“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „cash“ in diesem Wortschatzthema?",
-        "answers": [
-          "Bargeld",
           "Hemd",
-          "Mantel"
+          "Rock",
+          "Pullover"
         ],
-        "why": "„cash“ bedeutet hier „Bargeld“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„shirt“ bedeutet „Hemd“."
       },
       {
-        "prompt": "Was bedeutet „changing room“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „jacket“ auf Deutsch?",
         "answers": [
-          "Umkleidekabine",
           "Jacke",
+          "Mantel",
+          "Weste"
+        ],
+        "why": "„jacket“ bedeutet „Jacke“."
+      },
+      {
+        "prompt": "Was bedeutet „shoes“ auf Deutsch?",
+        "answers": [
+          "Schuhe",
+          "Socken",
           "Handschuhe"
         ],
-        "why": "„changing room“ bedeutet hier „Umkleidekabine“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„shoes“ bedeutet „Schuhe“."
       },
       {
-        "prompt": "Was bedeutet „customer“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „socks“ auf Deutsch?",
+        "answers": [
+          "Socken",
+          "Schuhe",
+          "Strümpfhose"
+        ],
+        "why": "„socks“ bedeutet „Socken“."
+      },
+      {
+        "prompt": "Was bedeutet „coat“ auf Deutsch?",
+        "answers": [
+          "Mantel",
+          "Weste",
+          "Pullover"
+        ],
+        "why": "„coat“ bedeutet „Mantel“."
+      },
+      {
+        "prompt": "Was bedeutet „gloves“ auf Deutsch?",
+        "answers": [
+          "Handschuhe",
+          "Socken",
+          "Schal"
+        ],
+        "why": "„gloves“ bedeutet „Handschuhe“."
+      },
+      {
+        "prompt": "Was bedeutet „size“ auf Deutsch?",
+        "answers": [
+          "Größe",
+          "Preis",
+          "Farbe"
+        ],
+        "why": "„size“ bedeutet „Größe“."
+      },
+      {
+        "prompt": "Was bedeutet „price“ auf Deutsch?",
+        "answers": [
+          "Preis",
+          "Größe",
+          "Rabatt"
+        ],
+        "why": "„price“ bedeutet „Preis“."
+      },
+      {
+        "prompt": "Was bedeutet „receipt“ auf Deutsch?",
+        "answers": [
+          "Kassenbeleg",
+          "Preisschild",
+          "Gutschein"
+        ],
+        "why": "„receipt“ bedeutet „Kassenbeleg“."
+      },
+      {
+        "prompt": "Was bedeutet „discount“ auf Deutsch?",
+        "answers": [
+          "Rabatt",
+          "Preis",
+          "Rückgeld"
+        ],
+        "why": "„discount“ bedeutet „Rabatt“."
+      },
+      {
+        "prompt": "Was bedeutet „cash“ auf Deutsch?",
+        "answers": [
+          "Bargeld",
+          "Kreditkarte",
+          "Gutschein"
+        ],
+        "why": "„cash“ bedeutet „Bargeld“."
+      },
+      {
+        "prompt": "Was bedeutet „changing room“ auf Deutsch?",
+        "answers": [
+          "Umkleidekabine",
+          "Kasse",
+          "Lagerraum"
+        ],
+        "why": "„changing room“ bedeutet „Umkleidekabine“."
+      },
+      {
+        "prompt": "Was bedeutet „customer“ auf Deutsch?",
         "answers": [
           "Kunde oder Kundin",
-          "Schuhe",
-          "Größe"
+          "Verkäufer oder Verkäuferin",
+          "Lieferant oder Lieferantin"
         ],
-        "why": "„customer“ bedeutet hier „Kunde oder Kundin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„customer“ bedeutet „Kunde oder Kundin“."
       },
       {
-        "prompt": "Was bedeutet „shop assistant“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „shop assistant“ auf Deutsch?",
         "answers": [
           "Verkäufer oder Verkäuferin",
-          "Socken",
-          "Preis"
+          "Kunde oder Kundin",
+          "Lieferant oder Lieferantin"
         ],
-        "why": "„shop assistant“ bedeutet hier „Verkäufer oder Verkäuferin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„shop assistant“ bedeutet „Verkäufer oder Verkäuferin“."
       }
     ]
   },
@@ -5073,145 +4832,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „lesson“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „lesson“ auf Deutsch?",
         "answers": [
           "Unterrichtsstunde",
-          "Lineal",
-          "Klassenraum"
-        ],
-        "why": "„lesson“ bedeutet hier „Unterrichtsstunde“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „timetable“ in diesem Wortschatzthema?",
-        "answers": [
-          "Stundenplan",
-          "Bleistift",
-          "Pause"
-        ],
-        "why": "„timetable“ bedeutet hier „Stundenplan“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „exercise“ in diesem Wortschatzthema?",
-        "answers": [
-          "Übung",
-          "Radiergummi",
+          "Pause",
           "Prüfung"
         ],
-        "why": "„exercise“ bedeutet hier „Übung“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„lesson“ bedeutet „Unterrichtsstunde“."
       },
       {
-        "prompt": "Was bedeutet „homework“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „timetable“ auf Deutsch?",
+        "answers": [
+          "Stundenplan",
+          "Kalender",
+          "Aufgabenliste"
+        ],
+        "why": "„timetable“ bedeutet „Stundenplan“."
+      },
+      {
+        "prompt": "Was bedeutet „exercise“ im Schulalltag?",
+        "answers": [
+          "Übung",
+          "Beispiel",
+          "Lösung"
+        ],
+        "why": "„exercise“ bedeutet „Übung“."
+      },
+      {
+        "prompt": "Was bedeutet „homework“ auf Deutsch?",
         "answers": [
           "Hausaufgaben",
-          "Ordner",
-          "Frage"
-        ],
-        "why": "„homework“ bedeutet hier „Hausaufgaben“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „dictionary“ in diesem Wortschatzthema?",
-        "answers": [
-          "Wörterbuch",
-          "Klassenraum",
-          "Antwort"
-        ],
-        "why": "„dictionary“ bedeutet hier „Wörterbuch“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „ruler“ in diesem Wortschatzthema?",
-        "answers": [
-          "Lineal",
-          "Pause",
-          "Fehler"
-        ],
-        "why": "„ruler“ bedeutet hier „Lineal“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „pencil“ in diesem Wortschatzthema?",
-        "answers": [
-          "Bleistift",
-          "Prüfung",
-          "Unterrichtsstunde"
-        ],
-        "why": "„pencil“ bedeutet hier „Bleistift“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „eraser“ in diesem Wortschatzthema?",
-        "answers": [
-          "Radiergummi",
-          "Frage",
+          "Klassenarbeit",
           "Stundenplan"
         ],
-        "why": "„eraser“ bedeutet hier „Radiergummi“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„homework“ bedeutet „Hausaufgaben“."
       },
       {
-        "prompt": "Was bedeutet „folder“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „dictionary“ auf Deutsch?",
+        "answers": [
+          "Wörterbuch",
+          "Schulbuch",
+          "Notizheft"
+        ],
+        "why": "„dictionary“ bedeutet „Wörterbuch“."
+      },
+      {
+        "prompt": "Was bedeutet „ruler“ im Schulalltag?",
+        "answers": [
+          "Lineal",
+          "Maßband",
+          "Geodreieck"
+        ],
+        "why": "„ruler“ bedeutet „Lineal“."
+      },
+      {
+        "prompt": "Was bedeutet „pencil“ auf Deutsch?",
+        "answers": [
+          "Bleistift",
+          "Kugelschreiber",
+          "Filzstift"
+        ],
+        "why": "„pencil“ bedeutet „Bleistift“."
+      },
+      {
+        "prompt": "Was bedeutet „eraser“ auf Deutsch?",
+        "answers": [
+          "Radiergummi",
+          "Spitzer",
+          "Lineal"
+        ],
+        "why": "„eraser“ bedeutet „Radiergummi“."
+      },
+      {
+        "prompt": "Was bedeutet „folder“ im Schulalltag?",
         "answers": [
           "Ordner",
-          "Antwort",
-          "Übung"
+          "Heft",
+          "Buch"
         ],
-        "why": "„folder“ bedeutet hier „Ordner“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„folder“ bedeutet „Ordner“."
       },
       {
-        "prompt": "Was bedeutet „classroom“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „classroom“ auf Deutsch?",
         "answers": [
           "Klassenraum",
-          "Fehler",
-          "Hausaufgaben"
+          "Lehrerzimmer",
+          "Werkstatt"
         ],
-        "why": "„classroom“ bedeutet hier „Klassenraum“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„classroom“ bedeutet „Klassenraum“."
       },
       {
-        "prompt": "Was bedeutet „break“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „break“ im Schulalltag?",
         "answers": [
           "Pause",
           "Unterrichtsstunde",
-          "Wörterbuch"
+          "Prüfung"
         ],
-        "why": "„break“ bedeutet hier „Pause“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„break“ bedeutet „Pause“."
       },
       {
-        "prompt": "Was bedeutet „exam“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „exam“ auf Deutsch?",
         "answers": [
           "Prüfung",
-          "Stundenplan",
-          "Lineal"
+          "Übung",
+          "Hausaufgabe"
         ],
-        "why": "„exam“ bedeutet hier „Prüfung“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„exam“ bedeutet „Prüfung“."
       },
       {
-        "prompt": "Was bedeutet „question“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „question“ auf Deutsch?",
         "answers": [
           "Frage",
-          "Übung",
-          "Bleistift"
+          "Antwort",
+          "Auftrag"
         ],
-        "why": "„question“ bedeutet hier „Frage“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„question“ bedeutet „Frage“."
       },
       {
-        "prompt": "Was bedeutet „answer“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „answer“ auf Deutsch?",
         "answers": [
           "Antwort",
-          "Hausaufgaben",
-          "Radiergummi"
+          "Frage",
+          "Fehler"
         ],
-        "why": "„answer“ bedeutet hier „Antwort“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„answer“ bedeutet „Antwort“."
       },
       {
-        "prompt": "Was bedeutet „mistake“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „mistake“ auf Deutsch?",
         "answers": [
           "Fehler",
-          "Wörterbuch",
-          "Ordner"
+          "Frage",
+          "Antwort"
         ],
-        "why": "„mistake“ bedeutet hier „Fehler“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„mistake“ bedeutet „Fehler“."
       }
     ]
   },
@@ -5222,145 +4977,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „hammer“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „hammer“ auf Deutsch?",
         "answers": [
           "Hammer",
-          "Feile",
-          "Unterlegscheibe"
-        ],
-        "why": "„hammer“ bedeutet hier „Hammer“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „screwdriver“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schraubendreher",
-          "Schraube",
-          "Werkbank"
-        ],
-        "why": "„screwdriver“ bedeutet hier „Schraubendreher“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „pliers“ in diesem Wortschatzthema?",
-        "answers": [
           "Zange",
-          "Mutter als Befestigungsteil",
-          "Schraubstock"
-        ],
-        "why": "„pliers“ bedeutet hier „Zange“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „saw“ in diesem Wortschatzthema?",
-        "answers": [
-          "Säge",
-          "Schraubbolzen",
-          "Maßband"
-        ],
-        "why": "„saw“ bedeutet hier „Säge“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „drill“ in diesem Wortschatzthema?",
-        "answers": [
-          "Bohrmaschine",
-          "Unterlegscheibe",
-          "Schutzbrille"
-        ],
-        "why": "„drill“ bedeutet hier „Bohrmaschine“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „file“ in diesem Wortschatzthema?",
-        "answers": [
-          "Feile",
-          "Werkbank",
-          "Blech"
-        ],
-        "why": "„file“ bedeutet hier „Feile“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „screw“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schraube",
-          "Schraubstock",
-          "Hammer"
-        ],
-        "why": "„screw“ bedeutet hier „Schraube“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „nut“ in diesem Wortschatzthema?",
-        "answers": [
-          "Mutter als Befestigungsteil",
-          "Maßband",
-          "Schraubendreher"
-        ],
-        "why": "„nut“ bedeutet hier „Mutter als Befestigungsteil“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „bolt“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schraubbolzen",
-          "Schutzbrille",
-          "Zange"
-        ],
-        "why": "„bolt“ bedeutet hier „Schraubbolzen“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „washer“ in diesem Wortschatzthema?",
-        "answers": [
-          "Unterlegscheibe",
-          "Blech",
-          "Säge"
-        ],
-        "why": "„washer“ bedeutet hier „Unterlegscheibe“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „workbench“ in diesem Wortschatzthema?",
-        "answers": [
-          "Werkbank",
-          "Hammer",
-          "Bohrmaschine"
-        ],
-        "why": "„workbench“ bedeutet hier „Werkbank“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „vice“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schraubstock",
-          "Schraubendreher",
           "Feile"
         ],
-        "why": "„vice“ bedeutet hier „Schraubstock“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„hammer“ bedeutet „Hammer“."
       },
       {
-        "prompt": "Was bedeutet „measuring tape“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „screwdriver“ auf Deutsch?",
         "answers": [
-          "Maßband",
-          "Zange",
-          "Schraube"
+          "Schraubendreher",
+          "Schraubenschlüssel",
+          "Schraubstock"
         ],
-        "why": "„measuring tape“ bedeutet hier „Maßband“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„screwdriver“ bedeutet „Schraubendreher“."
       },
       {
-        "prompt": "Was bedeutet „safety goggles“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „pliers“ auf Deutsch?",
         "answers": [
-          "Schutzbrille",
+          "Zange",
+          "Hammer",
+          "Säge"
+        ],
+        "why": "„pliers“ bedeutet „Zange“."
+      },
+      {
+        "prompt": "Was bedeutet „saw“ in der Werkstatt?",
+        "answers": [
           "Säge",
+          "Feile",
+          "Bohrmaschine"
+        ],
+        "why": "„saw“ bedeutet „Säge“."
+      },
+      {
+        "prompt": "Was bedeutet „drill“ in der Werkstatt?",
+        "answers": [
+          "Bohrmaschine",
+          "Schraubendreher",
+          "Schleifmaschine"
+        ],
+        "why": "„drill“ bedeutet „Bohrmaschine“."
+      },
+      {
+        "prompt": "Was bedeutet „file“ in der Werkstatt?",
+        "answers": [
+          "Feile",
+          "Säge",
+          "Hammer"
+        ],
+        "why": "„file“ bedeutet „Feile“."
+      },
+      {
+        "prompt": "Was bedeutet „screw“ auf Deutsch?",
+        "answers": [
+          "Schraube",
+          "Mutter als Befestigungsteil",
+          "Unterlegscheibe"
+        ],
+        "why": "„screw“ bedeutet „Schraube“."
+      },
+      {
+        "prompt": "Was bedeutet „nut“ in der Werkstatt?",
+        "answers": [
+          "Mutter als Befestigungsteil",
+          "Schraube",
+          "Unterlegscheibe"
+        ],
+        "why": "In der Werkstatt bezeichnet „nut“ eine Mutter, die auf eine Schraube geschraubt wird."
+      },
+      {
+        "prompt": "Was bedeutet „bolt“ in der Werkstatt?",
+        "answers": [
+          "Schraubbolzen",
+          "Dübel",
+          "Niet"
+        ],
+        "why": "„bolt“ bedeutet „Schraubbolzen“."
+      },
+      {
+        "prompt": "Was bedeutet „washer“ in der Werkstatt?",
+        "answers": [
+          "Unterlegscheibe",
+          "Schraube",
           "Mutter als Befestigungsteil"
         ],
-        "why": "„safety goggles“ bedeutet hier „Schutzbrille“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„washer“ bedeutet „Unterlegscheibe“."
       },
       {
-        "prompt": "Was bedeutet „sheet metal“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „workbench“ auf Deutsch?",
+        "answers": [
+          "Werkbank",
+          "Schraubstock",
+          "Werkzeugschrank"
+        ],
+        "why": "„workbench“ bedeutet „Werkbank“."
+      },
+      {
+        "prompt": "Was bedeutet „vice“ in der Werkstatt?",
+        "answers": [
+          "Schraubstock",
+          "Schraubenschlüssel",
+          "Werkbank"
+        ],
+        "why": "„vice“ bedeutet „Schraubstock“."
+      },
+      {
+        "prompt": "Was bedeutet „measuring tape“ auf Deutsch?",
+        "answers": [
+          "Maßband",
+          "Lineal",
+          "Messschieber"
+        ],
+        "why": "„measuring tape“ bedeutet „Maßband“."
+      },
+      {
+        "prompt": "Was bedeutet „safety goggles“ auf Deutsch?",
+        "answers": [
+          "Schutzbrille",
+          "Schutzhandschuhe",
+          "Gehörschutz"
+        ],
+        "why": "„safety goggles“ bedeutet „Schutzbrille“."
+      },
+      {
+        "prompt": "Was bedeutet „sheet metal“ auf Deutsch?",
         "answers": [
           "Blech",
-          "Bohrmaschine",
-          "Schraubbolzen"
+          "Metallrohr",
+          "Metallstange"
         ],
-        "why": "„sheet metal“ bedeutet hier „Blech“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„sheet metal“ bedeutet „Blech“."
       }
     ]
   },
@@ -5371,145 +5122,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „mechanic“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „mechanic“ auf Deutsch?",
         "answers": [
           "Mechaniker oder Mechanikerin",
-          "Koch oder Köchin",
-          "Vorgesetzter oder Vorgesetzte"
+          "Elektriker oder Elektrikerin",
+          "Schweißer oder Schweißerin"
         ],
-        "why": "„mechanic“ bedeutet hier „Mechaniker oder Mechanikerin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„mechanic“ bedeutet „Mechaniker oder Mechanikerin“."
       },
       {
-        "prompt": "Was bedeutet „electrician“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „electrician“ auf Deutsch?",
         "answers": [
           "Elektriker oder Elektrikerin",
-          "Pflegefachkraft",
-          "Kollege oder Kollegin"
-        ],
-        "why": "„electrician“ bedeutet hier „Elektriker oder Elektrikerin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „carpenter“ in diesem Wortschatzthema?",
-        "answers": [
-          "Zimmerer oder Zimmerin",
-          "Fahrer oder Fahrerin",
-          "Unternehmen"
-        ],
-        "why": "„carpenter“ bedeutet hier „Zimmerer oder Zimmerin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „plumber“ in diesem Wortschatzthema?",
-        "answers": [
-          "Installateur oder Installateurin",
-          "Auszubildender oder Auszubildende",
-          "Arbeitsschicht"
-        ],
-        "why": "„plumber“ bedeutet hier „Installateur oder Installateurin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „welder“ in diesem Wortschatzthema?",
-        "answers": [
-          "Schweißer oder Schweißerin",
-          "Vorgesetzter oder Vorgesetzte",
-          "Gehalt"
-        ],
-        "why": "„welder“ bedeutet hier „Schweißer oder Schweißerin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „chef“ in diesem Wortschatzthema?",
-        "answers": [
-          "Koch oder Köchin",
-          "Kollege oder Kollegin",
-          "Praktikum"
-        ],
-        "why": "„chef“ bedeutet hier „Koch oder Köchin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „nurse“ in diesem Wortschatzthema?",
-        "answers": [
-          "Pflegefachkraft",
-          "Unternehmen",
-          "Mechaniker oder Mechanikerin"
-        ],
-        "why": "„nurse“ bedeutet hier „Pflegefachkraft“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „driver“ in diesem Wortschatzthema?",
-        "answers": [
-          "Fahrer oder Fahrerin",
-          "Arbeitsschicht",
-          "Elektriker oder Elektrikerin"
-        ],
-        "why": "„driver“ bedeutet hier „Fahrer oder Fahrerin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „apprentice“ in diesem Wortschatzthema?",
-        "answers": [
-          "Auszubildender oder Auszubildende",
-          "Gehalt",
-          "Zimmerer oder Zimmerin"
-        ],
-        "why": "„apprentice“ bedeutet hier „Auszubildender oder Auszubildende“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „supervisor“ in diesem Wortschatzthema?",
-        "answers": [
-          "Vorgesetzter oder Vorgesetzte",
-          "Praktikum",
+          "Mechaniker oder Mechanikerin",
           "Installateur oder Installateurin"
         ],
-        "why": "„supervisor“ bedeutet hier „Vorgesetzter oder Vorgesetzte“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„electrician“ bedeutet „Elektriker oder Elektrikerin“."
       },
       {
-        "prompt": "Was bedeutet „colleague“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „carpenter“ auf Deutsch?",
         "answers": [
-          "Kollege oder Kollegin",
+          "Tischler, Tischlerin, Zimmerer oder Zimmerin",
+          "Schweißer oder Schweißerin",
+          "Elektriker oder Elektrikerin"
+        ],
+        "why": "„carpenter“ bedeutet „Tischler oder Zimmerer / Tischlerin oder Zimmerin“."
+      },
+      {
+        "prompt": "Was bedeutet „plumber“ auf Deutsch?",
+        "answers": [
+          "Installateur oder Installateurin",
+          "Mechaniker oder Mechanikerin",
+          "Tischler oder Tischlerin"
+        ],
+        "why": "„plumber“ bedeutet „Installateur oder Installateurin“."
+      },
+      {
+        "prompt": "Was bedeutet „welder“ auf Deutsch?",
+        "answers": [
+          "Schweißer oder Schweißerin",
+          "Elektriker oder Elektrikerin",
+          "Mechaniker oder Mechanikerin"
+        ],
+        "why": "„welder“ bedeutet „Schweißer oder Schweißerin“."
+      },
+      {
+        "prompt": "Was bedeutet „chef“ auf Deutsch?",
+        "answers": [
+          "Koch oder Köchin",
+          "Vorgesetzter oder Vorgesetzte",
+          "Kellner oder Kellnerin"
+        ],
+        "why": "„Chef“ bezeichnet einen Koch oder eine Köchin. Ein Vorgesetzter heißt zum Beispiel „supervisor“."
+      },
+      {
+        "prompt": "Was bedeutet „nurse“ auf Deutsch?",
+        "answers": [
+          "Pflegefachkraft",
+          "Arzt oder Ärztin",
+          "Apotheker oder Apothekerin"
+        ],
+        "why": "„nurse“ bedeutet „Pflegefachkraft“."
+      },
+      {
+        "prompt": "Was bedeutet „driver“ auf Deutsch?",
+        "answers": [
+          "Fahrer oder Fahrerin",
           "Mechaniker oder Mechanikerin",
           "Schweißer oder Schweißerin"
         ],
-        "why": "„colleague“ bedeutet hier „Kollege oder Kollegin“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„driver“ bedeutet „Fahrer oder Fahrerin“."
       },
       {
-        "prompt": "Was bedeutet „company“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „apprentice“ auf Deutsch?",
+        "answers": [
+          "Auszubildender oder Auszubildende",
+          "Vorgesetzter oder Vorgesetzte",
+          "Bewerber oder Bewerberin"
+        ],
+        "why": "„apprentice“ bedeutet „Auszubildender oder Auszubildende“."
+      },
+      {
+        "prompt": "Was bedeutet „supervisor“ auf Deutsch?",
+        "answers": [
+          "Vorgesetzter oder Vorgesetzte",
+          "Kollege oder Kollegin",
+          "Kunde oder Kundin"
+        ],
+        "why": "„supervisor“ bedeutet „Vorgesetzter oder Vorgesetzte“."
+      },
+      {
+        "prompt": "Was bedeutet „colleague“ auf Deutsch?",
+        "answers": [
+          "Kollege oder Kollegin",
+          "Kunde oder Kundin",
+          "Vorgesetzter oder Vorgesetzte"
+        ],
+        "why": "„colleague“ bedeutet „Kollege oder Kollegin“."
+      },
+      {
+        "prompt": "Was bedeutet „company“ in der Arbeitswelt?",
         "answers": [
           "Unternehmen",
-          "Elektriker oder Elektrikerin",
-          "Koch oder Köchin"
+          "Abteilung",
+          "Berufsschule"
         ],
-        "why": "„company“ bedeutet hier „Unternehmen“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„company“ bedeutet „Unternehmen“."
       },
       {
-        "prompt": "Was bedeutet „shift“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „shift“ in der Arbeitswelt?",
         "answers": [
           "Arbeitsschicht",
-          "Zimmerer oder Zimmerin",
-          "Pflegefachkraft"
+          "Arbeitsvertrag",
+          "Urlaub"
         ],
-        "why": "„shift“ bedeutet hier „Arbeitsschicht“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„shift“ bedeutet „Arbeitsschicht“."
       },
       {
-        "prompt": "Was bedeutet „salary“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „salary“ in der Arbeitswelt?",
         "answers": [
           "Gehalt",
-          "Installateur oder Installateurin",
-          "Fahrer oder Fahrerin"
+          "Arbeitszeit",
+          "Urlaub"
         ],
-        "why": "„salary“ bedeutet hier „Gehalt“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„salary“ bedeutet „Gehalt“."
       },
       {
-        "prompt": "Was bedeutet „internship“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „internship“ auf Deutsch?",
         "answers": [
           "Praktikum",
-          "Schweißer oder Schweißerin",
-          "Auszubildender oder Auszubildende"
+          "Ausbildung",
+          "Vorstellungsgespräch"
         ],
-        "why": "„internship“ bedeutet hier „Praktikum“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„internship“ bedeutet „Praktikum“."
       }
     ]
   },
@@ -5520,145 +5267,141 @@ export const languageData = [
     "format": "vocabulary",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Bedeutung eines Wortes wird im passenden Sachzusammenhang geprüft. Ähnlicher Klang bedeutet nicht automatisch gleiche Bedeutung.",
-    "wrongRules": [
-      "Ein ähnlich klingendes deutsches Wort hat immer dieselbe Bedeutung.",
-      "Der erste Buchstabe eines Wortes bestimmt seine Bedeutung."
-    ],
     "rows": [
       {
-        "prompt": "Was bedeutet „headache“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „headache“ auf Deutsch?",
         "answers": [
           "Kopfschmerzen",
-          "Erkältung",
-          "Medikament"
-        ],
-        "why": "„headache“ bedeutet hier „Kopfschmerzen“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „toothache“ in diesem Wortschatzthema?",
-        "answers": [
           "Zahnschmerzen",
-          "Termin",
-          "Rezept für ein Medikament"
-        ],
-        "why": "„toothache“ bedeutet hier „Zahnschmerzen“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „stomach ache“ in diesem Wortschatzthema?",
-        "answers": [
-          "Bauchschmerzen",
-          "Arzt oder Ärztin",
-          "Schmerz"
-        ],
-        "why": "„stomach ache“ bedeutet hier „Bauchschmerzen“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „fever“ in diesem Wortschatzthema?",
-        "answers": [
-          "Fieber",
-          "Apotheke",
-          "Verletzung"
-        ],
-        "why": "„fever“ bedeutet hier „Fieber“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „cough“ in diesem Wortschatzthema?",
-        "answers": [
-          "Husten",
-          "Medikament",
-          "Verband"
-        ],
-        "why": "„cough“ bedeutet hier „Husten“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „cold“ in diesem Wortschatzthema?",
-        "answers": [
-          "Erkältung",
-          "Rezept für ein Medikament",
-          "Notfall"
-        ],
-        "why": "„cold“ bedeutet hier „Erkältung“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „appointment“ in diesem Wortschatzthema?",
-        "answers": [
-          "Termin",
-          "Schmerz",
-          "Kopfschmerzen"
-        ],
-        "why": "„appointment“ bedeutet hier „Termin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „doctor“ in diesem Wortschatzthema?",
-        "answers": [
-          "Arzt oder Ärztin",
-          "Verletzung",
-          "Zahnschmerzen"
-        ],
-        "why": "„doctor“ bedeutet hier „Arzt oder Ärztin“. Die beiden anderen Wörter haben andere Bedeutungen."
-      },
-      {
-        "prompt": "Was bedeutet „pharmacy“ in diesem Wortschatzthema?",
-        "answers": [
-          "Apotheke",
-          "Verband",
           "Bauchschmerzen"
         ],
-        "why": "„pharmacy“ bedeutet hier „Apotheke“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„headache“ bedeutet „Kopfschmerzen“."
       },
       {
-        "prompt": "Was bedeutet „medicine“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „toothache“ auf Deutsch?",
+        "answers": [
+          "Zahnschmerzen",
+          "Kopfschmerzen",
+          "Halsschmerzen"
+        ],
+        "why": "„toothache“ bedeutet „Zahnschmerzen“."
+      },
+      {
+        "prompt": "Was bedeutet „stomach ache“ auf Deutsch?",
+        "answers": [
+          "Bauchschmerzen",
+          "Rückenschmerzen",
+          "Kopfschmerzen"
+        ],
+        "why": "„stomach ache“ bedeutet „Bauchschmerzen“."
+      },
+      {
+        "prompt": "Was bedeutet „fever“ auf Deutsch?",
+        "answers": [
+          "Fieber",
+          "Husten",
+          "Schnupfen"
+        ],
+        "why": "„fever“ bedeutet „Fieber“."
+      },
+      {
+        "prompt": "Was bedeutet „cough“ auf Deutsch?",
+        "answers": [
+          "Husten",
+          "Fieber",
+          "Halsschmerzen"
+        ],
+        "why": "„cough“ bedeutet „Husten“."
+      },
+      {
+        "prompt": "Was bedeutet „a cold“ beim Arztbesuch?",
+        "answers": [
+          "Erkältung",
+          "Fieber",
+          "Verletzung"
+        ],
+        "why": "„A cold“ ist eine Erkältung. Das Adjektiv „cold“ bedeutet „kalt“."
+      },
+      {
+        "prompt": "Was bedeutet „appointment“ auf Deutsch?",
+        "answers": [
+          "Termin",
+          "Untersuchung",
+          "Behandlung"
+        ],
+        "why": "„appointment“ bedeutet „Termin“."
+      },
+      {
+        "prompt": "Was bedeutet „doctor“ auf Deutsch?",
+        "answers": [
+          "Arzt oder Ärztin",
+          "Pflegefachkraft",
+          "Apotheker oder Apothekerin"
+        ],
+        "why": "„doctor“ bedeutet „Arzt oder Ärztin“."
+      },
+      {
+        "prompt": "Was bedeutet „pharmacy“ auf Deutsch?",
+        "answers": [
+          "Apotheke",
+          "Arztpraxis",
+          "Krankenhaus"
+        ],
+        "why": "„pharmacy“ bedeutet „Apotheke“."
+      },
+      {
+        "prompt": "Was bedeutet „medicine“ auf Deutsch?",
         "answers": [
           "Medikament",
-          "Notfall",
-          "Fieber"
+          "Verband",
+          "Rezept für ein Medikament"
         ],
-        "why": "„medicine“ bedeutet hier „Medikament“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„medicine“ bedeutet „Medikament“."
       },
       {
-        "prompt": "Was bedeutet „prescription“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „prescription“ auf Deutsch?",
         "answers": [
           "Rezept für ein Medikament",
-          "Kopfschmerzen",
-          "Husten"
+          "Überweisung",
+          "Krankschreibung"
         ],
-        "why": "„prescription“ bedeutet hier „Rezept für ein Medikament“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„prescription“ bedeutet „Rezept für ein Medikament“."
       },
       {
-        "prompt": "Was bedeutet „pain“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „pain“ auf Deutsch?",
         "answers": [
           "Schmerz",
-          "Zahnschmerzen",
-          "Erkältung"
+          "Fieber",
+          "Verletzung"
         ],
-        "why": "„pain“ bedeutet hier „Schmerz“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„pain“ bedeutet „Schmerz“."
       },
       {
-        "prompt": "Was bedeutet „injury“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „injury“ auf Deutsch?",
         "answers": [
           "Verletzung",
-          "Bauchschmerzen",
-          "Termin"
+          "Erkältung",
+          "Behandlung"
         ],
-        "why": "„injury“ bedeutet hier „Verletzung“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„injury“ bedeutet „Verletzung“."
       },
       {
-        "prompt": "Was bedeutet „bandage“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „bandage“ auf Deutsch?",
         "answers": [
           "Verband",
-          "Fieber",
-          "Arzt oder Ärztin"
+          "Tablette",
+          "Salbe"
         ],
-        "why": "„bandage“ bedeutet hier „Verband“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„bandage“ bedeutet „Verband“."
       },
       {
-        "prompt": "Was bedeutet „emergency“ in diesem Wortschatzthema?",
+        "prompt": "Was bedeutet „emergency“ auf Deutsch?",
         "answers": [
           "Notfall",
-          "Husten",
-          "Apotheke"
+          "Sprechstunde",
+          "Kontrolluntersuchung"
         ],
-        "why": "„emergency“ bedeutet hier „Notfall“. Die beiden anderen Wörter haben andere Bedeutungen."
+        "why": "„emergency“ bedeutet „Notfall“."
       }
     ]
   },
@@ -5669,13 +5412,9 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Einfache Vorstellungsformen nennen zum Beispiel Name, Alter, Herkunft und Wohnort. Die Form von „be“ passt zur Person.",
-    "wrongRules": [
-      "Das englische Alter wird grundsätzlich mit „I have“ statt „I am“ angegeben.",
-      "Vor jedem Personennamen muss das Hilfsverb „do“ stehen."
-    ],
     "rows": [
       {
-        "prompt": "My name ___ Mia.",
+        "prompt": "Ergänze den Satz: My name ___ Mia.",
         "answers": [
           "is",
           "are",
@@ -5684,7 +5423,7 @@ export const languageData = [
         "why": "„My name“ ist Singular; dazu passt „is“."
       },
       {
-        "prompt": "I ___ sixteen years old.",
+        "prompt": "Ergänze den Satz: I ___ sixteen years old.",
         "answers": [
           "am",
           "have",
@@ -5693,16 +5432,16 @@ export const languageData = [
         "why": "Eine Altersangabe bildet man hier mit „I am“."
       },
       {
-        "prompt": "I live ___ Lahr.",
+        "prompt": "Ergänze den Satz: I live ___ Lahr.",
         "answers": [
           "in",
           "on",
-          "at to"
+          "at"
         ],
         "why": "Bei einem Wohnort in einer Stadt verwendet man hier „in“."
       },
       {
-        "prompt": "I am ___ Germany.",
+        "prompt": "Ergänze den Satz: I am ___ Germany.",
         "answers": [
           "from",
           "of",
@@ -5711,7 +5450,7 @@ export const languageData = [
         "why": "„From“ nennt hier das Herkunftsland."
       },
       {
-        "prompt": "This ___ my friend Ali.",
+        "prompt": "Ergänze den Satz: This ___ my friend Ali.",
         "answers": [
           "is",
           "are",
@@ -5720,7 +5459,7 @@ export const languageData = [
         "why": "„This“ steht hier im Singular und verlangt „is“."
       },
       {
-        "prompt": "We ___ students.",
+        "prompt": "Ergänze den Satz: We ___ students.",
         "answers": [
           "are",
           "is",
@@ -5729,7 +5468,7 @@ export const languageData = [
         "why": "Zu „we“ gehört „are“."
       },
       {
-        "prompt": "My phone number ___ on this form.",
+        "prompt": "Ergänze den Satz: My phone number ___ on this form.",
         "answers": [
           "is",
           "are",
@@ -5738,7 +5477,7 @@ export const languageData = [
         "why": "Das Subjekt „my phone number“ steht im Singular."
       },
       {
-        "prompt": "I ___ a sister and a brother.",
+        "prompt": "Ergänze den Satz: I ___ a sister and a brother.",
         "answers": [
           "have",
           "has",
@@ -5747,7 +5486,7 @@ export const languageData = [
         "why": "Zum Subjekt „I“ gehört „have“."
       },
       {
-        "prompt": "Her first name ___ Sara.",
+        "prompt": "Ergänze den Satz: Her first name ___ Sara.",
         "answers": [
           "is",
           "are",
@@ -5756,7 +5495,7 @@ export const languageData = [
         "why": "„Her first name“ ist Singular; die Verbform lautet „is“."
       },
       {
-        "prompt": "My surname ___ Weber.",
+        "prompt": "Ergänze den Satz: My surname ___ Weber.",
         "answers": [
           "is",
           "are",
@@ -5765,7 +5504,7 @@ export const languageData = [
         "why": "„Surname“ bedeutet Nachname und steht hier im Singular."
       },
       {
-        "prompt": "I ___ interested in metalwork.",
+        "prompt": "Ergänze den Satz: I ___ interested in metalwork.",
         "answers": [
           "am",
           "have",
@@ -5774,7 +5513,7 @@ export const languageData = [
         "why": "Die feste Verbindung lautet hier „be interested in“."
       },
       {
-        "prompt": "We come ___ France.",
+        "prompt": "Ergänze den Satz: We come ___ France.",
         "answers": [
           "from",
           "at",
@@ -5783,7 +5522,7 @@ export const languageData = [
         "why": "„Come from“ nennt die Herkunft."
       },
       {
-        "prompt": "He ___ seventeen years old.",
+        "prompt": "Ergänze den Satz: He ___ seventeen years old.",
         "answers": [
           "is",
           "has",
@@ -5792,7 +5531,7 @@ export const languageData = [
         "why": "Auch bei „he“ wird das Alter mit „be“ angegeben: „he is“."
       },
       {
-        "prompt": "Our address ___ on the letter.",
+        "prompt": "Ergänze den Satz: Our address ___ on the letter.",
         "answers": [
           "is",
           "are",
@@ -5801,7 +5540,7 @@ export const languageData = [
         "why": "„Our address“ ist ein einzelnes Subjekt und verlangt „is“."
       },
       {
-        "prompt": "Nice to ___ you.",
+        "prompt": "Ergänze den Satz: Nice to ___ you.",
         "answers": [
           "meet",
           "meeting",
@@ -5818,143 +5557,139 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Zahlwörter müssen eindeutig der genannten Zahl entsprechen. Bei „-teen“ und „-ty“ sind Schreibung und Bedeutung zu unterscheiden.",
-    "wrongRules": [
-      "„Thirteen“ und „thirty“ bezeichnen immer dieselbe Zahl.",
-      "Die englischen Zahlwörter richten sich nach der Farbe des Gegenstands."
-    ],
     "rows": [
       {
-        "prompt": "Ein Preis beträgt 12 Pfund. Welches englische Zahlwort bezeichnet 12?",
+        "prompt": "Welches englische Zahlwort bedeutet 12?",
         "answers": [
           "twelve",
-          "fifteen",
-          "nineteen"
+          "twenty",
+          "two"
         ],
         "why": "„twelve“ bezeichnet die Zahl 12."
       },
       {
-        "prompt": "Ein Preis beträgt 13 Pfund. Welches englische Zahlwort bezeichnet 13?",
+        "prompt": "Welches englische Zahlwort bedeutet 13?",
         "answers": [
           "thirteen",
-          "sixteen",
-          "twenty"
+          "thirty",
+          "three"
         ],
         "why": "„thirteen“ bezeichnet die Zahl 13."
       },
       {
-        "prompt": "Ein Preis beträgt 14 Pfund. Welches englische Zahlwort bezeichnet 14?",
+        "prompt": "Welches englische Zahlwort bedeutet 14?",
         "answers": [
           "fourteen",
-          "seventeen",
-          "thirty"
+          "forty",
+          "four"
         ],
         "why": "„fourteen“ bezeichnet die Zahl 14."
       },
       {
-        "prompt": "Ein Preis beträgt 15 Pfund. Welches englische Zahlwort bezeichnet 15?",
+        "prompt": "Welches englische Zahlwort bedeutet 15?",
         "answers": [
           "fifteen",
-          "eighteen",
-          "forty"
+          "fifty",
+          "five"
         ],
         "why": "„fifteen“ bezeichnet die Zahl 15."
       },
       {
-        "prompt": "Ein Preis beträgt 16 Pfund. Welches englische Zahlwort bezeichnet 16?",
+        "prompt": "Welches englische Zahlwort bedeutet 16?",
         "answers": [
           "sixteen",
-          "nineteen",
-          "fifty"
+          "sixty",
+          "six"
         ],
         "why": "„sixteen“ bezeichnet die Zahl 16."
       },
       {
-        "prompt": "Ein Preis beträgt 17 Pfund. Welches englische Zahlwort bezeichnet 17?",
+        "prompt": "Welches englische Zahlwort bedeutet 17?",
         "answers": [
           "seventeen",
-          "twenty",
-          "sixty"
+          "seventy",
+          "seven"
         ],
         "why": "„seventeen“ bezeichnet die Zahl 17."
       },
       {
-        "prompt": "Ein Preis beträgt 18 Pfund. Welches englische Zahlwort bezeichnet 18?",
+        "prompt": "Welches englische Zahlwort bedeutet 18?",
         "answers": [
           "eighteen",
-          "thirty",
-          "eighty"
+          "eighty",
+          "eight"
         ],
         "why": "„eighteen“ bezeichnet die Zahl 18."
       },
       {
-        "prompt": "Ein Preis beträgt 19 Pfund. Welches englische Zahlwort bezeichnet 19?",
+        "prompt": "Welches englische Zahlwort bedeutet 19?",
         "answers": [
           "nineteen",
-          "forty",
-          "ninety"
+          "ninety",
+          "nine"
         ],
         "why": "„nineteen“ bezeichnet die Zahl 19."
       },
       {
-        "prompt": "Ein Preis beträgt 20 Pfund. Welches englische Zahlwort bezeichnet 20?",
+        "prompt": "Welches englische Zahlwort bedeutet 20?",
         "answers": [
           "twenty",
-          "fifty",
-          "twelve"
+          "twelve",
+          "two"
         ],
         "why": "„twenty“ bezeichnet die Zahl 20."
       },
       {
-        "prompt": "Ein Preis beträgt 30 Pfund. Welches englische Zahlwort bezeichnet 30?",
+        "prompt": "Welches englische Zahlwort bedeutet 30?",
         "answers": [
           "thirty",
-          "sixty",
-          "thirteen"
+          "thirteen",
+          "three"
         ],
         "why": "„thirty“ bezeichnet die Zahl 30."
       },
       {
-        "prompt": "Ein Preis beträgt 40 Pfund. Welches englische Zahlwort bezeichnet 40?",
+        "prompt": "Welches englische Zahlwort bedeutet 40?",
         "answers": [
           "forty",
-          "eighty",
-          "fourteen"
+          "fourteen",
+          "four"
         ],
         "why": "„forty“ bezeichnet die Zahl 40."
       },
       {
-        "prompt": "Ein Preis beträgt 50 Pfund. Welches englische Zahlwort bezeichnet 50?",
+        "prompt": "Welches englische Zahlwort bedeutet 50?",
         "answers": [
           "fifty",
-          "ninety",
-          "fifteen"
+          "fifteen",
+          "five"
         ],
         "why": "„fifty“ bezeichnet die Zahl 50."
       },
       {
-        "prompt": "Ein Preis beträgt 60 Pfund. Welches englische Zahlwort bezeichnet 60?",
+        "prompt": "Welches englische Zahlwort bedeutet 60?",
         "answers": [
           "sixty",
-          "twelve",
-          "sixteen"
+          "sixteen",
+          "six"
         ],
         "why": "„sixty“ bezeichnet die Zahl 60."
       },
       {
-        "prompt": "Ein Preis beträgt 80 Pfund. Welches englische Zahlwort bezeichnet 80?",
+        "prompt": "Welches englische Zahlwort bedeutet 80?",
         "answers": [
           "eighty",
-          "thirteen",
-          "seventeen"
+          "eighteen",
+          "eight"
         ],
         "why": "„eighty“ bezeichnet die Zahl 80."
       },
       {
-        "prompt": "Ein Preis beträgt 90 Pfund. Welches englische Zahlwort bezeichnet 90?",
+        "prompt": "Welches englische Zahlwort bedeutet 90?",
         "answers": [
           "ninety",
-          "fourteen",
-          "eighteen"
+          "nineteen",
+          "nine"
         ],
         "why": "„ninety“ bezeichnet die Zahl 90."
       }
@@ -5967,10 +5702,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Uhrzeiten und Terminangaben müssen genau zum genannten Zeitpunkt passen. Bei „past“ zählt man nach der vollen Stunde, bei „to“ bis zur nächsten.",
-    "wrongRules": [
-      "„Quarter past“ bedeutet grundsätzlich eine Viertelstunde vor der genannten Stunde.",
-      "„Half past“ nennt die nächste statt der bereits begonnenen Stunde."
-    ],
     "rows": [
       {
         "prompt": "Welcher Ausdruck bezeichnet 8:00 Uhr?",
@@ -6085,7 +5816,7 @@ export const languageData = [
         "answers": [
           "Zehn Minuten vor dem Termin ankommen.",
           "Zehn Minuten nach dem Termin ankommen.",
-          "Genau zehn Stunden warten."
+          "Genau zum vereinbarten Termin ankommen."
         ],
         "why": "„Early“ bedeutet hier vor dem vereinbarten Beginn."
       },
@@ -6116,22 +5847,18 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Für regelmäßige Abläufe verwendet man häufig das simple present. Zeitangaben und feste Verbindungen müssen zum Satz passen.",
-    "wrongRules": [
-      "Regelmäßige Tätigkeiten werden immer mit „am + Grundform“ beschrieben.",
-      "Nach „every day“ ist eine Vergangenheitsform in jedem Satz zwingend."
-    ],
     "rows": [
       {
-        "prompt": "I get ___ at six every morning.",
+        "prompt": "Ergänze für „aufstehen“: I get ___ at six every morning.",
         "answers": [
           "up",
-          "down to",
-          "out at"
+          "down",
+          "off"
         ],
         "why": "Die feste Verbindung für „aufstehen“ lautet „get up“."
       },
       {
-        "prompt": "She ___ breakfast at seven.",
+        "prompt": "Ergänze den Satz: She ___ breakfast at seven.",
         "answers": [
           "has",
           "have",
@@ -6140,16 +5867,16 @@ export const languageData = [
         "why": "Bei „she“ lautet die simple-present-Form „has“."
       },
       {
-        "prompt": "We go to school ___ bus.",
+        "prompt": "Ergänze den Satz: We go to school ___ bus.",
         "answers": [
           "by",
-          "with the by",
-          "on to"
+          "with",
+          "to"
         ],
         "why": "Für das Verkehrsmittel heißt es hier „by bus“."
       },
       {
-        "prompt": "My lesson ___ at eight.",
+        "prompt": "Ergänze den Satz: My lesson ___ at eight.",
         "answers": [
           "starts",
           "start",
@@ -6158,16 +5885,16 @@ export const languageData = [
         "why": "Das Singularsubjekt „my lesson“ verlangt „starts“."
       },
       {
-        "prompt": "I ___ my homework after school.",
+        "prompt": "Ergänze den Satz: I ___ my homework after school.",
         "answers": [
           "do",
           "does",
-          "am do"
+          "doing"
         ],
         "why": "Zu „I“ passt die Grundform „do“."
       },
       {
-        "prompt": "He ___ home at four every day.",
+        "prompt": "Ergänze den Satz: He ___ home at four every day.",
         "answers": [
           "comes",
           "come",
@@ -6176,7 +5903,7 @@ export const languageData = [
         "why": "Im simple present steht bei „he“ hier „comes“."
       },
       {
-        "prompt": "We usually ___ dinner together.",
+        "prompt": "Ergänze den Satz: We usually ___ dinner together.",
         "answers": [
           "eat",
           "eats",
@@ -6185,7 +5912,7 @@ export const languageData = [
         "why": "Zu „we“ passt „eat“ ohne -s."
       },
       {
-        "prompt": "I brush my ___ before bed.",
+        "prompt": "Ergänze den Satz: I brush my ___ before bed.",
         "answers": [
           "teeth",
           "tooths",
@@ -6194,7 +5921,7 @@ export const languageData = [
         "why": "Der Plural von „tooth“ lautet „teeth“."
       },
       {
-        "prompt": "She ___ her bag in the evening.",
+        "prompt": "Ergänze den Satz: She ___ her bag in the evening.",
         "answers": [
           "packs",
           "pack",
@@ -6203,7 +5930,7 @@ export const languageData = [
         "why": "Bei „she“ steht hier die Verbform mit -s."
       },
       {
-        "prompt": "They ___ to bed at ten.",
+        "prompt": "Ergänze den Satz: They ___ to bed at ten.",
         "answers": [
           "go",
           "goes",
@@ -6212,7 +5939,7 @@ export const languageData = [
         "why": "Zu „they“ gehört „go“."
       },
       {
-        "prompt": "I take a shower ___ the morning.",
+        "prompt": "Ergänze den Satz: I take a shower ___ the morning.",
         "answers": [
           "in",
           "on",
@@ -6221,7 +5948,7 @@ export const languageData = [
         "why": "Die Verbindung lautet „in the morning“."
       },
       {
-        "prompt": "He ___ his room on Saturdays.",
+        "prompt": "Ergänze den Satz: He ___ his room on Saturdays.",
         "answers": [
           "cleans",
           "clean",
@@ -6230,7 +5957,7 @@ export const languageData = [
         "why": "Eine regelmäßige Tätigkeit mit „he“ verlangt hier „cleans“."
       },
       {
-        "prompt": "We ___ a break at ten.",
+        "prompt": "Ergänze den Satz: We ___ a break at ten.",
         "answers": [
           "have",
           "has",
@@ -6239,16 +5966,16 @@ export const languageData = [
         "why": "Zu „we“ gehört „have“."
       },
       {
-        "prompt": "She walks ___ school every day.",
+        "prompt": "Ergänze den Satz: She walks ___ school every day.",
         "answers": [
           "to",
-          "at to",
-          "in to the"
+          "at",
+          "in"
         ],
         "why": "Die gerichtete Bewegung heißt hier „walks to school“."
       },
       {
-        "prompt": "I ___ my phone before I leave.",
+        "prompt": "Ergänze den Satz: I ___ my phone before I leave.",
         "answers": [
           "check",
           "checks",
@@ -6265,145 +5992,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen.",
-    "wrongRules": [
-      "„Left“ und „right“ bedeuten dieselbe Richtung.",
-      "Eine Wegbeschreibung gibt immer eine persönliche Bewertung statt eines Wegs an."
-    ],
     "rows": [
       {
         "prompt": "„Turn left at the traffic lights.“ Was sollst du tun?",
         "answers": [
           "An der Ampel links abbiegen.",
           "An der Ampel rechts abbiegen.",
-          "Vor der Ampel rückwärts gehen."
+          "An der Ampel geradeaus weitergehen."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Turn left“ bedeutet „links abbiegen“. „At the traffic lights“ nennt die Ampel als Ort."
       },
       {
-        "prompt": "„Go straight on.“ Was ist gemeint?",
+        "prompt": "„Go straight on.“ Was sollst du tun?",
         "answers": [
           "Geradeaus weitergehen.",
-          "Sofort links abbiegen.",
-          "An Ort und Stelle bleiben."
+          "An der nächsten Straße links abbiegen.",
+          "Auf demselben Weg zurückgehen."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Go straight on“ bedeutet „geradeaus weitergehen“."
       },
       {
         "prompt": "„The bank is opposite the school.“ Wo liegt die Bank?",
         "answers": [
           "Gegenüber der Schule.",
-          "In der Schule.",
-          "Auf dem Dach der Schule."
+          "Neben der Schule.",
+          "Hinter der Schule."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Opposite“ bedeutet „gegenüber“."
       },
       {
         "prompt": "„Take the second street on the right.“ Welche Straße nimmst du?",
         "answers": [
           "Die zweite Straße rechts.",
-          "Die erste Straße links.",
-          "Die dritte Straße links."
+          "Die erste Straße rechts.",
+          "Die zweite Straße links."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Second“ bedeutet „zweite“ und „on the right“ bedeutet „rechts“."
       },
       {
         "prompt": "„The station is next to the supermarket.“ Wo liegt der Bahnhof?",
         "answers": [
           "Neben dem Supermarkt.",
-          "Unter dem Supermarkt.",
-          "Auf der anderen Seite des Landes."
+          "Gegenüber dem Supermarkt.",
+          "Hinter dem Supermarkt."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Next to“ bedeutet „neben“."
       },
       {
         "prompt": "„Cross the road at the crossing.“ Was sollst du tun?",
         "answers": [
           "Die Straße am Übergang überqueren.",
-          "Auf der Straße stehen bleiben.",
-          "In die falsche Richtung fahren."
+          "Am Übergang auf derselben Straßenseite weitergehen.",
+          "Vor dem Übergang rechts abbiegen."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Cross the road“ heißt „die Straße überqueren“. Das soll am Übergang geschehen."
       },
       {
-        "prompt": "„Get off at the next stop.“ Was bedeutet das?",
+        "prompt": "„Get off at the next stop.“ Was sollst du tun?",
         "answers": [
           "An der nächsten Haltestelle aussteigen.",
-          "An der letzten Haltestelle einsteigen.",
-          "Den Bus selbst fahren."
+          "An der nächsten Haltestelle einsteigen.",
+          "Bis zur übernächsten Haltestelle weiterfahren."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Get off“ bedeutet „aussteigen“. „Next stop“ ist die nächste Haltestelle."
       },
       {
-        "prompt": "„Return ticket“: Welche Fahrkarte ist gemeint?",
+        "prompt": "Du kaufst ein „return ticket“. Welche Fahrkarte erhältst du?",
         "answers": [
           "Eine Hin- und Rückfahrkarte.",
-          "Nur eine einfache Hinfahrt.",
-          "Eine Fahrkarte nur für Fahrräder."
+          "Eine Fahrkarte für eine einfache Fahrt.",
+          "Eine Tageskarte für beliebig viele Fahrten."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "Ein „return ticket“ gilt für die Hin- und Rückfahrt."
       },
       {
-        "prompt": "„Single ticket“: Welche Fahrkarte ist gemeint?",
+        "prompt": "Du kaufst ein „single ticket“. Welche Fahrkarte erhältst du?",
         "answers": [
           "Eine Fahrkarte für eine einfache Fahrt.",
-          "Eine Jahreskarte für alle Fahrten.",
-          "Eine Hin- und Rückfahrkarte."
+          "Eine Hin- und Rückfahrkarte.",
+          "Eine Tageskarte für beliebig viele Fahrten."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "Ein „single ticket“ gilt für eine einfache Fahrt."
       },
       {
         "prompt": "„The platform is on your left.“ Wo liegt der Bahnsteig?",
         "answers": [
           "Links von dir.",
           "Rechts von dir.",
-          "Direkt über dir."
+          "Hinter dir."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„On your left“ bedeutet „links von dir“."
       },
       {
         "prompt": "„Walk past the bakery.“ Was sollst du tun?",
         "answers": [
           "An der Bäckerei vorbeigehen.",
-          "In der Bäckerei übernachten.",
-          "Vor der Bäckerei umkehren müssen."
+          "In die Bäckerei hineingehen.",
+          "Vor der Bäckerei stehen bleiben."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Walk past“ bedeutet „vorbeigehen“."
       },
       {
-        "prompt": "„The bus is delayed.“ Was ist mit dem Bus?",
+        "prompt": "„The bus is delayed.“ Welche Information erhältst du?",
         "answers": [
-          "Er hat Verspätung.",
-          "Er ist bereits neu lackiert.",
-          "Er fährt sicher zu früh ab."
+          "Der Bus hat Verspätung.",
+          "Die Busfahrt fällt aus.",
+          "Der Bus fährt pünktlich ab."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Delayed“ bedeutet „verspätet“. Eine Verspätung ist keine Absage."
       },
       {
-        "prompt": "„The road is closed.“ Welche Information wird gegeben?",
+        "prompt": "„The road is closed.“ Welche Information erhältst du?",
         "answers": [
           "Die Straße ist gesperrt.",
-          "Die Straße ist besonders breit.",
-          "Die Straße ist ein Kreisverkehr."
+          "Die Straße ist wieder geöffnet.",
+          "Die Straße ist eine Einbahnstraße."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Closed“ bedeutet hier „gesperrt“."
       },
       {
         "prompt": "„Use the entrance at the back.“ Welchen Eingang benutzt du?",
         "answers": [
           "Den Eingang auf der Rückseite.",
-          "Den Eingang auf dem Dach.",
-          "Einen ausdrücklich nicht genannten Vordereingang."
+          "Den Eingang auf der Vorderseite.",
+          "Den Eingang an der linken Seite."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„At the back“ bedeutet „auf der Rückseite“."
       },
       {
         "prompt": "„It takes ten minutes on foot.“ Wie lange dauert der Fußweg?",
         "answers": [
           "Zehn Minuten.",
-          "Zehn Stunden.",
-          "Zwei Minuten."
+          "Zwanzig Minuten.",
+          "Dreißig Minuten."
         ],
-        "why": "Bei Wegbeschreibungen sind Richtung, Ort und Reihenfolge entscheidend. Die Antwort muss zur konkreten Anweisung passen."
+        "why": "„Ten minutes“ bedeutet „zehn Minuten“. „On foot“ heißt „zu Fuß“."
       }
     ]
   },
@@ -6414,145 +6137,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden.",
-    "wrongRules": [
-      "„Do not“ bedeutet, dass etwas unbedingt getan werden muss.",
-      "Ein Warnhinweis ist immer eine Einladung zum Spielen."
-    ],
     "rows": [
       {
-        "prompt": "„Wear safety goggles.“ Was wird verlangt?",
+        "prompt": "„Wear safety goggles.“ Was sollst du tun?",
         "answers": [
           "Eine Schutzbrille tragen.",
-          "Die Schuhe ausziehen.",
-          "Die Beleuchtung ausschalten."
+          "Schutzhandschuhe tragen.",
+          "Einen Schutzhelm tragen."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Safety goggles“ bedeutet „Schutzbrille“. „Wear“ fordert zum Tragen auf."
       },
       {
-        "prompt": "„Do not touch.“ Was bedeutet das?",
+        "prompt": "„Do not touch.“ Was bedeutet der Hinweis?",
         "answers": [
           "Nicht berühren.",
-          "Festhalten.",
-          "Berühren ist vorgeschrieben."
+          "Nicht betreten.",
+          "Nicht einschalten."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Touch“ bedeutet „berühren“. „Do not“ macht daraus ein Verbot."
       },
       {
-        "prompt": "„Keep the door clear.“ Was soll frei bleiben?",
+        "prompt": "„Keep the door clear.“ Was sollst du tun?",
         "answers": [
-          "Der Bereich an der Tür.",
-          "Der Inhalt eines Kühlschranks.",
-          "Die Hosentasche."
+          "Den Bereich an der Tür frei halten.",
+          "Die Tür abgeschlossen halten.",
+          "Die Tür geschlossen halten."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Keep ... clear“ bedeutet hier „frei halten“. Die Tür darf nicht zugestellt werden."
       },
       {
-        "prompt": "„Switch off before cleaning.“ Was soll zuerst geschehen?",
+        "prompt": "An einer Maschine steht „Switch off before cleaning.“ Was sollst du tun?",
         "answers": [
-          "Vor dem Reinigen ausschalten.",
-          "Während des Betriebs reinigen.",
-          "Nach dem Reinigen erst einschalten müssen."
+          "Die Maschine vor dem Reinigen ausschalten.",
+          "Die Maschine nach dem Reinigen ausschalten.",
+          "Die Maschine zum Reinigen einschalten."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Switch off“ heißt „ausschalten“. „Before cleaning“ heißt „vor dem Reinigen“."
       },
       {
         "prompt": "„Emergency exit.“ Was bezeichnet das Schild?",
         "answers": [
           "Einen Notausgang.",
-          "Eine Küche.",
-          "Ein Lager für Werkzeug."
+          "Den Haupteingang.",
+          "Den Eingang zum Erste-Hilfe-Raum."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Emergency exit“ bedeutet „Notausgang“."
       },
       {
         "prompt": "„No smoking.“ Was ist verboten?",
         "answers": [
           "Rauchen.",
-          "Lesen.",
-          "Das Tragen von Schuhen."
+          "Essen.",
+          "Trinken."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Smoking“ bedeutet „Rauchen“. „No smoking“ ist ein Rauchverbot."
       },
       {
         "prompt": "„Mind your head.“ Worauf sollst du achten?",
         "answers": [
           "Dass du mit dem Kopf nicht anstößt.",
-          "Dass du lauter sprichst.",
-          "Dass du dein Heft abgibst."
+          "Dass du mit der Hand nichts berührst.",
+          "Dass du auf dem Boden nicht ausrutschst."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Mind your head“ warnt davor, mit dem Kopf anzustoßen."
       },
       {
         "prompt": "„Danger: high voltage.“ Wovor wird gewarnt?",
         "answers": [
           "Vor hoher elektrischer Spannung.",
-          "Vor besonders gutem Wetter.",
-          "Vor fehlendem Schreibpapier."
+          "Vor hoher Temperatur.",
+          "Vor starkem Lärm."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„High voltage“ bedeutet „hohe elektrische Spannung“."
       },
       {
-        "prompt": "„Keep hands away from moving parts.“ Was sollst du vermeiden?",
+        "prompt": "„Keep hands away from moving parts.“ Was sollst du tun?",
         "answers": [
-          "Mit den Händen bewegliche Teile berühren.",
-          "Vor der Arbeit die Anleitung lesen.",
-          "Geeignete Schutzkleidung tragen."
+          "Die Hände von beweglichen Teilen fernhalten.",
+          "Die Hände von heißen Oberflächen fernhalten.",
+          "Die Hände vor der Arbeit waschen."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Moving parts“ sind bewegliche Teile. Die Hände sollen davon fernbleiben."
       },
       {
-        "prompt": "„Report accidents immediately.“ Was soll sofort geschehen?",
+        "prompt": "„Report accidents immediately.“ Was sollst du tun?",
         "answers": [
-          "Unfälle melden.",
-          "Unfälle verschweigen.",
-          "Den Arbeitsplan zerreißen."
+          "Unfälle sofort melden.",
+          "Unfälle am Ende der Schicht melden.",
+          "Nur schwere Unfälle melden."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Report accidents“ heißt „Unfälle melden“. „Immediately“ heißt „sofort“."
       },
       {
-        "prompt": "„Use ear protection.“ Was wird verlangt?",
+        "prompt": "„Use ear protection.“ Was sollst du verwenden?",
         "answers": [
-          "Gehörschutz verwenden.",
-          "Mit geschlossenen Augen arbeiten.",
-          "Die Ärmel aufrollen, unabhängig von der Tätigkeit."
+          "Gehörschutz.",
+          "Augenschutz.",
+          "Atemschutz."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Ear protection“ bedeutet „Gehörschutz“."
       },
       {
-        "prompt": "„Do not enter.“ Was bedeutet das?",
+        "prompt": "„Do not enter.“ Was bedeutet der Hinweis?",
         "answers": [
           "Nicht betreten.",
-          "Bitte sofort hereinkommen.",
-          "Hier ist der einzige verpflichtende Eingang."
+          "Nicht berühren.",
+          "Nicht benutzen."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Enter“ bedeutet „eintreten“ oder „betreten“. „Do not enter“ verbietet das Betreten."
       },
       {
         "prompt": "„First aid kit.“ Was ist gemeint?",
         "answers": [
           "Ein Verbandkasten.",
-          "Eine Werkzeugkiste.",
-          "Ein Pausenraum."
+          "Ein Feuerlöscher.",
+          "Ein Werkzeugkasten."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "Ein „first aid kit“ enthält Material für die Erste Hilfe."
       },
       {
         "prompt": "„Slippery floor.“ Wovor wird gewarnt?",
         "answers": [
           "Vor einem rutschigen Boden.",
-          "Vor einer besonders hohen Decke.",
-          "Vor fehlenden Fenstern."
+          "Vor einem unebenen Boden.",
+          "Vor einer niedrigen Decke."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Slippery“ heißt „rutschig“ und „floor“ heißt „Boden“."
       },
       {
         "prompt": "„Ask your supervisor before use.“ Was sollst du vor der Benutzung tun?",
         "answers": [
           "Die zuständige Führungskraft fragen.",
-          "Das Gerät ohne Rückfrage ausprobieren.",
-          "Eine Warnung verdecken."
+          "Einen beliebigen Kollegen fragen.",
+          "Die zuständige Führungskraft nach der Benutzung informieren."
         ],
-        "why": "Englische Sicherheitshinweise müssen in ihrer konkreten Bedeutung verstanden werden. Verbote, Pflichten und Warnungen sind zu unterscheiden."
+        "why": "„Supervisor“ bezeichnet die zuständige Führungskraft. „Before use“ heißt „vor der Benutzung“."
       }
     ]
   },
@@ -6563,145 +6282,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert.",
-    "wrongRules": [
-      "Ein Vorstellungsgespräch ist dasselbe wie eine Einkaufsliste.",
-      "Eine Bewerbung verlangt grundsätzlich erfundene Qualifikationen."
-    ],
     "rows": [
       {
-        "prompt": "„I am applying for an apprenticeship.“ Worum geht es?",
+        "prompt": "„I am applying for an apprenticeship.“ Wofür bewirbt sich die Person?",
         "answers": [
-          "Um eine Bewerbung für einen Ausbildungsplatz.",
-          "Um die Bestellung von Werkzeug.",
-          "Um die Kündigung eines Busabos."
+          "Für einen Ausbildungsplatz.",
+          "Für ein Praktikum.",
+          "Für eine Teilzeitstelle."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Apprenticeship“ bedeutet „Ausbildung“. Die Person bewirbt sich um einen Ausbildungsplatz."
       },
       {
         "prompt": "„Please find my CV attached.“ Was ist beigefügt?",
         "answers": [
           "Der Lebenslauf.",
-          "Eine Speisekarte.",
-          "Eine Fahrkarte."
+          "Das Anschreiben.",
+          "Das Abschlusszeugnis."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„CV“ ist die Abkürzung für den Lebenslauf. „Attached“ heißt „angehängt“."
       },
       {
         "prompt": "„I did an internship in a workshop.“ Welche Erfahrung wird genannt?",
         "answers": [
           "Ein Praktikum in einer Werkstatt.",
-          "Eine Fahrt in den Urlaub.",
-          "Ein Besuch im Kino."
+          "Eine Ausbildung in einer Werkstatt.",
+          "Eine feste Stelle in einer Werkstatt."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Internship“ bedeutet „Praktikum“."
       },
       {
-        "prompt": "„I am available from September.“ Welche Angabe wird gemacht?",
+        "prompt": "„I am available from September.“ Ab wann ist die Person verfügbar?",
         "answers": [
-          "Ab wann die Person verfügbar ist.",
-          "Wie viel die Person verdient.",
-          "Welche Schuhgröße die Person hat."
+          "Ab September.",
+          "Bis September.",
+          "Nur im September."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„From September“ bedeutet „ab September“."
       },
       {
-        "prompt": "„I enjoy working in a team.“ Welche Aussage passt?",
+        "prompt": "„I enjoy working in a team.“ Was sagt die Person?",
         "answers": [
-          "Die Person arbeitet gern im Team.",
-          "Die Person möchte nie mit anderen arbeiten.",
-          "Die Person sucht ausschließlich einen Einzelraum."
+          "Sie arbeitet gern im Team.",
+          "Sie leitet bereits ein Team.",
+          "Sie möchte lieber allein arbeiten."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Enjoy working in a team“ bedeutet „gern im Team arbeiten“."
       },
       {
         "prompt": "„Please bring your certificates.“ Was soll mitgebracht werden?",
         "answers": [
           "Zeugnisse oder Nachweise.",
-          "Werkstattschlüssel ohne Auftrag.",
-          "Eine zufällige Zeitung."
+          "Ein Lebenslauf.",
+          "Ein Anschreiben."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Certificates“ bezeichnet Zeugnisse oder Nachweise."
       },
       {
         "prompt": "„The interview is on Tuesday.“ Was findet am Dienstag statt?",
         "answers": [
           "Das Vorstellungsgespräch.",
-          "Die Materiallieferung.",
-          "Eine ärztliche Untersuchung."
+          "Der erste Arbeitstag.",
+          "Die Abschlussprüfung."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Interview“ bedeutet in einer Bewerbungssituation „Vorstellungsgespräch“."
       },
       {
         "prompt": "„What are your strengths?“ Wonach wird gefragt?",
         "answers": [
           "Nach den Stärken der Person.",
-          "Nach der Uhrzeit.",
-          "Nach der Buslinie."
+          "Nach den Schwächen der Person.",
+          "Nach den bisherigen Arbeitsstellen."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Strengths“ bedeutet „Stärken“."
       },
       {
         "prompt": "„I am reliable and punctual.“ Welche Eigenschaften nennt die Person?",
         "answers": [
-          "Zuverlässigkeit und Pünktlichkeit.",
-          "Ungeduld und Unordnung.",
-          "Hunger und Durst."
+          "Zuverlässig und pünktlich.",
+          "Kreativ und geduldig.",
+          "Freundlich und selbstständig."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Reliable“ bedeutet „zuverlässig“. „Punctual“ bedeutet „pünktlich“."
       },
       {
-        "prompt": "„The closing date is 30 June.“ Welche Frist ist gemeint?",
+        "prompt": "In einer Stellenanzeige steht „The closing date is 30 June.“ Was ist am 30. Juni?",
         "answers": [
-          "Das Ende der Bewerbungsfrist.",
-          "Der sichere Beginn des Urlaubs.",
-          "Die Lebensdauer eines Geräts."
+          "Die Bewerbungsfrist endet.",
+          "Das Arbeitsverhältnis beginnt.",
+          "Das Vorstellungsgespräch findet statt."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Closing date“ bezeichnet in der Stellenanzeige das Ende der Bewerbungsfrist."
       },
       {
         "prompt": "„Please send a cover letter.“ Welches Dokument wird verlangt?",
         "answers": [
           "Ein Anschreiben.",
-          "Eine leere Titelseite.",
-          "Eine private Einkaufsliste."
+          "Ein Lebenslauf.",
+          "Ein Zeugnis."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Cover letter“ bedeutet „Bewerbungsanschreiben“."
       },
       {
-        "prompt": "„I would like to learn more about this job.“ Was drückt die Person aus?",
+        "prompt": "„I would like to learn more about this job.“ Was möchte die Person?",
         "answers": [
-          "Interesse, mehr über die Tätigkeit zu erfahren.",
-          "Eine Absage ohne Gespräch.",
-          "Den Wunsch, nichts zu lernen."
+          "Mehr über die Tätigkeit erfahren.",
+          "Eine andere Stelle annehmen.",
+          "Ihre Bewerbung zurückziehen."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Learn more about this job“ bedeutet „mehr über diese Tätigkeit erfahren“."
       },
       {
         "prompt": "„Do you have any work experience?“ Wonach wird gefragt?",
         "answers": [
           "Nach beruflicher oder praktischer Erfahrung.",
-          "Nach der Lieblingsfarbe.",
-          "Nach der Länge des Heimwegs."
+          "Nach dem gewünschten Gehalt.",
+          "Nach dem möglichen Arbeitsbeginn."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Work experience“ bedeutet „Berufserfahrung“ oder „praktische Arbeitserfahrung“."
       },
       {
-        "prompt": "„I look forward to hearing from you.“ Was ist gemeint?",
+        "prompt": "„I look forward to hearing from you.“ Worauf freut sich die Person?",
         "answers": [
-          "Die Person freut sich auf eine Rückmeldung.",
-          "Die Person verbietet eine Antwort.",
-          "Die Person hat schon eine endgültige Zusage erhalten."
+          "Auf eine Rückmeldung.",
+          "Auf den ersten Arbeitstag.",
+          "Auf die nächste Gehaltszahlung."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Hearing from you“ bedeutet hier „eine Rückmeldung von Ihnen erhalten“."
       },
       {
-        "prompt": "„The position is part-time.“ Was steht über die Stelle fest?",
+        "prompt": "„The position is part-time.“ Welche Arbeitszeit ist vorgesehen?",
         "answers": [
-          "Es ist eine Teilzeitstelle.",
-          "Es ist zwingend eine Vollzeitstelle.",
-          "Die Stelle dauert nur eine Minute."
+          "Teilzeit.",
+          "Vollzeit.",
+          "Ausschließlich Nachtschicht."
         ],
-        "why": "Bei Bewerbungen müssen Anliegen, Erfahrungen und nächste Schritte klar zur Situation passen. Angaben werden wahrheitsgemäß formuliert."
+        "why": "„Part-time“ bedeutet „Teilzeit“."
       }
     ]
   },
@@ -6712,145 +6427,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen.",
-    "wrongRules": [
-      "Eine höfliche englische Bitte muss eine Beleidigung enthalten.",
-      "„Could you please“ ist immer eine Drohung."
-    ],
     "rows": [
       {
-        "prompt": "Du brauchst Hilfe. Welche englische Bitte ist höflich?",
+        "prompt": "Du möchtest jemanden höflich um Hilfe bitten. Welcher Satz passt?",
         "answers": [
           "Could you help me, please?",
-          "Help me now, idiot!",
-          "Your help is worthless."
+          "Could I help you, please?",
+          "Could you wait for me, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Could you help me?“ bittet um Hilfe. „Could I help you?“ bietet Hilfe an."
       },
       {
-        "prompt": "Du möchtest eine Wiederholung. Welcher Satz passt?",
+        "prompt": "Du möchtest, dass jemand den letzten Satz wiederholt. Was sagst du?",
         "answers": [
           "Could you repeat that, please?",
-          "Stop talking forever!",
-          "Nobody wants to hear you."
+          "Could you write your name, please?",
+          "Could you translate the text, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Repeat that“ bedeutet „das wiederholen“."
       },
       {
-        "prompt": "Du willst nach dem Weg fragen. Welche Einleitung ist höflich?",
+        "prompt": "Du fragst höflich nach dem Weg zum Bahnhof. Was sagst du?",
         "answers": [
           "Excuse me, how do I get to the station?",
-          "Move away, I am more important!",
-          "You must know every road!"
+          "Excuse me, when does the train leave?",
+          "Excuse me, how much is a ticket?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„How do I get to the station?“ fragt nach dem Weg zum Bahnhof."
       },
       {
-        "prompt": "Du brauchst einen Stift. Welche Bitte passt?",
+        "prompt": "Du möchtest einen Stift ausleihen. Welche Bitte passt?",
         "answers": [
           "May I borrow your pen, please?",
-          "Your pen is mine now!",
-          "Give it to me or else!"
+          "May I keep your pen, please?",
+          "May I use your ruler, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Borrow“ heißt „ausleihen“. „Keep“ würde bedeuten, den Stift zu behalten."
       },
       {
-        "prompt": "Du hast ein Wort nicht verstanden. Welche Frage hilft?",
+        "prompt": "Du möchtest die Bedeutung eines Wortes wissen. Was fragst du?",
         "answers": [
           "What does this word mean?",
-          "Why are all words useless?",
-          "Can we never speak again?"
+          "How do you spell this word?",
+          "How do you pronounce this word?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„What does this word mean?“ fragt nach der Bedeutung. Die anderen Fragen betreffen Schreibweise und Aussprache."
       },
       {
-        "prompt": "Du willst langsameres Sprechen erbitten. Was sagst du?",
+        "prompt": "Du möchtest, dass jemand langsamer spricht. Was sagst du?",
         "answers": [
           "Could you speak more slowly, please?",
-          "Speak even faster!",
-          "Never explain anything!"
+          "Could you speak more loudly, please?",
+          "Could you speak more quickly, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„More slowly“ bedeutet „langsamer“."
       },
       {
-        "prompt": "Du möchtest eine Bestellung aufgeben. Welcher Satz ist höflich?",
+        "prompt": "Du bestellst höflich ein Glas Wasser. Was sagst du?",
         "answers": [
           "I would like a glass of water, please.",
-          "Water, now, and no questions!",
-          "I refuse to say what I want."
+          "I would like a cup of tea, please.",
+          "I would like a glass of juice, please."
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„A glass of water“ bedeutet „ein Glas Wasser“. „I would like“ ist eine höfliche Bestellung."
       },
       {
-        "prompt": "Du willst dich bedanken. Welcher Satz passt?",
+        "prompt": "Du möchtest dich für die Hilfe bedanken. Was sagst du?",
         "answers": [
           "Thank you for your help.",
-          "You did nothing, obviously.",
-          "I forbid your help."
+          "Thank you for your invitation.",
+          "Thank you for your message."
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Thank you for your help“ bedeutet „Danke für deine oder Ihre Hilfe“."
       },
       {
-        "prompt": "Du musst ein Gespräch kurz unterbrechen. Was ist höflich?",
+        "prompt": "Du möchtest ein Gespräch höflich unterbrechen, um eine Frage zu stellen. Was sagst du?",
         "answers": [
           "Excuse me, may I ask a question?",
-          "Be quiet, only I matter!",
-          "Your answer is always stupid."
+          "Excuse me, may I leave the room?",
+          "Excuse me, may I use your phone?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„May I ask a question?“ bedeutet „Darf ich eine Frage stellen?“"
       },
       {
-        "prompt": "Du möchtest dich für eine Verspätung entschuldigen. Was passt?",
+        "prompt": "Du kommst zu spät und möchtest dich entschuldigen. Was sagst du?",
         "answers": [
           "I am sorry I am late.",
-          "You should always wait for me.",
-          "Your time does not matter."
+          "I am sorry I cannot come.",
+          "I am sorry I forgot your name."
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„I am sorry I am late“ bedeutet „Es tut mir leid, dass ich zu spät bin“."
       },
       {
-        "prompt": "Du fragst nach einem Termin. Welche Formulierung ist höflich?",
+        "prompt": "Du möchtest einen neuen Termin vereinbaren. Welche Bitte passt?",
         "answers": [
           "Could we arrange an appointment, please?",
-          "You will see me whenever I decide!",
-          "Never contact me again."
+          "Could we cancel the appointment, please?",
+          "Could we move the appointment, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Arrange an appointment“ heißt „einen Termin vereinbaren“. „Cancel“ heißt „absagen“, „move“ heißt „verschieben“."
       },
       {
-        "prompt": "Du möchtest, dass jemand etwas aufschreibt. Welche Bitte passt?",
+        "prompt": "Du möchtest, dass jemand eine Information für dich aufschreibt. Was sagst du?",
         "answers": [
           "Could you write that down, please?",
-          "Your writing is useless!",
-          "You must guess what I mean."
+          "Could you read that aloud, please?",
+          "Could you explain that again, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Write that down“ bedeutet „das aufschreiben“."
       },
       {
-        "prompt": "Du möchtest die Rechnung im Restaurant. Was sagst du?",
+        "prompt": "Du möchtest im Restaurant die Rechnung bezahlen. Welche Bitte passt?",
         "answers": [
           "Could I have the bill, please?",
-          "Give me money now!",
-          "I want to order a new table."
+          "Could I have the menu, please?",
+          "Could I have some water, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„The bill“ ist die Rechnung. „The menu“ ist die Speisekarte."
       },
       {
-        "prompt": "Du möchtest eine Tür öffnen lassen. Welche Bitte passt?",
+        "prompt": "Du möchtest, dass jemand die Tür öffnet. Was sagst du?",
         "answers": [
           "Could you open the door, please?",
-          "This door is your fault!",
-          "Do not move ever again!"
+          "Could you close the door, please?",
+          "Could you open the window, please?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "„Open the door“ heißt „die Tür öffnen“."
       },
       {
-        "prompt": "Du möchtest prüfen, ob du richtig verstanden hast. Welcher Satz passt?",
+        "prompt": "Du hast als Startzeit neun Uhr verstanden und möchtest nachfragen. Was sagst du?",
         "answers": [
           "Do you mean that we should start at nine?",
-          "You certainly said something stupid.",
-          "I will ignore every answer."
+          "Do you mean that we should finish at nine?",
+          "Do you mean that we should start at ten?"
         ],
-        "why": "Höfliche Bitten benennen ein Anliegen respektvoll. Die Antwort muss zur genannten Gesprächssituation passen."
+        "why": "Die Frage wiederholt die verstandene Startzeit: „start at nine“ heißt „um neun anfangen“."
       }
     ]
   },
@@ -6861,145 +6572,141 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person.",
-    "wrongRules": [
-      "Eine formelle Nachricht soll ihre Empfängerin grundsätzlich beleidigen.",
-      "Eine angekündigte Datei muss nicht angehängt werden."
-    ],
     "rows": [
       {
-        "prompt": "Welche Anrede passt zu einer formellen E-Mail an Ms Brown?",
+        "prompt": "Du schreibst eine formelle E-Mail an Frau Brown. Welche Anrede passt?",
         "answers": [
           "Dear Ms Brown,",
-          "Hey, stupid!",
-          "No one cares,"
+          "Hi Brown!",
+          "Goodbye Ms Brown,"
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Dear Ms Brown“ ist eine formelle Anrede an Frau Brown. „Goodbye“ ist ein Abschied."
       },
       {
-        "prompt": "Welche Grußformel ist für eine sachliche berufliche E-Mail üblich?",
+        "prompt": "Welche Formulierung passt als Gruß am Ende einer beruflichen E-Mail?",
         "answers": [
           "Kind regards",
-          "Whatever, loser",
-          "No answer allowed"
+          "Dear Ms Brown,",
+          "Subject: Appointment"
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Kind regards“ ist eine Schlussformel. „Dear ...“ ist die Anrede; „Subject“ bezeichnet den Betreff."
       },
       {
-        "prompt": "„Please confirm the appointment.“ Was wird erbeten?",
+        "prompt": "„Please confirm the appointment.“ Was soll die empfangende Person tun?",
         "answers": [
           "Den Termin bestätigen.",
-          "Den Termin grundsätzlich vergessen.",
-          "Eine private Rechnung bezahlen."
+          "Den Termin absagen.",
+          "Den Termin verschieben."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Confirm“ bedeutet „bestätigen“."
       },
       {
-        "prompt": "„I have attached the document.“ Was behauptet die Person?",
+        "prompt": "„I have attached the document.“ Was teilt die Person mit?",
         "answers": [
-          "Das Dokument sei angehängt.",
-          "Das Dokument sei absichtlich gelöscht.",
-          "Das Dokument existiere grundsätzlich nicht."
+          "Sie hat das Dokument angehängt.",
+          "Sie hat das Dokument ausgedruckt.",
+          "Sie wird das Dokument später senden."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Have attached“ bedeutet „habe angehängt“."
       },
       {
         "prompt": "„Could we move the meeting to Friday?“ Was ist das Anliegen?",
         "answers": [
           "Das Treffen auf Freitag verschieben.",
-          "Das Treffen am Freitag rückwirkend absagen.",
-          "Ein neues Gebäude kaufen."
+          "Das Treffen am Freitag absagen.",
+          "Das Treffen von Freitag auf Donnerstag verschieben."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Move ... to Friday“ heißt „auf Freitag verschieben“."
       },
       {
-        "prompt": "„I am writing to ask about the internship.“ Worum geht die Nachricht?",
+        "prompt": "„I am writing to ask about the internship.“ Worum geht es?",
         "answers": [
           "Um eine Anfrage zum Praktikum.",
-          "Um eine Bestellung von Lebensmitteln.",
-          "Um eine Kinokarte."
+          "Um eine Absage des Praktikums.",
+          "Um einen Bericht über das abgeschlossene Praktikum."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Ask about“ bedeutet „sich erkundigen nach“. „Internship“ bedeutet „Praktikum“."
       },
       {
-        "prompt": "Welcher Betreff benennt eine Terminanfrage konkret?",
+        "prompt": "Du bittest um einen Termin am 12. Mai. Welcher Betreff passt?",
         "answers": [
           "Appointment request for 12 May",
-          "Hello!!!",
-          "Something"
+          "Appointment cancellation for 12 May",
+          "Invoice for 12 May"
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Appointment request“ ist eine Terminanfrage. „Cancellation“ bedeutet „Absage“, „invoice“ bedeutet „Rechnung“."
       },
       {
         "prompt": "„Thank you for your reply.“ Wofür wird gedankt?",
         "answers": [
           "Für die Antwort.",
-          "Für ein ausdrücklich nicht genanntes Geschenk.",
-          "Für eine erfundene Bestellung."
+          "Für die Einladung.",
+          "Für die Bestellung."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Reply“ bedeutet „Antwort“."
       },
       {
-        "prompt": "„Please let me know if you need more information.“ Was bietet die Person an?",
+        "prompt": "„Please let me know if you need more information.“ Worum bittet die Person?",
         "answers": [
-          "Weitere Informationen bei Bedarf.",
-          "Grundsätzlich keine Rückfragen.",
-          "Die Weitergabe fremder Passwörter."
+          "Um eine Nachricht, falls weitere Informationen benötigt werden.",
+          "Um die sofortige Rücksendung aller Unterlagen.",
+          "Um eine Bestätigung, dass keine Informationen fehlen."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Let me know“ bedeutet „teile mir mit“. Die Bedingung ist „falls du weitere Informationen brauchst“."
       },
       {
         "prompt": "„I cannot attend the meeting.“ Was wird mitgeteilt?",
         "answers": [
           "Die Person kann am Treffen nicht teilnehmen.",
-          "Die Person hat das Treffen schon geleitet.",
-          "Die Person bestellt einen neuen Tisch."
+          "Die Person wird das Treffen leiten.",
+          "Die Person wird etwas später am Treffen teilnehmen."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Cannot attend“ bedeutet „nicht teilnehmen können“."
       },
       {
-        "prompt": "Welche Nachricht nennt eine Uhrzeit klar?",
+        "prompt": "Welcher Satz sagt, dass das Treffen um zehn Uhr morgens beginnt?",
         "answers": [
           "The meeting starts at 10 am.",
-          "The meeting starts sometime.",
-          "You know when it starts."
+          "The meeting starts at 10 pm.",
+          "The meeting ends at 10 am."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Starts“ heißt „beginnt“. „10 am“ bedeutet zehn Uhr morgens."
       },
       {
         "prompt": "„Please see the attached file.“ Was soll die empfangende Person ansehen?",
         "answers": [
           "Die angehängte Datei.",
-          "Nur den leeren Papierkorb.",
-          "Eine nicht erwähnte Internetseite."
+          "Die genannte Internetseite.",
+          "Das per Post verschickte Dokument."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„The attached file“ bedeutet „die angehängte Datei“."
       },
       {
         "prompt": "„Could you send me the address?“ Welche Information wird erbeten?",
         "answers": [
           "Die Adresse.",
-          "Der Geburtstag.",
-          "Eine Kontonummer, die nicht genannt wird."
+          "Die Telefonnummer.",
+          "Die Uhrzeit des Termins."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Address“ bedeutet „Adresse“."
       },
       {
-        "prompt": "Welcher Satz ist eine sachliche Entschuldigung für eine späte Antwort?",
+        "prompt": "Du entschuldigst dich für eine späte Antwort. Welcher Satz passt?",
         "answers": [
           "I am sorry for my late reply.",
-          "You should have waited forever.",
-          "Your message was not worth reading."
+          "I am sorry for the wrong attachment.",
+          "I am sorry I missed the meeting."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Late reply“ bedeutet „späte Antwort“."
       },
       {
-        "prompt": "„I look forward to your response.“ Was erwartet die Person?",
+        "prompt": "„I look forward to your response.“ Worauf freut sich die Person?",
         "answers": [
-          "Eine Rückmeldung.",
-          "Eine sichere Einstellung ohne Gespräch.",
-          "Die Löschung aller Unterlagen."
+          "Auf eine Rückmeldung.",
+          "Auf ein persönliches Treffen.",
+          "Auf den ersten Arbeitstag."
         ],
-        "why": "Eine Nachricht nennt Anlass und Anliegen klar. Höflichkeit, passende Grußformeln und konkrete Angaben helfen der empfangenden Person."
+        "why": "„Response“ bedeutet „Antwort“ oder „Rückmeldung“."
       }
     ]
   },
@@ -7010,118 +6717,114 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden.",
-    "wrongRules": [
-      "Nicht genannte Informationen gelten automatisch als bestätigt.",
-      "Jedes Schild bedeutet unabhängig vom Wortlaut dasselbe."
-    ],
     "rows": [
       {
-        "prompt": "„Open Monday to Friday, 9 am–5 pm.“ Wann ist laut Schild geöffnet?",
+        "prompt": "„Open Monday to Friday, 9 am–5 pm.“ Wann ist geöffnet?",
         "answers": [
-          "An Werktagen Montag bis Freitag von 9 bis 17 Uhr.",
-          "Nur am Sonntag.",
-          "Jeden Tag rund um die Uhr."
+          "Montag bis Freitag von 9 bis 17 Uhr.",
+          "Montag bis Freitag von 9 bis 15 Uhr.",
+          "Montag bis Samstag von 9 bis 17 Uhr."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Monday to Friday“ heißt „Montag bis Freitag“. „5 pm“ ist 17 Uhr."
       },
       {
-        "prompt": "„Please return the tools after use.“ Was ist nach der Benutzung zu tun?",
+        "prompt": "„Please return the tools after use.“ Wann sollen die Werkzeuge zurückgebracht werden?",
         "answers": [
-          "Die Werkzeuge zurückbringen.",
-          "Die Werkzeuge behalten.",
-          "Die Werkzeuge wegwerfen."
+          "Nach der Benutzung.",
+          "Vor der Benutzung.",
+          "Erst am nächsten Tag."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„After use“ bedeutet „nach der Benutzung“."
       },
       {
         "prompt": "„Meeting in Room 4 at 2 pm.“ Wo findet das Treffen statt?",
         "answers": [
           "In Raum 4.",
           "In Raum 2.",
-          "Ein Raum wird nicht genannt."
+          "In Raum 14."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„In Room 4“ nennt den Raum. „2 pm“ nennt die Uhrzeit."
       },
       {
-        "prompt": "„Lunch break: 12:00–12:30.“ Wie lange dauert diese Pause?",
+        "prompt": "„Lunch break: 12:00–12:30.“ Wie lange dauert die Pause?",
         "answers": [
           "30 Minuten.",
-          "12 Minuten.",
+          "15 Minuten.",
           "60 Minuten."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "Zwischen 12:00 Uhr und 12:30 Uhr liegen 30 Minuten."
       },
       {
         "prompt": "„Students need a valid ID.“ Was wird verlangt?",
         "answers": [
           "Ein gültiger Ausweis.",
-          "Ein beliebiger Einkaufszettel.",
-          "Eine rote Jacke."
+          "Eine gültige Fahrkarte.",
+          "Ein aktueller Stundenplan."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„ID“ bedeutet „Ausweis“. „Valid“ bedeutet „gültig“."
       },
       {
         "prompt": "„The bus stop has moved to Market Street.“ Was hat sich geändert?",
         "answers": [
           "Die Haltestelle ist jetzt in der Market Street.",
-          "Die Busse fahren ab sofort nur nachts.",
-          "Der Fahrpreis wurde verdoppelt."
+          "Die Haltestelle in der Market Street entfällt ersatzlos.",
+          "Die Haltestelle wird von der Market Street wegverlegt."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Has moved to“ nennt den neuen Ort. Die Haltestelle liegt jetzt in der Market Street."
       },
       {
-        "prompt": "„No entry without permission.“ Wann darf man eintreten?",
+        "prompt": "„No entry without permission.“ Was brauchst du, um eintreten zu dürfen?",
         "answers": [
-          "Mit Erlaubnis.",
-          "Immer ohne Rückfrage.",
-          "Nur mit einer Einkaufsliste."
+          "Eine Erlaubnis.",
+          "Eine Anmeldung zum Mittagessen.",
+          "Eine Fahrkarte."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Without permission“ bedeutet „ohne Erlaubnis“. Ohne Erlaubnis ist der Eintritt verboten."
       },
       {
-        "prompt": "„Training starts on 3 September.“ Welche Angabe enthält der Satz?",
+        "prompt": "„Training starts on 3 September.“ Wann beginnt das Training?",
         "answers": [
-          "Das Startdatum des Trainings.",
-          "Die Anzahl der Teilnehmenden.",
-          "Den Preis der Schutzkleidung."
+          "Am 3. September.",
+          "Am 13. September.",
+          "Am 30. September."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„On 3 September“ bedeutet „am 3. September“."
       },
       {
-        "prompt": "„Bring a pen and a notebook.“ Was wird verlangt?",
+        "prompt": "„Bring a pen and a notebook.“ Was sollst du mitbringen?",
         "answers": [
-          "Ein Stift und ein Notizheft.",
-          "Nur ein Taschenrechner.",
-          "Eine Schere und Klebstoff."
+          "Einen Stift und ein Notizheft.",
+          "Einen Stift und ein Wörterbuch.",
+          "Ein Lineal und ein Notizheft."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Pen“ bedeutet „Stift“. „Notebook“ bedeutet hier „Notizheft“."
       },
       {
         "prompt": "„The lift is out of order.“ Was ist mit dem Aufzug?",
         "answers": [
           "Er funktioniert nicht.",
-          "Er fährt besonders schnell.",
-          "Er ist nur neu gestrichen."
+          "Er ist bereits voll.",
+          "Er fährt nur nach oben."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Out of order“ bedeutet „defekt“ oder „außer Betrieb“."
       },
       {
-        "prompt": "„Apply by email before Friday.“ Wie soll die Bewerbung erfolgen?",
+        "prompt": "„Apply by email before Friday.“ Wie sollst du dich bewerben?",
         "answers": [
           "Vor Freitag per E-Mail.",
-          "Nur persönlich am Sonntag.",
-          "Nach Freitag per Telefon."
+          "Am Freitag per E-Mail.",
+          "Vor Freitag per Post."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„By email“ heißt „per E-Mail“. „Before Friday“ heißt „vor Freitag“."
       },
       {
         "prompt": "„Please wait here until you are called.“ Was sollst du tun?",
         "answers": [
           "Hier warten, bis du aufgerufen wirst.",
-          "Sofort ohne Aufruf hineingehen.",
-          "Den Platz ohne Nachricht verlassen."
+          "Hier warten, bis die Pause beginnt.",
+          "Sofort zum Schalter gehen."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Until you are called“ bedeutet „bis du aufgerufen wirst“."
       },
       {
         "prompt": "„Two volunteers are needed.“ Wie viele freiwillige Personen werden gesucht?",
@@ -7130,25 +6833,25 @@ export const languageData = [
           "Zwölf.",
           "Zwanzig."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Two“ bedeutet „zwei“."
       },
       {
-        "prompt": "„All prices include tax.“ Was steht über die Preise fest?",
+        "prompt": "„All prices include tax.“ Was gilt für die Preise?",
         "answers": [
           "Die Steuer ist bereits enthalten.",
-          "Die Steuer muss immer noch vollständig hinzugefügt werden.",
-          "Die Preise sind alle kostenlos."
+          "Die Steuer wird zusätzlich berechnet.",
+          "Die Preise gelten nur ohne Steuer."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Include tax“ bedeutet „die Steuer enthalten“."
       },
       {
         "prompt": "„The workshop is closed for maintenance.“ Warum ist die Werkstatt geschlossen?",
         "answers": [
           "Wegen Wartungsarbeiten.",
-          "Wegen eines ausdrücklich genannten Konzerts.",
-          "Wegen eines sicher feststehenden Schneesturms."
+          "Wegen einer Schulung.",
+          "Wegen einer Betriebsversammlung."
         ],
-        "why": "Eine Antwort auf einen Aushang oder kurzen Text muss durch die Angaben darin gestützt sein. Zusätzliche Einzelheiten dürfen nicht erfunden werden."
+        "why": "„Maintenance“ bedeutet „Wartung“ oder „Instandhaltung“."
       }
     ]
   },
@@ -7159,145 +6862,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es.",
-    "wrongRules": [
-      "Im bejahten simple present steht bei jedem Subjekt dieselbe Form mit -s.",
-      "Das simple present wird immer mit „am“ und einer Grundform gebildet."
-    ],
     "rows": [
       {
-        "prompt": "Every morning, she ___ to school.",
+        "prompt": "Ergänze im simple present: Every morning, she ___ to school.",
         "answers": [
           "walks",
           "walk",
           "walking"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „she“ erhält „walk“ im simple present ein -s: „walks“."
       },
       {
-        "prompt": "We ___ English on Mondays.",
+        "prompt": "Ergänze im simple present: We ___ English on Mondays.",
         "answers": [
           "learn",
           "learns",
           "learning"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „we“ steht „learn“ ohne -s."
       },
       {
-        "prompt": "He usually ___ his homework after lunch.",
+        "prompt": "Ergänze im simple present: He usually ___ his homework after lunch.",
         "answers": [
           "does",
           "do",
           "doing"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „he“ lautet die Form von „do“ im simple present „does“."
       },
       {
-        "prompt": "They ___ in a workshop every week.",
+        "prompt": "Ergänze im simple present: They ___ in a workshop every week.",
         "answers": [
           "work",
           "works",
           "working"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „they“ steht „work“ ohne -s."
       },
       {
-        "prompt": "My brother ___ the bus at seven every day.",
+        "prompt": "Ergänze im simple present: My brother ___ the bus at seven every day.",
         "answers": [
           "takes",
           "take",
           "taking"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "„My brother“ ist eine Person. Die Form lautet „takes“."
       },
       {
-        "prompt": "I ___ the instructions before every task.",
+        "prompt": "Ergänze im simple present: I ___ the instructions before every task.",
         "answers": [
           "read",
           "reads",
           "reading"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „I“ steht „read“ ohne -s."
       },
       {
-        "prompt": "The machine ___ at eight every morning.",
+        "prompt": "Ergänze im simple present: The machine ___ at eight every morning.",
         "answers": [
           "starts",
           "start",
           "starting"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "„The machine“ steht in der Einzahl. Deshalb heißt es „starts“."
       },
       {
-        "prompt": "You usually ___ careful notes.",
+        "prompt": "Ergänze im simple present: You usually ___ careful notes.",
         "answers": [
           "make",
           "makes",
           "making"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „you“ steht „make“ ohne -s."
       },
       {
-        "prompt": "Sara ___ the measurements every day.",
+        "prompt": "Ergänze im simple present: Sara ___ the measurements every day.",
         "answers": [
           "checks",
           "check",
           "checking"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "„Sara“ ist eine Person. Deshalb heißt es „checks“."
       },
       {
-        "prompt": "We ___ our tools after every lesson.",
+        "prompt": "Ergänze im simple present: We ___ our tools after every lesson.",
         "answers": [
           "clean",
           "cleans",
           "cleaning"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „we“ steht „clean“ ohne -s."
       },
       {
-        "prompt": "The shop ___ at six on weekdays.",
+        "prompt": "Ergänze im simple present: The shop ___ at six on weekdays.",
         "answers": [
           "closes",
           "close",
           "closing"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "„The shop“ steht in der Einzahl. Deshalb heißt es „closes“."
       },
       {
-        "prompt": "I ___ to music every evening.",
+        "prompt": "Ergänze im simple present: I ___ to music every evening.",
         "answers": [
           "listen",
           "listens",
           "listening"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „I“ steht „listen“ ohne -s."
       },
       {
-        "prompt": "He ___ breakfast at home every morning.",
+        "prompt": "Ergänze im simple present: He ___ breakfast at home every morning.",
         "answers": [
           "has",
           "have",
           "having"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „he“ wird „have“ zu „has“."
       },
       {
-        "prompt": "They often ___ football after school.",
+        "prompt": "Ergänze im simple present: They often ___ football after school.",
         "answers": [
           "play",
           "plays",
           "playing"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "Bei „they“ steht „play“ ohne -s."
       },
       {
-        "prompt": "My teacher ___ every question clearly.",
+        "prompt": "Ergänze im simple present: My teacher ___ every question clearly.",
         "answers": [
           "explains",
           "explain",
           "explaining"
         ],
-        "why": "Das simple present beschreibt hier Gewohnheiten und regelmäßige Abläufe. Bei he, she und it hat das Vollverb in bejahten Sätzen meistens -s oder -es."
+        "why": "„My teacher“ ist eine Person. Deshalb heißt es „explains“."
       }
     ]
   },
@@ -7308,145 +7007,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft.",
-    "wrongRules": [
-      "Nach am, is oder are steht im present progressive immer die Grundform ohne -ing.",
-      "Das present progressive braucht niemals eine Form von „be“."
-    ],
     "rows": [
       {
-        "prompt": "Look! Mia ___ the instructions right now.",
+        "prompt": "Ergänze im present progressive: Look! Mia ___ the instructions right now.",
         "answers": [
           "is reading",
-          "reads usually",
+          "are reading",
           "is read"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „Mia“ gehört „is“. Die Handlung läuft gerade: „is reading“."
       },
       {
-        "prompt": "We ___ on the exercise at this moment.",
+        "prompt": "Ergänze im present progressive: We ___ on the exercise at this moment.",
         "answers": [
           "are working",
           "is working",
           "are work"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „we“ gehört „are“. Mit „working“ heißt es „are working“."
       },
       {
-        "prompt": "Listen! The phone ___.",
+        "prompt": "Ergänze im present progressive: Listen! The phone ___.",
         "answers": [
           "is ringing",
           "are ringing",
           "is ring"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "„The phone“ steht in der Einzahl: „is ringing“."
       },
       {
-        "prompt": "I ___ my homework right now.",
+        "prompt": "Ergänze im present progressive: I ___ my homework right now.",
         "answers": [
           "am doing",
           "is doing",
           "am do"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „I“ gehört „am“: „am doing“."
       },
       {
-        "prompt": "They ___ the room at this moment.",
+        "prompt": "Ergänze im present progressive: They ___ the room at this moment.",
         "answers": [
           "are cleaning",
           "is cleaning",
           "are clean"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „they“ gehört „are“: „are cleaning“."
       },
       {
-        "prompt": "He ___ to the supervisor right now.",
+        "prompt": "Ergänze im present progressive: He ___ to the supervisor right now.",
         "answers": [
           "is talking",
           "are talking",
           "is talk"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „he“ gehört „is“: „is talking“."
       },
       {
-        "prompt": "Look! The bus ___.",
+        "prompt": "Ergänze im present progressive: Look! The bus ___.",
         "answers": [
           "is coming",
           "are coming",
           "is come"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "„The bus“ steht in der Einzahl: „is coming“."
       },
       {
-        "prompt": "You ___ on my bag right now.",
+        "prompt": "Ergänze im present progressive: You ___ on my bag right now.",
         "answers": [
           "are sitting",
           "is sitting",
           "are sit"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „you“ gehört „are“: „are sitting“."
       },
       {
-        "prompt": "We ___ for the teacher at the moment.",
+        "prompt": "Ergänze im present progressive: We ___ for the teacher at the moment.",
         "answers": [
           "are waiting",
           "is waiting",
           "are wait"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „we“ gehört „are“: „are waiting“."
       },
       {
-        "prompt": "She ___ a message right now.",
+        "prompt": "Ergänze im present progressive: She ___ a message right now.",
         "answers": [
           "is writing",
           "are writing",
           "is write"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „she“ gehört „is“: „is writing“."
       },
       {
-        "prompt": "The children ___ in the park right now.",
+        "prompt": "Ergänze im present progressive: The children ___ in the park right now.",
         "answers": [
           "are playing",
           "is playing",
           "are play"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "„The children“ ist Mehrzahl: „are playing“."
       },
       {
-        "prompt": "I ___ to the explanation at this moment.",
+        "prompt": "Ergänze im present progressive: I ___ to the explanation at this moment.",
         "answers": [
           "am listening",
           "are listening",
           "am listen"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „I“ gehört „am“: „am listening“."
       },
       {
-        "prompt": "He ___ the door right now.",
+        "prompt": "Ergänze im present progressive: He ___ the door right now.",
         "answers": [
           "is opening",
           "are opening",
           "is open"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Zu „he“ gehört „is“. Die Handlung braucht die -ing-Form: „is opening“."
       },
       {
-        "prompt": "Look! It ___ outside.",
+        "prompt": "Ergänze im present progressive: Look! It ___ outside.",
         "answers": [
           "is raining",
           "are raining",
           "is rain"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "Beim Wetter steht „it is“: „is raining“."
       },
       {
-        "prompt": "The workers ___ the machine at this moment.",
+        "prompt": "Ergänze im present progressive: The workers ___ the machine at this moment.",
         "answers": [
           "are repairing",
           "is repairing",
           "are repair"
         ],
-        "why": "Das present progressive besteht aus am, is oder are und der -ing-Form. In diesen Aufgaben geht es ausdrücklich um eine Handlung, die gerade abläuft."
+        "why": "„The workers“ ist Mehrzahl: „are repairing“."
       }
     ]
   },
@@ -7457,145 +7152,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped.",
-    "wrongRules": [
-      "Regelmäßige Vergangenheitsformen werden immer mit -ing gebildet.",
-      "Die Form mit -ed darf nur zu „he“ und „she“ verwendet werden."
-    ],
     "rows": [
       {
-        "prompt": "Yesterday, I ___ in the workshop.",
+        "prompt": "Ergänze im simple past: Yesterday, I ___ in the workshop.",
         "answers": [
           "worked",
           "work",
           "working"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "„Yesterday“ verweist auf die Vergangenheit. „Work“ erhält -ed: „worked“."
       },
       {
-        "prompt": "Last Monday, she ___ her desk.",
+        "prompt": "Ergänze im simple past: Last Monday, she ___ her desk.",
         "answers": [
           "cleaned",
           "cleans",
           "cleaning"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Die Tätigkeit war letzten Montag. Das simple past von „clean“ ist „cleaned“."
       },
       {
-        "prompt": "We ___ the room yesterday.",
+        "prompt": "Ergänze im simple past: We ___ the room yesterday.",
         "answers": [
           "painted",
           "paint",
           "painting"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „paint“ ist „painted“."
       },
       {
-        "prompt": "He ___ the measurements last week.",
+        "prompt": "Ergänze im simple past: He ___ the measurements last week.",
         "answers": [
           "checked",
           "checks",
           "checking"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „check“ ist „checked“."
       },
       {
-        "prompt": "They ___ football yesterday.",
+        "prompt": "Ergänze im simple past: They ___ football yesterday.",
         "answers": [
           "played",
           "plays",
           "playing"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „play“ ist „played“. Nach Vokal + y bleibt das y erhalten."
       },
       {
-        "prompt": "I ___ the window ten minutes ago.",
+        "prompt": "Ergänze im simple past: I ___ the window ten minutes ago.",
         "answers": [
           "opened",
           "open",
           "opening"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „open“ ist „opened“."
       },
       {
-        "prompt": "The shop ___ early yesterday.",
+        "prompt": "Ergänze im simple past: The shop ___ early yesterday.",
         "answers": [
           "closed",
           "closes",
           "closing"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "„Close“ endet schon auf e. Für „closed“ wird nur d angehängt."
       },
       {
-        "prompt": "She ___ English last evening.",
+        "prompt": "Ergänze im simple past: She ___ English yesterday evening.",
         "answers": [
           "studied",
           "studyed",
           "studying"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Bei „study“ wird y nach einem Konsonanten zu i: „studied“."
       },
       {
-        "prompt": "The bus ___ outside our school yesterday.",
+        "prompt": "Ergänze im simple past: The bus ___ outside our school yesterday.",
         "answers": [
           "stopped",
           "stoped",
           "stopping"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Bei „stop“ wird das p vor -ed verdoppelt: „stopped“."
       },
       {
-        "prompt": "We ___ the instructions yesterday.",
+        "prompt": "Ergänze im simple past: We ___ the instructions yesterday.",
         "answers": [
           "followed",
           "follows",
           "following"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „follow“ ist „followed“."
       },
       {
-        "prompt": "He ___ the form last night.",
+        "prompt": "Ergänze im simple past: He ___ the form last night.",
         "answers": [
           "completed",
           "complete",
           "completing"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "„Complete“ endet auf e. Für „completed“ wird nur d angehängt."
       },
       {
-        "prompt": "They ___ the manager yesterday.",
+        "prompt": "Ergänze im simple past: They ___ the manager yesterday.",
         "answers": [
           "called",
           "calls",
           "calling"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „call“ ist „called“."
       },
       {
-        "prompt": "I ___ my friend last weekend.",
+        "prompt": "Ergänze im simple past: I ___ my friend last weekend.",
         "answers": [
           "visited",
           "visit",
           "visiting"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "Das simple past von „visit“ ist „visited“."
       },
       {
-        "prompt": "She ___ the computer yesterday.",
+        "prompt": "Ergänze im simple past: She ___ the computer yesterday.",
         "answers": [
           "used",
           "useed",
           "using"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "„Use“ endet auf e. Für „used“ wird nur d angehängt."
       },
       {
-        "prompt": "We ___ at the station an hour ago.",
+        "prompt": "Ergänze im simple past: We ___ at the station an hour ago.",
         "answers": [
           "arrived",
           "arrive",
           "arriving"
         ],
-        "why": "Bei regelmäßigen Verben wird das simple past mit -ed gebildet. Bei manchen Wörtern ändert sich dabei die Schreibung, etwa study → studied und stop → stopped."
+        "why": "„Arrive“ endet auf e. Für „arrived“ wird nur d angehängt."
       }
     ]
   },
@@ -7606,10 +7297,6 @@ export const languageData = [
     "format": "choice",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Unregelmäßige Verben bilden das simple past nicht nach einer einzigen -ed-Regel. Die Form muss zum Verb und zur verlangten Zeitform passen.",
-    "wrongRules": [
-      "Jedes englische Verb bildet die Vergangenheit nur durch Anhängen von -ed.",
-      "Past participle und simple past sind bei allen Verben identisch."
-    ],
     "rows": [
       {
         "prompt": "Welche Form ist das simple past von „go“?",
@@ -7755,145 +7442,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s.",
-    "wrongRules": [
-      "Nach „will“ muss das Vollverb immer -s bekommen.",
-      "Nach „will“ steht grundsätzlich die Form mit -ed."
-    ],
     "rows": [
       {
-        "prompt": "Ergänze im will-future: I ___ you tomorrow.",
+        "prompt": "Ergänze die Zukunft mit „will“: I ___ you tomorrow.",
         "answers": [
           "will call",
           "will calls",
           "will called"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „call“: „will call“."
       },
       {
-        "prompt": "Ergänze im will-future: She ___ the form later.",
+        "prompt": "Ergänze die Zukunft mit „will“: She ___ the form later.",
         "answers": [
           "will complete",
           "will completes",
           "will completed"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „complete“: „will complete“."
       },
       {
-        "prompt": "Ergänze im will-future: We ___ on Monday.",
+        "prompt": "Ergänze die Zukunft mit „will“: We ___ on Monday.",
         "answers": [
           "will start",
           "will starts",
           "will started"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „start“: „will start“."
       },
       {
-        "prompt": "Ergänze im will-future: He ___ the tools back.",
+        "prompt": "Ergänze die Zukunft mit „will“: He ___ the tools back.",
         "answers": [
           "will bring",
           "will brings",
           "will brought"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „bring“: „will bring“."
       },
       {
-        "prompt": "Ergänze im will-future: They ___ the room tomorrow.",
+        "prompt": "Ergänze die Zukunft mit „will“: They ___ the room tomorrow.",
         "answers": [
           "will clean",
           "will cleans",
           "will cleaned"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „clean“: „will clean“."
       },
       {
-        "prompt": "Ergänze im will-future: I ___ at the station.",
+        "prompt": "Ergänze die Zukunft mit „will“: I ___ at the station.",
         "answers": [
           "will wait",
           "will waits",
           "will waited"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „wait“: „will wait“."
       },
       {
-        "prompt": "Ergänze im will-future: Mia ___ the instructions.",
+        "prompt": "Ergänze die Zukunft mit „will“: Mia ___ the instructions.",
         "answers": [
           "will read",
           "will reads",
           "will reading"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „read“: „will read“."
       },
       {
-        "prompt": "Ergänze im will-future: We ___ you next week.",
+        "prompt": "Ergänze die Zukunft mit „will“: We ___ you next week.",
         "answers": [
           "will see",
           "will sees",
           "will saw"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „see“: „will see“."
       },
       {
-        "prompt": "Ergänze im will-future: He ___ a new message.",
+        "prompt": "Ergänze die Zukunft mit „will“: He ___ a new message.",
         "answers": [
           "will write",
           "will writes",
           "will wrote"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „write“: „will write“."
       },
       {
-        "prompt": "Ergänze im will-future: You ___ the answer soon.",
+        "prompt": "Ergänze die Zukunft mit „will“: You ___ the answer soon.",
         "answers": [
           "will know",
           "will knows",
           "will knew"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „know“: „will know“."
       },
       {
-        "prompt": "Ergänze im will-future: The shop ___ at nine tomorrow.",
+        "prompt": "Ergänze die Zukunft mit „will“: The shop ___ at nine tomorrow.",
         "answers": [
           "will open",
           "will opens",
           "will opened"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „open“: „will open“."
       },
       {
-        "prompt": "Ergänze im will-future: They ___ the machine later.",
+        "prompt": "Ergänze die Zukunft mit „will“: They ___ the machine later.",
         "answers": [
           "will repair",
           "will repairs",
           "will repaired"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „repair“: „will repair“."
       },
       {
-        "prompt": "Ergänze im will-future: I ___ my bag tomorrow.",
+        "prompt": "Ergänze die Zukunft mit „will“: I ___ my bag tomorrow.",
         "answers": [
           "will pack",
           "will packs",
           "will packed"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „pack“: „will pack“."
       },
       {
-        "prompt": "Ergänze im will-future: She ___ with the supervisor.",
+        "prompt": "Ergänze die Zukunft mit „will“: She ___ with the supervisor.",
         "answers": [
           "will speak",
           "will speaks",
           "will spoke"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „speak“: „will speak“."
       },
       {
-        "prompt": "Ergänze im will-future: We ___ the result.",
+        "prompt": "Ergänze die Zukunft mit „will“: We ___ the result.",
         "answers": [
           "will check",
           "will checks",
           "will checked"
         ],
-        "why": "Das will-future besteht aus will und der Grundform des Verbs. Auch bei he und she bekommt die Grundform nach will kein zusätzliches -s."
+        "why": "Nach „will“ steht die Grundform „check“: „will check“."
       }
     ]
   },
@@ -7904,145 +7587,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden.",
-    "wrongRules": [
-      "„He“ ist grundsätzlich die Objektform nach „help“.",
-      "Subjekt- und Objektformen sind bei allen Pronomen identisch."
-    ],
     "rows": [
       {
-        "prompt": "Mia is my sister. ___ is sixteen.",
+        "prompt": "Ergänze den Satz: Mia is my sister. ___ is sixteen.",
         "answers": [
           "She",
           "He",
           "It"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„She“ ersetzt „Mia“, die Schwester."
       },
       {
-        "prompt": "Ali is my brother. ___ works here.",
+        "prompt": "Ergänze den Satz: Ali is my brother. ___ works here.",
         "answers": [
           "He",
           "She",
           "It"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„He“ ersetzt „Ali“, den Bruder."
       },
       {
-        "prompt": "The machine is new. ___ works well.",
+        "prompt": "Ergänze den Satz: The machine is new. ___ works well.",
         "answers": [
           "It",
           "He",
           "They"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Die Maschine ist eine Sache in der Einzahl. Dafür steht „it“."
       },
       {
-        "prompt": "Mia and I are a team. ___ work together.",
+        "prompt": "Ergänze den Satz: Mia and I are a team. ___ work together.",
         "answers": [
           "We",
           "Us",
           "They"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„Mia and I“ bedeutet „Mia und ich“. Das Subjektpronomen dafür ist „we“."
       },
       {
-        "prompt": "These tools are clean. ___ are in the box.",
+        "prompt": "Ergänze den Satz: These tools are clean. ___ are in the box.",
         "answers": [
           "They",
           "Them",
           "It"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„These tools“ steht in der Mehrzahl. Das Subjektpronomen dafür ist „they“."
       },
       {
-        "prompt": "Please help ___ . (mich)",
+        "prompt": "Ergänze den Satz: Please help ___ . (mich)",
         "answers": [
           "me",
           "I",
           "my"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Nach „help“ wird die Objektform „me“ für „mich“ gebraucht."
       },
       {
-        "prompt": "Can you see ___ ? (ihn)",
+        "prompt": "Ergänze den Satz: Can you see ___ ? (ihn)",
         "answers": [
           "him",
           "he",
           "his"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„Ihn“ ist hier die Objektform „him“."
       },
       {
-        "prompt": "I am talking to ___ . (sie, eine Person)",
+        "prompt": "Ergänze den Satz: I am talking to ___ . (sie, eine Person)",
         "answers": [
           "her",
           "she",
           "hers"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Nach „to“ steht die Objektform „her“ für eine weibliche Person."
       },
       {
-        "prompt": "The teacher helps ___ . (uns)",
+        "prompt": "Ergänze den Satz: The teacher helps ___ . (uns)",
         "answers": [
           "us",
           "we",
           "our"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Die Objektform für „uns“ lautet „us“."
       },
       {
-        "prompt": "I can see ___ outside. (sie, mehrere Personen)",
+        "prompt": "Ergänze den Satz: I can see ___ outside. (sie, mehrere Personen)",
         "answers": [
           "them",
           "they",
           "their"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Die Objektform für mehrere Personen lautet „them“."
       },
       {
-        "prompt": "___ am ready. (ich)",
+        "prompt": "Ergänze den Satz: ___ am ready. (ich)",
         "answers": [
           "I",
           "Me",
           "My"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Vor „am“ steht das Subjektpronomen „I“."
       },
       {
-        "prompt": "___ are welcome. (du)",
+        "prompt": "Ergänze den Satz: ___ are welcome. (du)",
         "answers": [
           "You",
           "Your",
           "Yours"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Das Subjektpronomen für „du“ lautet „you“."
       },
       {
-        "prompt": "Please give the pen to ___ . (ihm)",
+        "prompt": "Ergänze den Satz: Please give the pen to ___ . (ihm)",
         "answers": [
           "him",
           "he",
           "his"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Nach „to“ steht die Objektform „him“ für „ihm“."
       },
       {
-        "prompt": "The supervisor is speaking to ___ . (mir)",
+        "prompt": "Ergänze den Satz: The supervisor is speaking to ___ . (mir)",
         "answers": [
           "me",
           "I",
           "mine"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "Nach „to“ steht die Objektform „me“ für „mir“."
       },
       {
-        "prompt": "My friends are here. I will join ___ .",
+        "prompt": "Ergänze den Satz: My friends are here. I will join ___ .",
         "answers": [
           "them",
           "they",
           "their"
         ],
-        "why": "Ein Personalpronomen muss zur genannten Person oder Sache und zur Aufgabe im Satz passen. Subjekt- und Objektformen werden unterschieden."
+        "why": "„My friends“ sind mehrere Personen. Als Objekt nach „join“ steht „them“."
       }
     ]
   },
@@ -8053,145 +7732,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs.",
-    "wrongRules": [
-      "Vor jedem Nomen muss statt „my“ grundsätzlich „mine“ stehen.",
-      "„Its“ als Besitzform wird immer mit Apostroph geschrieben."
-    ],
     "rows": [
       {
-        "prompt": "I have a bag. This is ___ bag.",
+        "prompt": "Ergänze den Satz: I have a bag. This is ___ bag.",
         "answers": [
           "my",
           "mine",
           "me"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Die Tasche gehört mir. Vor dem Nomen „bag“ steht „my“."
       },
       {
-        "prompt": "You have a pen. This is ___ pen.",
+        "prompt": "Ergänze den Satz: You have a pen. This is ___ pen.",
         "answers": [
           "your",
           "yours",
           "you"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Der Stift gehört dir. Vor „pen“ steht „your“."
       },
       {
-        "prompt": "He has a bike. This is ___ bike.",
+        "prompt": "Ergänze den Satz: He has a bike. This is ___ bike.",
         "answers": [
           "his",
           "he",
           "him"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Das Fahrrad gehört ihm. Vor „bike“ steht „his“."
       },
       {
-        "prompt": "She has a folder. This is ___ folder.",
+        "prompt": "Ergänze den Satz: She has a folder. This is ___ folder.",
         "answers": [
           "her",
           "hers",
           "she"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Der Ordner gehört ihr. Vor „folder“ steht „her“."
       },
       {
-        "prompt": "We have a classroom. This is ___ classroom.",
+        "prompt": "Ergänze den Satz: We have a classroom. This is ___ classroom.",
         "answers": [
           "our",
           "ours",
           "us"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Der Klassenraum gehört zu uns. Vor „classroom“ steht „our“."
       },
       {
-        "prompt": "They have tools. These are ___ tools.",
+        "prompt": "Ergänze den Satz: They have tools. These are ___ tools.",
         "answers": [
           "their",
           "theirs",
           "them"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Die Werkzeuge gehören ihnen. Vor „tools“ steht „their“."
       },
       {
-        "prompt": "The dog is eating ___ food.",
+        "prompt": "Ergänze den Satz: The dog is eating ___ food.",
         "answers": [
           "its",
           "it's",
           "it"
         ],
-        "why": "„Its“ ist die Besitzform ohne Apostroph. „It's“ bedeutet „it is“ oder „it has“."
+        "why": "„Its“ ist die Besitzform zu „it“. „It’s“ mit Apostroph bedeutet „it is“ oder „it has“."
       },
       {
-        "prompt": "This pen belongs to me. It is ___.",
+        "prompt": "Ergänze den Satz: This pen belongs to me. It is ___.",
         "answers": [
           "mine",
           "my",
           "me"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Nach „It is“ folgt kein Nomen. Deshalb steht die alleinstehende Besitzform „mine“."
       },
       {
-        "prompt": "This jacket belongs to you. It is ___.",
+        "prompt": "Ergänze den Satz: This jacket belongs to you. It is ___.",
         "answers": [
           "yours",
           "your",
           "you"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Nach „It is“ folgt kein Nomen. Deshalb steht „yours“ statt „your“."
       },
       {
-        "prompt": "These books belong to us. They are ___.",
+        "prompt": "Ergänze den Satz: These books belong to us. They are ___.",
         "answers": [
           "ours",
           "our",
           "us"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Die Bücher gehören uns. Ohne nachfolgendes Nomen heißt es „ours“."
       },
       {
-        "prompt": "That desk belongs to them. It is ___.",
+        "prompt": "Ergänze den Satz: That desk belongs to them. It is ___.",
         "answers": [
           "theirs",
           "their",
           "them"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Der Tisch gehört ihnen. Ohne nachfolgendes Nomen heißt es „theirs“."
       },
       {
-        "prompt": "The folder belongs to Mia, my sister. It is ___.",
+        "prompt": "Ergänze den Satz: The folder belongs to Mia, my sister. It is ___.",
         "answers": [
           "hers",
           "her",
           "she"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Der Ordner gehört Mia. Ohne nachfolgendes Nomen heißt es „hers“."
       },
       {
-        "prompt": "My brother forgot ___ keys.",
+        "prompt": "Ergänze den Satz: My brother forgot ___ keys.",
         "answers": [
           "his",
           "he",
           "him"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "Die Schlüssel gehören meinem Bruder. Vor „keys“ steht „his“."
       },
       {
-        "prompt": "Mia and I packed ___ bags.",
+        "prompt": "Ergänze den Satz: Mia and I packed ___ bags.",
         "answers": [
           "our",
           "ours",
           "us"
         ],
-        "why": "Possessive Formen nennen die Zugehörigkeit. Vor einem Nomen stehen zum Beispiel my, your und their; allein stehen etwa mine, yours und theirs."
+        "why": "„Mia and I“ entspricht „we“. Vor „bags“ steht daher „our“."
       },
       {
-        "prompt": "The company changed ___ address.",
+        "prompt": "Ergänze den Satz: The company changed ___ address.",
         "answers": [
           "its",
           "it's",
           "it"
         ],
-        "why": "Die Firma hat eine zugehörige Adresse. Dafür steht die Besitzform „its“."
+        "why": "Die Adresse gehört zur Firma. Die Besitzform lautet „its“ ohne Apostroph."
       }
     ]
   },
@@ -8202,145 +7877,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in.",
-    "wrongRules": [
-      "Vor jedem Wochentag steht grundsätzlich „in“.",
-      "Alle Orts- und Zeitangaben benötigen dieselbe Präposition."
-    ],
     "rows": [
       {
-        "prompt": "The lesson starts ___ eight o'clock.",
+        "prompt": "Ergänze den Satz: The lesson starts ___ eight o'clock.",
         "answers": [
           "at",
           "on",
           "in"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "Bei einer Uhrzeit steht „at“: „at eight o’clock“."
       },
       {
-        "prompt": "We meet ___ Monday.",
+        "prompt": "Ergänze den Satz: We meet ___ Monday.",
         "answers": [
           "on",
           "in",
-          "to"
+          "at"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "Bei einem Wochentag steht „on“: „on Monday“."
       },
       {
-        "prompt": "My birthday is ___ July.",
+        "prompt": "Ergänze den Satz: My birthday is ___ July.",
         "answers": [
           "in",
           "on",
           "at"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "Bei einem Monat steht „in“: „in July“."
       },
       {
-        "prompt": "The book is ___ the table. (auf dem Tisch)",
+        "prompt": "Ergänze den Satz: The book is ___ the table. (auf dem Tisch)",
         "answers": [
           "on",
           "under",
           "behind"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "„On the table“ bedeutet „auf dem Tisch“."
       },
       {
-        "prompt": "The bag is ___ the desk. (unter dem Tisch)",
+        "prompt": "Ergänze den Satz: The bag is ___ the desk. (unter dem Tisch)",
         "answers": [
           "under",
           "on",
           "above"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "„Under the desk“ bedeutet „unter dem Tisch“."
       },
       {
-        "prompt": "She lives ___ Germany.",
-        "answers": [
-          "in",
-          "on",
-          "to"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "I go ___ school by bus.",
-        "answers": [
-          "to",
-          "on",
-          "under"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "We work ___ the morning.",
-        "answers": [
-          "in",
-          "on",
-          "to"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "The picture is ___ the wall.",
-        "answers": [
-          "on",
-          "under",
-          "into"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "The chair is ___ the door. (hinter der Tür)",
-        "answers": [
-          "behind",
-          "above",
-          "on"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "The shop is ___ the bank. (neben der Bank)",
-        "answers": [
-          "next to",
-          "inside",
-          "under"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "We have a break ___ noon.",
-        "answers": [
-          "at",
-          "on",
-          "to"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "The training starts ___ September.",
-        "answers": [
-          "in",
-          "on",
-          "under"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "The keys are ___ the box. (in der Kiste)",
-        "answers": [
-          "in",
-          "on",
-          "above"
-        ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
-      },
-      {
-        "prompt": "I was born ___ 2009.",
+        "prompt": "Ergänze den Satz: She lives ___ Germany.",
         "answers": [
           "in",
           "on",
           "at"
         ],
-        "why": "Die Präposition hängt von der Beziehung und der festen Verbindung ab. Bei Uhrzeiten steht hier at, bei Wochentagen on und bei Monaten in."
+        "why": "Bei einem Land steht hier „in“: „in Germany“."
+      },
+      {
+        "prompt": "Ergänze für „zur Schule“: I go ___ school by bus.",
+        "answers": [
+          "to",
+          "at",
+          "in"
+        ],
+        "why": "„Go to school“ bedeutet „zur Schule gehen“. „To“ nennt das Ziel."
+      },
+      {
+        "prompt": "Ergänze den Satz: We work ___ the morning.",
+        "answers": [
+          "in",
+          "on",
+          "at"
+        ],
+        "why": "Die feste Zeitangabe lautet „in the morning“."
+      },
+      {
+        "prompt": "Ergänze für „an der Wand“: The picture is ___ the wall.",
+        "answers": [
+          "on",
+          "under",
+          "into"
+        ],
+        "why": "„On the wall“ bedeutet „an der Wand“."
+      },
+      {
+        "prompt": "Ergänze den Satz: The chair is ___ the door. (hinter der Tür)",
+        "answers": [
+          "behind",
+          "above",
+          "on"
+        ],
+        "why": "„Behind the door“ bedeutet „hinter der Tür“."
+      },
+      {
+        "prompt": "Ergänze den Satz: The shop is ___ the bank. (neben der Bank)",
+        "answers": [
+          "next to",
+          "inside",
+          "under"
+        ],
+        "why": "„Next to the bank“ bedeutet „neben der Bank“."
+      },
+      {
+        "prompt": "Ergänze den Satz: We have a break ___ noon.",
+        "answers": [
+          "at",
+          "on",
+          "in"
+        ],
+        "why": "Die feste Zeitangabe lautet „at noon“: „um zwölf Uhr mittags“."
+      },
+      {
+        "prompt": "Ergänze den Satz: The training starts ___ September.",
+        "answers": [
+          "in",
+          "on",
+          "at"
+        ],
+        "why": "Bei einem Monat steht „in“: „in September“."
+      },
+      {
+        "prompt": "Ergänze den Satz: The keys are ___ the box. (in der Kiste)",
+        "answers": [
+          "in",
+          "on",
+          "above"
+        ],
+        "why": "„In the box“ bedeutet „in der Kiste“."
+      },
+      {
+        "prompt": "Ergänze den Satz: I was born ___ 2009.",
+        "answers": [
+          "in",
+          "on",
+          "at"
+        ],
+        "why": "Bei einer Jahreszahl steht „in“: „in 2009“."
       }
     ]
   },
@@ -8351,145 +8022,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt.",
-    "wrongRules": [
-      "Nach „does“ erhält das Vollverb in einer Frage immer zusätzlich -s.",
-      "Jede englische Frage hat genau dieselbe Wortstellung wie ein bejahter Aussagesatz."
-    ],
     "rows": [
       {
-        "prompt": "___ you work here?",
+        "prompt": "Ergänze die Frage im simple present: ___ you work here?",
         "answers": [
           "Do",
           "Does",
-          "Are to"
+          "Are"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Im simple present beginnt die Frage mit „do“, wenn das Subjekt „you“ ist."
       },
       {
-        "prompt": "___ she live in Lahr?",
+        "prompt": "Ergänze die Frage im simple present: ___ she live in Lahr?",
         "answers": [
           "Does",
           "Do",
-          "Is to"
+          "Is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „she“ beginnt die Frage im simple present mit „does“."
       },
       {
-        "prompt": "Where ___ he work?",
+        "prompt": "Ergänze die Frage im simple present: Where ___ he work?",
         "answers": [
           "does",
           "do",
           "are"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „he“ steht im simple present „does“ vor dem Subjekt und „work“ in der Grundform."
       },
       {
-        "prompt": "When ___ they start?",
+        "prompt": "Ergänze die Frage im simple present: When ___ they start?",
         "answers": [
           "do",
           "does",
           "is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „they“ wird die Frage mit „do“ gebildet."
       },
       {
-        "prompt": "___ you ready?",
+        "prompt": "Ergänze die Frage im simple present: ___ you ready?",
         "answers": [
           "Are",
           "Is",
-          "Do to"
+          "Do"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Zu „you“ gehört „are“. In der Frage steht „are“ vor „you“."
       },
       {
-        "prompt": "___ he your teacher?",
+        "prompt": "Ergänze die Frage im simple present: ___ he your teacher?",
         "answers": [
           "Is",
           "Are",
-          "Does to"
+          "Does"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Zu „he“ gehört „is“. In der Frage steht „is“ vor „he“."
       },
       {
-        "prompt": "What time ___ the bus leave?",
+        "prompt": "Ergänze die Frage im simple present: What time ___ the bus leave?",
         "answers": [
           "does",
           "do",
           "are"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "„The bus“ steht in der Einzahl. Die Frage im simple present braucht „does“."
       },
       {
-        "prompt": "Where ___ your keys?",
+        "prompt": "Ergänze die Frage im simple present: Where ___ your keys?",
         "answers": [
           "are",
           "is",
           "does"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "„Your keys“ steht in der Mehrzahl. Die Frage lautet „Where are your keys?“"
       },
       {
-        "prompt": "Why ___ you need this tool?",
+        "prompt": "Ergänze die Frage im simple present: Why ___ you need this tool?",
         "answers": [
           "do",
           "does",
           "is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „you“ wird die Frage im simple present mit „do“ gebildet."
       },
       {
-        "prompt": "___ she speak English?",
+        "prompt": "Ergänze die Frage im simple present: ___ she speak English?",
         "answers": [
           "Does",
           "Do",
-          "Are to"
+          "Is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „she“ wird die Frage im simple present mit „does“ gebildet."
       },
       {
-        "prompt": "How ___ I open this box?",
+        "prompt": "Ergänze die Frage im simple present: How ___ I open this box?",
         "answers": [
           "do",
           "does",
           "is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „I“ wird die Frage im simple present mit „do“ gebildet."
       },
       {
-        "prompt": "___ we need safety goggles?",
+        "prompt": "Ergänze die Frage im simple present: ___ we need safety goggles?",
         "answers": [
           "Do",
           "Does",
-          "Is to"
+          "Are"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "Bei „we“ wird die Frage im simple present mit „do“ gebildet."
       },
       {
-        "prompt": "Where ___ Mia and Ali live?",
+        "prompt": "Ergänze die Frage im simple present: Where ___ Mia and Ali live?",
         "answers": [
           "do",
           "does",
           "is"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "„Mia and Ali“ sind mehrere Personen. Daher steht „do“."
       },
       {
-        "prompt": "___ the machine working now?",
+        "prompt": "Ergänze im present progressive: ___ the machine working now?",
         "answers": [
           "Is",
           "Are",
-          "Do to"
+          "Do"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "„The machine“ steht in der Einzahl. Im present progressive heißt es „is working“."
       },
       {
-        "prompt": "What ___ this word mean?",
+        "prompt": "Ergänze die Frage im simple present: What ___ this word mean?",
         "answers": [
           "does",
           "do",
           "are"
         ],
-        "why": "Im simple present brauchen Fragen mit Vollverben meist do oder does. Nach does steht das Vollverb in der Grundform. Bei be wird die Verbform vor das Subjekt gestellt."
+        "why": "„This word“ steht in der Einzahl. Die Frage im simple present braucht „does“."
       }
     ]
   },
@@ -8500,130 +8167,126 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do.",
-    "wrongRules": [
-      "Nach „does not“ wird das Vollverb immer noch mit -s geschrieben.",
-      "Jede Verneinung braucht auch nach „is“ zusätzlich „do“."
-    ],
     "rows": [
       {
-        "prompt": "Verneine im simple present: I ___ work on Sundays.",
+        "prompt": "Ergänze die Verneinung im simple present: I ___ work on Sundays.",
         "answers": [
           "do not",
           "does not",
-          "am not to"
+          "am not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Bei „I“ wird das Vollverb mit „do not“ verneint."
       },
       {
-        "prompt": "Verneine im simple present: She ___ drive to school.",
+        "prompt": "Ergänze die Verneinung im simple present: She ___ drive to school.",
         "answers": [
           "does not",
           "do not",
-          "is not to"
+          "is not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Bei „she“ steht „does not“ vor der Grundform „drive“."
       },
       {
-        "prompt": "We ___ ready. (mit be verneinen)",
+        "prompt": "Ergänze die verneinte Form von „be“: We ___ ready.",
         "answers": [
           "are not",
-          "do not be",
-          "does not be"
+          "is not",
+          "am not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Zu „we“ gehört „are“. Mit „not“ heißt es „are not“."
       },
       {
-        "prompt": "He ___ here today. (mit be verneinen)",
+        "prompt": "Ergänze die verneinte Form von „be“: He ___ here today.",
         "answers": [
           "is not",
-          "do not is",
-          "does not be"
+          "are not",
+          "am not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Zu „he“ gehört „is“. Mit „not“ heißt es „is not“."
       },
       {
-        "prompt": "They ___ understand the task.",
+        "prompt": "Ergänze die Verneinung im simple present: They ___ understand the task.",
         "answers": [
           "do not",
           "does not",
           "is not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Bei „they“ wird das Vollverb mit „do not“ verneint."
       },
       {
-        "prompt": "Verneine korrekt: She does not ___ this tool.",
+        "prompt": "Ergänze die passende Verbform: She does not ___ this tool.",
         "answers": [
           "need",
           "needs",
           "needed"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Nach „does not“ steht die Grundform „need“ ohne -s."
       },
       {
-        "prompt": "Verneine korrekt: He does not ___ here.",
+        "prompt": "Ergänze die passende Verbform: He does not ___ here.",
         "answers": [
           "work",
           "works",
           "working"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Nach „does not“ steht die Grundform „work“ ohne -s."
       },
       {
-        "prompt": "I ___ a teacher. (mit be verneinen)",
+        "prompt": "Ergänze die verneinte Form von „be“: I ___ a teacher.",
         "answers": [
           "am not",
-          "do not am",
-          "does not am"
+          "is not",
+          "are not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Zu „I“ gehört „am“. Die Verneinung lautet „am not“."
       },
       {
-        "prompt": "You ___ leave the door open. (darfst nicht)",
+        "prompt": "Ergänze für „darfst nicht“: You ___ leave the door open.",
         "answers": [
           "must not",
-          "must to not",
-          "do must not"
+          "must",
+          "should"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "„Must not“ drückt ein Verbot aus: „darfst nicht“."
       },
       {
-        "prompt": "We ___ hear you. (können nicht)",
+        "prompt": "Ergänze für „können nicht“: We ___ hear you.",
         "answers": [
           "cannot",
-          "do cannot",
-          "can not to"
+          "must not",
+          "should not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "„Cannot“ ist die Verneinung von „can“: „können nicht“."
       },
       {
-        "prompt": "Verneine im simple present: The shop ___ open on Sundays.",
+        "prompt": "Ergänze die Verneinung im simple present: The shop ___ sell tools on Sundays.",
         "answers": [
           "does not",
           "do not",
-          "is not to"
+          "is not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "„The shop“ steht in der Einzahl. Vor der Grundform „sell“ steht „does not“."
       },
       {
-        "prompt": "Verneine im simple present: My friends ___ live here.",
+        "prompt": "Ergänze die Verneinung im simple present: My friends ___ live here.",
         "answers": [
           "do not",
           "does not",
           "is not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "„My friends“ steht in der Mehrzahl. Deshalb wird mit „do not“ verneint."
       },
       {
-        "prompt": "She ___ reading now. (mit be verneinen)",
+        "prompt": "Ergänze die verneinte Form von „be“: She ___ reading now.",
         "answers": [
           "is not",
-          "does not is",
-          "do not"
+          "are not",
+          "am not"
         ],
-        "why": "Im simple present verneint man Vollverben hier mit do not oder does not und Grundform. Bei be und Modalverben steht not ohne do."
+        "why": "Bei „she“ heißt es „is reading“. Zur Verneinung wird „not“ nach „is“ ergänzt."
       },
       {
-        "prompt": "Verneine korrekt: He did not ___ the bus yesterday.",
+        "prompt": "Ergänze die passende Verbform: He did not ___ the bus yesterday.",
         "answers": [
           "take",
           "took",
@@ -8632,7 +8295,7 @@ export const languageData = [
         "why": "Nach „did not“ steht die Grundform „take“."
       },
       {
-        "prompt": "Verneine korrekt: We will not ___ late.",
+        "prompt": "Ergänze die passende Verbform: We will not ___ late.",
         "answers": [
           "be",
           "are",
@@ -8649,145 +8312,141 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden.",
-    "wrongRules": [
-      "„Than“ verlangt grundsätzlich die Grundform des Adjektivs.",
-      "„Good“ wird im Komparativ immer zu „gooder“."
-    ],
     "rows": [
       {
-        "prompt": "This box is ___ than that one. (big)",
+        "prompt": "Ergänze den Satz: This box is ___ than that one. (big)",
         "answers": [
           "bigger",
           "big",
           "biggest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich mit „than“ braucht „bigger“. Das g wird verdoppelt."
       },
       {
-        "prompt": "My bag is ___ than yours. (heavy)",
+        "prompt": "Ergänze den Satz: My bag is ___ than yours. (heavy)",
         "answers": [
           "heavier",
           "heavy",
           "heaviest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Bei „heavy“ wird y zu i: „heavier“."
       },
       {
-        "prompt": "This road is ___ than the old road. (wide)",
+        "prompt": "Ergänze den Satz: This road is ___ than the old road. (wide)",
         "answers": [
           "wider",
           "wide",
           "widest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Wide“ endet auf e. Für den Vergleich wird nur r angehängt: „wider“."
       },
       {
-        "prompt": "The new bus is ___ than the old bus. (fast)",
+        "prompt": "Ergänze den Satz: The new bus is ___ than the old bus. (fast)",
         "answers": [
           "faster",
           "fast",
           "fastest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich von „fast“ lautet „faster“."
       },
       {
-        "prompt": "This chair is ___ than the other chair. (small)",
+        "prompt": "Ergänze den Satz: This chair is ___ than the other chair. (small)",
         "answers": [
           "smaller",
           "small",
           "smallest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich von „small“ lautet „smaller“."
       },
       {
-        "prompt": "This explanation is ___ than the last one. (good)",
+        "prompt": "Ergänze den Satz: This explanation is ___ than the last one. (good)",
         "answers": [
           "better",
           "gooder",
           "best"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Good“ wird unregelmäßig gesteigert: „better“."
       },
       {
-        "prompt": "The weather is ___ today than yesterday. (bad)",
+        "prompt": "Ergänze den Satz: The weather is ___ today than yesterday. (bad)",
         "answers": [
           "worse",
           "badder",
           "worst"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Bad“ wird unregelmäßig gesteigert: „worse“."
       },
       {
-        "prompt": "This task is ___ than the first task. (easy)",
+        "prompt": "Ergänze den Satz: This task is ___ than the first task. (easy)",
         "answers": [
           "easier",
           "easy",
           "easiest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Bei „easy“ wird y zu i: „easier“."
       },
       {
-        "prompt": "The workshop is ___ than the classroom. (noisy)",
+        "prompt": "Ergänze den Satz: The workshop is ___ than the classroom. (noisy)",
         "answers": [
           "noisier",
           "noisy",
           "noisiest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Bei „noisy“ wird y zu i: „noisier“."
       },
       {
-        "prompt": "This tool is ___ than that tool. (expensive)",
+        "prompt": "Ergänze den Satz: This tool is ___ than that tool. (expensive)",
         "answers": [
           "more expensive",
           "expensiver",
           "most expensive"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Expensive“ wird mit „more“ gesteigert: „more expensive“."
       },
       {
-        "prompt": "This route is ___ than the other route. (short)",
+        "prompt": "Ergänze den Satz: This route is ___ than the other route. (short)",
         "answers": [
           "shorter",
           "short",
           "shortest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich von „short“ lautet „shorter“."
       },
       {
-        "prompt": "The new machine is ___ than the old one. (quiet)",
+        "prompt": "Ergänze den Satz: The new machine is ___ than the old one. (quiet)",
         "answers": [
           "quieter",
           "quiet",
           "quietest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich von „quiet“ lautet hier „quieter“."
       },
       {
-        "prompt": "This text is ___ than that text. (interesting)",
+        "prompt": "Ergänze den Satz: This text is ___ than that text. (interesting)",
         "answers": [
           "more interesting",
           "interestinger",
           "most interesting"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Interesting“ wird mit „more“ gesteigert: „more interesting“."
       },
       {
-        "prompt": "The red car is ___ than the blue car. (old)",
+        "prompt": "Ergänze den Satz: The red car is ___ than the blue car. (old)",
         "answers": [
           "older",
           "old",
           "oldest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "Der Vergleich von „old“ lautet „older“."
       },
       {
-        "prompt": "This method is ___ than the first method. (safe)",
+        "prompt": "Ergänze den Satz: This method is ___ than the first method. (safe)",
         "answers": [
           "safer",
           "safe",
           "safest"
         ],
-        "why": "Vergleiche verwenden die passende Steigerungsform. Nach einem Komparativ kann than stehen; unregelmäßige Formen wie good → better müssen beachtet werden."
+        "why": "„Safe“ endet auf e. Für den Vergleich wird nur r angehängt: „safer“."
       }
     ]
   },
@@ -8798,10 +8457,6 @@ export const languageData = [
     "format": "gap",
     "curriculum": "Englisch BPE 1, 2 und 4",
     "rule": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat.",
-    "wrongRules": [
-      "„Must not“ bedeutet, dass etwas nicht nötig ist, aber erlaubt bleibt.",
-      "Nach einem Modalverb muss immer „to“ vor der Grundform stehen."
-    ],
     "rows": [
       {
         "prompt": "Übersetze „Ich kann schwimmen“: I ___ swim.",
@@ -8810,7 +8465,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Can“ bedeutet hier „können“ und beschreibt eine Fähigkeit."
       },
       {
         "prompt": "Übersetze „Du musst eine Schutzbrille tragen“: You ___ wear safety goggles.",
@@ -8819,7 +8474,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must“ bedeutet hier „müssen“ und beschreibt eine Pflicht."
       },
       {
         "prompt": "Übersetze „Du darfst hier nicht rauchen“: You ___ smoke here.",
@@ -8828,7 +8483,7 @@ export const languageData = [
           "must",
           "should"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must not“ heißt „nicht dürfen“ und drückt ein Verbot aus."
       },
       {
         "prompt": "Übersetze „Du solltest mehr üben“: You ___ practise more.",
@@ -8837,7 +8492,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Should“ heißt „solltest“ und gibt einen Rat."
       },
       {
         "prompt": "Übersetze „Er kann gut lesen“: He ___ read well.",
@@ -8846,7 +8501,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Can“ beschreibt hier die Fähigkeit, gut zu lesen."
       },
       {
         "prompt": "Übersetze „Wir müssen pünktlich sein“: We ___ be on time.",
@@ -8855,7 +8510,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must“ drückt die Pflicht aus, pünktlich zu sein."
       },
       {
         "prompt": "Übersetze „Du darfst das nicht berühren“: You ___ touch it.",
@@ -8864,7 +8519,7 @@ export const languageData = [
           "must",
           "should"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must not“ drückt das Verbot aus, etwas zu berühren."
       },
       {
         "prompt": "Übersetze „Ich kann dich nicht hören“: I ___ hear you.",
@@ -8873,7 +8528,7 @@ export const languageData = [
           "must",
           "should"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Cannot“ heißt „nicht können“: Die Person kann den anderen nicht hören."
       },
       {
         "prompt": "Übersetze „Sie sollte den Arzt anrufen“: She ___ call the doctor.",
@@ -8882,7 +8537,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Should“ gibt einen Rat: Sie sollte den Arzt anrufen."
       },
       {
         "prompt": "Übersetze „Ihr müsst warten“: You ___ wait.",
@@ -8891,7 +8546,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must“ drückt aus, dass das Warten nötig ist."
       },
       {
         "prompt": "Übersetze „Sie können die Maschine bedienen“: They ___ operate the machine.",
@@ -8900,7 +8555,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Can“ beschreibt hier die Fähigkeit, die Maschine zu bedienen."
       },
       {
         "prompt": "Übersetze „Wir sollten die Maße prüfen“: We ___ check the measurements.",
@@ -8909,7 +8564,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Should“ gibt den Rat, die Maße zu prüfen."
       },
       {
         "prompt": "Übersetze „Er darf hier nicht parken“: He ___ park here.",
@@ -8918,7 +8573,7 @@ export const languageData = [
           "must",
           "should"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must not“ drückt das Parkverbot aus."
       },
       {
         "prompt": "Übersetze „Ich muss jetzt gehen“: I ___ go now.",
@@ -8927,7 +8582,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Must“ bedeutet hier „müssen“: Ich muss jetzt gehen."
       },
       {
         "prompt": "Übersetze „Du solltest um Hilfe bitten“: You ___ ask for help.",
@@ -8936,7 +8591,7 @@ export const languageData = [
           "must not",
           "cannot"
         ],
-        "why": "Modalverben drücken unterschiedliche Bedeutungen aus. Can bezeichnet hier Fähigkeit, must eine Verpflichtung, must not ein Verbot und should einen Rat."
+        "why": "„Should“ gibt den Rat, um Hilfe zu bitten."
       }
     ]
   }

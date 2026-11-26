@@ -1,4 +1,4 @@
-import {materializeQuestion} from './math.js';
+import {calculate,materializeQuestion,roundTo} from './math.js';
 
 const names={
  'rounding':'Zahlen runden','compareNumbers':'Zahlen vergleichen','integers':'Mit negativen Zahlen rechnen',
@@ -126,14 +126,161 @@ function task(topic,level,a,b,c){
   }
   throw new Error('Unbekanntes Mathematikthema.');
 }
+
+// Each expression models a specific mistake in the displayed task. The same
+// restricted arithmetic parser checks these expressions and the correct one.
+function errorCalculations(topic,level,a,b,c){
+  const high=level>=4,mid=level>=3;
+  if(topic==='rounding'){
+    const place=level===1?10:level===2?100:level===3?1:level===4?.1:.01;
+    const value=level<=2?a*37+b:Number((a/10+b/100+(high?c/1000:0)).toFixed(3));
+    const digits=-Math.log10(place),scaled=Number(value+'e'+digits);
+    // Always round down/up, or round to a place one position too far left.
+    return [Number(Math.floor(scaled)+'e'+(-digits)),Number(Math.ceil(scaled)+'e'+(-digits)),
+      Number(Math.round(Number(value+'e'+(digits-1)))+'e'+(1-digits)),value].map(String);
+  }
+  if(topic==='compareNumbers'){
+    const values=mid?[a/10,-b/10,(a-c)/10]:[a*10+b,a*10+c,b*10+a];
+    if(!high)return values.map(String); // Select another one of the given numbers.
+    const largest=Math.max(...values),smallest=Math.min(...values);
+    // Add the negative endpoint, use just one endpoint, or reverse subtraction.
+    return [`(${largest})+(${smallest})`,String(largest),String(-smallest),`(${smallest})-(${largest})`];
+  }
+  if(topic==='integers')return high?
+    [`-${a}+${b}+${c}`,`${a}+${b}-${c}`,`-${a}-${b}-${c}`,`-${a}+${b}`]:
+    [`${a}+${b}`,`-${a}-${b}`,`${a}-${b}`];
+  if(topic==='decimalMultiply'){
+    const x=level<=2?a/10:a/100,y=mid?b/10:b;
+    // Omit the reserve, multiply it too, or misplace the decimal point.
+    return high?[`${x}*${b}`,`${x}*(${b}+${c}/10)`,`${a}*${b}+${c}/10`,`${x}*${b}+${c}`]:
+      [`${x}*${y}*10`,`${x}*${y}/10`,`${x}+${y}`,`${a}*${b}`];
+  }
+  if(topic==='division'){
+    const amount=a*b;
+    // Treat per-person extras as a shared total, or replace division by another operation.
+    return high?[`${amount}/${b}`,`(${amount}+${c})/${b}`,`${amount}/(${b}+${c})`,`${amount}*${b}+${c}`]:
+      [`${amount}-${b}`,`${amount}*${b}`,`${b}/${amount}`,String(amount)];
+  }
+  if(topic==='orderOperations')return level<=2?
+    [`(${a}+${b})*${c}`,`${a}+${b}+${c}`,`${a}*(${b}+${c})`]:high?
+    [`${a}+${b}*${c}-${b}`,`(${a}+${b})*(${c}-${b})`,`(${a}+${b})*${c}`,`(${a}+${b})*${c}+${b}`]:
+    [`${a}+${b}*${c}`,`${a}*${c}+${b}`,`${a}+${b}+${c}`];
+  if(topic==='powers'){
+    const base=a%25+1,exp=level<=2?2:3;
+    // Confuse exponent and factor, or give the new volume instead of its increase.
+    return high?[`(${base}+1)^3`,`${base}^3`,'1^3',`3*${base}^2`]:
+      [`${base}*${exp}`,String(base),`${base}^${exp+1}`,`${base}^${exp-1}`];
+  }
+  if(topic==='equations'){
+    const x=a%18+1,k=b%8+2,d=c%12+1,result=k*x+d;
+    return level<=2?[`${x+d}+${d}`,String(x+d),`${d}-${x+d}`]:high?
+      [`(${result}+${d})/${k}`,`${result}-${d}`,`${result}/${k}-${d}`,`${result}/${k}`]:
+      [`${k*x}-${k}`,`${k*x}*${k}`,String(k)];
+  }
+  if(topic==='ratios'){
+    const p=a%5+1,q=b%5+2,s=c%8+2,total=(p+q)*s;
+    // Choose the first colour/one share, use inverse proportion, or add instead of scaling.
+    return mid?[`${total}/(${p}+${q})*${p}`,`${total}/(${p}+${q})`,`${total}/${q}`,`${total}*${q}/${p}`]:
+      [String(p*s),`${p*s}/${q}*${p}`,`${p*s}+(${q}-${p})`,`${p*s}*${q}`];
+  }
+  if(topic==='interest'){
+    const capital=(a+10)*100,rate=b%5+1,months=c%12+1;
+    // Omit the fraction of a year, the division by 12, or the percentage conversion.
+    return high?[`${capital}*${rate}/100`,`${capital}*${rate}/100*${months}`,`${capital}*${rate}/100/12`,`${capital}*${rate}/100*${months}/360`]:
+      [`${capital}*${rate}`,`${capital}+${capital}*${rate}/100`,`${capital}*${rate}/10000`];
+  }
+  if(topic==='timeUnits'){
+    const hours=a%6+1,mins=b%60;
+    // Use 100 minutes per hour, add the break, or fail to convert a mixed duration.
+    return high?[`${hours}*60+${mins}+${c}`,`${hours}*100+${mins}-${c}`,`${hours}*60+${mins}`,`${hours}*60+${mins}-${c}*60`]:
+      [`${hours}*100+${mins}`,`${hours}+${mins}`,`(${hours}+${mins})*60`,`${hours}*60`];
+  }
+  if(topic==='massUnits'||topic==='volumeUnits'){
+    const value=mid?a+b/10:a,down=level%2===1;
+    // Reverse the conversion or use the factor for an area/length conversion.
+    return down?[`${value}/1000`,`${value}*100`,`${value}*10`,String(value)]:
+      [`${value}*1000`,`${value}/100`,`${value}/10`,String(value)];
+  }
+  if(topic==='volumeSolids'){
+    const x=a%15+2,y=b%10+2,z=c%8+2;
+    // Leave the hole in place, subtract only its base area, or confuse volume and surface.
+    return high?[`${x}*${y}*${z}`,`${x}*${y}*${z}-2`,`${x}*${y}*${z}+2*${z}`,`(${x}-2)*(${y}-1)*${z}`]:
+      [`${x}*${y}`,`2*(${x}*${y}+${x}*${z}+${y}*${z})`,`${x}+${y}+${z}`];
+  }
+  if(topic==='surfaceSolids'){
+    const x=a%15+2,y=b%10+2,z=c%8+2;
+    // Count too few faces, forget the opposite faces, or include the absent lid.
+    if(level<=2)return [`5*${x}*${x}`,`4*${x}*${x}`,`${x}^3`,`${x}*${x}`];
+    return high?[`2*(${x}*${y}+${x}*${z}+${y}*${z})`,`2*${x}*${z}+2*${y}*${z}`,`${x}*${y}+${x}*${z}+${y}*${z}`,`${x}*${y}*${z}`]:
+      [`${x}*${y}+${x}*${z}+${y}*${z}`,`2*${x}*${y}+2*${x}*${z}`,`${x}*${y}*${z}`,`2*(${x}+${y}+${z})`];
+  }
+  if(topic==='triangleArea'){
+    const g=a%24+2,h=b%15+2,area=g*h/2;
+    // Omit/reverse the factor 2 when finding area or height.
+    return high?[`${area}/${g}`,`${area}*2`,`${area}/(2*${g})`,`${area}*${g}/2`]:
+      [`${g}*${h}`,`(${g}+${h})/2`,`${g}*${h}/4`,`${g}+${h}`];
+  }
+  if(topic==='circleArea'){
+    const r=a%18+2,parts=high?4:mid?2:1;
+    // Use circumference, forget the circle part/square, or treat the radius as a diameter.
+    return [`2*3.14*${r}/${parts}`,`3.14*${r}^2`,`3.14*${r}/${parts}`,`3.14*(${r}/2)^2/${parts}`,`3.14*${r}^2*${parts}`];
+  }
+  if(topic==='cylinders'){
+    const r=a%10+2,h=b%14+2,g=c%20+5;
+    return high?[`3.14*${r}^2*(${h}+2)`,`3.14*${r}^2*${h}`,`3.14*${r}^2`,`3.14*${r}*2`]:
+      mid?[`2*3.14*${r}*${h}`,`3.14*${r}^2`,`3.14*${r}*${h}`,`3.14*(${r}/2)^2*${h}`]:
+      [`${g}+${h}`,String(g),`2*${g}*${h}`,`${g}/${h}`];
+  }
+  if(topic==='scale'){
+    const drawing=a%20+2,scale=(b%10+1)*10,actual=drawing*scale;
+    // Reverse multiplication/division, leave the length unchanged, or change units unnecessarily.
+    return high?[`${actual}*${scale}`,String(actual),`${actual}/${scale}/100`,`${actual}-${scale}`]:
+      [`${drawing}/${scale}`,`${drawing}+${scale}`,`${drawing}*${scale}/100`,String(drawing)];
+  }
+  if(topic==='mean'){
+    const target=(a+b+c)/3+2;
+    // Use the sum/wrong number of readings, or confuse the target mean with the missing value.
+    return high?[String(target),`(${target})*3-${a}-${b}-${c}`,`(${target})*4`,`((${target})*4-${a}-${b}-${c})/4`]:
+      [`${a}+${b}+${c}`,`(${a}+${b}+${c})/2`,`(${a}+${b}+${c})/4`,`(${a}+${b})/2`];
+  }
+  if(topic==='dataRead')return high?
+    [`${a}/(${b}+${c})*100`,`${a}/(${a}+${b}+${c})`,`(${b}+${c})/(${a}+${b}+${c})*100`,`${a}/${b}*100`]:mid?
+    [`${a}+${b}`,`${a}+${b}-${c}`,`${a}*${b}*${c}`]:
+    [`${a}-${b}`,`${a}*${b}`,String(a),String(b)];
+  throw new Error('Unbekanntes Mathematikthema.');
+}
+
+function distractorsFor(source,topic,level,a,b,c,answer){
+  const wrong=[];
+  const close=(x,y)=>Math.abs(x-y)<=1e-10*Math.max(1e-20,Math.abs(x),Math.abs(y));
+  const add=value=>{
+    if(!Number.isFinite(value)||Math.abs(value)>1e14)return;
+    const rounded=roundTo(value,source.decimals);
+    if(close(rounded,answer)||wrong.some(other=>close(rounded,other)))return;
+    wrong.push(rounded);
+  };
+  for(const expression of errorCalculations(topic,level,a,b,c)){
+    add(calculate(expression));
+    if(wrong.length===2)return wrong;
+  }
+  // Coinciding values can erase a genuine error (for example, a square's area
+  // and circumference). Only then fill the remaining slots with nearby values.
+  const step=topic==='rounding'?(level===1?10:level===2?100:level===3?1:level===4?.1:.01):10**-source.decimals;
+  for(let offset=1;wrong.length<2;offset++){
+    add(calculate(`(${answer})+${step}*${offset}`));
+    if(wrong.length<2)add(calculate(`(${answer})-${step}*${offset}`));
+  }
+  return wrong;
+}
+
 export function generateExtraMath(topic,level,previous=[],random=Math.random){
   let question;
   for(let attempt=0;attempt<200;attempt++){
     const a=2+Math.floor(random()*88),b=2+Math.floor(random()*77),c=2+Math.floor(random()*19);
     const source=task(topic,level,a,b,c);
     const base=materializeQuestion({...source,distractors:[-987654321,-987654322]},level,topic+'-'+a+'-'+b+'-'+c,random);
-    const answer=base.values[base.correct],step=10**-source.decimals;
-    const wrong=[answer+Math.max(step,Math.abs(answer)*.1),answer-Math.max(step,Math.abs(answer)*.2)];
+    const answer=base.values[base.correct];
+    const wrong=distractorsFor(source,topic,level,a,b,c,answer);
     question={...materializeQuestion({...source,distractors:wrong},level,base.id,random),kind:'calculated',topic,
       why:(source.why?source.why+' ':'')+base.why};
     if(!previous.includes(question.term))return question;

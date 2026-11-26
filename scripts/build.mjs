@@ -3,7 +3,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname,resolve,join} from 'node:path';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-export const publicFiles=['index.html','styles.css','app.js','engine.js','math.js','scene.js','storage.js','codebreaker.js','football.js','favicon.svg','thumb-rescue.svg','thumb-codebreaker.svg','thumb-football.svg','language-data.js','language-pools.js','more-math.js'];
+export const publicFiles=['index.html','styles.css','app.js','engine.js','math.js','scene.js','storage.js','codebreaker.js','football.js','favicon.svg','thumb-rescue.svg','thumb-codebreaker.svg','thumb-football.svg','language-data.js','language-pools.js','more-math.js','language-levels.js','quiz-migration.js','quiz-legacy.js'];
 export async function build(output=join(root,'dist')){
   await mkdir(output,{recursive:true});
   for(const item of await readdir(output,{withFileTypes:true})){

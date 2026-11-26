@@ -286,13 +286,14 @@ import {extraMathTopics,generateExtraMath} from './more-math.js';
       validateGeneratedQuestion(question);
     } else if(question.kind==='authored'){
       const source=topics[question.topic]?.bank?.questions.find(q=>q.id===question.id);
-      if(!source||source.term!==question.term||source.level!==question.level||source.correct!==question.correct||
+      if(!source||source.term!==question.term||source.level!==question.level||source.correct!==question.correct||source.instruction!==question.instruction||source.why!==question.why||
         JSON.stringify(source.answers)!==JSON.stringify(question.answers))throw new Error('Aufgabe ist nicht im geprüften Themensatz.');
     } else validateAlgebraQuestion(question);
     return question;
   }
   function generateTopicQuestion(topic,level,previousTerms=[],random=Math.random,answerCount=3) {
     if(!topics[topic])topic='brackets';
+    answerCount=Math.min(answerCount,topics[topic].bank?.maxAnswers??3);
     if(extraMathTopics[topic])return validateQuestion(generateExtraMath(topic,level,previousTerms,random));
     if(topic==='brackets')return {...generateBracketQuestion(level,previousTerms,random),topic,kind:'algebra'};
     const integer=(min,max)=>min+Math.floor(random()*(max-min+1));

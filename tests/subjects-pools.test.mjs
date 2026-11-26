@@ -15,19 +15,21 @@ test('All sixty language pools contain fifteen distinct and balanced questions o
  assert.equal(languageBanks.length,60);
  let total=0;
  for(const bank of languageBanks){
-  const all=new Set();
+  assert.ok([2,3].includes(bank.maxAnswers),bank.id);
   for(const level of [1,3,5]){
    const pool=bank.questions.filter(q=>q.level===level);assert.equal(pool.length,15);
-   const seen=[];const positions=[0,0,0];
+   assert.equal(new Set(pool.map(q=>q.term)).size,15,bank.id+' '+level);
+   const seen=[];const positions=Array(bank.maxAnswers).fill(0);
    for(let i=0;i<15;i++){
     const q=generateTopicQuestion(bank.id,level,seen);validateQuestion(q);
-    assert.ok(!seen.includes(q.term),bank.id);seen.push(q.term);all.add(q.term);positions[q.correct]++;
+    assert.equal(q.answers.length,bank.maxAnswers,bank.id);
+    assert.ok(!seen.includes(q.term),bank.id);seen.push(q.term);positions[q.correct]++;
     const two=withAnswerCount(q,2);validateQuestion(two);assert.equal(two.answers[two.correct],q.answers[q.correct]);
     assert.ok(q.answers.every(a=>a.length<=300));assert.ok(q.why.trim());
    }
-   assert.deepEqual(positions,[5,5,5]);total+=pool.length;
+   assert.deepEqual([...positions].sort((a,b)=>a-b),bank.maxAnswers===2?[7,8]:[5,5,5],bank.id+' '+level);
+   total+=pool.length;
   }
-  assert.equal(all.size,45,bank.id);
  }
  assert.equal(total,2700);
 });

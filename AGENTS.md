@@ -21,3 +21,5 @@ Kooperatives Mathematikspiel fuer die Ausbildungsvorbereitung an der Gewerbliche
 - Node.js ab Version 22.14; bewusst keine externen Laufzeitabhaengigkeiten.
 - Vor einem Commit `npm test` ausfuehren. Bei Oberflaechenaenderungen auch Browserpruefung durchfuehren.
 - Nur dieses Spiel ist Teil des Repositories. Keine weiteren Fachbereichsdokumente hinzufuegen.
+
+- Quizfragen verlangen genau eine klar formulierte Entscheidung. Keine zwei Saetze mit kombinierten Antworten und keine wiederholten Wortformen mit verschiedenen Begruendungen als Antwortoptionen. Erklaerungen stehen in der Loesung. Bei binaeren Schreibentscheidungen nur zwei echte Alternativen anbieten; keine erfundenen dritten Schreibweisen. Ausgewogene richtige Antwortpositionen erhalten. Alte Sprachfragen nur bei exakt gepruefter Herkunft migrieren; absolvierte Spielrunden und Tore behalten.
