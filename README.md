@@ -51,7 +51,7 @@ Die Begrenzung der KI-Anfragen gilt pro laufender Funktionsinstanz und ersetzt k
 ## Enthalten
 
 - Vier animierte Situationen: auf dem Gleis, am Felsen, dünnes Eis und im All.
-- Neun Themen mit zufällig erzeugten, rechnerisch geprüften Aufgaben: Klammern, Terme, Kopfrechnen, Längen, Flächenmaße, Flächeninhalte, Umfang, Prozentrechnen und Brüche.
+- Fächerwahl mit je 30 eingebauten Themen für Mathematik, Deutsch und Englisch. Die eingebauten Themen funktionieren ohne API-Schlüssel. Deutsch und Englisch enthalten je 1 350 feste Aufgaben, jeweils 15 auf A-, B- und C-Niveau pro Thema. Mathematik verwendet geprüfte Aufgaben-Generatoren.
 - Fünf Schwierigkeitsstufen. Die Auswahl A/B/C legt den Einstieg fest; „Leichter“ und „Schwerer“ steuern feiner nach. Die Bezeichnungen sind didaktische Stufen und keine vollständige Bildungsplanzuordnung.
 - 1 bis 30 Fragen und 1 bis 40 Lernende. Die Stimmen werden von der Lehrkraft eingetragen.
 - Lösungen nach der Auflösung und ein gespeicherter Spielstand im verwendeten Browser.
@@ -84,13 +84,13 @@ Der gesamte freigegebene Vorrat und die aktuelle Position darin werden mit dem S
 4. „Eigenes Thema mit KI …“ auswählen, Inhalt und Grenzen beschreiben und die Aufgaben erstellen lassen.
 5. Die Vorschau prüfen und mit **Freigeben und starten** übernehmen.
 
-Der Schlüssel bleibt auf dem Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt normalerweise zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Bei beanstandeten Aufgaben erfolgt einmalig eine gezielte automatische Korrektur; insgesamt sind höchstens vier API-Anfragen nötig. Bleibt ein Problem bestehen, zeigt die App die konkreten Prüfhinweise an. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
+Der Schlüssel bleibt auf dem Server. `.env` und die gespeicherten Aufgabensätze unter `data/` sind von Git ausgeschlossen. Eine Generierung benötigt normalerweise zwei API-Anfragen: Erstellung und fachliche Gegenprüfung. Aufgabensätze werden in Teilmengen von höchstens acht Fragen erstellt und einzeln fachlich beurteilt. Nur beanstandete Fragen werden bis zu zweimal neu erstellt; bereits bestätigte Fragen bleiben erhalten. Die Zahl der API-Anfragen hängt von Satzgröße und Korrekturen ab. Bleibt ein Problem bestehen, zeigt die App die konkreten Prüfhinweise an. Dabei entstehen Kosten im eigenen API-Konto. Thema und Hinweise werden an OpenAI gesendet; Namen oder einzelne Schülerantworten werden dafür nicht benötigt. `store: false` ist gesetzt.
 
-Die App berechnet die Lösungen aus einer eingeschränkten mathematischen Ausdruckssprache selbst. Sie akzeptiert nur genau drei verschiedene numerische Antworten und prüft die Zuordnung. Ein zweiter KI-Aufruf prüft, ob Text, Rechnung und Niveau zusammenpassen. Die Freigabe durch die Lehrkraft bleibt nötig: Diese Prüfungen garantieren keine vollständige Fehlerfreiheit.
+Bei Rechenaufgaben berechnet die App die Lösungen aus einer eingeschränkten mathematischen Ausdruckssprache selbst. Sprachaufgaben akzeptieren Wörter und vollständige Sätze mit zwei oder drei Antwortmöglichkeiten. Eine unabhängige zweite Prüfung beurteilt jede Aufgabe fachlich. Unvollständige Prüfantworten und ungelöste fachliche Probleme verhindern die Freigabe. Die abschließende Sichtung und Freigabe durch die Lehrkraft bleiben erhalten.
 
 Eigene KI-Themen erzeugen zunächst Aufgaben auf der ausgewählten Stufe. Wird später eine noch fehlende Stufe angefordert, erstellt die App dazu weitere Aufgaben und zeigt erneut die Vorschau. Freigegebene Themen werden auf diesem Rechner gespeichert. Die KI-Funktion ist ohne einen gültigen Schlüssel noch nicht aktiv; alle eingebauten Themen funktionieren ohne Schlüssel.
 
-Die KI erstellt derzeit rechnerische Aufgaben mit numerischen Antworten. Bei Variablen werden dafür Termwerte verwendet. Freie Textantworten, Bildaufgaben und eine Abstimmung über Schülerhandys sind noch keine Funktionen dieser Fassung.
+Deutsch und Englisch wählen bei KI-Anfragen automatisch das Textformat. Mathematik unterstützt Rechenaufgaben und bei Bedarf Textfragen. Die Antworten werden weiterhin ausgewählt; freie Texteingaben durch Lernende und eine Abstimmung über Schülerhandys sind nicht Bestandteil der Spiele.
 
 ## Entwicklung
 
@@ -112,3 +112,22 @@ Der Server bindet ausschließlich an `127.0.0.1`. Er akzeptiert nur lokale Hostn
 Die API-Anbindung orientiert sich am [OpenAI-Quickstart](https://developers.openai.com/api/docs/quickstart) und an der [Dokumentation zu Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Das Modell ist über `OPENAI_MODEL` konfigurierbar.
 
 Eigene KI-Themen unterstützen Zahlen oder Text und Sprache, zum Beispiel das/dass-Sätze. Für Rettungseinsatz und Codeknacker sind zwei oder drei Antwortmöglichkeiten wählbar. Auch Textaufgaben durchlaufen die unabhängige fachliche Prüfung und die Freigabe der Lehrkraft. Alte Boot-Spielstände wechseln bei erhaltenem Fortschritt zum Gleis.
+
+
+## Fächer und Bildungsplanbezug
+
+Die Themenauswahl orientiert sich an den veröffentlichten AV/AVdual-Bildungsplänen Baden-Württemberg, Fassung vom 21.02.2025. Die Fragen sind eigene Unterrichtsbeispiele. Die Spielstufen unterstützen A/B/C; sie bilden keine vollständige Prüfung oder Zertifizierung aller Kompetenzen ab. Sprechen, Schreiben eigener längerer Texte und Hörverstehen brauchen ergänzende Unterrichtsformen.
+
+- [Deutsch, AV/AVdual](https://bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents_E-588220024/lsbw/Bildungsplaene-BERS/bs/ausbildungsvorbereitung/BS_AVdual_AV_Deutsch_2024_final_11032025.pdf): Sprachliche Übungen und Kommunikation sowie Literatur und Medien. Der Pool greift insbesondere Sprachrichtigkeit, berufliche Texte, Argumentation und Informationen aus Texten auf.
+- [Englisch, AV/AVdual](https://bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents_E1158097852/lsbw/Bildungsplaene-BERS/bs/ausbildungsvorbereitung/BS_AVdual_AV_Englisch_2024_final_11032025.pdf): Kommunikative Kompetenz, alltags- und berufsbezogene Situationen sowie sprachliche Mittel. Wortschatz, Grammatik und das Verstehen kurzer Mitteilungen werden verknüpft.
+- [Mathematik, AV/AVdual](https://bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents_E-705329807/lsbw/Bildungsplaene-BERS/bs/ausbildungsvorbereitung/BS_AVdual_AV_Mathematik_2024_final_11032025.pdf): Zahl und Operation, Messen, Raum und Form, funktionale Zusammenhänge und Datenauswertung. Spezifische Spielthemen untergliedern die breiteren Bildungsplankompetenzen.
+
+Für Sprachregeln wurden außerdem das [Amtliche Regelwerk 2024 beim IDS](https://grammis.ids-mannheim.de/rechtschreibung) und die [Grammatikreferenz des British Council](https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference) herangezogen. Die Aufgaben wurden nicht aus diesen Quellen kopiert.
+
+Die Sprachpools enthalten 15 verschiedene Grundsituationen pro Thema. A lässt erkennen oder ergänzen, B verlangt die Anwendung beziehungsweise eine Begründung oder Rückübersetzung, C verbindet zwei Entscheidungen oder prüft Auswahl und Begründung. Die Lösungspositionen sind gleichmäßig verteilt. Die Zwischenstufen 2 und 4 verwenden dieselben Grundpools; „Leichter“ und „Schwerer“ wechseln bei den festen Sprachpools direkt zwischen A, B und C.
+
+**Deutsch – 30 Themen:** das oder dass; Groß- und Kleinschreibung; Nominalisierungen; seit oder seid; s, ss und ß; Lange Vokale und ie; Doppelte Konsonanten; Getrennt- und Zusammenschreibung; Kommas bei Nebensätzen; Kommas in Aufzählungen; Wörtliche Rede; Wortarten erkennen; Zeitformen im Deutschen; Subjekt und Prädikat; Die vier Fälle; Pronomen und Bezüge; Synonyme im Kontext; Gegensätze und Wortbedeutungen; Sätze sinnvoll verbinden; Hauptsatz und Nebensatz; Höflich bitten und nachfragen; Gesprächsregeln und Feedback; E-Mails und Geschäftsbriefe; Bewerbung und Lebenslauf; Vorgänge und Anleitungen beschreiben; Sachlich berichten und dokumentieren; Behauptung, Begründung und Beispiel; Sachtexte und Arbeitsaufträge verstehen; Medien und Quellen prüfen; Erzähltexte verstehen.
+
+**Englisch – 30 Themen:** Familie und Beziehungen; Freizeit und Hobbys; Essen und Getränke; Kleidung und Einkaufen; Schule und Lernen; Werkzeuge und Werkstatt; Berufe und Arbeitswelt; Gesundheit und Arztbesuch; Sich vorstellen und persönliche Angaben; Zahlen und Preise verstehen; Uhrzeiten und Termine; Tagesabläufe beschreiben; Wegbeschreibungen und Verkehr; Sicherheitshinweise verstehen; Bewerbung und Praktikum auf Englisch; Höfliche Fragen und Bitten auf Englisch; E-Mails und kurze Nachrichten auf Englisch; Aushänge und kurze Texte verstehen; Simple present; Present progressive; Simple past mit regelmäßigen Verben; Unregelmäßige Verben im simple past; Zukunft mit will; Personalpronomen; Besitz und Zugehörigkeit; Präpositionen für Ort und Zeit; Fragen bilden; Verneinungen; Adjektive vergleichen; Können, müssen und sollen.
+
+**Mathematik – 30 Themen:** Plusklammer und Minusklammer; Variablen und Terme; Kopfrechnen; Längen umrechnen; Flächenmaße umrechnen; Flächeninhalte; Umfang und Kreisumfang; Prozentrechnen; Brüche; Zahlen runden; Zahlen vergleichen; negative Zahlen; Dezimalzahlen multiplizieren; Dividieren und verteilen; Punkt vor Strich; Potenzen und Quadratzahlen; fehlende Zahlen und lineare Gleichungen; Verhältnisse und Mischungen; Zinsen; Zeiten; Massen; Volumenmaße; Volumen von Würfel und Quader; Oberfläche von Würfel und Quader; Dreiecksflächen; Kreisflächen; Prismen und Zylinder; Maßstab; Mittelwerte; Daten auswerten.

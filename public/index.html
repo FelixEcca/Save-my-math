@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#173e52">
-<title>Save my Math · Mathematik im AV</title>
-<meta name="description" content="Mathe im AV: Rettungseinsatz, Codeknacker und Mathe-Fußball mit eigenen Themen und drei Niveaus.">
+<title>Save my Math · Mathematik · Deutsch · Englisch im AV</title>
+<meta name="description" content="Mathematik, Deutsch und Englisch im AV: Rettungseinsatz, Codeknacker und Mathe-Fußball mit eigenen Themen und drei Niveaus.">
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="module" src="/app.js"></script>
 </head>
 <body><main>
 <section class="game-hub" id="game-hub" aria-labelledby="hub-title">
-  <header class="hub-top"><a href="#" class="hub-brand" data-game-nav>Save my Math<span class="hub-brand-dot" aria-hidden="true"></span></a><span class="hub-context">Mathematik im AV</span></header>
-  <div class="hub-intro"><p class="hub-eyebrow">Gemeinsam rechnen. Gemeinsam spielen.</p><h1 id="hub-title" tabindex="-1">Welches Spiel spielt ihr heute?</h1><p>Wähle ein Spiel. Das Thema und das Niveau legst du danach fest.</p></div>
+  <header class="hub-top"><a href="#" class="hub-brand" data-game-nav>Save my Math<span class="hub-brand-dot" aria-hidden="true"></span></a><span class="hub-context">Mathematik · Deutsch · Englisch im AV</span></header>
+  <div class="hub-intro"><p class="hub-eyebrow">Gemeinsam rechnen. Gemeinsam spielen.</p><h1 id="hub-title" tabindex="-1">Welches Spiel spielt ihr heute?</h1><p>Wähle ein Spiel. Fach, Thema und Niveau legst du danach fest.</p></div>
   <a class="hub-resume" id="hub-resume" href="#weiter" data-game-nav hidden><div><span class="hub-resume-label">Dein laufendes Spiel</span><strong id="hub-resume-name"></strong><span id="hub-resume-topic"></span></div><span class="hub-resume-action">Fortsetzen</span></a>
   <div class="hub-games" aria-label="Drei Spiele zur Auswahl">
     <a class="hub-game-card hub-rescue" href="#spiel=rescue" data-game-nav aria-labelledby="hub-rescue-title">
@@ -29,7 +29,7 @@
       <div class="hub-game-copy"><span class="hub-game-type">Zwei Teams</span><h2 id="hub-football-title">Mathe-Fußball</h2><p>Blau gegen Rot: Rechnet, lost Trikotnummern aus und spielt den Ball bis ins gegnerische Tor.</p><span class="hub-game-action">Spiel auswählen</span></div>
     </a>
   </div>
-  <p class="hub-footer">Alle Spiele nutzen dieselbe Themenwahl mit den Niveaus A, B und C. Eigene Themen kannst du mit KI vorbereiten.</p>
+  <p class="hub-footer">Alle Spiele nutzen dieselbe Fächer- und Themenwahl mit den Niveaus A, B und C. Eigene Themen kannst du mit KI vorbereiten.</p>
 </section>
 <section id="av-rescue-preview" aria-label="Mathematikspiele für die Klasse" hidden>
   <header class="rs-top">
@@ -53,9 +53,13 @@
       <label class="rs-field rs-field-wide" for="game-mode">Spiel
         <select id="game-mode"><option value="rescue">Rettungseinsatz · gemeinsam retten</option><option value="codebreaker">Codeknacker · vier Teams am Safe</option><option value="football">Mathe-Fußball · Blau gegen Rot</option></select>
       </label>
+      <label class="rs-field" for="rescue-subject">Fach
+        <select id="rescue-subject"><option value="math">Mathematik</option><option value="german">Deutsch</option><option value="english">Englisch</option><option value="other">Weitere Fächer</option></select>
+      </label>
       <label class="rs-field rs-field-wide" for="rescue-topic">Thema
         <select id="rescue-topic" aria-label="Thema auswählen"></select>
       </label>
+      <p class="rs-setup-note rs-field-wide" id="rescue-pool-note"></p>
       <div class="rs-custom-fields rs-field-wide" id="rescue-custom-fields" hidden>
         <label class="rs-field" for="rescue-custom-topic">Eigenes Thema
           <input id="rescue-custom-topic" type="text" maxlength="120" placeholder="Zum Beispiel: Volumen von Würfel und Quader">
@@ -173,6 +177,9 @@
     <details class="fb-plan" id="football-plan" hidden>
       <summary>Neuen Aufgabenvorrat vorbereiten</summary>
       <div class="rs-setup-grid">
+        <label class="rs-field" for="football-subject">Fach
+          <select id="football-subject"><option value="math">Mathematik</option><option value="german">Deutsch</option><option value="english">Englisch</option><option value="other">Weitere Fächer</option></select>
+        </label>
         <label class="rs-field" for="football-topic">Thema
           <select id="football-topic"></select>
         </label>

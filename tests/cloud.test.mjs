@@ -1,3 +1,4 @@
+import {reviewBody} from './ai-fixtures.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,readFile,readdir,rm} from 'node:fs/promises';
@@ -41,7 +42,7 @@ test('Teacher sessions unlock generation, use secure cookies and reveal no crede
  const fetchImpl=async(_url,options)=>{
   calls++;return apiResponse(JSON.parse(options.body).text.format.name==='av_questions'?{questions:[
    {prompt:'Ein Rechteck ist 6 cm lang und 4 cm breit. Wie groß ist seine Fläche?',instruction:'Berechne die Fläche.',calculation:'6*4',decimals:0,unit:'cm²',distractors:[20,10]}
-  ]}:{valid:true,issues:[]});
+  ]}:reviewBody(JSON.parse(options.body)));
  };
  const handler=createCloudHandler({apiKey:'test-only-secret',password,fetchImpl});
  const login=await handler(req('session','POST',{password}),'session');

@@ -1,3 +1,4 @@
+import {reviewBody} from './ai-fixtures.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,rm} from 'node:fs/promises';
@@ -14,7 +15,7 @@ function fakeAI(review={valid:true,issues:[]}){
  const calls=[];
  const fetchImpl=async(url,init)=>{
   const body=JSON.parse(init.body);calls.push({url,body,headers:init.headers});
-  return response(body.text.format.name==='av_questions'?{questions:raw}:review);
+  return response(body.text.format.name==='av_questions'?{questions:raw.slice(0,JSON.parse(body.input).count)}:reviewBody(body,review.valid,review.issues));
  };
  return {fetchImpl,calls};
 }
@@ -62,19 +63,19 @@ test('A mathematically invalid batch is corrected once and independently reviewe
  const calls=[];
  const fetchImpl=async(_url,options)=>{
   const body=JSON.parse(options.body);calls.push(body);
-  if(body.text.format.name==='av_question_review')return response({valid:true,issues:[]});
-  const questions=structuredClone(raw);
+  if(body.text.format.name==='av_question_review')return response(reviewBody(body));
+  const questions=structuredClone(raw).slice(0,JSON.parse(body.input).count);
   if(calls.length===1)questions[0].distractors[0]=60;
   return response({questions});
  };
  const bank=await generateBank(request,{apiKey:'test-only',model:'example',fetchImpl});
- assert.equal(bank.questions.length,2);assert.equal(calls.length,3);
- assert.match(JSON.parse(calls[1].input).validationFeedback,/eindeutig/);
- assert.equal(calls[2].text.format.name,'av_question_review');
+ assert.equal(bank.questions.length,2);assert.equal(calls.length,4);
+ assert.match(JSON.parse(calls[2].input).validationFeedback,/eindeutig/);
+ assert.equal(calls[3].text.format.name,'av_question_review');
  let attempts=0;
  const alwaysInvalid=async()=>{attempts++;return response({questions:raw.map(q=>({...q,calculation:'1/0'}))});};
- await assert.rejects(()=>generateBank(request,{apiKey:'test-only',model:'example',fetchImpl:alwaysInvalid}),/automatischen Korrektur/);
- assert.equal(attempts,2);
+ await assert.rejects(()=>generateBank(request,{apiKey:'test-only',model:'example',fetchImpl:alwaysInvalid}),/gezielter Korrektur/);
+ assert.equal(attempts,3);
 });
 test('Review findings guide one correction and remain visible if unresolved',async()=>{
  const calls=[];let reviews=0;
@@ -82,14 +83,14 @@ test('Review findings guide one correction and remain visible if unresolved',asy
   const body=JSON.parse(options.body);calls.push(body);
   if(body.text.format.name==='av_questions')return response({questions:raw});
   reviews++;
-  return response(reviews===1?{valid:false,issues:['Frage 1: Die angegebene Länge passt nicht zur Rechnung.']}:{valid:true,issues:[]});
+  return response(reviews===1?reviewBody(body,false,['Frage 1: Die angegebene Länge passt nicht zur Rechnung.']):reviewBody(body));
  };
  const bank=await generateBank(request,{apiKey:'test-only',model:'example',fetchImpl});
  assert.equal(bank.questions.length,2);assert.equal(calls.length,4);assert.equal(reviews,2);
  assert.match(JSON.parse(calls[2].input).validationFeedback,/Frage 1/);
  const secret='test-only-secret';
  const invalidReview=async(_url,options)=>response(JSON.parse(options.body).text.format.name==='av_questions'?{questions:raw}:
-  {valid:false,issues:['Frage 2: Die Einheit passt nicht. '+secret]});
+  reviewBody(JSON.parse(options.body),false,['Frage 2: Die Einheit passt nicht. '+secret]));
  await assert.rejects(()=>generateBank(request,{apiKey:secret,model:'example',fetchImpl:invalidReview}),error=>{
   assert.match(error.message,/Gegenprüfung/);assert.match(error.message,/Frage 2: Die Einheit passt nicht/);
   assert.ok(!error.message.includes(secret));return true;

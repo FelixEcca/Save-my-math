@@ -57,7 +57,7 @@ export function createCloudHandler({apiKey=process.env.OPENAI_API_KEY||'',model=
       if(endpoint==='banks'&&request.method==='POST'){
         const bank=await readJSON(request,600000);
         try{registerCustomBank(bank);}catch(_){throw new AppError(400,'Dieser Aufgabensatz ist ungültig.');}
-        return reply(200,{bank:{id:bank.id,label:bank.label,notes:String(bank.notes||'').slice(0,600),levels:bank.levels,
+        return reply(200,{bank:{id:bank.id,label:bank.label,subject:bank.subject,answerFormat:bank.answerFormat,answerCount:bank.answerCount,notes:String(bank.notes||'').slice(0,600),levels:bank.levels,
           questions:bank.questions,approvedAt:new Date().toISOString()},storageMode:'browser'});
       }
       if(endpoint==='generate'&&request.method==='POST'){

@@ -1,3 +1,4 @@
+import {reviewBody} from './ai-fixtures.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -42,14 +43,14 @@ test('Language generation uses text schemas and independent subject review for t
   const calls=[];
   const fetchImpl=async(_url,options)=>{
    const body=JSON.parse(options.body);calls.push(body);
-   if(body.text.format.name==='av_question_review')return response({valid:true,issues:[]});
+   if(body.text.format.name==='av_question_review')return response(reviewBody(body));
    return response({questions:[{...raw,answers:answerCount===2?raw.answers:['das','dass','denn']}]});
   };
   const bank=await generateBank({topic:'Deutsch: das oder dass',level:1,count:1,answerFormat:'text',answerCount},
    {apiKey:'test-only',model:'example',fetchImpl});
   assert.equal(bank.questions[0].answers.length,answerCount);
   assert.equal(bank.questions[0].answers[bank.questions[0].correct],'dass');
-  assert.equal(calls.length,2);assert.match(calls[1].instructions,/Textantworten sind ausdrücklich erlaubt/);
+  assert.equal(calls.length,2);assert.match(calls[1].instructions,/Textantworten sind erlaubt/);
   assert.equal(calls[0].text.format.schema.properties.questions.items.properties.answers.minItems,answerCount);
   registerCustomBank(bank);
  }
@@ -62,9 +63,9 @@ test('Ambiguous language tasks stay blocked after an unsuccessful correction',as
  const fetchImpl=async(_url,options)=>{
   const body=JSON.parse(options.body);
   if(body.text.format.name==='av_questions')return response({questions:[raw]});
-  reviews++;return response({valid:false,issues:['Frage 1: Ohne Satzkontext sind zwei Antworten möglich.']});
+  reviews++;return response(reviewBody(body,false,['Frage 1: Ohne Satzkontext sind zwei Antworten möglich.']));
  };
  await assert.rejects(()=>generateBank({topic:'das oder dass',level:1,count:1,answerFormat:'text',answerCount:2},
   {apiKey:'test-only',model:'example',fetchImpl}),/Gegenprüfung/);
- assert.equal(reviews,2);
+ assert.equal(reviews,3);
 });

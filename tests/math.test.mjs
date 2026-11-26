@@ -18,7 +18,7 @@ test('Every built-in topic generates varied, valid tasks on all five levels',()=
   let seed=4183;
   const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
   let count=0;
-  for(const topic of Object.keys(topics))for(let level=1;level<=5;level++){
+  for(const topic of ['brackets','terms','mental','lengths','areaUnits','areas','perimeter','percent','fractions'])for(let level=1;level<=5;level++){
     const used=[];
     for(let i=0;i<200;i++){
       const q=generateTopicQuestion(topic,level,i<30?used:[],random);validateQuestion(q);

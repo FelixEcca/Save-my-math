@@ -1,4 +1,6 @@
 import { validateGeneratedQuestion } from './math.js';
+import {languageBanks,bankSubject} from './language-pools.js';
+import {extraMathTopics,generateExtraMath} from './more-math.js';
   // QUESTION_ENGINE_START
   const bracketLevels = ['Zahlenklammern', 'Eine Variable', 'Terme zusammenfassen', 'Mehrere Klammern', 'Zwei Variablen'];
   const variableNames = ['x', 'a', 'b'];
@@ -174,7 +176,7 @@ import { validateGeneratedQuestion } from './math.js';
 
   // TOPIC_ENGINE_START
   // Custom topics are authored in the chat and embedded here, never executed as code.
-  const customTopicBanks = [];
+  const customTopicBanks = languageBanks;
   const topics = {
     brackets:{label:'Plusklammer und Minusklammer',levels:bracketLevels,instruction:'Vereinfache den Term.'},
     terms:{label:'Variablen und Terme',levels:['Gleiche Variablen','Mit Zahlen','Vorzeichen','Zwei Variablen','Mehrere Termteile'],instruction:'Fasse den Term zusammen.'},
@@ -186,15 +188,17 @@ import { validateGeneratedQuestion } from './math.js';
     percent:{label:'Prozentrechnen',levels:['10 %, 25 % und 50 %','Prozentwert','Rabatt','Grundwert','Prozentsatz'],instruction:'Berechne die gesuchte Größe.'},
     fractions:{label:'Brüche',levels:['Anteile','Gleicher Nenner','Verschiedene Nenner','Brüche multiplizieren','Brüche und ganze Zahlen'],instruction:'Berechne das Ergebnis.'}
   };
+  for(const topic of Object.values(topics)){topic.subject='math';topic.builtin=true;}
+  Object.assign(topics,extraMathTopics);
   for(const bank of customTopicBanks) {
     if(bank&&/^[a-z][a-z0-9-]{0,40}$/.test(bank.id)&&typeof bank.label==='string'&&
        Array.isArray(bank.questions)&&bank.questions.length) {
       topics[bank.id]={label:bank.label,levels:bank.levels||['Einstieg','Grundlagen','Anwenden','Vertiefen','Herausforderung'],
-        instruction:bank.instruction||'Wähle die richtige Antwort.',bank};
+        instruction:bank.instruction||'Wähle die richtige Antwort.',subject:bank.subject,builtin:true,availableLevels:bank.availableLevels,curriculum:bank.curriculum,bank};
     }
   }
   function registerCustomBank(bank) {
-    if(!bank || !/^ai-[a-f0-9-]{36}$/.test(bank.id) || typeof bank.label!=='string' ||
+    if(!bank || (bank.subject!==undefined&&!['math','german','english','other'].includes(bank.subject))|| !/^ai-[a-f0-9-]{36}$/.test(bank.id) || typeof bank.label!=='string' ||
        !bank.label.trim() || bank.label.length>120 || !Array.isArray(bank.levels) || bank.levels.length!==5 ||
        !bank.levels.every(v=>typeof v==='string'&&v.length<80) || !Array.isArray(bank.questions) ||
        bank.questions.length<1 || bank.questions.length>300)throw new Error('Ungültiger Aufgabensatz.');
@@ -204,7 +208,7 @@ import { validateGeneratedQuestion } from './math.js';
       if(seen.has(question.id))throw new Error('Doppelte Aufgabenkennung.');
       seen.add(question.id);
     }
-    topics[bank.id]={label:bank.label,levels:bank.levels,instruction:'Wähle die richtige Antwort.',bank};
+    topics[bank.id]={label:bank.label,levels:bank.levels,instruction:'Wähle die richtige Antwort.',subject:bankSubject(bank),bank};
     return bank;
   }
   const rounded=value=>Number(value.toPrecision(14));
@@ -278,7 +282,7 @@ import { validateGeneratedQuestion } from './math.js';
          !question.values.every(Number.isFinite)||question.values.filter(v=>sameNumber(v,answer)).length!==1||
          !sameNumber(question.values[question.correct],answer)||
          !question.answers.every((a,i)=>a===numberText(question.values[i])+(question.unit?' '+question.unit:'')))throw new Error('Lösung passt nicht zur Rechnung.');
-    } else if(['ai-numeric','ai-text'].includes(question.kind)){
+    } else if(['ai-numeric','ai-text','calculated'].includes(question.kind)){
       validateGeneratedQuestion(question);
     } else if(question.kind==='authored'){
       const source=topics[question.topic]?.bank?.questions.find(q=>q.id===question.id);
@@ -289,6 +293,7 @@ import { validateGeneratedQuestion } from './math.js';
   }
   function generateTopicQuestion(topic,level,previousTerms=[],random=Math.random,answerCount=3) {
     if(!topics[topic])topic='brackets';
+    if(extraMathTopics[topic])return validateQuestion(generateExtraMath(topic,level,previousTerms,random));
     if(topic==='brackets')return {...generateBracketQuestion(level,previousTerms,random),topic,kind:'algebra'};
     const integer=(min,max)=>min+Math.floor(random()*(max-min+1));
     const pick=items=>items[integer(0,items.length-1)];
