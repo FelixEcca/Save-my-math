@@ -25,7 +25,7 @@ const textGenerationSchema=answerCount=>object({questions:{type:'array',items:ob
 const reviewSchema=object({results:{type:'array',items:object({index:{type:'integer',minimum:1,maximum:30},valid:{type:'boolean'},reason:string})}});
 
 export function validateRequest(input){
-  if(!input|| (input.subject!==undefined&&!['math','german','english','other'].includes(input.subject))|| (input.answerCount!==undefined&&![2,3].includes(input.answerCount))||
+  if(!input|| (input.reserve!==undefined&&typeof input.reserve!=='boolean')|| (input.subject!==undefined&&!['math','german','english','other'].includes(input.subject))|| (input.answerCount!==undefined&&![2,3].includes(input.answerCount))||
      (input.answerFormat!==undefined&&!['numeric','text'].includes(input.answerFormat))||typeof input.topic!=='string'||!input.topic.trim()||input.topic.length>120||
      (input.notes!==undefined&&(typeof input.notes!=='string'||input.notes.length>600))||
      !Number.isInteger(input.level)||input.level<1||input.level>5||
@@ -34,7 +34,7 @@ export function validateRequest(input){
        !input.exclude.every(s=>typeof s==='string'&&s.length<=260))))throw new AppError(400,'Prüfe Thema, Niveau und Fragenzahl.');
   const inferred=/deutsch|das.{0,6}dass|groß.{0,8}klein|rechtschreibung|kommasetzung/i.test(input.topic)?'german':/englisch|english|simple present|simple past/i.test(input.topic)?'english':null;
   const subject=input.subject??inferred??'math';
-  return {subject,topic:input.topic.trim(),notes:(input.notes||'').trim(),level:input.level,count:input.count,exclude:input.exclude||[],
+  return {subject,topic:input.topic.trim(),notes:(input.notes||'').trim(),level:input.level,count:input.count+(input.reserve?3:0),targetCount:input.count,reserveCount:input.reserve?3:0,exclude:input.exclude||[],
     answerCount:input.answerCount??(['german','english'].includes(subject)?2:3),
     answerFormat:['german','english'].includes(subject)?'text':input.answerFormat??'numeric'};
 }
@@ -180,6 +180,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
     }
   }
   return {id:'ai-'+randomUUID(),label:request.topic,subject:request.subject,notes:request.notes,
+    targetCount:request.targetCount,reserveCount:request.reserveCount,
     levels:['Einstieg','Grundlagen','Anwenden','Vertiefen','Herausforderung'],questions:accepted,
     answerFormat:request.answerFormat,answerCount:request.answerCount,createdAt:new Date().toISOString(),reviewed:true,
     quality:{corrected:correctionCount,rounds:requestRounds}};

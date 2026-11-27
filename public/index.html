@@ -39,11 +39,12 @@
   <p class="rs-notice" id="rescue-notice" role="status" aria-live="polite" hidden></p>
   <section class="rs-review" id="rescue-review" aria-labelledby="rescue-review-title" hidden>
     <h3 id="rescue-review-title">Aufgaben prüfen</h3>
-    <p class="rs-setup-note" id="rescue-review-summary"></p>
+    <p class="rs-setup-note" id="rescue-review-summary" role="status" aria-live="polite"></p>
     <p class="rs-setup-note" id="rescue-review-note">Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.</p>
     <div id="rescue-review-list"></div>
     <div class="rs-setup-actions">
       <button class="rs-main-action" id="rescue-approve" type="button">Freigeben und starten</button>
+      <button id="rescue-more-reserve" type="button" hidden>Reserve ergänzen</button>
       <button id="rescue-discard" type="button">Zurück</button>
     </div>
   </section>

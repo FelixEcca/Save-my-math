@@ -112,6 +112,10 @@ a[data-game-nav][aria-disabled="true"] { opacity:.45; pointer-events:none; }
     #av-rescue-preview .rs-review h3 { font-size: 20px; font-weight: 500; }
     #av-rescue-preview .rs-review details { border-top: 1px solid var(--rs-line); padding: 14px 0; }
     #av-rescue-preview .rs-review summary { cursor: pointer; line-height: 1.5; }
+    #av-rescue-preview .rs-review .rs-editable-question { display:flex; align-items:flex-start; gap:12px; }
+    #av-rescue-preview .rs-review-question { flex:1; min-width:0; overflow-wrap:anywhere; }
+    #av-rescue-preview .rs-remove-question { flex:0 0 40px; min-height:40px; padding:3px; font-size:26px; line-height:1; border-color:var(--rs-danger); color:var(--rs-danger); }
+    #av-rescue-preview .rs-reserve-badge { display:inline-block; padding:2px 7px; border:1px solid var(--rs-line); border-radius:6px; font-size:12px; font-weight:400; }
     #av-rescue-preview .rs-review ol { margin: 12px 0; padding-left: 24px; }
     #av-rescue-preview .rs-review li { padding: 4px 0; }
     #av-rescue-preview .rs-review .is-right { color: var(--rs-green); font-weight: 600; }

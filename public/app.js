@@ -537,6 +537,7 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-play').hidden=setupOpen||Boolean(pendingReview);
     byId('rescue-review').hidden=!pendingReview;
     byId('rescue-open-setup').hidden=setupOpen||Boolean(pendingReview);
+    if(pendingReview)reviewStatus();
     if(!draft)return;
     const custom=draft.topic==='custom';
     byId('rescue-answer-count-field').hidden=football;byId('rescue-answer-count').disabled=football;
@@ -592,21 +593,53 @@ const byId=id=>root.querySelector('#'+id);
     request={subject:context.settings?.subject??context.plan?.subject??topics[context.topicId]?.subject??state.subject??'math',answerCount:context.settings?.answerCount??state.answerCount??3,answerFormat:context.settings?.answerFormat??context.plan?.answerFormat??bankFormat(topics[context.topicId]?.bank),...request};
     busy=true;setupError='';notice='Die KI erstellt und prüft die Aufgaben. Das kann einen Moment dauern.';render();
     try{
-      const {bank}=await api('/api/generate',{method:'POST',body:JSON.stringify(request)});
-      pendingReview={...context,bank};
+      const {bank}=await api('/api/generate',{method:'POST',body:JSON.stringify({...request,reserve:true})});
+      pendingReview={...context,bank,targetCount:request.count,request};
       buildReview(bank);notice='';
     }catch(error){notice=error.message;if(setupOpen)setupError=error.message;}
     finally{busy=false;render();}
   }
+  function reviewStatus(){
+    const review=pendingReview;if(!review)return;
+    const target=review.targetCount??review.bank.questions.length;
+    const available=review.bank.questions.length,missing=Math.max(0,target-available);
+    const football=review.mode==='football-batch'||review.settings?.mode==='football';
+    byId('rescue-approve').disabled=busy||missing>0||available===0;
+    byId('rescue-approve').textContent=target+' Aufgaben freigeben und starten';
+    byId('rescue-more-reserve').hidden=!review.request;
+    byId('rescue-more-reserve').disabled=busy;
+    byId('rescue-review-summary').textContent=review.bank.label+' · '+target+' fürs Spiel · '+Math.max(0,available-target)+' Reserve · '+available+' vorhanden';
+    byId('rescue-review-note').textContent=(review.request?'Entferne ungeeignete Fragen mit ×. Die ersten '+target+' verbleibenden Fragen werden übernommen. ':'Prüfe die Aufgaben vor dem Einsatz. ')+(missing?'Es fehlen noch '+missing+' Fragen. Ergänze die Reserve. ': '')+(football?'Unter „Lösung prüfen“ kannst du die Lösungen einblenden.':'Die Lösungen sind in dieser Vorschau für dich sichtbar.');
+  }
+  async function addReserve(){
+    const review=pendingReview;if(busy||!review?.request)return;
+    const count=Math.max(1,review.targetCount-review.bank.questions.length);
+    busy=true;notice='Die KI erstellt weitere Fragen. Deine Auswahl bleibt erhalten.';render();
+    try{
+      const {bank}=await api('/api/generate',{method:'POST',body:JSON.stringify({...review.request,count,reserve:true,exclude:[...(review.request.exclude||[]),...review.bank.questions.map(q=>q.term)].slice(-60)})});
+      review.bank={...review.bank,questions:[...review.bank.questions,...bank.questions]};
+      buildReview(review.bank);notice='';
+    }catch(error){notice=error.message;}
+    finally{busy=false;render();}
+  }
   function buildReview(bank){
     const football=pendingReview.mode==='football-batch'||pendingReview.settings?.mode==='football';
-    byId('rescue-approve').textContent=football?bank.questions.length+' Aufgaben freigeben und starten':'Freigeben und starten';
-    byId('rescue-review-note').textContent=football?'Prüfe den gesamten Aufgabenvorrat vor dem Einsatz. Unter „Lösung prüfen“ kannst du die Lösungen einblenden.':'Prüfe die Aufgaben vor dem Einsatz. Die Lösungen sind in dieser Vorschau für dich sichtbar.';
-    byId('rescue-review-summary').textContent=bank.label+' · '+bank.questions.length+' Aufgaben · Stufe '+bank.questions[0].level;
     const list=byId('rescue-review-list');list.replaceChildren();
     for(const [index,q] of bank.questions.entries()){
       const details=document.createElement('details');details.open=index<2;
       const summary=document.createElement('summary');summary.textContent=q.term;
+      if(pendingReview.request){
+        const title=document.createElement('span');title.className='rs-review-question';title.textContent=q.term;
+        const remove=document.createElement('button');remove.type='button';remove.className='rs-remove-question';remove.textContent='×';remove.setAttribute('aria-label','Frage '+(index+1)+' entfernen');remove.title='Frage entfernen';
+        remove.addEventListener('click',event=>{
+          event.preventDefault();event.stopPropagation();if(busy)return;
+          const review=pendingReview;if(!review||review.bank!==bank)return;
+          bank.questions=bank.questions.filter(item=>item!==q);buildReview(bank);render();
+          const buttons=list.querySelectorAll('.rs-remove-question');(buttons[Math.min(index,buttons.length-1)]||byId('rescue-more-reserve')).focus();
+        });
+        summary.replaceChildren(title,remove);summary.classList.add('rs-editable-question');
+        if(index>=(pendingReview.targetCount??bank.questions.length)){const badge=document.createElement('span');badge.className='rs-reserve-badge';badge.textContent='Reserve';title.append(' ',badge);}
+      }
       const instruction=document.createElement('p');instruction.className='rs-setup-note';instruction.textContent=q.instruction;instruction.hidden=['german','english'].includes(bank.subject);
       const answers=document.createElement('ol');answers.type='A';
       q.answers.forEach((answer,i)=>{const li=document.createElement('li');li.textContent=answer+(i===q.correct?' · richtig':'');if(i===q.correct)li.className='is-right';answers.appendChild(li);});
@@ -617,10 +650,15 @@ const byId=id=>root.querySelector('#'+id);
       }else details.append(summary,instruction,answers,why);
       list.appendChild(details);
     }
+    reviewStatus();
   }
   async function approveReview(){
     if(busy||!pendingReview)return;
     const review=pendingReview;let bank=review.bank;
+    if(review.targetCount){
+      if(bank.questions.length<review.targetCount){notice='Es fehlen noch Fragen. Ergänze zuerst die Reserve.';render();return;}
+      bank={...bank,questions:bank.questions.slice(0,review.targetCount),reserveCount:0};
+    }
     if(review.mode==='football-batch'){
       try{
         const batch=createFootballBatch(bank.questions,{label:bank.label,topic:review.targetTopic,level:review.nextLevel});
@@ -686,6 +724,7 @@ const byId=id=>root.querySelector('#'+id);
       if(busy||!hasGame)return;setupOpen=false;setupError='';setupMessage='';notice='';replaceGameHash('#spiel='+state.mode);render();resizeScene();persist();byId('rescue-open-setup').focus();
     });
     byId('rescue-approve').addEventListener('click',approveReview);
+    byId('rescue-more-reserve').addEventListener('click',addReserve);
     byId('rescue-discard').addEventListener('click',()=>{
       if(busy||!pendingReview)return;setupOpen=pendingReview.wasSetupOpen;pendingReview=null;notice='';render();resizeScene();
     });
