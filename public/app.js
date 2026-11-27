@@ -23,6 +23,7 @@ const byId=id=>root.querySelector('#'+id);
   const questionFor=(topic,level,previous=[],answerCount=state.answerCount??3)=>{
     const count=optionCountFor(topic,answerCount);return withAnswerCount(generateTopicQuestion(topic,level,previous,Math.random,count),count);
   };
+  const languageGame=()=>['german','english'].includes(topics[state.current.topic??state.topic]?.subject??(state.mode==='football'?state.football.plan.subject:state.subject));
   const bankFormat=bank=>['german','english','other'].includes(bank?.subject)||bank?.questions?.some(q=>q.kind==='ai-text')?'text':'numeric';
   const fresh = (settings = {}) => ({
     version: 2, subject:settings.subject??topics[settings.topic??'brackets']?.subject??'math', answerCount:optionCountFor(settings.topic??'brackets',settings.answerCount??3), answerFormat:settings.answerFormat??'numeric', mode:settings.mode??'rescue', codebreaker:createCodebreaker(), football:footballFromSettings(settings), topic:settings.topic??'brackets', count: settings.count ?? 20, total: settings.total ?? 8,
@@ -264,7 +265,7 @@ const byId=id=>root.querySelector('#'+id);
       const change = last.delta>0?'+1 Kraft':last.delta<0?'−1 Kraft':'Kraft bleibt voll';
       byId('rescue-outcome').textContent = (last.pass?'80-Prozent-Ziel erreicht. ':'80-Prozent-Ziel verfehlt. ')+change+'.';
       byId('rescue-outcome').style.color = last.pass?'var(--rs-green)':'var(--rs-danger)';
-      byId('rescue-explanation').textContent = state.current.why;
+      byId('rescue-explanation').textContent = languageGame()?'':state.current.why;
     } else if (!settingsValid) {
       status.textContent = 'Prüfe die Einstellungen.';
     } else if (!validVotes()) {
@@ -322,7 +323,8 @@ const byId=id=>root.querySelector('#'+id);
     byId('rescue-choices').dataset.answerCount=state.current.answers.length;
     byId('rescue-choices').classList.toggle('has-text-answers',state.current.answers.some(a=>a.length>35));
     byId('rescue-question').textContent=state.current.term;
-    byId('rescue-instruction').textContent=state.current.instruction||topics[state.topic].instruction;
+    byId('rescue-instruction').textContent=languageGame()?'':state.current.instruction||topics[state.topic].instruction;
+    byId('rescue-instruction').hidden=languageGame();
     byId('rescue-question').parentElement.classList.toggle('is-text',state.current.term.length>55);
     const activeTopic=state.mode==='football'?topics[state.football.plan.topic]:topics[state.topic];
     byId('rescue-level').textContent=(finished?'Neues Spiel · ':revealed?'Nächste Frage · ':'')+'Stufe '+state.level+' · '+(activeTopic?.levels[state.level-1]??['A · Einstieg','A · Grundlagen','B · Anwenden','B · Vertiefen','C · Transfer'][state.level-1]);
@@ -349,7 +351,7 @@ const byId=id=>root.querySelector('#'+id);
     if(game.revealed){
       const names=game.winners.map(i=>'Team '+(i+1)).join(' und ');
       byId('rescue-outcome').textContent=finished?names+(game.winners.length===1?' gewinnt!':' gewinnen gemeinsam!'):'Richtige Antwort: '+['A','B','C'][game.correct]+'.';
-      byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=state.current.why;
+      byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=languageGame()?'':state.current.why;
     }
   }
   function renderFootball(){
@@ -364,7 +366,7 @@ const byId=id=>root.querySelector('#'+id);
     byId('football-next').disabled=exhausted;byId('football-next').textContent=game.batch&&exhausted?'Vorrat aufgebraucht':'Neue Aufgabe';
     action.disabled=false;action.textContent=game.solutionVisible?'Lösung verbergen':'Lösung anzeigen';action.setAttribute('aria-expanded',String(game.solutionVisible));
     byId('rescue-feedback').hidden=!game.solutionVisible;
-    if(game.solutionVisible){byId('rescue-outcome').textContent='Lösung: '+state.current.answers[state.current.correct];byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=state.current.why;}
+    if(game.solutionVisible){byId('rescue-outcome').textContent='Lösung: '+state.current.answers[state.current.correct];byId('rescue-outcome').style.color='var(--rs-green)';byId('rescue-explanation').textContent=languageGame()?'':state.current.why;}
   }
   function syncFootballPlan(){
     const plan=state.football.plan;
@@ -419,7 +421,7 @@ const byId=id=>root.querySelector('#'+id);
     }
     try{
       const questions=[];for(let i=0;i<plan.batchSize;i++)questions.push(questionFor(plan.topic,plan.level,questions.map(q=>q.term),3));
-      pendingReview={...context,bank:{label,questions}};buildReview(pendingReview.bank);notice='';render();
+      pendingReview={...context,bank:{label,questions,subject:plan.subject}};buildReview(pendingReview.bank);notice='';render();
     }catch(error){notice=error.message;render();}
   }
   root.querySelectorAll('[data-rescue-scenario]').forEach(button=>button.addEventListener('click',()=>{
@@ -605,10 +607,10 @@ const byId=id=>root.querySelector('#'+id);
     for(const [index,q] of bank.questions.entries()){
       const details=document.createElement('details');details.open=index<2;
       const summary=document.createElement('summary');summary.textContent=q.term;
-      const instruction=document.createElement('p');instruction.className='rs-setup-note';instruction.textContent=q.instruction;
+      const instruction=document.createElement('p');instruction.className='rs-setup-note';instruction.textContent=q.instruction;instruction.hidden=['german','english'].includes(bank.subject);
       const answers=document.createElement('ol');answers.type='A';
       q.answers.forEach((answer,i)=>{const li=document.createElement('li');li.textContent=answer+(i===q.correct?' · richtig':'');if(i===q.correct)li.className='is-right';answers.appendChild(li);});
-      const why=document.createElement('p');why.className='rs-explanation';why.textContent=q.why;
+      const why=document.createElement('p');why.className='rs-explanation';why.textContent=['german','english'].includes(bank.subject)?'':q.why;why.hidden=['german','english'].includes(bank.subject);
       if(football){
         const solution=document.createElement('details'),title=document.createElement('summary'),answer=document.createElement('p');
         title.textContent='Lösung prüfen';answer.textContent=q.answers[q.correct];solution.append(title,answer,why);details.append(summary,instruction,solution);

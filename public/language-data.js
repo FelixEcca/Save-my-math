@@ -1,4 +1,4 @@
-// Eigene klare Quizaufgaben nach den AV-Bildungsplänen Baden-Württemberg.
+// Kurze Quizaufgaben für das AV.
 export const languageData = [
   {
     "id": "de-das-dass",
@@ -2994,13 +2994,13 @@ export const languageData = [
         "why": "Die Frage bezieht sich auf die Reihenfolge der Maßkontrolle."
       },
       {
-        "prompt": "Welche Regel verlangt ausdrücklich, die sprechende Person nicht zu unterbrechen?",
+        "prompt": "Wir unterbrechen die sprechende Person nicht. Wir lassen sie ___.",
         "answers": [
-          "Wir lassen einander ausreden.",
-          "Wir melden uns zu Wort.",
-          "Wir sprechen in ganzen Sätzen."
+          "ausreden",
+          "mitlesen",
+          "abschreiben"
         ],
-        "why": "„Ausreden lassen“ bedeutet, bis zum Ende des Beitrags zu warten."
+        "why": "Die passende Ergänzung ist „ausreden“."
       },
       {
         "prompt": "Welche Rückmeldung fordert eine konkrete Ergänzung am Ergebnis?",
@@ -3674,139 +3674,139 @@ export const languageData = [
     "rule": "Ein Argument verbindet eine Behauptung mit einer nachvollziehbaren Begründung. Ein passendes Beispiel kann die Begründung veranschaulichen.",
     "rows": [
       {
-        "prompt": "Welcher Satz begründet, warum regelmäßiges Üben helfen kann?",
+        "prompt": "Was passt? „Regelmäßiges Üben hilft.“",
         "answers": [
-          "Regelmäßiges Üben hilft, weil sich Rechenwege festigen.",
-          "Regelmäßiges Üben hilft.",
-          "Regelmäßiges Üben ist regelmäßig."
+          "Behauptung",
+          "Begründung",
+          "Beispiel"
         ],
-        "why": "Der Nebensatz mit „weil“ nennt einen Grund."
+        "why": "Die Aussage ist hier eine Behauptung."
       },
       {
-        "prompt": "Was enthält „Wir sollten Schutzbrillen tragen“?",
+        "prompt": "Was passt? „Weil sich Rechenwege durch Übung festigen.“",
         "answers": [
-          "Eine Forderung.",
-          "Eine Begründung.",
-          "Ein konkretes Beispiel."
+          "Begründung",
+          "Behauptung",
+          "Beispiel"
         ],
-        "why": "Der Satz fordert eine Handlung, nennt aber noch keinen Grund."
+        "why": "Die Aussage ist hier eine Begründung."
       },
       {
-        "prompt": "Die Übungszeit endet um 10 Uhr. Welche Begründung spricht für einen Beginn um 9 Uhr statt um 9:15 Uhr?",
+        "prompt": "Was passt? „Zum Beispiel übt Mia jeden Tag zehn Minuten.“",
         "answers": [
-          "Dann bleiben 15 Minuten mehr zum Üben.",
-          "Dann bleibt weniger Zeit zum Üben.",
-          "Dann sind beide Übungszeiten gleich lang."
+          "Beispiel",
+          "Behauptung",
+          "Begründung"
         ],
-        "why": "Von 9 Uhr bis 10 Uhr sind es 60 Minuten. Ab 9:15 Uhr bleiben nur 45 Minuten."
+        "why": "Die Aussage ist hier eine Beispiel."
       },
       {
-        "prompt": "Welches Beispiel zeigt, dass Notizen beim Erinnern helfen?",
+        "prompt": "Was passt? „Eine Pause verbessert die Konzentration.“",
         "answers": [
-          "Ich lese die notierte Uhrzeit nach und komme rechtzeitig zum Termin.",
-          "Ich schreibe den Termin auf ein Blatt und verliere das Blatt.",
-          "Ich erinnere mich ohne Notiz an den Termin."
+          "Behauptung",
+          "Begründung",
+          "Beispiel"
         ],
-        "why": "Das Nachlesen der notierten Uhrzeit hilft dabei, sich an den Termin zu erinnern."
+        "why": "Die Aussage ist hier eine Behauptung."
       },
       {
-        "prompt": "Welche Aussage nennt einen Nachteil einer längeren Pause?",
+        "prompt": "Was passt? „Denn nach einer Pause kann man wieder aufmerksamer arbeiten.“",
         "answers": [
-          "Eine längere Pause verkürzt die verfügbare Übungszeit.",
-          "Eine längere Pause ermöglicht mehr Erholung.",
-          "Eine längere Pause gibt mehr Zeit zum Essen."
+          "Begründung",
+          "Behauptung",
+          "Beispiel"
         ],
-        "why": "Die verkürzte Übungszeit ist der genannte Nachteil."
+        "why": "Die Aussage ist hier eine Begründung."
       },
       {
-        "prompt": "Welche Formulierung kennzeichnet eine persönliche Meinung?",
+        "prompt": "Was passt? „Zum Beispiel geht Lea in der Pause kurz nach draußen.“",
         "answers": [
-          "Ich finde, dass die Erklärung verständlich war.",
-          "Die Erklärung dauert vier Minuten.",
-          "Die Erklärung steht auf Seite 2."
+          "Beispiel",
+          "Behauptung",
+          "Begründung"
         ],
-        "why": "„Ich finde“ kennzeichnet eine persönliche Bewertung."
+        "why": "Die Aussage ist hier eine Beispiel."
       },
       {
-        "prompt": "Welche Begründung erklärt den Nutzen von Maßangaben in einer Skizze?",
+        "prompt": "Was passt? „Maßangaben gehören in eine Skizze.“",
         "answers": [
-          "Die Längen lassen sich den richtigen Seiten zuordnen.",
-          "Die Skizze ist auf weißem Papier gezeichnet.",
-          "Die Skizze wurde am Morgen angefertigt."
+          "Behauptung",
+          "Begründung",
+          "Beispiel"
         ],
-        "why": "Maßangaben zeigen, welche Länge zu welcher Seite gehört."
+        "why": "Die Aussage ist hier eine Behauptung."
       },
       {
-        "prompt": "Welche Antwort wiederholt nur die Behauptung, statt sie zu begründen?",
+        "prompt": "Was passt? „Weil die Längen sonst nicht eindeutig zugeordnet werden können.“",
         "answers": [
-          "Das ist richtig, weil es richtig ist.",
-          "Das Teil passt, weil beide Maße übereinstimmen.",
-          "Wir sparen Zeit, weil der Weg kürzer ist."
+          "Begründung",
+          "Behauptung",
+          "Beispiel"
         ],
-        "why": "„Weil es richtig ist“ wiederholt die Behauptung und nennt keinen zusätzlichen Grund."
+        "why": "Die Aussage ist hier eine Begründung."
       },
       {
-        "prompt": "Welches Beispiel zeigt eine Kontrolle durch Zusammenarbeit?",
+        "prompt": "Was passt? „Zum Beispiel steht an der Grundseite die Angabe 8 cm.“",
         "answers": [
-          "Eine Person misst, die andere prüft die notierten Werte.",
-          "Eine Person misst und kontrolliert allein.",
-          "Zwei Personen messen unabhängig verschiedene Räume."
+          "Beispiel",
+          "Behauptung",
+          "Begründung"
         ],
-        "why": "Eine Person misst. Eine andere Person prüft die notierten Werte. So wird die Kontrolle durch Zusammenarbeit gezeigt."
+        "why": "Die Aussage ist hier eine Beispiel."
       },
       {
-        "prompt": "Welche Aussage vergleicht zwei Rechenwege anhand der Anzahl der Schritte?",
+        "prompt": "Was passt? „Quellen sollten überprüfbar sein.“",
         "answers": [
-          "Dieser Weg braucht zwei Rechenschritte weniger.",
-          "Dieser Weg gefällt mir besser.",
-          "Diesen Weg kenne ich schon länger."
+          "Behauptung",
+          "Begründung",
+          "Beispiel"
         ],
-        "why": "„Zwei Rechenschritte weniger“ vergleicht die Rechenwege anhand der Anzahl ihrer Schritte."
+        "why": "Die Aussage ist hier eine Behauptung."
       },
       {
-        "prompt": "Jemand sagt: „Dieser Weg ist zu lang.“ Welche Frage verlangt eine sachliche Begründung?",
+        "prompt": "Was passt? „Denn überprüfbare Belege machen Aussagen nachvollziehbar.“",
         "answers": [
-          "Wie viele Meter ist dieser Weg länger?",
-          "Wer hat den Weg zuerst vorgeschlagen?",
-          "Welche Farbe hat der Wegweiser?"
+          "Begründung",
+          "Behauptung",
+          "Beispiel"
         ],
-        "why": "Die Frage nach den Metern prüft das Argument zur Weglänge."
+        "why": "Die Aussage ist hier eine Begründung."
       },
       {
-        "prompt": "Welche Begründung spricht dafür, eine Quelle mit überprüfbaren Belegen zu nutzen?",
+        "prompt": "Was passt? „Zum Beispiel nennt der Bericht eine verlinkte Originalstudie.“",
         "answers": [
-          "Ihre Angaben können anhand der Belege geprüft werden.",
-          "Ihre Aussagen werden besonders häufig geteilt.",
-          "Ihre Aussagen stimmen mit meiner Vermutung überein."
+          "Beispiel",
+          "Behauptung",
+          "Begründung"
         ],
-        "why": "Überprüfbare Belege erlauben die Kontrolle der Angaben."
+        "why": "Die Aussage ist hier eine Beispiel."
       },
       {
-        "prompt": "Welcher Satz nennt eine Handlung und begründet sie mit einem Ziel?",
+        "prompt": "Was passt? „Gegenseitige Hilfe ist im Unterricht sinnvoll.“",
         "answers": [
-          "Wir heften die Blätter ab, damit wir sie später wiederfinden.",
-          "Wir heften die Blätter ab.",
-          "Die Blätter liegen auf dem Tisch."
+          "Behauptung",
+          "Begründung",
+          "Beispiel"
         ],
-        "why": "„Damit“ nennt das Ziel des Abheftens."
+        "why": "Die Aussage ist hier eine Behauptung."
       },
       {
-        "prompt": "Welche Aussage nennt eine mögliche Folge fehlender Beschriftung?",
+        "prompt": "Was passt? „Weil eine Erklärung dabei helfen kann, einen Fehler zu finden.“",
         "answers": [
-          "Ohne Beschriftung können Maße verwechselt werden.",
-          "Beschriftungen bestehen aus Buchstaben und Zahlen.",
-          "Die Beschriftung steht neben der Zeichnung."
+          "Begründung",
+          "Behauptung",
+          "Beispiel"
         ],
-        "why": "Das Verwechseln der Maße ist eine mögliche Folge."
+        "why": "Die Aussage ist hier eine Begründung."
       },
       {
-        "prompt": "„Weg A ist 20 m kürzer als Weg B. Wir möchten den kürzeren Weg nehmen.“ Welche Schlussfolgerung passt?",
+        "prompt": "Was passt? „Zum Beispiel erklärt Ali seiner Mitschülerin den ersten Rechenschritt.“",
         "answers": [
-          "Wir nehmen Weg A.",
-          "Wir nehmen Weg B.",
-          "Beide Wege sind gleich lang."
+          "Beispiel",
+          "Behauptung",
+          "Begründung"
         ],
-        "why": "Aus dem genannten Ziel und der kürzeren Länge folgt die Wahl von Weg A."
+        "why": "Die Aussage ist hier eine Beispiel."
       }
     ]
   },

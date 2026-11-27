@@ -1,4 +1,4 @@
-// Zusätzliche einzelne Quizfragen für die Kernniveaus.
+// Einzelne Lückensätze für die Vertiefung.
 export const languageLevels = {
   "de-seit-seid": {
     "3": [
@@ -125,124 +125,124 @@ export const languageLevels = {
     ],
     "5": [
       {
-        "prompt": "Ergänze den Satz: „___ ich die neue Brille habe, kann ich die Tafel besser lesen.“",
+        "prompt": "___ ich die neue Brille habe, kann ich die Tafel besser lesen.",
         "answers": [
           "Seit",
           "Seid"
         ],
-        "why": "„Seit“ leitet hier einen Nebensatz ein und nennt den Beginn eines Zeitraums."
+        "why": "Die richtige Ergänzung ist „Seit“."
       },
       {
-        "prompt": "Ergänze den Satz: „Ich sehe, dass ihr mit der Aufgabe fertig ___.“",
+        "prompt": "Ich sehe, dass ihr mit der Aufgabe fertig ___.",
         "answers": [
           "seid",
           "seit"
         ],
-        "why": "Auch am Ende eines Nebensatzes gehört zu „ihr“ die Verbform „seid“."
+        "why": "Die richtige Ergänzung ist „seid“."
       },
       {
-        "prompt": "Welche Wortart hat „seit“ im Satz „Seit dem Sommer fahre ich mit dem Rad“?",
-        "answers": [
-          "Eine Präposition.",
-          "Ein Verb."
-        ],
-        "why": "„Seit“ steht hier vor der Wortgruppe „dem Sommer“ und drückt einen zeitlichen Zusammenhang aus. Es ist eine Präposition."
-      },
-      {
-        "prompt": "Welche Form des Verbs „sein“ gehört zum Personalpronomen „ihr“?",
-        "answers": [
-          "seid",
-          "sind"
-        ],
-        "why": "Die Formen lauten: wir sind, ihr seid, sie sind. Zu „ihr“ gehört „seid“."
-      },
-      {
-        "prompt": "Ergänze den Satz: „___ der Kurs begonnen hat, übe ich jeden Abend.“",
+        "prompt": "___ dem Sommer fahre ich mit dem Rad.",
         "answers": [
           "Seit",
           "Seid"
         ],
-        "why": "„Seit“ verbindet hier zwei Satzteile. Der Beginn des Kurses ist der Anfang des Zeitraums."
+        "why": "Die richtige Ergänzung ist „Seit“."
       },
       {
-        "prompt": "Ergänze den Satz: „Wenn ihr die Schutzkleidung tragt, ___ ihr besser geschützt.“",
+        "prompt": "Ihr ___ mit der Planung fast fertig.",
         "answers": [
           "seid",
           "seit"
         ],
-        "why": "Im Hauptsatz fehlt das Verb zu „ihr“. Die passende Form ist „seid“."
+        "why": "Die richtige Ergänzung ist „seid“."
       },
       {
-        "prompt": "Was beschreibt „seit“ im Satz „Seit Montag bin ich im Praktikum“?",
-        "answers": [
-          "Den Beginn eines noch andauernden Zeitraums.",
-          "Das Ende eines bereits abgeschlossenen Zeitraums."
-        ],
-        "why": "Der Zeitraum beginnt am Montag und dauert noch an. „Seit“ nennt hier seinen Beginn."
-      },
-      {
-        "prompt": "Welcher Satz ist richtig geschrieben?",
-        "answers": [
-          "Ihr seid seit acht Uhr hier.",
-          "Ihr seit seid acht Uhr hier."
-        ],
-        "why": "„Seid“ ist die Verbform zu „ihr“. „Seit acht Uhr“ nennt den Beginn des Zeitraums."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Ich nutze dieses Programm, ___ es an der Schule eingeführt wurde.“",
+        "prompt": "Wir kennen uns ___ der Grundschule.",
         "answers": [
           "seit",
           "seid"
         ],
-        "why": "Gesucht ist das Wort für den zeitlichen Beginn. „Seit“ leitet hier den Nebensatz ein."
+        "why": "Die richtige Ergänzung ist „seit“."
       },
       {
-        "prompt": "Welches Wort ist im Satz „Ihr seid gut vorbereitet“ das Verb?",
-        "answers": [
-          "seid",
-          "ihr"
-        ],
-        "why": "„Seid“ ist eine Form von „sein“ und damit das Verb. „Ihr“ ist ein Personalpronomen."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Das Problem besteht schon, ___ die Maschine umgebaut wurde.“",
-        "answers": [
-          "seit",
-          "seid"
-        ],
-        "why": "Der Umbau markiert den Beginn des Problems. Deshalb leitet „seit“ den Nebensatz ein."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Obwohl ihr müde ___, arbeitet ihr sorgfältig.“",
+        "prompt": "Warum ___ ihr heute so leise?",
         "answers": [
           "seid",
           "seit"
         ],
-        "why": "Das Verb im Nebensatz gehört zu „ihr“. Die passende Form von „sein“ lautet „seid“."
+        "why": "Die richtige Ergänzung ist „seid“."
       },
       {
-        "prompt": "Welche Zeitangabe beantwortet im Satz „Seit gestern übt Lea“ die Frage „Seit wann?“?",
-        "answers": [
-          "Seit gestern.",
-          "Bis morgen."
-        ],
-        "why": "„Seit gestern“ nennt den Beginn des Übens. „Bis morgen“ würde ein zeitliches Ende nennen."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Ihr ___ diejenigen, die heute das Material holen.“",
-        "answers": [
-          "seid",
-          "seit"
-        ],
-        "why": "Das Subjekt des Hauptsatzes ist „ihr“. Dazu gehört die Verbform „seid“."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Wir haben uns nicht gesehen, ___ du den Betrieb gewechselt hast.“",
+        "prompt": "Ich bin ___ Montag im Praktikum.",
         "answers": [
           "seit",
           "seid"
         ],
-        "why": "Der Betriebswechsel ist der Beginn des Zeitraums. Deshalb steht die zeitliche Verbindung „seit“."
+        "why": "Die richtige Ergänzung ist „seit“."
+      },
+      {
+        "prompt": "Ihr ___ seit acht Uhr hier.",
+        "answers": [
+          "seid",
+          "seit"
+        ],
+        "why": "Die richtige Ergänzung ist „seid“."
+      },
+      {
+        "prompt": "___ letzter Woche trainiert Mia jeden Tag.",
+        "answers": [
+          "Seit",
+          "Seid"
+        ],
+        "why": "Die richtige Ergänzung ist „Seit“."
+      },
+      {
+        "prompt": "Ich hoffe, ihr ___ gut vorbereitet.",
+        "answers": [
+          "seid",
+          "seit"
+        ],
+        "why": "Die richtige Ergänzung ist „seid“."
+      },
+      {
+        "prompt": "Der Bus fährt ___ gestern wieder.",
+        "answers": [
+          "seit",
+          "seid"
+        ],
+        "why": "Die richtige Ergänzung ist „seit“."
+      },
+      {
+        "prompt": "Wenn ihr müde ___, macht eine Pause.",
+        "answers": [
+          "seid",
+          "seit"
+        ],
+        "why": "Die richtige Ergänzung ist „seid“."
+      },
+      {
+        "prompt": "___ gestern übt Lea für den Test.",
+        "answers": [
+          "Seit",
+          "Seid"
+        ],
+        "why": "Die richtige Ergänzung ist „Seit“."
+      },
+      {
+        "prompt": "___ ihr mit dem Ergebnis zufrieden?",
+        "answers": [
+          "Seid",
+          "Seit"
+        ],
+        "why": "Die richtige Ergänzung ist „Seid“."
+      },
+      {
+        "prompt": "Es regnet, ___ wir hier angekommen sind.",
+        "answers": [
+          "seit",
+          "seid"
+        ],
+        "why": "Die richtige Ergänzung ist „seit“."
       }
     ]
   },
@@ -371,124 +371,124 @@ export const languageLevels = {
     ],
     "5": [
       {
-        "prompt": "Ergänze den Satz: „Die Lehrerin erklärt, ___ das Ergebnis noch geprüft werden muss.“",
+        "prompt": "Die Lehrerin erklärt, ___ das Ergebnis noch geprüft werden muss.",
         "answers": [
           "dass",
           "das"
         ],
-        "why": "Vor dem vollständigen Nebensatz steht die Konjunktion „dass“. Das folgende „das“ ist der Artikel zu „Ergebnis“."
+        "why": "Die richtige Ergänzung ist „dass“."
       },
       {
-        "prompt": "Ergänze den Satz: „Das Teil, ___ du gestern zugeschnitten hast, passt genau.“",
+        "prompt": "Das Teil, ___ du zugeschnitten hast, passt genau.",
         "answers": [
           "das",
           "dass"
         ],
-        "why": "„Das“ bezieht sich auf „Teil“. Als Relativpronomen kann es durch „welches“ ersetzt werden."
+        "why": "Die richtige Ergänzung ist „das“."
       },
       {
-        "prompt": "Welche Wortart hat „das“ im Satz „Wir brauchen das neue Werkzeug“?",
+        "prompt": "Wir brauchen ___ neue Werkzeug.",
         "answers": [
-          "Ein Artikel.",
-          "Eine Konjunktion."
+          "das",
+          "dass"
         ],
-        "why": "„Das“ begleitet das Nomen „Werkzeug“. Es ist hier ein Artikel."
+        "why": "Die richtige Ergänzung ist „das“."
       },
       {
-        "prompt": "Welche Wortart hat „dass“ im Satz „Ich hoffe, dass der Bus kommt“?",
-        "answers": [
-          "Eine Konjunktion.",
-          "Ein Relativpronomen."
-        ],
-        "why": "„Dass“ verbindet den Hauptsatz mit einem Nebensatz. Es bezieht sich nicht als Pronomen auf ein Nomen."
-      },
-      {
-        "prompt": "Welches Ersatzwort passt für „das“ nach dem ersten Komma in „Das Werkzeug, das ich brauche, liegt hier“?",
-        "answers": [
-          "welches",
-          "dieses"
-        ],
-        "why": "Das Wort nach dem ersten Komma ist ein Relativpronomen. Die Probe lautet: „Das Werkzeug, welches ich brauche, liegt hier.“"
-      },
-      {
-        "prompt": "Welches Wort leitet einen Nebensatz ein, wenn die Ersatzprobe mit „dieses“, „jenes“ oder „welches“ nicht passt?",
+        "prompt": "Ich hoffe, ___ der Bus pünktlich kommt.",
         "answers": [
           "dass",
           "das"
         ],
-        "why": "Für diese Verbindung verwendet man „dass“. „Das“ kann als Artikel oder Pronomen durch ein passendes Ersatzwort geprüft werden."
+        "why": "Die richtige Ergänzung ist „dass“."
       },
       {
-        "prompt": "Ergänze den Satz: „Ich weiß, dass ___ Werkzeug im Schrank liegt.“",
+        "prompt": "Das Werkzeug, ___ ich brauche, liegt hier.",
         "answers": [
           "das",
           "dass"
         ],
-        "why": "Die Lücke steht direkt vor dem Nomen „Werkzeug“. Hier braucht man den Artikel „das“."
+        "why": "Die richtige Ergänzung ist „das“."
       },
       {
-        "prompt": "Welcher Satz ist richtig geschrieben?",
-        "answers": [
-          "Sie weiß, dass das Werkzeug fehlt.",
-          "Sie weiß, das das Werkzeug fehlt."
-        ],
-        "why": "Das erste „dass“ leitet den Nebensatz ein. Das zweite Wort „das“ ist der Artikel vor „Werkzeug“."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Das Schild, ___ an der Tür hängt, zeigt den Fluchtweg.“",
-        "answers": [
-          "das",
-          "dass"
-        ],
-        "why": "„Das“ bezieht sich auf „Schild“. Die Probe mit „welches an der Tür hängt“ passt."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Niemand hatte erwartet, ___ das Material so schnell geliefert wird.“",
+        "prompt": "Es ist wichtig, ___ du die Schutzbrille trägst.",
         "answers": [
           "dass",
           "das"
         ],
-        "why": "„Dass“ leitet den Nebensatz ein. Der Nebensatz sagt, was niemand erwartet hatte."
+        "why": "Die richtige Ergänzung ist „dass“."
       },
       {
-        "prompt": "Ergänze den Satz: „Ich nehme an, dass ___ Paket für uns bestimmt ist.“",
-        "answers": [
-          "das",
-          "dass"
-        ],
-        "why": "In der Lücke fehlt der Artikel zu „Paket“. Deshalb schreibt man „das“."
-      },
-      {
-        "prompt": "Ergänze den Satz: „Ich wusste nicht, ___ das Werkstück noch heiß war.“",
+        "prompt": "Ich weiß, ___ du sorgfältig gearbeitet hast.",
         "answers": [
           "dass",
           "das"
         ],
-        "why": "Die Konjunktion „dass“ leitet den Nebensatz ein. Das Wort danach ist der Artikel „das“ vor „Werkstück“."
+        "why": "Die richtige Ergänzung ist „dass“."
       },
       {
-        "prompt": "Welche Wortart hat „Das“ im Satz „Das ist mein Arbeitsplatz“?",
+        "prompt": "Sie weiß, ___ das Werkzeug fehlt.",
         "answers": [
-          "Ein Demonstrativpronomen.",
-          "Ein Artikel."
+          "dass",
+          "das"
         ],
-        "why": "„Das“ weist hier auf etwas hin und steht selbstständig. Ein Artikel würde ein Nomen begleiten."
+        "why": "Die richtige Ergänzung ist „dass“."
       },
       {
-        "prompt": "Welches Ersatzwort passt für „das“ im Satz „Ich nehme das Werkzeug“?",
+        "prompt": "Das Schild, ___ dort hängt, ist neu.",
         "answers": [
-          "dieses",
-          "welches"
+          "das",
+          "dass"
         ],
-        "why": "„Das“ ist hier ein Artikel. „Ich nehme dieses Werkzeug“ ist eine passende Ersatzprobe."
+        "why": "Die richtige Ergänzung ist „das“."
       },
       {
-        "prompt": "Welcher Satz enthält ein Relativpronomen?",
+        "prompt": "Ich glaube, ___ wir die Aufgabe lösen können.",
         "answers": [
-          "Das Gerät, das hier steht, ist neu.",
-          "Ich weiß, dass das Gerät neu ist."
+          "dass",
+          "das"
         ],
-        "why": "Im ersten Satz bezieht sich „das“ nach dem Komma auf „Gerät“. Im zweiten Satz leitet „dass“ einen Nebensatz ein."
+        "why": "Die richtige Ergänzung ist „dass“."
+      },
+      {
+        "prompt": "Lea sagt, ___ ihr die Arbeit gefällt.",
+        "answers": [
+          "dass",
+          "das"
+        ],
+        "why": "Die richtige Ergänzung ist „dass“."
+      },
+      {
+        "prompt": "Ich suche ___ Heft mit dem blauen Umschlag.",
+        "answers": [
+          "das",
+          "dass"
+        ],
+        "why": "Die richtige Ergänzung ist „das“."
+      },
+      {
+        "prompt": "___ ist mein Arbeitsplatz.",
+        "answers": [
+          "Das",
+          "Dass"
+        ],
+        "why": "Die richtige Ergänzung ist „Das“."
+      },
+      {
+        "prompt": "Ich nehme ___ Werkzeug aus der Kiste.",
+        "answers": [
+          "das",
+          "dass"
+        ],
+        "why": "Die richtige Ergänzung ist „das“."
+      },
+      {
+        "prompt": "Das Gerät, ___ hier steht, ist neu.",
+        "answers": [
+          "das",
+          "dass"
+        ],
+        "why": "Die richtige Ergänzung ist „das“."
       }
     ]
   },

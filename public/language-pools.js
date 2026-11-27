@@ -8,8 +8,26 @@ export const subjects={
 const levels=['A · Grundlagen','A · Grundlagen','B · Anwenden','B · Anwenden','C · Vertiefen'];
 const rotate=(items,offset)=>items.map((_,i)=>items[(i+offset)%items.length]);
 const vocabularyWord=row=>row.prompt.match(/„([^“]+)“/)?.[1];
-function completedSentence(row,answer){
-  return row.prompt.replace(/^(?:Ergänze|Verneine|Übersetze)[^:]*:\s*/,'').replace('___',answer);
+function shortPrompt(prompt){
+  if(prompt.includes('___')){
+    prompt=prompt.replace(/^Ergänze den Satz:\s*/,'').replace(/^Ergänze (?:im|die Frage im|die Verneinung im) ([^:]+):\s*/,'($1) ')
+      .replace(/^Ergänze die Zukunft mit „will“:\s*/,'').replace(/^Ergänze für „([^“]+)“:\s*/,'„$1“: ')
+      .replace(/^Übersetze „([^“]+)“:\s*/,'„$1“: ').replace(/^Welches Wort leitet den Grund ein\?\s*/,'Grund: ');
+    if(prompt.startsWith('„')&&prompt.endsWith('“'))prompt=prompt.slice(1,-1);
+    return prompt;
+  }
+  const word=prompt.match(/^Welche Wortart hat „([^“]+)“ in „([^“]+)“\?$/);
+  if(word)return '„'+word[2]+'“\nWortart von „'+word[1]+'“: ___';
+  const tense=prompt.match(/^Welche grammatische Zeitform steht in „([^“]+)“\?$/);
+  if(tense)return '„'+tense[1]+'“\nZeitform: ___';
+  const past=prompt.match(/^Welche Form ist das simple past von „([^“]+)“\?$/);
+  if(past)return 'Simple past: '+past[1]+' → ___';
+  const number=prompt.match(/^Welches englische Zahlwort bedeutet (.+)\?$/);
+  if(number)return number[1]+' → ___ (Englisch)';
+  const time=prompt.match(/^Welcher Ausdruck bezeichnet (.+)\?$/);
+  if(time)return time[1]+' → ___ (Englisch)';
+  if(prompt.startsWith('Was passt?'))return prompt;
+  return 'Was passt?\n'+prompt;
 }
 function questionsFor(data,level,maxAnswers){
   const stage=level<=2?1:level<=4?3:5;
@@ -18,18 +36,22 @@ function questionsFor(data,level,maxAnswers){
     let term=row.prompt,answers=[...row.answers],why=row.why;
     if(!authored){
       if(stage===3&&data.format==='vocabulary'){
-        term='Welches englische Wort bedeutet „'+row.answers[0]+'“?';
+        term='„'+row.answers[0]+'“ heißt auf Englisch: ___.';
         answers=[vocabularyWord(row),vocabularyWord(data.rows[(index+5)%15]),vocabularyWord(data.rows[(index+9)%15])];
-      }else if(stage===3&&row.prompt.includes('___')){
-        term='Welcher Satz passt zur Aufgabe?\n'+row.prompt;
-        answers=row.answers.map(answer=>completedSentence(row,answer));
       }
     }
+    if(data.format==='vocabulary'&&stage===1)term='„'+vocabularyWord(row)+'“ heißt auf Deutsch: ___.';
+    if(['de-komma-nebensatz','de-komma-aufzaehlung','de-woertliche-rede'].includes(data.id)){
+      term=answers[0].replace(/[,„“:]/g,'').replace(/\s+/g,' ').trim();
+      term='Was passt?\n'+term;
+    }
+    term=shortPrompt(term);
+    term=term.replace(/^Was passt\?\nWas passt\?\n/,'Was passt?\n');
     answers=answers.slice(0,maxAnswers);
     const offset=(index+stage)%answers.length;
     answers=rotate(answers,offset);
     return {id:data.id+'-'+level+'-'+(index+1),term,answers,correct:(answers.length-offset)%answers.length,level,
-      instruction:term.includes('___')?'Wähle die passende Ergänzung.':'Wähle die richtige Antwort.',why};
+      instruction:'',why};
   });
 }
 export const languageBanks=languageData.map(data=>{

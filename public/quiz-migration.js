@@ -29,7 +29,7 @@ function trustedLegacy(question,canonical){
   const match=/^([1-5])-(1[0-5]|[1-9])$/.exec(question.id.slice(question.topic.length+1));
   if(!match||question.level!==Number(match[1])||canonical.level!==question.level)return false;
   const expected=legacyDigests[question.topic][(question.level-1)*15+Number(match[2])-1];
-  return typeof expected==='string'&&digest(question)===expected;
+  return (Array.isArray(expected)?expected:[expected]).includes(digest(question));
 }
 function validateSubset(question){
   const source=question.source,indices=question.answerIndices;
