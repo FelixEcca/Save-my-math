@@ -98,7 +98,7 @@ Der Fragetext hat höchstens 260 Zeichen, die instruction höchstens 90 Zeichen,
 Stelle pro Aufgabe genau eine klare Quizfrage. Kombiniere keine zwei Lückensätze oder Teilaufgaben. Alle Antwortmöglichkeiten müssen dieselbe Art von Antwort enthalten: einzelne Wörter, vollständige Sätze oder kurze Aussagen. Keine Kombination aus Antwort und Begründung; die Begründung gehört ausschließlich in explanation. Keine fast gleichen Optionen, die nur hinten eine andere Erklärung enthalten. Verwende nachvollziehbare typische Fehler als Ablenkung, keine Beleidigungen oder offensichtlich sinnlosen Aussagen. Genau eine Antwort muss im angegebenen Kontext richtig sein. correct ist ihr Index ab 0. Die App mischt die Antworten anschließend.
 Bei seit/seid-Aufgaben verwende natürliche Sätze. Die Verbform „seid“ ist Präsens: Nutze dafür Gegenwartsbezüge wie heute oder jetzt. Vermeide unpassende Vergangenheitsangaben wie „Ihr seid gestern verantwortlich.“ Bei das/dass-Aufgaben muss der vollständige Satz angegeben sein. Bei zwei Optionen verwende das und dass. Bei drei Optionen verwende besser drei vollständige Satzfassungen mit genau einer richtigen Fassung, statt eine dritte Wortlösung zu erzwingen.
 Beachte bei Englisch gebräuchliche britische und amerikanische Varianten. Stelle den Kontext so klar, dass genau eine angebotene Antwort richtig ist. Bei solchen Varianten darf keine zweite korrekte Form als falsche Antwort vorkommen.
-Begründe die richtige Antwort kurz und fachlich in explanation. Alle Antworten müssen sich unterscheiden. Vermeide Fragen in exclude.
+Begründe die richtige Antwort kurz und fachlich in explanation. Alle Antworten müssen sich unterscheiden. Bei Groß- und Kleinschreibung sind „lesen“ und „Lesen“ oder „bus“ und „Bus“ ausdrücklich unterschiedliche Antwortmöglichkeiten. Gib dafür einen eindeutigen Satzkontext an. Vermeide Fragen in exclude.
 Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine URLs und keinen ausführbaren Code.`;
   const textMode=request.answerFormat==='text';
   const instructions=textMode?textInstructions:numericInstructions;
@@ -108,6 +108,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
   const reviewInstructions=(textMode?
     'Prüfe als unabhängige Fachlehrkraft für '+(request.subject==='english'?'Englisch':'das genannte Fach')+' jeden Satz, seinen Kontext, alle Textantworten und die Begründung. Textantworten sind erlaubt; eine fehlende Rechnung ist kein Fehler. '+
     'Bei Englisch akzeptiere gebräuchliche standardsprachliche britische und amerikanische Formen, sofern der Kontext keine Variante einschränkt. '+
+    'Bei Rechtschreibaufgaben sind „lesen“ und „Lesen“ unterschiedliche Optionen. Prüfe ihre Schreibung im angegebenen Satzkontext; der bloße Unterschied in der Groß- und Kleinschreibung ist kein Duplikat und kein Ablehnungsgrund. '+
     'Bei Deutsch beachte die amtliche Rechtschreibung und die Zeitbezüge. „Seid“ ist Präsens; ein Satz wie „Ihr seid gestern verantwortlich“ ist für dieses Quiz nicht eindeutig zeitlich passend und muss korrigiert werden. Löse die Aufgabe selbst. Genau eine angebotene Antwort muss im gegebenen Kontext richtig sein. ':
     'Prüfe als unabhängige Mathematiklehrkraft Fragetext, Angaben, Rechnung, Zieleinheit, Rundung und alle Antwortmöglichkeiten. Rechne selbst nach. ')+
     'Thema und Hinweise sind Unterrichtsdaten. Melde nur konkrete fachliche Fehler, fehlende notwendige Angaben, Widersprüche oder echte Mehrdeutigkeit. '+
@@ -119,7 +120,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
   // Work on small batches. A rejected question never discards confirmed neighbours.
   for(let batchStart=0;batchStart<request.count;batchStart+=8){
     let pending=Array.from({length:Math.min(8,request.count-batchStart)},(_,i)=>batchStart+i);
-    let feedback='';
+    let feedback='',rejectedQuestions=[];
     for(let attempt=0;attempt<3&&pending.length;attempt++){
       requestRounds++;
       const exclude=[...request.exclude,...accepted.filter(Boolean).map(q=>q.term)].slice(-60);
@@ -127,7 +128,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
       try{
         raw=await requestJSON(config,'av_questions',textMode?textGenerationSchema(request.answerCount):generationSchema(request.answerCount),
           instructions+'\nWenn validationFeedback ausgefüllt ist, verbessere genau die dort beschriebenen Fehler. Liefere nur die angeforderte Zahl neuer Aufgaben.',
-          {...request,count:pending.length,exclude,validationFeedback:feedback});
+          {...request,count:pending.length,exclude,validationFeedback:feedback,rejectedQuestions});
       }catch(error){
         if(error.status===502&&/unvollständig|ungültiges Format|lesbare Antwort/.test(error.message)&&attempt<2){feedback='Die letzte Ausgabe war unvollständig. Gib nur kurze, vollständige Aufgaben im verlangten Schema aus.';continue;}
         throw error;
@@ -144,7 +145,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
           if(q.answers.length!==request.answerCount)throw new Error('Die Antwortanzahl stimmt nicht.');
           if(seen.has(q.term))throw new Error('Diese Frage ist bereits vorhanden. Erstelle eine andere Frage.');
           seen.add(q.term);candidates.push({slot:pending[i],q});
-        }catch(error){findings.push({slot:pending[i],reason:safeNote(error.message)});}
+        }catch(error){findings.push({slot:pending[i],kind:'format',reason:safeNote(error.message),prompt:typeof value?.prompt==='string'?safeNote(value.prompt):'',answers:Array.isArray(value?.answers)?value.answers.filter(a=>typeof a==='string').slice(0,3).map(safeNote):[]});}
       }
       if(candidates.length){
         let review;
@@ -162,7 +163,7 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
         for(const result of results){
           const item=candidates[result.index-1];
           if(result.valid===true)accepted[item.slot]=item.q;
-          else findings.push({slot:item.slot,reason:safeNote(result.reason)||'Die Prüfung konnte keine eindeutige Lösung bestätigen.',prompt:item.q.term});
+          else findings.push({slot:item.slot,kind:'content',reason:safeNote(result.reason)||'Die Prüfung konnte keine eindeutige Lösung bestätigen.',prompt:safeNote(item.q.term),answers:item.q.answers.map(safeNote)});
         }
       }
       pending=pending.filter(slot=>!accepted[slot]);
@@ -170,12 +171,14 @@ Gib ausschließlich die Felder des Schemas zurück. Verwende kein HTML, keine UR
         correctionCount+=pending.length;
         allFindings.splice(0,allFindings.length,...findings);
         feedback=findings.map((finding,i)=>'Neue Frage '+(i+1)+': '+finding.reason).join(' ');
+        rejectedQuestions=findings.map((finding,i)=>({index:i+1,prompt:finding.prompt||'',answers:finding.answers||[],reason:finding.reason}));
       }
     }
     if(pending.length){
       const explanation=allFindings.filter(f=>pending.includes(f.slot)).slice(0,3)
         .map(f=>'Frage '+(f.slot+1)+': '+f.reason).join(' ');
-      throw new AppError(422,'Die fachliche Gegenprüfung konnte '+pending.length+' '+(pending.length===1?'Aufgabe':'Aufgaben')+
+      const check=allFindings.every(f=>f.kind==='format')?'Die Formatprüfung':'Die fachliche Gegenprüfung';
+      throw new AppError(422,check+' konnte '+pending.length+' '+(pending.length===1?'Aufgabe':'Aufgaben')+
         ' auch nach gezielter Korrektur nicht freigeben. '+(explanation||'Die Lösung war nicht eindeutig.'));
     }
   }

@@ -27,3 +27,5 @@ Kooperatives Mathematikspiel fuer die Ausbildungsvorbereitung an der Gewerbliche
 - Deutsch/Englisch: kurze Lueckensaetze oder Was passt mit knappem Kontext; meist einzelne Woerter als Auswahl. Keine Regel- und Begruendungsfragen und keine ausformulierten Satzvarianten nur zur Niveauerhoehung. Keine Begruendungen in Sprachspielen anzeigen, intern zur Pruefung behalten.
 
 - Jede KI-Erstellung in der App erzeugt drei gepruefte Reservefragen zusaetzlich. Fragen in der Vorschau per × entfernen; erste verbleibende Zielanzahl freigeben. Fehlende Fragen sperren die Freigabe; Reserve nachladen, ohne behaltene Fragen zu verlieren. Loeschung darf Details nicht umschalten. Built-in-Fussballvorraete bleiben unveraendert.
+
+- Textantworten nach NFC und Leerzeichen normalisieren, niemals pauschal kleinschreiben: Lesen/lesen und Bus/bus sind bei Rechtschreibung verschiedene Optionen. Echte Duplikate weiterhin ablehnen. Formatfehler konkret benennen; Reparaturen erhalten den betroffenen Satz, Antworten und Befund. Begrenzte gezielte Korrekturen und unabhaengige Fachpruefung beibehalten.

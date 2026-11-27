@@ -32,17 +32,18 @@ export function calculate(expression){
 }
 
 export function validateTextQuestion(q){
-  const norm=s=>s.normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de');
+  // Letter case carries the answer in spelling tasks; normalize only encoding and spacing.
+  const norm=s=>s.normalize('NFC').trim().replace(/\s+/g,' ');
   if(!q||q.kind!=='ai-text'||typeof q.id!=='string'||!q.id||q.id.length>60||
-    typeof q.term!=='string'||!q.term.trim()||q.term.length>260||
-    !Number.isInteger(q.level)||q.level<1||q.level>5||
-    typeof q.instruction!=='string'||q.instruction.length>180||
-    typeof q.why!=='string'||!q.why.trim()||q.why.length>700||
-    !Array.isArray(q.answers)||![2,3].includes(q.answers.length)||
-    !q.answers.every(a=>typeof a==='string'&&a.trim()&&a.length<=300)||
-    new Set(q.answers.map(norm)).size!==q.answers.length||
-    !Number.isInteger(q.correct)||q.correct<0||q.correct>=q.answers.length)
-    throw new Error('Die Textaufgabe ist unvollständig oder ihre Antworten sind nicht eindeutig.');
+    !Number.isInteger(q.level)||q.level<1||q.level>5)throw new Error('Die Textaufgabe hat ein ungültiges Format.');
+  if(typeof q.term!=='string'||!q.term.trim())throw new Error('Der Fragetext fehlt.');
+  if(q.term.length>260)throw new Error('Der Fragetext ist zu lang. Erlaubt sind höchstens 260 Zeichen.');
+  if(typeof q.instruction!=='string'||q.instruction.length>180)throw new Error('Die zusätzliche Anweisung muss ein Text mit höchstens 180 Zeichen sein; ein leerer Text ist erlaubt.');
+  if(typeof q.why!=='string'||!q.why.trim()||q.why.length>700)throw new Error('Die interne Lösungsbegründung fehlt oder überschreitet 700 Zeichen.');
+  if(!Array.isArray(q.answers)||![2,3].includes(q.answers.length))throw new Error('Es müssen genau zwei oder drei Antwortmöglichkeiten vorliegen.');
+  if(!q.answers.every(a=>typeof a==='string'&&a.trim()&&a.length<=300))throw new Error('Eine Antwort ist leer oder überschreitet 300 Zeichen.');
+  if(new Set(q.answers.map(norm)).size!==q.answers.length)throw new Error('Mindestens zwei Antwortmöglichkeiten sind wortgleich. Ersetze die doppelte Antwort durch eine andere falsche Antwort.');
+  if(!Number.isInteger(q.correct)||q.correct<0||q.correct>=q.answers.length)throw new Error('Die Markierung der richtigen Antwort passt zu keiner Antwortmöglichkeit.');
   return q;
 }
 

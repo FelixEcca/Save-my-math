@@ -13,7 +13,9 @@ const response=value=>new Response(JSON.stringify({status:'completed',output:[{c
 test('Text answers and punctuation survive validation, shuffling and bank reload',()=>{
  const q=materializeTextQuestion(raw,1,randomUUID(),()=>0);
  assert.equal(q.answers[q.correct],'dass');validateGeneratedQuestion(q);validateQuestion(q);
- assert.throws(()=>materializeTextQuestion({...raw,answers:['dass',' DASS ']},1,randomUUID()));
+ assert.throws(()=>materializeTextQuestion({...raw,answers:['dass',' dass ']},1,randomUUID()),/wortgleich/);
+ const spelling=materializeTextQuestion({...raw,prompt:'Das ___ fällt mir leicht.',answers:['lesen','Lesen'],correct:1},1,randomUUID());
+ assert.equal(spelling.answers[spelling.correct],'Lesen');validateGeneratedQuestion(spelling);
  const sentence=materializeTextQuestion({...raw,answers:['Ich hoffe, dass du kommst.','Ich hoffe, das du kommst.'],correct:0},1,randomUUID());
  assert.match(sentence.answers[sentence.correct],/dass/);
  const bank={id:'ai-'+randomUUID(),label:'das und dass',levels:['A','A','B','B','C'],questions:[q]};
